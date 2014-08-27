@@ -1,0 +1,9 @@
+{
+    "id": 1073761530,
+    "typeId": 1,
+    "name": "文字フィールド",
+    "description": "",
+    "required": false,
+    "applicableIssueTypes": [1074178332]
+}
+

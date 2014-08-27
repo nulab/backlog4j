@@ -1,0 +1,48 @@
+{
+    "id": 39293172,
+    "project": {
+        "id": 1234567890,
+        "projectKey": "TST_PRJ5",
+        "name": "TST_PRJ5",
+        "useGantt": true,
+        "useBurndown": true,
+        "chartEnabled": true,
+        "subtaskingEnabled": false,
+        "textFormattingRule": "backlog",
+        "archived": false
+    },
+    "type": 2,
+    "content": {
+        "id": 1079097008,
+        "key_id": 1,
+        "summary": "課題追加テスト",
+        "description": "",
+        "comment": {
+            "id": 1102443987,
+            "content": "コメント時ファイル添付テスト"
+        },
+        "attachments": [
+            {
+                "id": 1076499483,
+                "name": "twoshot.JPG",
+                "size": 86513
+            }
+        ],
+        "changes": [
+            {
+                "field": "attachment",
+                "new_value": "twoshot.JPG",
+                "old_value": "",
+                "type": "standard"
+            }
+        ]
+    },
+    "createdUser": {
+        "id": 1073936936,
+        "name": "test",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@xxxxxxxxtest.com"
+    },
+    "created": "2014-07-22T10:46:09Z"
+}

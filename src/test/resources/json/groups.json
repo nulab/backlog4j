@@ -1,0 +1,92 @@
+[
+    {
+        "id": 123,
+        "name": "test-group1",
+        "members": [
+            {
+                "id": 12212,
+                "userId": "test1",
+                "name": "test1@test",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test1@test.test"
+            },
+            {
+                "id": 12213,
+                "userId": "test2",
+                "name": "test2@test",
+                "roleType": 2,
+                "lang": null,
+                "mailAddress": "test2@test.test"
+            },
+            {
+                "id": 12214,
+                "userId": "test3",
+                "name": "tes31@test",
+                "roleType": 2,
+                "lang": null,
+                "mailAddress": "test3@test.test"
+            }
+        ],
+        "displayOrder": 21,
+        "createdUser": {
+            "id": 36,
+            "userId": "testes1",
+            "name": "testes 1",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "testes@testes.testes"
+        },
+        "created": "2008-09-11T04:03:52Z",
+        "updatedUser": {
+            "id": 33,
+            "userId": "testes2",
+            "name": "testes 2",
+            "roleType": 1,
+            "lang": "ja",
+            "mailAddress": "testes2@testes.testes"
+        },
+        "updated": "2011-11-24T04:53:15Z"
+    },
+    {
+        "id": 3232,
+        "name": "test-group2",
+        "members": [
+            {
+                "id": 333331,
+                "userId": "abc1",
+                "name": "abc1@group2",
+                "roleType": 2,
+                "lang": null,
+                "mailAddress": "abc1@testes.testes"
+            },
+            {
+                "id": 333332,
+                "userId": "abc2",
+                "name": "abc2@group2",
+                "roleType": 2,
+                "lang": null,
+                "mailAddress": "abc2@testes.testes"
+            }
+        ],
+        "displayOrder": 20,
+        "createdUser": {
+            "id": 331,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": "ja",
+            "mailAddress": "test_admin@testes.testes"
+        },
+        "created": "2008-03-06T08:24:06Z",
+        "updatedUser": {
+            "id": 331,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": "ja",
+            "mailAddress": "test_admin@testes.testes"
+        },
+        "updated": "2011-11-24T04:53:15Z"
+    }
+]

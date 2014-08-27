@@ -1,0 +1,11 @@
+{
+    "id": 1073835211,
+    "projectKey": "TST_PRJ",
+    "name": "テストプロジェクト",
+    "useGantt": false,
+    "useBurndown": true,
+    "chartEnabled": false,
+    "subtaskingEnabled": true,
+    "textFormattingRule": "backlog",
+    "archived": false
+}

@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1073910170,
+        "name": "test1",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test1@xxxxxxxx.xx"
+    },
+    {
+        "id": 1073910171,
+        "name": "test2",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "test2@xxxxxxxx.xx"
+    }
+]

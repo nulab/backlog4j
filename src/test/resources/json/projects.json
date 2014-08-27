@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1073835211,
+        "projectKey": "TST_PRJ",
+        "name": "テストプロジェクト",
+        "useGantt": true,
+        "useBurndown": true,
+        "chartEnabled": true,
+        "subtaskingEnabled": true,
+        "textFormattingRule": "backlog",
+        "archived": false
+    },
+    {
+        "id": 1073835220,
+        "projectKey": "TEST_PRJ_2",
+        "name": "API v2 から作成したテストプロジェクト",
+        "useGantt": null,
+        "useBurndown": null,
+        "chartEnabled": false,
+        "subtaskingEnabled": true,
+        "textFormattingRule": "markdown",
+        "archived": false
+    }
+]

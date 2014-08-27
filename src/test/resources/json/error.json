@@ -1,0 +1,12 @@
+{"errors": [
+    {
+        "message": "No project.",
+        "code": 6,
+        "moreInfo": "There are no projects."
+    },
+    {
+        "message": "No user.",
+        "code": 7,
+        "moreInfo": "There are no users."
+    }
+]}

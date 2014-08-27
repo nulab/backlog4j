@@ -1,0 +1,11 @@
+{
+    "spaceKey": "nulab-test",
+    "name": "nulab-test",
+    "ownerId": 1234567890,
+    "lang": "ja",
+    "timezone": "Asia/Tokyo",
+    "reportSendTime": "09:00:00",
+    "textFormattingRule": "backlog",
+    "created": "2014-01-21T07:30:09Z",
+    "updated": "2014-04-02T09:27:07Z"
+}

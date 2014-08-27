@@ -1,0 +1,131 @@
+{
+    "id": 1073804154,
+    "projectId": 1073760709,
+    "issueKey": "HALLOWEEN-2",
+    "keyId": 2,
+    "issueType": {
+        "id": 1073817842,
+        "projectId": 1073760709,
+        "name": "Bug",
+        "color": "#990000"
+    },
+    "summary": "カスタム満載課題",
+    "description": "カスタムフィールドの全つけ課題です",
+    "resolution": null,
+    "priority": {
+        "id": 3,
+        "name": "中"
+    },
+    "status": {
+        "id": 1,
+        "name": "未対応"
+    },
+    "assignee": null,
+    "category": [],
+    "versions": [],
+    "milestone": [],
+    "startDate": null,
+    "limitDate": null,
+    "dueDate": null,
+    "estimatedHours": null,
+    "actualHours": null,
+    "parentIssueId": null,
+    "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-07T02:31:38Z",
+    "updatedUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "updated": "2014-08-07T02:31:38Z",
+    "customFields": [
+        {
+            "id": 1073742493,
+            "fieldTypeId": 8,
+            "name": "らじお",
+            "value": {
+                "id": 2,
+                "name": "らいす",
+                "displayOrder": 1
+            },
+            "otherValue": null
+        },
+        {
+            "id": 1073742486,
+            "fieldTypeId": 1,
+            "name": "てきすと",
+            "value": "テキストの値です"
+        },
+        {
+            "id": 1073742492,
+            "fieldTypeId": 7,
+            "name": "ちぇっくぼっくす",
+            "value": [
+                {
+                    "id": 2,
+                    "name": "りす",
+                    "displayOrder": 1
+                }
+            ],
+            "otherValue": "りびんぐでっど"
+        },
+        {
+            "id": 1073742489,
+            "fieldTypeId": 4,
+            "name": "ひづけ",
+            "value": "2014-08-11T00:00:00Z"
+        },
+        {
+            "id": 1073742491,
+            "fieldTypeId": 6,
+            "name": "まるちりすと",
+            "value": [
+                {
+                    "id": 1,
+                    "name": "ごりら",
+                    "displayOrder": 0
+                },
+                {
+                    "id": 2,
+                    "name": "ごめす",
+                    "displayOrder": 1
+                }
+            ]
+        },
+        {
+            "id": 1073742488,
+            "fieldTypeId": 3,
+            "name": "すうち",
+            "value": 99.9
+        },
+        {
+            "id": 1073742490,
+            "fieldTypeId": 5,
+            "name": "しんぐるりすと",
+            "value": {
+                "id": 1,
+                "name": "たまご",
+                "displayOrder": 0
+            }
+        },
+        {
+            "id": 1073742487,
+            "fieldTypeId": 2,
+            "name": "ぶんしょう",
+            "value": "文章の値です"
+        }
+    ],
+    "attachments": [],
+    "sharedFiles": [],
+    "stars": []
+}

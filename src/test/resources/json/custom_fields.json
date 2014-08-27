@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1073761530,
+        "typeId": 1,
+        "name": "文字フィールド",
+        "description": "",
+        "required": false,
+        "applicableIssueTypes": [1074178332]
+    },
+    {
+        "id": 1073761547,
+        "typeId": 3,
+        "name": "数字カスタムフィールド",
+        "description": "数字カスタムフィールドです",
+        "required": false,
+        "applicableIssueTypes": [1074178332],
+        "min": 100.0,
+        "max": 1000000.0,
+        "initialValue": 999.0,
+        "unit": null
+    },
+    {
+        "id": 1073761531,
+        "typeId": 4,
+        "name": "日付フィールド",
+        "description": "",
+        "required": false,
+        "applicableIssueTypes": [],
+        "min": "2014-06-09T15:00:00Z",
+        "max": "2014-07-09T15:00:00Z",
+        "initialDate": {
+            "id": 3,
+            "date": "2014-06-11T15:00:00Z"
+        }
+    },
+    {
+        "id": 1073761532,
+        "typeId": 6,
+        "name": "複数リストフィールド",
+        "description": "",
+        "required": false,
+        "applicableIssueTypes": [1074178332],
+        "allowAddItem": true,
+        "items": [
+            {
+                "id": 1,
+                "name": "ご飯",
+                "displayOrder": 0
+            },
+            {
+                "id": 2,
+                "name": "みそ汁",
+                "displayOrder": 1
+            },
+            {
+                "id": 3,
+                "name": "納豆",
+                "displayOrder": 2
+            }
+        ]
+    }
+]

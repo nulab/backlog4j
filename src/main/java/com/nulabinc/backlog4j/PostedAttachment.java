@@ -1,0 +1,16 @@
+package com.nulabinc.backlog4j;
+
+/**
+ * The interface for Backlog posted attachment file.
+ *
+ * @author nulab-inc
+ */
+public interface PostedAttachment {
+
+    long getId();
+
+    String getName();
+
+    long getSize();
+
+}

@@ -1,0 +1,73 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'maven-publish-auth'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.hibernate.build.gradle:gradle-maven-publish-auth:2.0.1'
+    }
+}
+
+sourceCompatibility=1.6
+
+group = 'com.nulabinc.backlog4j'
+archivesBaseName = 'backlog4j'
+version = '2.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:+'
+    testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
+
+    compile 'org.apache.httpcomponents:httpclient:4.2.4'
+    compile 'org.apache.httpcomponents:httpmime:4.2.4'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.1.1'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.1'
+}
+
+javadoc {
+    options.locale = 'en_US'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': archivesBaseName, 'Implementation-Version': version
+    }
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourceJar
+    archives javadocJar
+}
+configurations {
+    deployerJars
+}
+dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-ssh:2.6"
+}
+uploadArchives {
+    repositories.mavenDeployer {
+        configuration = configurations.deployerJars
+        repository(url: "") {
+            authentication(userName: mavenUser, password: mavenPassword)
+        }
+    }
+}

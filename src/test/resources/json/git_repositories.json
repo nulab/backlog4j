@@ -1,0 +1,60 @@
+[
+    {
+        "id": 868,
+        "projectId": 1073760709,
+        "name": "sample",
+        "description": "",
+        "hookUrl": "",
+        "httpUrl": "https://nulab.backlog.jp/git/HALLOWEEN/sample.git",
+        "sshUrl": "nulab@nulab.git.backlog.jp:/HALLOWEEN/sample.git",
+        "displayOrder": 2147483646,
+        "pushedAt": null,
+        "createdUser": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-08T05:20:09Z",
+        "updatedUser": {
+            "id": 1073751782,
+            "userId": "test_admin2",
+            "name": "あどみにさん2",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "updated": "2014-08-09T05:20:09Z"
+    },
+    {
+        "id": 869,
+        "projectId": 1073760709,
+        "name": "test",
+        "description": "テスト用",
+        "hookUrl": "",
+        "httpUrl": "https://nulab.backlog.jp/git/HALLOWEEN/test.git",
+        "sshUrl": "nulab@nulab.git.backlog.jp:/HALLOWEEN/test.git",
+        "displayOrder": 2147483646,
+        "pushedAt": null,
+        "createdUser": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-08T05:20:24Z",
+        "updatedUser": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "updated": "2014-08-08T05:20:24Z"
+    }
+]

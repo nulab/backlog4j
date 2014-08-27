@@ -1,0 +1,30 @@
+{
+    "id": 624929,
+    "project": {
+        "id": 1073761031,
+        "projectKey": "TEST_PRJ1407208757143",
+        "name": "テストプロジェクト",
+        "useGantt": false,
+        "useBurndown": false,
+        "chartEnabled": false,
+        "subtaskingEnabled": true,
+        "textFormattingRule": "backlog",
+        "archived": false
+    },
+    "type": 1,
+    "content": {
+        "id": 1073803919,
+        "key_id": 1,
+        "summary": "課題作成",
+        "description": "テスト"
+    },
+    "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-05T05:50:59Z"
+}

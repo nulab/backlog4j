@@ -1,0 +1,30 @@
+{
+    "id": 624256,
+    "project": {
+        "id": 1073760709,
+        "projectKey": "HALLOWEEN",
+        "name": "Happy Halloween",
+        "useGantt": true,
+        "useBurndown": true,
+        "chartEnabled": true,
+        "subtaskingEnabled": false,
+        "textFormattingRule": "backlog",
+        "archived": false
+    },
+    "type": 8,
+    "content": {
+        "id": 1074321613,
+        "dir": "/test/テストフォルダ/",
+        "name": "00_default_bg.gif",
+        "size": 2718
+    },
+    "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-04T02:01:52Z"
+}

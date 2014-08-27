@@ -1,0 +1,39 @@
+{
+    "id": 624764,
+    "project": {
+        "id": 1073760709,
+        "projectKey": "TEST_PRJ1406182757086",
+        "name": "テストプロジェクト",
+        "useGantt": false,
+        "useBurndown": false,
+        "chartEnabled": false,
+        "subtaskingEnabled": false,
+        "textFormattingRule": "backlog",
+        "archived": false
+    },
+    "type": 6,
+    "content": {
+        "id": 1073768599,
+        "name": "テスト",
+        "content": "ああああ",
+        "diff": null,
+        "version": null,
+        "attachments": [
+            {
+                "id": 18105,
+                "name": "backlog_icon.png",
+                "size": 5050
+            }
+        ],
+        "shared_files": []
+    },
+    "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-05T03:35:08Z"
+}

@@ -1,0 +1,60 @@
+[
+    {
+        "id": 870,
+        "projectId": 1073761627,
+        "name": "api-v2-test",
+        "description": "desc 1",
+        "hookUrl": "http://yourserver.com/update_repository",
+        "httpUrl": "https://test005.backlog.jp/git/TEST/api-v2-test.git",
+        "sshUrl": "test005@test005.git.backlog.jp:/TEST/api-v2-test.git",
+        "displayOrder": 2147483646,
+        "pushedAt": "2014-08-18T07:37:34Z",
+        "createdUser": {
+            "id": 1073752273,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "nakamura+admin@nulab.co.jp"
+        },
+        "created": "2014-08-18T06:46:31Z",
+        "updatedUser": {
+            "id": 1073752273,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "nakamura+admin@nulab.co.jp"
+        },
+        "updated": "2014-08-18T07:40:46Z"
+    },
+    {
+        "id": 871,
+        "projectId": 1073761627,
+        "name": "api-v2-test-2",
+        "description": "desc 2",
+        "hookUrl": "http://yourserver.com/update_repository_2",
+        "httpUrl": "https://test005.backlog.jp/git/TEST/api-v2-test-2.git",
+        "sshUrl": "test005@test005.git.backlog.jp:/TEST/api-v2-test-2.git",
+        "displayOrder": 2147483646,
+        "pushedAt": null,
+        "createdUser": {
+            "id": 1073752273,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "nakamura+admin@nulab.co.jp"
+        },
+        "created": "2014-08-18T07:33:22Z",
+        "updatedUser": {
+            "id": 1073752273,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "nakamura+admin@nulab.co.jp"
+        },
+        "updated": "2014-08-18T07:40:53Z"
+    }
+]

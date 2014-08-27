@@ -1,0 +1,430 @@
+[
+    {
+        "id": 808,
+        "alreadyRead": false,
+        "reason": 3,
+        "resourceAlreadyRead": true,
+        "project": {
+            "id": 1073761346,
+            "projectKey": "N_PRJ_1407465585420",
+            "name": "NotificationApiTest",
+            "useGantt": false,
+            "useBurndown": true,
+            "chartEnabled": false,
+            "subtaskingEnabled": true,
+            "textFormattingRule": "backlog",
+            "archived": false
+        },
+        "issue": {
+            "id": 1073804231,
+            "projectId": 1073761346,
+            "issueKey": "N_PRJ_1407465585420-3",
+            "keyId": 3,
+            "issueType": {
+                "id": 1073820610,
+                "projectId": 1073761346,
+                "name": "バグ",
+                "color": "#990000"
+            },
+            "summary": "通知テスト課題31407465588261",
+            "description": "",
+            "resolution": null,
+            "priority": {
+                "id": 2,
+                "name": "高"
+            },
+            "status": {
+                "id": 1,
+                "name": "未対応"
+            },
+            "assignee": null,
+            "category": [],
+            "versions": [],
+            "milestone": [],
+            "startDate": null,
+            "limitDate": null,
+            "dueDate": null,
+            "estimatedHours": null,
+            "actualHours": null,
+            "parentIssueId": null,
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:47Z",
+            "updatedUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "updated": "2014-08-08T02:39:47Z",
+            "customFields": [],
+            "attachments": [],
+            "sharedFiles": [],
+            "stars": []
+        },
+        "comment": {
+            "id": 1073834277,
+            "content": "",
+            "changeLog": [
+                {
+                    "field": "notification",
+                    "newValue": null,
+                    "originalValue": null,
+                    "attachmentInfo": null,
+                    "attributeInfo": null,
+                    "notificationInfo": {
+                        "type": "issue.create"
+                    }
+                }
+            ],
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:47Z",
+            "updated": "2014-08-08T02:39:47Z",
+            "stars": [],
+            "notifications": [
+                {
+                    "id": 808,
+                    "alreadyRead": false,
+                    "reason": 3,
+                    "user": {
+                        "id": 1073751781,
+                        "userId": "test_admin",
+                        "name": "あどみにさん",
+                        "roleType": 1,
+                        "lang": null,
+                        "mailAddress": "test@test.test"
+                    },
+                    "resourceAlreadyRead": false
+                }
+            ]
+        },
+        "sender": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-08T02:39:47Z"
+    },
+    {
+        "id": 807,
+        "alreadyRead": false,
+        "reason": 3,
+        "resourceAlreadyRead": false,
+        "project": {
+            "id": 1073761346,
+            "projectKey": "N_PRJ_1407465585420",
+            "name": "NotificationApiTest",
+            "useGantt": false,
+            "useBurndown": false,
+            "chartEnabled": false,
+            "subtaskingEnabled": true,
+            "textFormattingRule": "backlog",
+            "archived": false
+        },
+        "issue": {
+            "id": 1073804230,
+            "projectId": 1073761346,
+            "issueKey": "N_PRJ_1407465585420-2",
+            "keyId": 2,
+            "issueType": {
+                "id": 1073820610,
+                "projectId": 1073761346,
+                "name": "バグ",
+                "color": "#990000"
+            },
+            "summary": "通知テスト課題21407465587584",
+            "description": "",
+            "resolution": null,
+            "priority": {
+                "id": 2,
+                "name": "高"
+            },
+            "status": {
+                "id": 1,
+                "name": "未対応"
+            },
+            "assignee": null,
+            "category": [],
+            "versions": [],
+            "milestone": [],
+            "startDate": null,
+            "limitDate": null,
+            "dueDate": null,
+            "estimatedHours": null,
+            "actualHours": null,
+            "parentIssueId": null,
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:46Z",
+            "updatedUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "updated": "2014-08-08T02:39:46Z",
+            "customFields": [],
+            "attachments": [],
+            "sharedFiles": [],
+            "stars": []
+        },
+        "comment": {
+            "id": 1073834276,
+            "content": "",
+            "changeLog": [
+                {
+                    "field": "notification",
+                    "newValue": null,
+                    "originalValue": null,
+                    "attachmentInfo": null,
+                    "attributeInfo": null,
+                    "notificationInfo": {
+                        "type": "issue.create"
+                    }
+                }
+            ],
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:46Z",
+            "updated": "2014-08-08T02:39:46Z",
+            "stars": [],
+            "notifications": [
+                {
+                    "id": 807,
+                    "alreadyRead": false,
+                    "reason": 3,
+                    "user": {
+                        "id": 1073751781,
+                        "userId": "test_admin",
+                        "name": "あどみにさん",
+                        "roleType": 1,
+                        "lang": null,
+                        "mailAddress": "test@test.test"
+                    },
+                    "resourceAlreadyRead": false
+                }
+            ]
+        },
+        "sender": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-08T02:39:46Z"
+    },
+    {
+        "id": 806,
+        "alreadyRead": false,
+        "reason": 3,
+        "resourceAlreadyRead": false,
+        "project": {
+            "id": 1073761346,
+            "projectKey": "N_PRJ_1407465585420",
+            "name": "NotificationApiTest",
+            "useGantt": false,
+            "useBurndown": false,
+            "chartEnabled": false,
+            "subtaskingEnabled": true,
+            "textFormattingRule": "backlog",
+            "archived": false
+        },
+        "issue": {
+            "id": 1073804229,
+            "projectId": 1073761346,
+            "issueKey": "N_PRJ_1407465585420-1",
+            "keyId": 1,
+            "issueType": {
+                "id": 1073820610,
+                "projectId": 1073761346,
+                "name": "バグ",
+                "color": "#990000"
+            },
+            "summary": "通知テスト課題11407465586828",
+            "description": "",
+            "resolution": null,
+            "priority": {
+                "id": 2,
+                "name": "高"
+            },
+            "status": {
+                "id": 1,
+                "name": "未対応"
+            },
+            "assignee": null,
+            "category": [],
+            "versions": [],
+            "milestone": [],
+            "startDate": null,
+            "limitDate": null,
+            "dueDate": null,
+            "estimatedHours": null,
+            "actualHours": null,
+            "parentIssueId": null,
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:45Z",
+            "updatedUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "updated": "2014-08-08T02:39:45Z",
+            "customFields": [],
+            "attachments": [],
+            "sharedFiles": [],
+            "stars": []
+        },
+        "comment": {
+            "id": 1073834275,
+            "content": "",
+            "changeLog": [
+                {
+                    "field": "notification",
+                    "newValue": null,
+                    "originalValue": null,
+                    "attachmentInfo": null,
+                    "attributeInfo": null,
+                    "notificationInfo": {
+                        "type": "issue.create"
+                    }
+                }
+            ],
+            "createdUser": {
+                "id": 1073751781,
+                "userId": "test_admin",
+                "name": "あどみにさん",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "created": "2014-08-08T02:39:45Z",
+            "updated": "2014-08-08T02:39:45Z",
+            "stars": [],
+            "notifications": [
+                {
+                    "id": 806,
+                    "alreadyRead": false,
+                    "reason": 3,
+                    "user": {
+                        "id": 1073751781,
+                        "userId": "test_admin",
+                        "name": "あどみにさん",
+                        "roleType": 1,
+                        "lang": null,
+                        "mailAddress": "test@test.test"
+                    },
+                    "resourceAlreadyRead": false
+                }
+            ]
+        },
+        "sender": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-08T02:39:45Z"
+    },
+    {
+        "id": 611,
+        "alreadyRead": true,
+        "reason": 6,
+        "resourceAlreadyRead": true,
+        "project": {
+            "id": 1073760709,
+            "projectKey": "HALLOWEEN",
+            "name": "Happy Halloween",
+            "useGantt": true,
+            "useBurndown": true,
+            "chartEnabled": true,
+            "subtaskingEnabled": false,
+            "textFormattingRule": "backlog",
+            "archived": false
+        },
+        "issue": null,
+        "comment": null,
+        "sender": {
+            "id": 1073751775,
+            "userId": "test",
+            "name": "test",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-07-31T02:13:14Z"
+    },
+    {
+        "id": 610,
+        "alreadyRead": true,
+        "reason": 6,
+        "resourceAlreadyRead": false,
+        "project": {
+            "id": 2303,
+            "projectKey": "BLGMARK",
+            "name": "バックログ（マーケティング）",
+            "useGantt": false,
+            "useBurndown": false,
+            "chartEnabled": false,
+            "subtaskingEnabled": false,
+            "textFormattingRule": "backlog",
+            "archived": true
+        },
+        "issue": null,
+        "comment": null,
+        "sender": {
+            "id": 1073751775,
+            "userId": "test",
+            "name": "test",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-07-31T02:13:14Z"
+    }
+]

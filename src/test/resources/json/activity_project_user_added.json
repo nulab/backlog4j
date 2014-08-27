@@ -1,0 +1,51 @@
+{
+    "id": 623680,
+    "project": {
+        "id": 2303,
+        "projectKey": "TEST_PRJ1406182757086",
+        "name": "テストプロジェクト",
+        "useGantt": true,
+        "useBurndown": false,
+        "chartEnabled": true,
+        "subtaskingEnabled": false,
+        "textFormattingRule": "backlog",
+        "archived": true
+    },
+    "type": 15,
+    "content": {
+        "users": [
+            {
+                "id": 1073751782,
+                "userId": "test_user",
+                "name": "いっぱんさん",
+                "roleType": 2,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            }
+        ],
+        "group_project_activities": [
+            {
+                "id": 623680,
+                "type": 15
+            },
+            {
+                "id": 623681,
+                "type": 15
+            },
+            {
+                "id": 623682,
+                "type": 15
+            }
+        ],
+        "comment": ""
+    },
+    "createdUser": {
+        "id": 1073751775,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-07-31T02:14:05Z"
+}

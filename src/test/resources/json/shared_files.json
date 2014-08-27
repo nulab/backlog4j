@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1074321611,
+        "type": "file",
+        "dir": "/test/",
+        "name": "backlog_icon.png",
+        "size": 5050,
+        "createdUser": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-04T01:28:26Z",
+        "updatedUser": null,
+        "updated": "2014-08-04T01:28:26Z"
+    },
+    {
+        "id": 1074321610,
+        "type": "file",
+        "dir": "/test/",
+        "name": "30_gorilla.gif",
+        "size": 3392,
+        "createdUser": {
+            "id": 1073751781,
+            "userId": "test_admin",
+            "name": "あどみにさん",
+            "roleType": 1,
+            "lang": null,
+            "mailAddress": "test@test.test"
+        },
+        "created": "2014-08-04T01:26:26Z",
+        "updatedUser": null,
+        "updated": "2014-08-04T01:26:26Z"
+    }
+]

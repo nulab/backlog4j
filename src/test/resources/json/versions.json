@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1073893928,
+        "projectId": 1073836557,
+        "name": "スプリント1",
+        "description": "スプリント１週目です",
+        "startDate": "2014-06-30T15:00:00Z",
+        "releaseDueDate": "2014-07-30T15:00:00Z",
+        "archived": false
+    },
+    {
+        "id": 1073893929,
+        "projectId": 1073836557,
+        "name": "スプリント2",
+        "description": "スプリント2週目です",
+        "startDate": "2014-07-31T15:00:00Z",
+        "releaseDueDate": "2014-08-30T15:00:00Z",
+        "archived": true
+    }
+]
+

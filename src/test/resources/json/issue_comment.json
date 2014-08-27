@@ -1,0 +1,30 @@
+{
+    "id": 1102837675,
+    "content": "こめ",
+    "changeLog": [],
+    "createdUser": {
+        "id": 1073939430,
+        "name": "test test admin",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-07-30T03:54:21Z",
+    "updated": "2014-07-30T03:54:21Z",
+    "stars": [],
+    "notifications": [
+        {
+            "id": 14751874,
+            "alreadyRead": false,
+            "reason": 2,
+            "user": {
+                "id": 1073936936,
+                "name": "test",
+                "roleType": 1,
+                "lang": null,
+                "mailAddress": "test@test.test"
+            },
+            "resourceAlreadyRead": false
+        }
+    ]
+}

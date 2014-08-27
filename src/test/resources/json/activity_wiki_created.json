@@ -1,0 +1,33 @@
+{
+    "id": 624763,
+    "project": {
+        "id": 1073760709,
+        "projectKey": "TEST_PRJ1406182757086",
+        "name": "テストプロジェクト",
+        "useGantt": true,
+        "useBurndown": true,
+        "chartEnabled": true,
+        "subtaskingEnabled": true,
+        "textFormattingRule": "backlog",
+        "archived": true
+    },
+    "type": 5,
+    "content": {
+        "id": 1073768599,
+        "name": "テスト",
+        "content": "ああああ",
+        "diff": null,
+        "version": null,
+        "attachments": [],
+        "shared_files": []
+    },
+    "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-05T03:34:59Z"
+}
