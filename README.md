@@ -2,19 +2,22 @@
 
 Backlog4j is a Backlog binding library for Java.
 
-Backlog API version 2
- [http://developer.nulab-inc.com/docs/backlog/api/2/](http://developer.nulab-inc.com/docs/backlog/api/2/)
+* Backlog
+    * [http://backlog.jp](http://backlog.jp)
+    * [http://backlogtool.com](http:///backlogtool.com)
+* Backlog API version 2
+    * [http://developer.nulab-inc.com/docs/backlog/api/2/](http://developer.nulab-inc.com/docs/backlog/api/2/)
 
 ## How to install
 
 ### gradle
 
-    'com.nulabinc.backlog4j:backlog4j:2.0.0'
+    'com.nulab-inc:backlog4j:2.0.0'
 
 ### maven
 
     <dependency>
-      <groupId>com.nulabinc.backlog4j</groupId>
+      <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
       <version>2.0.0</version>
     </dependency>

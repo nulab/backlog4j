@@ -14,7 +14,7 @@ buildscript {
 
 sourceCompatibility=1.6
 
-group = 'com.nulabinc.backlog4j'
+group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
 version = '2.0.0'
 
