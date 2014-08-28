@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Backlog4j : Java library for Backlog API version 2">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Backlog4j</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nulab/backlog4j">View on GitHub</a>
+
+          <h1 id="project_title">Backlog4j</h1>
+          <h2 id="project_tagline">Java library for Backlog API version 2</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nulab/backlog4j/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nulab/backlog4j/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="backlog4j" class="anchor" href="#backlog4j"><span class="octicon octicon-link"></span></a>Backlog4j</h1>
+
+<p>Backlog4j is a Backlog binding library for Java.</p>
+
+<p><img src="https://raw.githubusercontent.com/nulab/backlog4j/master/icon.png" alt="Backlog icon"></p>
+
+<ul>
+<li>
+<p>Backlog </p>
+
+<ul>
+<li><a href="http://backlog.jp">http://backlog.jp</a></li>
+<li><a href="http:///backlogtool.com">http://backlogtool.com</a></li>
+</ul>
+</li>
+<li>
+<p>Backlog API version 2</p>
+
+<ul>
+<li><a href="http://developer.nulab-inc.com/docs/backlog/api/2/">http://developer.nulab-inc.com/docs/backlog/api/2/</a></li>
+</ul>
+</li>
+</ul><p><img src="https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png" alt="Nulab developer icon"></p>
+
+<h2>
+<a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install</h2>
+
+<h3>
+<a name="gradle" class="anchor" href="#gradle"><span class="octicon octicon-link"></span></a>gradle</h3>
+
+<pre><code>'com.nulab-inc:backlog4j:2.0.0'
+</code></pre>
+
+<h3>
+<a name="maven" class="anchor" href="#maven"><span class="octicon octicon-link"></span></a>maven</h3>
+
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;com.nulab-inc&lt;/groupId&gt;
+  &lt;artifactId&gt;backlog4j&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>Get the BacklogClient with your space id and your api key.</p>
+
+<pre><code>BacklogConfigure configure = new BacklogDefaultConfigure("yourSpaceId").apiKey("yourApiKey");
+
+BacklogClient backlog = new BacklogClientFactory(configure).newClient();
+</code></pre>
+
+<p>Then call Backlog API method. Enjoy Backlog API!</p>
+
+<pre><code>Project project = backlog.getProject("PROJECT-KEY");
+</code></pre>
+
+<h2>
+<a name="documents" class="anchor" href="#documents"><span class="octicon octicon-link"></span></a>Documents</h2>
+
+<ul>
+<li>javadoc
+
+<ul>
+<li><a href="https://github.com/nulab/backlog4j/javadoc/">https://github.com/nulab/backlog4j/javadoc/</a></li>
+</ul>
+</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT License</p>
+
+<ul>
+<li><a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Backlog4j maintained by <a href="https://github.com/nulab">nulab</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
