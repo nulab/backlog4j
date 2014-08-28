@@ -7,7 +7,7 @@ import com.nulabinc.backlog4j.User;
 import java.util.Date;
 
 /**
- * Created by baba on 2014/07/02.
+ * @author nulab-inc
  */
 public class SharedFileJSONImpl implements SharedFile {
 

@@ -44,7 +44,7 @@ Then call Backlog API method. Enjoy Backlog API!
 ## Documents
 
 * javadoc
-    * https://github.com/nulab/backlog4j/javadoc/
+    * http://nulab.github.io/backlog4j/javadoc/
 
 ## License
 
