@@ -35,7 +35,7 @@ dependencies {
 
 javadoc {
     options.locale = 'en_US'
-    title = 'Backlog4j ' + version + 'API'
+    title = 'Backlog4j ' + version + ' API'
 }
 
 jar {
