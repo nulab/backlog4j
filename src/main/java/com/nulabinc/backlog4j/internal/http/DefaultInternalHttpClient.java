@@ -60,7 +60,7 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
         this.connectionTimeout = connectionTimeout;
     }
 
-    public InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams, boolean asString) throws BacklogException {
+    public InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
 
         HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
@@ -76,14 +76,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             System.out.println(url);
             setHeaderInfo(httpGet);
             HttpResponse httpResponse = httpClient.execute(httpGet);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, asString);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 
@@ -96,14 +94,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPost);
             httpPost.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPost);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, true);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 
@@ -116,14 +112,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPatch);
             httpPatch.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPatch);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, true);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 
@@ -136,14 +130,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPut);
             httpPut.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPut);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, true);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 
@@ -160,14 +152,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpDelete);
 
             HttpResponse httpResponse = httpClient.execute(httpDelete);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, true);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 
@@ -203,14 +193,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
 
 
             HttpResponse httpResponse = httpClient.execute(httpPost);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, true);
+            InternalHttpResponse ires = new InternalHttpResponse(httpResponse);
             return ires;
         } catch (ClientProtocolException e) {
             throw new BacklogException(e);
         } catch (IOException e) {
             throw new BacklogException(e);
-        } finally {
-            httpClient.getConnectionManager().shutdown();
         }
     }
 

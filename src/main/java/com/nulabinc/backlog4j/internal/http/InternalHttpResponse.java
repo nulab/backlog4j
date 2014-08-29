@@ -5,6 +5,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.mime.MIME;
+import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 
@@ -12,13 +13,13 @@ import java.io.*;
  * @author nulab-inc
  */
 public class InternalHttpResponse {
-    private int statusCode;
-    private String responseAsString = null;
-    private InputStream inputStream;
-    private HttpResponse httpResponse;
+    protected int statusCode;
+    protected String responseAsString = null;
+    protected InputStream inputStream;
+    protected HttpResponse httpResponse;
     private boolean proceedInputStream = false;
 
-    public InternalHttpResponse(HttpResponse httpResponse, boolean asStream) {
+    public InternalHttpResponse(HttpResponse httpResponse) {
         this.httpResponse = httpResponse;
         statusCode = httpResponse.getStatusLine().getStatusCode();
 
@@ -26,7 +27,6 @@ public class InternalHttpResponse {
             HttpEntity entity = httpResponse.getEntity();
             if(entity != null) {
                 inputStream = entity.getContent();
-                if(!asStream)asString();
             }
         } catch (IOException e) {
             throw new BacklogException(e);
@@ -49,6 +49,20 @@ public class InternalHttpResponse {
         return inputStream;
     }
 
+    /*private String convertStreamToString(InputStream is) {
+
+        try {
+            return EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+        } catch (IOException e) {
+            throw new BacklogException(e);
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
     private static String convertStreamToString(InputStream is) {
 
         BufferedReader reader = null;
@@ -69,6 +83,7 @@ public class InternalHttpResponse {
         } finally {
             try {
                 is.close();
+                reader.close();
             } catch (IOException e) {
                 throw new BacklogException(e);
             }

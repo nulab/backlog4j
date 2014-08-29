@@ -16,7 +16,7 @@ public interface InternalHttpClient {
     void setBearerToken(String bearerToken);
     void setReadTimeout(int readTimeout);
     void setConnectionTimeout(int connectionTimeout);
-    InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams, boolean asStream) throws BacklogException;
+    InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException;
     InternalHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException;
     InternalHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
     InternalHttpResponse put(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
