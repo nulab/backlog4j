@@ -7,6 +7,7 @@ import uk.co.it.modular.hamcrest.date.DateMatchers;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -26,7 +27,7 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, version.getProjectId());
         assertEquals("スプリント1", version.getName());
         assertEquals("スプリント１週目です", version.getDescription());
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(new Locale("ja" ,"JP", "JP"));
         calendar.set(2014, 6, 1, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getStartDate()));
         calendar.set(2014, 6, 31, 0, 0, 0);
@@ -57,7 +58,7 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, version.getProjectId());
         assertEquals("スプリント1", version.getName());
         assertEquals("スプリント１週目です", version.getDescription());
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(new Locale("ja" ,"JP", "JP"));
         calendar.set(2014, 6, 1, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getStartDate()));
         calendar.set(2014, 6, 31, 0, 0, 0);
