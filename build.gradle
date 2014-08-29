@@ -55,11 +55,11 @@ artifacts {
 configurations {
     deployerJars
 }
-
+/*
 signing {
     sign configurations.archives
 }
-/*
+
 uploadArchives {
     repositories {
         mavenDeployer {
