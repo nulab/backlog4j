@@ -91,8 +91,9 @@ public class InternalHttpResponse {
         return sb.toString();
     }
 
-    public String getFilenameFromContentDisposition() {
+    public String getFileNameFromContentDisposition() {
         Header header = httpResponse.getFirstHeader(MIME.CONTENT_DISPOSITION);
+        if(header == null) return null;
         return MimeHelper.decodeContentDispositionFilename(header.getValue());
     }
 

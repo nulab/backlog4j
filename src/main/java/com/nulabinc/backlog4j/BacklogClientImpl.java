@@ -50,7 +50,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Icon getSpaceIcon() throws BacklogException {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("space/image"));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
@@ -118,7 +118,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Icon getProjectIcon(long projectId) throws BacklogException {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("projects/" + projectId + "/image"));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
@@ -126,7 +126,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Icon getProjectIcon(String projectKey) throws BacklogException {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("projects/" + projectKey + "/image"));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
@@ -444,7 +444,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public SharedFileData downloadSharedFile(long projectId, long sharedFileId) throws BacklogException {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("projects/" + projectId + "/files/" + sharedFileId));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
     }
@@ -452,7 +452,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public SharedFileData downloadSharedFile(String projectKey, long sharedFileId) throws BacklogException {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("projects/" + projectKey + "/files/" + sharedFileId));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
     }
@@ -569,7 +569,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public AttachmentData downloadIssueAttachment(long issueId, long attachmentId) {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("issues/" + issueId + "/attachments/" + attachmentId));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
@@ -577,7 +577,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public AttachmentData downloadIssueAttachment(String issueKey, long attachmentId) {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("issues/" + issueKey + "/attachments/" + attachmentId));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
@@ -681,7 +681,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public AttachmentData downloadWikiAttachment(long wikiId, long attachmentId) {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("wikis/" + wikiId + "/attachments/" + attachmentId));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
@@ -743,7 +743,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Icon getUserIcon(long userId) {
         InternalHttpResponse internalHttpResponse = get(buildEndpoint("users/" + userId + "/icon"));
-        String filename = internalHttpResponse.getFilenameFromContentDisposition();
+        String filename = internalHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = internalHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
