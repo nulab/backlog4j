@@ -1,16 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'maven-publish-auth'
-
 buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'org.hibernate.build.gradle:gradle-maven-publish-auth:2.0.1'
-    }
 }
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 sourceCompatibility=1.6
 
@@ -55,14 +50,59 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives sourceJar
-    archives javadocJar
+    archives sourceJar, javadocJar
 }
 configurations {
     deployerJars
 }
-dependencies {
-    deployerJars "org.apache.maven.wagon:wagon-ssh:2.6"
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Backlog4j'
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description 'Backlog4j is a Backlog binding library for Java.'
+                url 'https://github.com/nulab/backlog4j'
+
+                scm {
+                    connection 'https://github.com/nulab/backlog4j.git'
+                    developerConnection 'https://github.com/nulab/backlog4j.git'
+                    url 'https://github.com/nulab/backlog4j.git'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'http://www.opensource.org/licenses/mit-license.php'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'kimzo'
+                        name 'Yuh Kim'
+                        email 'kim@nulab.co.jp'
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Turning off doclint in JDK 8 Javadoc
