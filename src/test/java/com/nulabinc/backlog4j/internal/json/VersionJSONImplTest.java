@@ -7,7 +7,7 @@ import uk.co.it.modular.hamcrest.date.DateMatchers;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -16,6 +16,7 @@ import static org.junit.Assert.assertThat;
  * @author nulab-inc
  */
 public class VersionJSONImplTest extends AbstractJSONImplTest{
+
     @Test
     public void createVersionListTest() throws IOException {
         String fileContentStr = getJsonString("json/versions.json");
@@ -27,7 +28,7 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, version.getProjectId());
         assertEquals("スプリント1", version.getName());
         assertEquals("スプリント１週目です", version.getDescription());
-        Calendar calendar = Calendar.getInstance(new Locale("ja" ,"JP", "JP"));
+        Calendar calendar = Calendar.getInstance(timeZone);
         calendar.set(2014, 6, 1, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getStartDate()));
         calendar.set(2014, 6, 31, 0, 0, 0);
@@ -39,7 +40,7 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, version.getProjectId());
         assertEquals("スプリント2", version.getName());
         assertEquals("スプリント2週目です", version.getDescription());
-        calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance(timeZone);
         calendar.set(2014, 7, 1, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getStartDate()));
         calendar.set(2014, 7, 31, 0, 0, 0);
@@ -58,7 +59,7 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, version.getProjectId());
         assertEquals("スプリント1", version.getName());
         assertEquals("スプリント１週目です", version.getDescription());
-        Calendar calendar = Calendar.getInstance(new Locale("ja" ,"JP", "JP"));
+        Calendar calendar = Calendar.getInstance(timeZone);
         calendar.set(2014, 6, 1, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getStartDate()));
         calendar.set(2014, 6, 31, 0, 0, 0);

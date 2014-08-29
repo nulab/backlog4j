@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.TimeZone;
 
 /**
  * @author nulab-inc
@@ -11,6 +12,7 @@ import java.nio.file.Paths;
 public abstract class AbstractJSONImplTest {
 
     protected InternalFactoryJSONImpl factory = new InternalFactoryJSONImpl();
+    protected TimeZone timeZone = TimeZone.getTimeZone("Asia/Tokyo") ;
 
     protected String getJsonString(String resourceFilePath) throws IOException {
         String fileName = SpaceJSONImplTest.class.getClassLoader().getResource(resourceFilePath).getPath();
