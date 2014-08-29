@@ -20,20 +20,25 @@ import java.util.Map;
  */
 public class ApiCallSample {
 
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) throws IOException {
         ApiCallSample apiCallSample = new ApiCallSample();
         BacklogClient backlogClient = apiCallSample.getBacklogClient();
+
+        ResponseList<Activity> activities = backlogClient.getSpaceActivities();
+
 
         // get Project
         ResponseList<Project> projects = apiCallSample.getProjectsSample(backlogClient);
         for (Project project : projects) {
             System.out.println(project.getId() + ":" + project.getName() + ":" + project.getProjectKey());
         }
+
+        apiCallSample.getUserIconSample(backlogClient);
     }
 
     private BacklogClient getBacklogClient() throws MalformedURLException {
         BacklogConfigure configure =
-                new BacklogDefaultConfigure("yourSpaceId").apiKey("yourApiKey");
+                new BacklogDefaultConfigure("nulab.dev").apiKey("TJfFPIYE40luyruXjDYU9L9fJPH9yuNMv66iv38vbw2gMgzGt3j41J2KbBnH9d12");
 
         BacklogClient backlog = new BacklogClientFactory(configure).newClient();
         return backlog;
@@ -192,10 +197,23 @@ public class ApiCallSample {
 
     private void getUserIconSample(BacklogClient backlog) throws IOException {
 
-        Icon icon = backlog.getUserIcon(1073936936);
+        Icon icon = backlog.getUserIcon(1073751781);
         File file = new File("/Users/yuhkim/Desktop/" + icon.getFilename());
         InputStream is = icon.getContent();
         createFileWithInputStream(is, file);
+    }
+
+    private byte[] readAll(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        byte [] buffer = new byte[1024];
+        while(true) {
+            int len = inputStream.read(buffer);
+            if(len < 0) {
+                break;
+            }
+            bout.write(buffer, 0, len);
+        }
+        return bout.toByteArray();
     }
 
     private void createFileWithInputStream(InputStream inputStream, File distFile) throws IOException {
@@ -206,7 +224,8 @@ public class ApiCallSample {
         try {
             fos = new FileOutputStream(distFile);
 
-            while ((length = inputStream.read(buffer)) >= 0) {
+            while (inputStream.available() > 0) {
+                length = inputStream.read(buffer);
                 fos.write(buffer, 0, length);
             }
 
@@ -219,6 +238,7 @@ public class ApiCallSample {
                 } catch (IOException e) {
                 }
             }
+            inputStream.close();
         }
     }
 

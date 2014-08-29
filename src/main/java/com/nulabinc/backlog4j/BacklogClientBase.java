@@ -67,11 +67,16 @@ public abstract class BacklogClientBase {
     }
 
     protected InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
-        InternalHttpResponse ires = httpClient.get(endpoint, getParams, queryParams);
+        InternalHttpResponse ires = httpClient.get(endpoint, getParams, queryParams, false);
         checkError(ires);
         return ires;
     }
 
+    protected InternalHttpResponse getAsStream(String endpoint) throws BacklogException {
+        InternalHttpResponse ires = httpClient.get(endpoint, null, null, true);
+        checkError(ires);
+        return ires;
+    }
 
     protected InternalHttpResponse post(String endpoint) throws BacklogException {
         return this.post(endpoint, new ArrayList<NameValuePair>());

@@ -12,13 +12,13 @@ import java.io.*;
  * @author nulab-inc
  */
 public class InternalHttpResponse {
-    protected int statusCode;
-    protected String responseAsString = null;
-    protected InputStream inputStream;
-    protected HttpResponse httpResponse;
+    private int statusCode;
+    private String responseAsString = null;
+    private InputStream inputStream;
+    private HttpResponse httpResponse;
     private boolean proceedInputStream = false;
 
-    public InternalHttpResponse(HttpResponse httpResponse) {
+    public InternalHttpResponse(HttpResponse httpResponse, boolean asStream) {
         this.httpResponse = httpResponse;
         statusCode = httpResponse.getStatusLine().getStatusCode();
 
@@ -26,7 +26,7 @@ public class InternalHttpResponse {
             HttpEntity entity = httpResponse.getEntity();
             if(entity != null) {
                 inputStream = entity.getContent();
-                asString();
+                if(!asStream)asString();
             }
         } catch (IOException e) {
             throw new BacklogException(e);
@@ -61,6 +61,7 @@ public class InternalHttpResponse {
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
+
         } catch (UnsupportedEncodingException e) {
             throw new BacklogException(e);
         } catch (IOException e) {

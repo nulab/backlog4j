@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -7,9 +8,9 @@ import java.io.InputStream;
  */
 public class IconImpl implements Icon {
 
-    private final String filename;
+    private String filename;
 
-    private final InputStream content;
+    private InputStream content;
 
     public IconImpl(String filename, InputStream content) {
         this.filename = filename;
@@ -23,6 +24,7 @@ public class IconImpl implements Icon {
 
     @Override
     public InputStream getContent() {
+
         return content;
     }
 
