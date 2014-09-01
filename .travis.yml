@@ -3,4 +3,7 @@ jdk:
   - oraclejdk8
   - oraclejdk7
 notifications:
-  webhooks: https://nulab-inc.com/hubot/travis?room=44
+  webhooks:
+    urls:
+      - https://nulab-inc.com/hubot/travis?room=44
+    on_success: change
