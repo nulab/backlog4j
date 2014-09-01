@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * @author nulab-inc
@@ -19,6 +20,7 @@ public class JacksonCustomDateDeserializer extends JsonDeserializer<Date> {
                             DeserializationContext deserializationcontext) throws IOException, JsonProcessingException {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
         String date = jsonparser.getText();
         if(date == null || date.equals("null")){
             return null;
