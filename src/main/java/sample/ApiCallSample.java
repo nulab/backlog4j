@@ -201,6 +201,7 @@ public class ApiCallSample {
         File file = new File("/Users/yuhkim/Desktop/" + icon.getFilename());
         InputStream is = icon.getContent();
         createFileWithInputStream(is, file);
+        is.close();
     }
 
     private byte[] readAll(InputStream inputStream) throws IOException {
