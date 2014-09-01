@@ -41,7 +41,7 @@ public class BacklogExceptionTest extends AbstractJSONImplTest{
         BacklogError backlogError = backlogException.getBacklogError();
         assertEquals(null, backlogError);
 
-        assertEquals("statusCodeTest", backlogException.getMessage());
+        assertEquals("statusCodeTest\nstatus code - 401", backlogException.getMessage());
         assertEquals(401, backlogException.getStatusCode());
     }
 }
