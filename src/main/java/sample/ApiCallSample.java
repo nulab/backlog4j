@@ -32,8 +32,9 @@ public class ApiCallSample {
         for (Project project : projects) {
             System.out.println(project.getId() + ":" + project.getName() + ":" + project.getProjectKey());
         }
-
-        apiCallSample.getUserIconSample(backlogClient);
+        for(int i = 0 ; i< 100 ; i++) {
+            apiCallSample.getUserIconSample(backlogClient);
+        }
     }
 
     private BacklogClient getBacklogClient() throws MalformedURLException {

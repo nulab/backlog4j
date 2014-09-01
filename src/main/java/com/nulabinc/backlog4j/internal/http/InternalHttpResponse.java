@@ -14,7 +14,7 @@ import java.io.*;
  * @author nulab-inc
  */
 public class InternalHttpResponse {
-    private HttpInputStream httpInputStream;
+    private InputStream inputStream;
     private int statusCode;
     private String responseAsString = null;
     private HttpResponse httpResponse;
@@ -27,7 +27,7 @@ public class InternalHttpResponse {
         try {
             HttpEntity entity = httpResponse.getEntity();
             if (entity != null) {
-                httpInputStream = new HttpInputStream(entity.getContent(), clientConnectionManager);
+                inputStream = entity.getContent();
             }
         } catch (IOException e) {
             throw new BacklogException(e);
@@ -39,11 +39,11 @@ public class InternalHttpResponse {
     }
 
     public InputStream asInputStream(){
-        return this.httpInputStream;
+        return this.inputStream;
     }
 
     public String asString() {
-        if (!proceedInputStream && httpInputStream != null) {
+        if (!proceedInputStream && inputStream != null) {
             responseAsString = convertStreamToString();
             proceedInputStream = true;
         }
@@ -56,7 +56,7 @@ public class InternalHttpResponse {
         StringBuilder sb = null;
         String line = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(httpInputStream, "utf-8"));
+            reader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
             sb = new StringBuilder();
 
             while ((line = reader.readLine()) != null) {
@@ -69,7 +69,7 @@ public class InternalHttpResponse {
             throw new BacklogException(e);
         } finally {
             try {
-                httpInputStream.close();
+                inputStream.close();
                 reader.close();
             } catch (IOException e) {
                 throw new BacklogException(e);

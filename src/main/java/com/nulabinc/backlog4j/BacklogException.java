@@ -44,6 +44,10 @@ public class BacklogException extends RuntimeException {
     public String getMessage() {
         StringBuilder value = new StringBuilder();
         value.append(super.getMessage());
+        if(statusCode > 0){
+            value.append("\n");
+            value.append("status code - ").append(statusCode);
+        }
         if (backlogError != null) {
             for (BacklogErrorMessage errorMessage: backlogError.getErrors()) {
 

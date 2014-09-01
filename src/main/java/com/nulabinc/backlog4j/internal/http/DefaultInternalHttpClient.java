@@ -11,6 +11,10 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
@@ -18,6 +22,9 @@ import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -39,6 +46,9 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
     private String bearerToken;
     private int readTimeout;
     private int connectionTimeout;
+
+    private HttpClient httpClient = createThreadSafeHttpClient();
+
 
     @Override
     public void setApiKey(String apiKey) {
@@ -62,7 +72,6 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
 
     public InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
 
-        HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
         boolean paramExists = (apiKey != null);
         if (getParams != null) {
@@ -86,7 +95,6 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
     }
 
     public InternalHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
-        HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
 
         try {
@@ -122,7 +130,6 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
     }
 
     public InternalHttpResponse put(String endpoint, List<NameValuePair> parameters) throws BacklogException {
-        HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
 
         try {
@@ -140,7 +147,6 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
     }
 
     public InternalHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
-        HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
 
         if (param != null) {
@@ -163,7 +169,6 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
 
     public InternalHttpResponse postMultiPart(String endpoint, Map<String, Object> parameters) throws BacklogException {
 
-        HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
 
         HttpPost httpPost = new HttpPost(url);
@@ -210,6 +215,18 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
         params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
         return httpClient;
+    }
+
+    private HttpClient createThreadSafeHttpClient(){
+        SchemeRegistry schreg = new SchemeRegistry();
+        schreg.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        schreg.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+        HttpParams params = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(params, this.connectionTimeout);
+        HttpConnectionParams.setSoTimeout(params, this.readTimeout);
+        params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+        ThreadSafeClientConnManager mgr = new ThreadSafeClientConnManager(params, schreg);
+        return new DefaultHttpClient(mgr, params);
     }
 
     private String getUrl(String endpoint){
