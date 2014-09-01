@@ -17,6 +17,7 @@ public class BacklogClientFactory {
     }
     public BacklogClientFactory(BacklogConfigure configure, InternalHttpClient httpClient) {
         this.configure = configure;
+        this.httpClient = httpClient;
     }
 
     public BacklogClient newClient() {
