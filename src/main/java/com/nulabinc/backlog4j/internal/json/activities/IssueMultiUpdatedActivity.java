@@ -9,8 +9,8 @@ public class IssueMultiUpdatedActivity extends ActivityJSONImpl {
 
     private int type = 14;
 
-    @JsonDeserialize(as=MultiUpdatedContentIssue.class)
-    private MultiUpdatedContentIssue content;
+    @JsonDeserialize(as=IssueMultiUpdatedContent.class)
+    private IssueMultiUpdatedContent content;
 
     @Override
     public Type getType() {
@@ -18,7 +18,7 @@ public class IssueMultiUpdatedActivity extends ActivityJSONImpl {
     }
 
     @Override
-    public MultiUpdatedContentIssue getContent() {
+    public IssueMultiUpdatedContent getContent() {
         return this.content;
     }
 

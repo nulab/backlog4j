@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
-public class MultiUpdatedContentIssue extends Content {
+public class IssueMultiUpdatedContent extends Content {
 
     @JsonProperty("tx_id")
     private int txId;
