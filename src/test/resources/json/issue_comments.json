@@ -7,9 +7,14 @@
                 "field": "description",
                 "newValue": "*銀行振込：30件",
                 "originalValue": "*銀行振込：33件",
-                "attachmentInfo": {"id":1123344555,"name":"hogehoge"},
+                "attachmentInfo": {
+                    "id": 1123344555,
+                    "name": "hogehoge"
+                },
                 "attributeInfo": null,
-                "notificationInfo": null
+                "notificationInfo": {
+                    "type": "issue.create"
+                }
             }
         ],
         "createdUser": {

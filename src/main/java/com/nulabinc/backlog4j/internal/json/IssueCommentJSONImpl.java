@@ -15,7 +15,7 @@ public class IssueCommentJSONImpl implements IssueComment {
 
     private long id;
     private String content;
-    @JsonIgnore
+    @JsonDeserialize(as= ChangeLogJSONImpl[].class)
     private ChangeLog[] changeLog;
     @JsonDeserialize(as= UserJSONImpl.class)
     private User createdUser;

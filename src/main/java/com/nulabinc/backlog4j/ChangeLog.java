@@ -10,13 +10,13 @@ public interface ChangeLog {
 
     String getNewValue();
 
-    String getOldValue();
+    String getOriginalValue();
 
     AttachmentInfo getAttachmentInfo();
 
     String getAttributeInfo();
 
-    String getNotificationInfo();
+    NotificationInfo getNotificationInfo();
 
 
 }

@@ -1,8 +1,9 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.AttachmentInfo;
 import com.nulabinc.backlog4j.ChangeLog;
+import com.nulabinc.backlog4j.NotificationInfo;
 
 /**
  * @author nulab-inc
@@ -10,13 +11,13 @@ import com.nulabinc.backlog4j.ChangeLog;
 public class ChangeLogJSONImpl implements ChangeLog {
 
     private String field;
-    @JsonProperty("new_value")
     private String newValue;
-    @JsonProperty("old_value")
-    private String oldValue;
+    private String originalValue;
+    @JsonDeserialize(as=AttachmentInfoJSONImpl.class)
     private AttachmentInfo attachmentInfo;
     private String attributeInfo;
-    private String notificationInfo;
+    @JsonDeserialize(as=NotificationInfoJSONImpl.class)
+    private NotificationInfo notificationInfo;
 
     @Override
     public String getField() {
@@ -29,8 +30,8 @@ public class ChangeLogJSONImpl implements ChangeLog {
     }
 
     @Override
-    public String getOldValue() {
-        return oldValue;
+    public String getOriginalValue() {
+        return originalValue;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class ChangeLogJSONImpl implements ChangeLog {
     }
 
     @Override
-    public String getNotificationInfo() {
+    public NotificationInfo getNotificationInfo() {
         return notificationInfo;
     }
 }
