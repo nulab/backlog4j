@@ -2,10 +2,7 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.IssueComment;
-import com.nulabinc.backlog4j.Notification;
-import com.nulabinc.backlog4j.Star;
-import com.nulabinc.backlog4j.User;
+import com.nulabinc.backlog4j.*;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -19,7 +16,7 @@ public class IssueCommentJSONImpl implements IssueComment {
     private long id;
     private String content;
     @JsonIgnore
-    private String[] changeLog;
+    private ChangeLog[] changeLog;
     @JsonDeserialize(as= UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
@@ -42,7 +39,7 @@ public class IssueCommentJSONImpl implements IssueComment {
     }
 
     @Override
-    public List<String> getChangeLog() {
+    public List<ChangeLog> getChangeLog() {
         return Arrays.asList(this.changeLog);
     }
 

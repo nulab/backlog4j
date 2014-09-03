@@ -39,7 +39,7 @@ public class ApiCallSample {
 
     private BacklogClient getBacklogClient() throws MalformedURLException {
         BacklogConfigure configure =
-                new BacklogDefaultConfigure("nulab.dev").apiKey("TJfFPIYE40luyruXjDYU9L9fJPH9yuNMv66iv38vbw2gMgzGt3j41J2KbBnH9d12");
+                new BacklogDefaultConfigure("yourSpaceId").apiKey("yourApiKey");
 
         BacklogClient backlog = new BacklogClientFactory(configure).newClient();
         return backlog;

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface IssueComment extends Comment{
 
-    List<String> getChangeLog();
+    List<ChangeLog> getChangeLog();
 
     User getCreatedUser();
 

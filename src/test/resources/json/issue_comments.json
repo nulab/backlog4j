@@ -2,7 +2,16 @@
     {
         "id": 1102837675,
         "content": "こめ",
-        "changeLog": [],
+        "changeLog": [
+            {
+                "field": "description",
+                "newValue": "*銀行振込：30件",
+                "originalValue": "*銀行振込：33件",
+                "attachmentInfo": {"id":1123344555,"name":"hogehoge"},
+                "attributeInfo": null,
+                "notificationInfo": null
+            }
+        ],
         "createdUser": {
             "id": 1073939430,
             "name": "test test admin",
@@ -32,7 +41,16 @@
     {
         "id": 1102836944,
         "content": "コメント",
-        "changeLog": [],
+        "changeLog": [
+            {
+                "field": "status",
+                "newValue": "処理中",
+                "originalValue": "未対応",
+                "attachmentInfo": null,
+                "attributeInfo": null,
+                "notificationInfo": null
+            }
+        ],
         "createdUser": {
             "id": 1073939430,
             "name": "test test admin",
