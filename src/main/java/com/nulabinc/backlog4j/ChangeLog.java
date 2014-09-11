@@ -14,7 +14,7 @@ public interface ChangeLog {
 
     AttachmentInfo getAttachmentInfo();
 
-    String getAttributeInfo();
+    String getAttributeInfo(); // todo change string to model
 
     NotificationInfo getNotificationInfo();
 
