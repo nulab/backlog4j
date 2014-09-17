@@ -104,7 +104,7 @@ uploadArchives {
         }
     }
 }
-
+*/
 // Turning off doclint in JDK 8 Javadoc
 // ref : http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html
 if (JavaVersion.current().isJava8Compatible()) {
@@ -115,4 +115,4 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-*/
+
