@@ -1,6 +1,7 @@
 # Backlog4j [![Build Status](https://travis-ci.org/nulab/backlog4j.svg?branch=master)](https://travis-ci.org/nulab/backlog4j)
 
 Backlog4j is a Backlog binding library for Java.
+(英語の下に日本文が記載されています)
 
 ![Backlog icon](https://raw.githubusercontent.com/nulab/backlog4j/master/icon.png)
 
@@ -14,6 +15,7 @@ Backlog4j is a Backlog binding library for Java.
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
 ## Update
+* 2014/xx/xx 2.1.0 released
 * 2014/09/17 2.0.1 released
 * 2014/08/28 2.0.0 released
 
@@ -21,14 +23,14 @@ Backlog4j is a Backlog binding library for Java.
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.0.0'
+    'com.nulab-inc:backlog4j:2.1.0'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.0.0</version>
+      <version>2.1.0</version>
     </dependency>
 
 ## How to use
@@ -58,3 +60,21 @@ MIT License
 
 ## Requires
 * Java 1.6
+
+
+# Backlog4j とは
+Backlog4j は Backlog API 簡単にアクセスするためのJavaクライアントライブラリです。
+
+## インストール
+
+### gradle を利用する場合
+
+    'com.nulab-inc:backlog4j:2.1.0'
+
+### maven を利用する場合
+
+    <dependency>
+      <groupId>com.nulab-inc</groupId>
+      <artifactId>backlog4j</artifactId>
+      <version>2.1.0</version>
+    </dependency>
