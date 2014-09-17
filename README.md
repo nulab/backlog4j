@@ -13,7 +13,11 @@ Backlog4j is a Backlog binding library for Java.
 
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
-## How to install
+## Update
+* 2014/09/17 2.0.1 released
+* 2014/08/28 2.0.0 released
+
+## Install
 
 ### gradle
 
@@ -51,3 +55,6 @@ Then call Backlog API method. Enjoy Backlog API!
 MIT License
 
 * http://www.opensource.org/licenses/mit-license.php
+
+## Requires
+* Java 1.6
