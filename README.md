@@ -34,10 +34,16 @@ Backlog4j is a Backlog binding library for Java.
     </dependency>
 
 ## How to use
-Get the BacklogClient with your space id and your api key.
+Make BacklogConfigure with your space id and your api key.
     
-    BacklogConfigure configure = new BacklogDefaultConfigure("yourSpaceId").apiKey("yourApiKey");
-                        
+    # If your space is in backlogtool.com
+    BacklogConfigure configure = new BacklogToolConfigure("yourSpaceId").apiKey("yourApiKey");
+
+    # If your space is in backlog.jp
+    BacklogConfigure configure = new BacklogJpConfigure("yourSpaceId").apiKey("yourApiKey");
+                            
+And get the BacklogClient.
+                            
     BacklogClient backlog = new BacklogClientFactory(configure).newClient();
 
 
@@ -78,3 +84,27 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
       <artifactId>backlog4j</artifactId>
       <version>2.1.0</version>
     </dependency>
+
+## 使い方
+
+基本的な使い方は以下の 2 ステップとなります。
+
+* BacklogConfigure を設定して BacklogClient オブジェクトを生成
+* Backlog API に従ったメソッド呼び出し
+
+以下の例では スペースIDとAPIキーを用いて BacklogConfigure を設定しています。
+
+    # あなたのスペースが backlog.jp 内にある場合 
+    BacklogConfigure configure = new BacklogJpConfigure("yourSpaceId").apiKey("yourApiKey");
+    
+    # あなたのスペースが backlogtool.com 内にある場合
+    BacklogConfigure configure = new BacklogToolConfigure("yourSpaceId").apiKey("yourApiKey");
+
+続いて BacklogClient を生成します。
+                            
+    BacklogClient backlog = new BacklogClientFactory(configure).newClient();
+
+そして、取得したいプロジェクトのキーを指定し、プロジェクト情報をAPI経由で取得します。
+
+    Project project = backlog.getProject("PROJECT-KEY");
+    
