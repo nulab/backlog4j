@@ -6,7 +6,7 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface ChangeLog {
-    String getField();
+    String getField(); // todo change string to enum
 
     String getNewValue();
 
