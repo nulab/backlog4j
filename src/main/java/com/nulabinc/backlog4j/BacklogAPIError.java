@@ -9,11 +9,11 @@ import java.util.List;
  *
  * @author nulab-inc
  */
-public class BacklogError {
+public class BacklogAPIError {
 
-    private BacklogErrorMessage[] errors;
+    private BacklogAPIErrorMessage[] errors;
 
-    public List<BacklogErrorMessage> getErrors() {
+    public List<BacklogAPIErrorMessage> getErrors() {
         return Arrays.asList(errors);
     }
 

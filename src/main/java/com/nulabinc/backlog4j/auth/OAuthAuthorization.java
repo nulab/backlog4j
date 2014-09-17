@@ -1,13 +1,15 @@
 package com.nulabinc.backlog4j.auth;
 
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogAuthException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
-import com.nulabinc.backlog4j.internal.http.DefaultInternalHttpClient;
-import com.nulabinc.backlog4j.internal.http.InternalHttpClient;
-import com.nulabinc.backlog4j.internal.http.InternalHttpResponse;
+import com.nulabinc.backlog4j.http.ApacheBacklogHttpClient;
+import com.nulabinc.backlog4j.http.BacklogHttpClient;
+import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.Jackson;
+import com.nulabinc.backlog4j.internal.json.auth.AccessTokenJSONImpl;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -27,15 +29,15 @@ public class OAuthAuthorization implements OAuthSupport {
     private String redirectUrl;
 
     private BacklogConfigure configure;
-    private InternalHttpClient httpClient;
+    private BacklogHttpClient httpClient;
 
     public OAuthAuthorization(BacklogConfigure configure) {
         this.configure = configure;
-        this.httpClient = new DefaultInternalHttpClient();
+        this.httpClient = new ApacheBacklogHttpClient();
         init();
     }
 
-    public OAuthAuthorization(BacklogConfigure configure, InternalHttpClient httpClient) {
+    public OAuthAuthorization(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
         init();
@@ -70,7 +72,7 @@ public class OAuthAuthorization implements OAuthSupport {
             try {
                 url += "&redirect_uri=" + URLEncoder.encode(this.redirectUrl, "UTF-8");
             } catch (UnsupportedEncodingException e) {
-                throw new BacklogException(e);
+                throw new BacklogAPIException(e);
             }
         }
         return url;
@@ -81,7 +83,7 @@ public class OAuthAuthorization implements OAuthSupport {
         if (oauthCode == null) {
             throw new IllegalArgumentException("oauthCode must not be null");
         }
-        InternalHttpResponse httpResponse = getAccessTokenResponse(oauthCode);
+        BacklogHttpResponse httpResponse = getAccessTokenResponse(oauthCode);
         checkError(httpResponse);
         return Jackson.fromJsonString(httpResponse.asString(), AccessTokenJSONImpl.class);
     }
@@ -91,36 +93,36 @@ public class OAuthAuthorization implements OAuthSupport {
         if (configure.getAccessToken() == null) {
             throw new IllegalArgumentException("AccessToken must not be null");
         }
-        InternalHttpResponse httpResponse = getRefreshTokenResponse();
+        BacklogHttpResponse httpResponse = getRefreshTokenResponse();
         checkError(httpResponse);
         return Jackson.fromJsonString(httpResponse.asString(), AccessTokenJSONImpl.class);
     }
 
-    private InternalHttpResponse getAccessTokenResponse(String oauthCode) throws BacklogException {
+    private BacklogHttpResponse getAccessTokenResponse(String oauthCode) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("code", oauthCode));
         params.add(new BasicNameValuePair("client_id", clientId));
         params.add(new BasicNameValuePair("client_secret", clientSecret));
         params.add(new BasicNameValuePair("redirect_uri", redirectUrl));
         params.add(new BasicNameValuePair("grant_type", "authorization_code"));
-        InternalHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
         checkError(ires);
         return ires;
 
     }
 
-    private InternalHttpResponse getRefreshTokenResponse() throws BacklogException {
+    private BacklogHttpResponse getRefreshTokenResponse() throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("client_id", clientId));
         params.add(new BasicNameValuePair("client_secret", clientSecret));
         params.add(new BasicNameValuePair("refresh_token", configure.getAccessToken().getRefresh()));
         params.add(new BasicNameValuePair("grant_type", "refresh_token"));
-        InternalHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
         checkError(ires);
         return ires;
     }
 
-    private void checkError(InternalHttpResponse ires) {
+    private void checkError(BacklogHttpResponse ires) {
         if (ires.getStatusCode() != 200 &&
                 ires.getStatusCode() != 201) {
             throw new BacklogAuthException("backlog oauth request failed.", ires);

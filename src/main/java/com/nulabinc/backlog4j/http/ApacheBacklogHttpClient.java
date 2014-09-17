@@ -1,9 +1,10 @@
-package com.nulabinc.backlog4j.internal.http;
+package com.nulabinc.backlog4j.http;
 
 import com.nulabinc.backlog4j.AttachmentData;
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogException;
-import com.nulabinc.backlog4j.api.option.QueryParams;
 import com.nulabinc.backlog4j.api.option.GetParams;
+import com.nulabinc.backlog4j.api.option.QueryParams;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
@@ -22,7 +23,6 @@ import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
@@ -37,7 +37,7 @@ import java.util.Map;
 /**
  * @author nulab-inc
  */
-public class DefaultInternalHttpClient implements InternalHttpClient {
+public class ApacheBacklogHttpClient implements BacklogHttpClient {
 
     private static final String userAgent = "backlog4jv2";
     private static final String contentType = "application/x-www-form-urlencoded; charset=UTF-8";
@@ -70,7 +70,7 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
         this.connectionTimeout = connectionTimeout;
     }
 
-    public InternalHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
+    public BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
 
         String url = getUrl(endpoint);
         boolean paramExists = (apiKey != null);
@@ -85,16 +85,16 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             System.out.println(url);
             setHeaderInfo(httpGet);
             HttpResponse httpResponse = httpClient.execute(httpGet);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
-    public InternalHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
+    public BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         String url = getUrl(endpoint);
 
         try {
@@ -102,16 +102,16 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPost);
             httpPost.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPost);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
-    public InternalHttpResponse patch(String endpoint, List<NameValuePair> parameters) throws BacklogException {
+    public BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         HttpClient httpClient = createHttpClient();
         String url = getUrl(endpoint);
 
@@ -120,16 +120,16 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPatch);
             httpPatch.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPatch);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
-    public InternalHttpResponse put(String endpoint, List<NameValuePair> parameters) throws BacklogException {
+    public BacklogHttpResponse put(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         String url = getUrl(endpoint);
 
         try {
@@ -137,16 +137,16 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpPut);
             httpPut.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpPut);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
-    public InternalHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
+    public BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
         String url = getUrl(endpoint);
 
         if (param != null) {
@@ -158,16 +158,16 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
             setHeaderInfo(httpDelete);
 
             HttpResponse httpResponse = httpClient.execute(httpDelete);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
-    public InternalHttpResponse postMultiPart(String endpoint, Map<String, Object> parameters) throws BacklogException {
+    public BacklogHttpResponse postMultiPart(String endpoint, Map<String, Object> parameters) throws BacklogException {
 
         String url = getUrl(endpoint);
 
@@ -190,7 +190,7 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
                     entity.addPart(name, contentBody);
 
                 } else {
-                    throw new BacklogException("Illegal parameter type name=" + name + ",value=" + value);
+                    throw new BacklogAPIException("Illegal parameter type name=" + name + ",value=" + value);
                 }
             }
 
@@ -198,12 +198,12 @@ public class DefaultInternalHttpClient implements InternalHttpClient {
 
 
             HttpResponse httpResponse = httpClient.execute(httpPost);
-            InternalHttpResponse ires = new InternalHttpResponse(httpResponse, httpClient.getConnectionManager());
+            BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());
             return ires;
         } catch (ClientProtocolException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 

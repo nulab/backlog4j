@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j;
 
-import com.nulabinc.backlog4j.internal.http.InternalHttpResponse;
+import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.Jackson;
 
 /**
@@ -8,9 +8,9 @@ import com.nulabinc.backlog4j.internal.json.Jackson;
  *
  * @author nulab-inc
  */
-public class BacklogAuthException extends RuntimeException {
+public class BacklogAuthException extends BacklogException {
 
-    protected InternalHttpResponse response;
+    protected BacklogHttpResponse response;
     private int statusCode = -1;
     private BacklogAuthErrorMessage errorMessage;
 
@@ -25,7 +25,7 @@ public class BacklogAuthException extends RuntimeException {
         this.statusCode = statusCode;
     }
 
-    public BacklogAuthException(String message, InternalHttpResponse response) {
+    public BacklogAuthException(String message, BacklogHttpResponse response) {
         this(message);
         decode(response.asString());
         this.response = response;

@@ -110,6 +110,7 @@ public interface Issue {
 
     Date getStartDate();
 
+    @Deprecated
     Date getLimitDate();
 
     Date getDueDate();

@@ -5,7 +5,7 @@ package com.nulabinc.backlog4j;
  *
  * @author nulab-inc
  */
-public class BacklogErrorMessage {
+public class BacklogAPIErrorMessage {
 
     private String message;
     private int code;

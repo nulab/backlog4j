@@ -1,14 +1,19 @@
-package com.nulabinc.backlog4j;
+package com.nulabinc.backlog4j.internal.file;
+
+import com.nulabinc.backlog4j.SharedFileData;
 
 import java.io.InputStream;
 
-public class AttachmentDataImpl implements AttachmentData {
+/**
+ * @author nulab-inc
+ */
+public class SharedFileDataImpl implements SharedFileData {
 
     private final String filename;
 
     private final InputStream content;
 
-    public AttachmentDataImpl(String filename, InputStream content) {
+    public SharedFileDataImpl(String filename, InputStream content) {
         this.filename = filename;
         this.content = content;
     }
@@ -25,7 +30,7 @@ public class AttachmentDataImpl implements AttachmentData {
 
     @Override
     public String toString() {
-        return "IssueAttachmentImpl{" +
+        return "SharedFileDataImpl{" +
                 "filename='" + filename + '\'' +
                 ", content=" + content +
                 '}';

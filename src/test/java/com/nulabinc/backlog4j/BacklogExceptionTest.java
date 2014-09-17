@@ -16,18 +16,18 @@ public class BacklogExceptionTest extends AbstractJSONImplTest{
     @Test
     public void parseMessageTest() throws IOException {
         String fileContentStr = getJsonString("json/error.json");
-        BacklogException backlogException = new BacklogException(fileContentStr, new Exception());
+        BacklogException backlogException = new BacklogAPIException(fileContentStr, new Exception());
 
-        BacklogError backlogError = backlogException.getBacklogError();
-        assertEquals(2, backlogError.getErrors().size());
+        BacklogAPIError backlogAPIError = ((BacklogAPIException)backlogException).getBacklogAPIError();
+        assertEquals(2, backlogAPIError.getErrors().size());
 
-        BacklogErrorMessage errorMessage = backlogError.getErrors().get(0);
+        BacklogAPIErrorMessage errorMessage = backlogAPIError.getErrors().get(0);
         assertEquals(6, errorMessage.getCode());
         assertEquals("No project.", errorMessage.getMessage());
         assertEquals(null, errorMessage.getErrorInfo());
         assertEquals("There are no projects.", errorMessage.getMoreInfo());
 
-        errorMessage = backlogError.getErrors().get(1);
+        errorMessage = backlogAPIError.getErrors().get(1);
         assertEquals(7, errorMessage.getCode());
         assertEquals("No user.", errorMessage.getMessage());
         assertEquals(null, errorMessage.getErrorInfo());
@@ -36,12 +36,12 @@ public class BacklogExceptionTest extends AbstractJSONImplTest{
 
     @Test
     public void statusCodeTest() throws IOException {
-        BacklogException backlogException = new BacklogException("statusCodeTest", new Exception(), 401);
+        BacklogException backlogException = new BacklogAPIException("statusCodeTest", new Exception(), 401);
 
-        BacklogError backlogError = backlogException.getBacklogError();
-        assertEquals(null, backlogError);
+        BacklogAPIError backlogAPIError = ((BacklogAPIException)backlogException).getBacklogAPIError();
+        assertEquals(null, backlogAPIError);
 
         assertEquals("statusCodeTest\nstatus code - 401", backlogException.getMessage());
-        assertEquals(401, backlogException.getStatusCode());
+        assertEquals(401, ((BacklogAPIException)backlogException).getStatusCode());
     }
 }

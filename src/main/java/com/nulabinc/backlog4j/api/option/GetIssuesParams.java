@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.Issue;
 import org.apache.http.message.BasicNameValuePair;
@@ -249,7 +250,7 @@ public class GetIssuesParams extends GetParams {
         try {
             parameters.add(new BasicNameValuePair("keyword", URLEncoder.encode(keyword, "utf-8")));
         } catch (UnsupportedEncodingException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
         return this;
     }

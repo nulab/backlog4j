@@ -3,13 +3,32 @@ package com.nulabinc.backlog4j.auth;
 /**
  * @author nulab-inc
  */
-public interface AccessToken {
+public class AccessToken {
 
-    String getType();
+    private String type;
+    private String token;
+    private Long expires;
+    private String refresh;
 
-    String getToken();
+    public AccessToken(String token, Long expires, String refresh) {
+        this.token = token;
+        this.expires = expires;
+        this.refresh = refresh;
+    }
 
-    Long getExpires();
+    public String getToken() {
+        return token;
+    }
 
-    String getRefresh();
+    public Long getExpires() {
+        return expires;
+    }
+
+    public String getRefresh() {
+        return refresh;
+    }
+
+    public String getType() {
+        return type;
+    }
 }

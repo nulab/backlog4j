@@ -3,7 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nulabinc.backlog4j.BacklogException;
+import com.nulabinc.backlog4j.BacklogAPIException;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Jackson {
         try {
             return objectMapper.readValue(json, clazz);
         } catch (Exception e) {
-            throw new BacklogException("parse json is failed.",e);
+            throw new BacklogAPIException("parse json is failed.",e);
         }
     }
 
@@ -30,7 +30,7 @@ public class Jackson {
         try {
             return objectMapper.readValue(json, new TypeReference<List<T>>(){});
         } catch (Exception e) {
-            throw new BacklogException("parse json is failed.",e);
+            throw new BacklogAPIException("parse json is failed.",e);
         }
     }
 

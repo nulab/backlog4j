@@ -2,101 +2,101 @@ package com.nulabinc.backlog4j.internal;
 
 
 import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.internal.http.InternalHttpResponse;
+import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 
 /**
  * @author nulab-inc
  */
 public interface InternalFactory {
 
-    Space createSpace(InternalHttpResponse res) throws BacklogException;
+    Space createSpace(BacklogHttpResponse res) throws BacklogException;
 
-    SpaceNotification createSpaceNotification(InternalHttpResponse res) throws BacklogException;
+    SpaceNotification createSpaceNotification(BacklogHttpResponse res) throws BacklogException;
 
-    DiskUsage createDiskUsage(InternalHttpResponse res) throws BacklogException;
+    DiskUsage createDiskUsage(BacklogHttpResponse res) throws BacklogException;
 
-    DiskUsageDetail createDiskUsageDetail(InternalHttpResponse res) throws BacklogException;
+    DiskUsageDetail createDiskUsageDetail(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Project> createProjectList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Project> createProjectList(BacklogHttpResponse res) throws BacklogException;
 
-    Project createProject(InternalHttpResponse res) throws BacklogException;
+    Project createProject(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Activity> createActivityList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Activity> createActivityList(BacklogHttpResponse res) throws BacklogException;
 
-    Activity createActivity(InternalHttpResponse res) throws BacklogException;
+    Activity createActivity(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Issue> createIssueList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Issue> createIssueList(BacklogHttpResponse res) throws BacklogException;
 
-    Issue createIssue(InternalHttpResponse res) throws BacklogException;
+    Issue createIssue(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<IssueComment> createIssueCommentList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<IssueComment> createIssueCommentList(BacklogHttpResponse res) throws BacklogException;
 
-    IssueComment createIssueComment(InternalHttpResponse res) throws BacklogException;
+    IssueComment createIssueComment(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<User> createUserList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<User> createUserList(BacklogHttpResponse res) throws BacklogException;
 
-    User createUser(InternalHttpResponse res) throws BacklogException;
+    User createUser(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<IssueType> createIssueTypeList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<IssueType> createIssueTypeList(BacklogHttpResponse res) throws BacklogException;
 
-    IssueType createIssueType(InternalHttpResponse res) throws BacklogException;
+    IssueType createIssueType(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Category> createCategoryList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Category> createCategoryList(BacklogHttpResponse res) throws BacklogException;
 
-    Category createCategory(InternalHttpResponse res) throws BacklogException;
+    Category createCategory(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<CustomFieldSetting> createCustomFieldList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<CustomFieldSetting> createCustomFieldList(BacklogHttpResponse res) throws BacklogException;
 
-    CustomFieldSetting createCustomField(InternalHttpResponse res) throws BacklogException;
+    CustomFieldSetting createCustomField(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Priority> createPriorityList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Priority> createPriorityList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Resolution> createResolutionList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Resolution> createResolutionList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Status> createStatusList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Status> createStatusList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Star> createStarList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Star> createStarList(BacklogHttpResponse res) throws BacklogException;
 
-    Star createStar(InternalHttpResponse res) throws BacklogException;
+    Star createStar(BacklogHttpResponse res) throws BacklogException;
 
-    Count createCount(InternalHttpResponse res) throws BacklogException;
+    Count createCount(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Version> createVersionList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Version> createVersionList(BacklogHttpResponse res) throws BacklogException;
 
-    Version createVersion(InternalHttpResponse res) throws BacklogException;
+    Version createVersion(BacklogHttpResponse res) throws BacklogException;
 
-    Wiki createWiki(InternalHttpResponse res) throws BacklogException;
+    Wiki createWiki(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Wiki> createWikiList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Wiki> createWikiList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<WikiTag> createWikiTagList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<WikiTag> createWikiTagList(BacklogHttpResponse res) throws BacklogException;
 
-    WikiHistory createWikiHistory(InternalHttpResponse res) throws BacklogException;
+    WikiHistory createWikiHistory(BacklogHttpResponse res) throws BacklogException;
 
-    WikiTag createWikiTag(InternalHttpResponse res) throws BacklogException;
+    WikiTag createWikiTag(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<WikiHistory> createWikiHistoryList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<WikiHistory> createWikiHistoryList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Notification> createNotificationList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Notification> createNotificationList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Repository> createRepositoryList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Repository> createRepositoryList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<ViewedIssue> createViewedIssueList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<ViewedIssue> createViewedIssueList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<ViewedProject> createViewedProjectList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<ViewedProject> createViewedProjectList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<ViewedWiki> createViewedWikiList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<ViewedWiki> createViewedWikiList(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<SharedFile> createSharedFileList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<SharedFile> createSharedFileList(BacklogHttpResponse res) throws BacklogException;
 
-    SharedFile createSharedFile(InternalHttpResponse res) throws BacklogException;
+    SharedFile createSharedFile(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Attachment> createAttachmentList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Attachment> createAttachmentList(BacklogHttpResponse res) throws BacklogException;
 
-    Attachment createAttachment(InternalHttpResponse res) throws BacklogException;
+    Attachment createAttachment(BacklogHttpResponse res) throws BacklogException;
 
-    Group createGroup(InternalHttpResponse res) throws BacklogException;
+    Group createGroup(BacklogHttpResponse res) throws BacklogException;
 
-    ResponseList<Group> createGroupList(InternalHttpResponse res) throws BacklogException;
+    ResponseList<Group> createGroupList(BacklogHttpResponse res) throws BacklogException;
 
 }

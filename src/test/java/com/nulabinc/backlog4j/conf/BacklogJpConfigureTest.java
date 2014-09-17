@@ -6,14 +6,14 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author nulab-inc
  */
-public class BacklogDefaultConfigureTest {
+public class BacklogJpConfigureTest {
 
     @Test
     public void getOAuthAuthorizationURLTest() throws Exception {
 
         // when
         String testSpace = "test";
-       BacklogConfigure configure = new BacklogDefaultConfigure(testSpace);
+       BacklogConfigure configure = new BacklogJpConfigure(testSpace);
 
         // then
         String expected = "https://" + testSpace + ".backlog.jp/api/v2";

@@ -5,11 +5,11 @@ import java.net.MalformedURLException;
 /**
  * @author nulab-inc
  */
-public final class BacklogDefaultConfigure extends AbstractBacklogConfigure {
+public final class BacklogJpConfigure extends AbstractBacklogConfigure {
 
     private final String spaceKey;
 
-    public BacklogDefaultConfigure(String spaceKey) throws MalformedURLException {
+    public BacklogJpConfigure(String spaceKey) throws MalformedURLException {
         if (spaceKey == null) {
             throw new IllegalArgumentException("spaceKey must not be null");
         }

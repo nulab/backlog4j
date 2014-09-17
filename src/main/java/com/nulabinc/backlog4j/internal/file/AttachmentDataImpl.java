@@ -1,18 +1,16 @@
-package com.nulabinc.backlog4j;
+package com.nulabinc.backlog4j.internal.file;
 
-import java.io.IOException;
+import com.nulabinc.backlog4j.AttachmentData;
+
 import java.io.InputStream;
 
-/**
- * @author nulab-inc
- */
-public class IconImpl implements Icon {
+public class AttachmentDataImpl implements AttachmentData {
 
-    private String filename;
+    private final String filename;
 
-    private InputStream content;
+    private final InputStream content;
 
-    public IconImpl(String filename, InputStream content) {
+    public AttachmentDataImpl(String filename, InputStream content) {
         this.filename = filename;
         this.content = content;
     }
@@ -24,7 +22,6 @@ public class IconImpl implements Icon {
 
     @Override
     public InputStream getContent() {
-
         return content;
     }
 

@@ -1,17 +1,20 @@
-package com.nulabinc.backlog4j;
+package com.nulabinc.backlog4j.internal.file;
 
+import com.nulabinc.backlog4j.Icon;
+
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
  * @author nulab-inc
  */
-public class SharedFileDataImpl implements SharedFileData {
+public class IconImpl implements Icon {
 
-    private final String filename;
+    private String filename;
 
-    private final InputStream content;
+    private InputStream content;
 
-    public SharedFileDataImpl(String filename, InputStream content) {
+    public IconImpl(String filename, InputStream content) {
         this.filename = filename;
         this.content = content;
     }
@@ -23,12 +26,13 @@ public class SharedFileDataImpl implements SharedFileData {
 
     @Override
     public InputStream getContent() {
+
         return content;
     }
 
     @Override
     public String toString() {
-        return "SharedFileDataImpl{" +
+        return "IssueAttachmentImpl{" +
                 "filename='" + filename + '\'' +
                 ", content=" + content +
                 '}';

@@ -1,4 +1,4 @@
-package com.nulabinc.backlog4j.internal.http;
+package com.nulabinc.backlog4j.http;
 
 import org.apache.http.conn.ClientConnectionManager;
 

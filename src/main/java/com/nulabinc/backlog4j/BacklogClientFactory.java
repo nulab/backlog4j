@@ -1,7 +1,8 @@
 package com.nulabinc.backlog4j;
 
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
-import com.nulabinc.backlog4j.internal.http.InternalHttpClient;
+import com.nulabinc.backlog4j.http.BacklogHttpClient;
+import com.nulabinc.backlog4j.internal.BacklogClientImpl;
 
 /**
  * Provides a BacklogClient instance with the given configure.
@@ -10,12 +11,12 @@ import com.nulabinc.backlog4j.internal.http.InternalHttpClient;
  */
 public class BacklogClientFactory {
     private BacklogConfigure configure;
-    private InternalHttpClient httpClient;
+    private BacklogHttpClient httpClient;
 
     public BacklogClientFactory(BacklogConfigure configure) {
         this.configure = configure;
     }
-    public BacklogClientFactory(BacklogConfigure configure, InternalHttpClient httpClient) {
+    public BacklogClientFactory(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
     }

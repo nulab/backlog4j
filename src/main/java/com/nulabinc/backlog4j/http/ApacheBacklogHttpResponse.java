@@ -1,26 +1,26 @@
-package com.nulabinc.backlog4j.internal.http;
+package com.nulabinc.backlog4j.http;
 
-import com.nulabinc.backlog4j.BacklogException;
+import com.nulabinc.backlog4j.BacklogAPIException;
+import com.nulabinc.backlog4j.internal.http.MimeHelper;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.entity.mime.MIME;
-import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 
 /**
  * @author nulab-inc
  */
-public class InternalHttpResponse {
+public class ApacheBacklogHttpResponse implements BacklogHttpResponse{
     private InputStream inputStream;
     private int statusCode;
     private String responseAsString = null;
     private HttpResponse httpResponse;
     private boolean proceedInputStream = false;
 
-    public InternalHttpResponse(HttpResponse httpResponse, ClientConnectionManager clientConnectionManager) {
+    public ApacheBacklogHttpResponse(HttpResponse httpResponse, ClientConnectionManager clientConnectionManager) {
         this.httpResponse = httpResponse;
         statusCode = httpResponse.getStatusLine().getStatusCode();
 
@@ -30,7 +30,7 @@ public class InternalHttpResponse {
                 inputStream = entity.getContent();
             }
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         }
     }
 
@@ -64,15 +64,15 @@ public class InternalHttpResponse {
             }
 
         } catch (UnsupportedEncodingException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new BacklogAPIException(e);
         } finally {
             try {
                 inputStream.close();
                 reader.close();
             } catch (IOException e) {
-                throw new BacklogException(e);
+                throw new BacklogAPIException(e);
             }
         }
         return sb.toString();
