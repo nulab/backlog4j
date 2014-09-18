@@ -24,10 +24,7 @@ import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
+import org.apache.http.params.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -47,8 +44,15 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
     private int readTimeout;
     private int connectionTimeout;
 
-    private HttpClient httpClient = createThreadSafeHttpClient();
+    private HttpClient httpClient;
 
+    public ApacheBacklogHttpClient(){
+        this.httpClient = createThreadSafeHttpClient();
+    }
+
+    public ApacheBacklogHttpClient(HttpClient httpClient){
+        this.httpClient = httpClient;
+    }
 
     @Override
     public void setApiKey(String apiKey) {
@@ -213,6 +217,7 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
         HttpConnectionParams.setConnectionTimeout(params, this.connectionTimeout);
         HttpConnectionParams.setSoTimeout(params, this.readTimeout);
         params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+        HttpProtocolParams.setUserAgent(params, userAgent);
 
         return httpClient;
     }
@@ -225,6 +230,7 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
         HttpConnectionParams.setConnectionTimeout(params, this.connectionTimeout);
         HttpConnectionParams.setSoTimeout(params, this.readTimeout);
         params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+        HttpProtocolParams.setUserAgent(params, userAgent);
         ThreadSafeClientConnManager mgr = new ThreadSafeClientConnManager(params, schreg);
         return new DefaultHttpClient(mgr, params);
     }
@@ -237,10 +243,8 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
         }
     }
 
-
     private void setHeaderInfo(HttpRequestBase httpRequestBase){
         httpRequestBase.setHeader("Content-Type", contentType);
-        httpRequestBase.setHeader("User-Agent", userAgent);
         if(apiKey == null && bearerToken != null){
             httpRequestBase.setHeader("Authorization", "Bearer "+ bearerToken);
         }
