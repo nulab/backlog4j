@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:+'
+    testCompile 'junit:junit:4.11'
     testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
 
     compile 'org.apache.httpcomponents:httpclient:4.2.4'

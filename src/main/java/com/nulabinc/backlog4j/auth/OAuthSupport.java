@@ -6,8 +6,6 @@ package com.nulabinc.backlog4j.auth;
 public interface OAuthSupport {
     void setOAuthClientId(String clientId, String clientSecret);
 
-    void setOAuthPermissions(String permissions);
-
     void setOAuthRedirectUrl(String redirectUrl);
 
     String getOAuthAuthorizationURL();
@@ -15,5 +13,7 @@ public interface OAuthSupport {
     AccessToken getOAuthAccessToken(String oauthCode);
 
     AccessToken refreshOAuthAccessToken();
+
+    void setOnAccessTokenRefreshListener(OnAccessTokenRefreshListener listener);
 }
 

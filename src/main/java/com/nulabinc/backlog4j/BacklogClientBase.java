@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.api.option.PatchParams;
 import com.nulabinc.backlog4j.api.option.PostParams;
 import com.nulabinc.backlog4j.api.option.QueryParams;
 import com.nulabinc.backlog4j.auth.AccessToken;
+import com.nulabinc.backlog4j.auth.OAuthSupport;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.internal.InternalFactory;
 import com.nulabinc.backlog4j.http.ApacheBacklogHttpClient;
@@ -27,6 +28,7 @@ public abstract class BacklogClientBase {
     protected BacklogHttpClient httpClient;
     protected BacklogConfigure configure;
     protected InternalFactory factory = new InternalFactoryJSONImpl();
+    protected OAuthSupport oAuthSupport;
 
     public BacklogClientBase(BacklogConfigure configure) {
         this.configure = configure;
@@ -39,6 +41,10 @@ public abstract class BacklogClientBase {
         this.configure = configure;
         this.httpClient = httpClient;
         configureHttpClient();
+    }
+
+    public void setOAuthSupport(OAuthSupport oAuthSupport){
+        this.oAuthSupport = oAuthSupport;
     }
 
     private void configureHttpClient() {
@@ -170,9 +176,8 @@ public abstract class BacklogClientBase {
     }
 
     private void refreshToken() {
-        AccessToken accessToken = configure.getOAuthSupport().refreshOAuthAccessToken();
+        AccessToken accessToken = oAuthSupport.refreshOAuthAccessToken();
         configure.accessToken(accessToken);
-        configure.getOnAccessTokenRefreshListener().onAccessTokenRefresh(accessToken);
         configureHttpClient();
     }
 

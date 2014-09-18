@@ -13,8 +13,6 @@ public abstract class BacklogConfigure {
     protected String apiKey;
     protected int connectionTimeout = 30000;
     protected int readTimeout = 30000;
-    protected OAuthSupport oAuthSupport;
-    protected OnAccessTokenRefreshListener listener;
 
     public BacklogConfigure accessToken(AccessToken accessToken) {
         this.accessToken = accessToken;
@@ -36,10 +34,6 @@ public abstract class BacklogConfigure {
         return this;
     }
 
-    public void setOnAccessTokenRefreshListener(OAuthSupport oAuthSupport, OnAccessTokenRefreshListener listener) {
-        this.listener = listener;
-        this.oAuthSupport = oAuthSupport;
-    }
 
     public AccessToken getAccessToken() {
         return accessToken;
@@ -55,14 +49,6 @@ public abstract class BacklogConfigure {
 
     public int getConnectionTimeout() {
         return connectionTimeout;
-    }
-
-    public OAuthSupport getOAuthSupport() {
-        return oAuthSupport;
-    }
-
-    public OnAccessTokenRefreshListener getOnAccessTokenRefreshListener() {
-        return listener;
     }
 
     public abstract String getOAuthAuthorizationURL();

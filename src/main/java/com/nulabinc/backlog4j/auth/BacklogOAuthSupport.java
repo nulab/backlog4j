@@ -10,8 +10,6 @@ import com.nulabinc.backlog4j.http.BacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.InternalFactory;
 import com.nulabinc.backlog4j.internal.json.InternalFactoryJSONImpl;
-import com.nulabinc.backlog4j.internal.json.Jackson;
-import com.nulabinc.backlog4j.internal.json.auth.AccessTokenJSONImpl;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -23,24 +21,24 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
-public class OAuthAuthorization implements OAuthSupport {
+public class BacklogOAuthSupport implements OAuthSupport {
 
     private String clientId;
     private String clientSecret;
-    private String permissions;
     private String redirectUrl;
 
     private BacklogConfigure configure;
     private BacklogHttpClient httpClient;
     private InternalFactory factory = new InternalFactoryJSONImpl();
+    private OnAccessTokenRefreshListener listener;
 
-    public OAuthAuthorization(BacklogConfigure configure) {
+    public BacklogOAuthSupport(BacklogConfigure configure) {
         this.configure = configure;
         this.httpClient = new ApacheBacklogHttpClient();
         init();
     }
 
-    public OAuthAuthorization(BacklogConfigure configure, BacklogHttpClient httpClient) {
+    public BacklogOAuthSupport(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
         init();
@@ -55,12 +53,6 @@ public class OAuthAuthorization implements OAuthSupport {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
-
-    @Override
-    public void setOAuthPermissions(String permissions) {
-        this.permissions = permissions;
-    }
-
     @Override
     public void setOAuthRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
@@ -98,7 +90,15 @@ public class OAuthAuthorization implements OAuthSupport {
         }
         BacklogHttpResponse httpResponse = getRefreshTokenResponse();
         checkError(httpResponse);
-        return factory.createAccessToken(httpResponse);
+        AccessToken accessToken =  factory.createAccessToken(httpResponse);
+        configure.accessToken(accessToken);
+        listener.onAccessTokenRefresh(accessToken);
+        return accessToken;
+    }
+
+    @Override
+    public void setOnAccessTokenRefreshListener(OnAccessTokenRefreshListener listener) {
+        this.listener = listener;
     }
 
     private BacklogHttpResponse getAccessTokenResponse(String oauthCode) throws BacklogException {
