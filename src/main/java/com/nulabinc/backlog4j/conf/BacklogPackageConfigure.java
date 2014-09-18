@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 /**
  * @author nulab-inc
  */
-public class BacklogPackageConfigure extends AbstractBacklogConfigure {
+public class BacklogPackageConfigure extends BacklogConfigure {
 
     private String url;
     private String authorizationUrl;

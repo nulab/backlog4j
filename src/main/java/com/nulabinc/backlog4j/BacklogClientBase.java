@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.api.option.GetParams;
 import com.nulabinc.backlog4j.api.option.PatchParams;
 import com.nulabinc.backlog4j.api.option.PostParams;
 import com.nulabinc.backlog4j.api.option.QueryParams;
+import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.internal.InternalFactory;
 import com.nulabinc.backlog4j.http.ApacheBacklogHttpClient;
@@ -25,22 +26,22 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpClient httpClient;
     protected BacklogConfigure configure;
-    protected InternalFactory factory;
+    protected InternalFactory factory = new InternalFactoryJSONImpl();
 
     public BacklogClientBase(BacklogConfigure configure) {
         this.configure = configure;
         this.httpClient = new ApacheBacklogHttpClient();
-        init();
+        configureHttpClient();
+
     }
 
     public BacklogClientBase(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
-        init();
+        configureHttpClient();
     }
 
-    private void init() {
-        factory = new InternalFactoryJSONImpl();
+    private void configureHttpClient() {
 
         if (this.configure.getApiKey() != null) {
             httpClient.setApiKey(this.configure.getApiKey());
@@ -68,6 +69,10 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
         BacklogHttpResponse ires = httpClient.get(endpoint, getParams, queryParams);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.get(endpoint, getParams, queryParams);
+        }
         checkError(ires);
         return ires;
     }
@@ -83,6 +88,10 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.post(endpoint, parameters);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.post(endpoint, parameters);
+        }
         checkError(ires);
         return ires;
     }
@@ -93,12 +102,20 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.patch(endpoint, parameters);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.patch(endpoint, parameters);
+        }
         checkError(ires);
         return ires;
     }
 
     protected BacklogHttpResponse put(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.put(endpoint, parameters);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.put(endpoint, parameters);
+        }
         checkError(ires);
         return ires;
     }
@@ -110,12 +127,20 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
         BacklogHttpResponse ires = httpClient.delete(endpoint, param);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.delete(endpoint, param);
+        }
         checkError(ires);
         return ires;
     }
 
     protected BacklogHttpResponse postMultiPart(String endpoint, Map<String, Object> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.postMultiPart(endpoint, parameters);
+        if(needTokenRefresh(ires)){
+            refreshToken();
+            ires = httpClient.postMultiPart(endpoint, parameters);
+        }
         checkError(ires);
         return ires;
     }
@@ -137,4 +162,18 @@ public abstract class BacklogClientBase {
             throw new BacklogAPIException("backlog api request failed.", ires);
         }
     }
+
+    private boolean needTokenRefresh(BacklogHttpResponse ires) {
+        return ires.getStatusCode() == 401 &&
+                configure.getApiKey() == null &&
+                configure.getAccessToken() != null;
+    }
+
+    private void refreshToken() {
+        AccessToken accessToken = configure.getOAuthSupport().refreshOAuthAccessToken();
+        configure.accessToken(accessToken);
+        configure.getOnAccessTokenRefreshListener().onAccessTokenRefresh(accessToken);
+        configureHttpClient();
+    }
+
 }

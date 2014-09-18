@@ -2,9 +2,11 @@ package com.nulabinc.backlog4j.internal.json;
 
 
 import com.nulabinc.backlog4j.*;
+import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.InternalFactory;
 import com.nulabinc.backlog4j.internal.json.activities.ActivityJSONImpl;
+import com.nulabinc.backlog4j.internal.json.auth.AccessTokenJSONImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldSettingJSONImpl;
 
 
@@ -12,6 +14,15 @@ import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldSettingJSONI
  * @author nulab-inc
  */
 public class InternalFactoryJSONImpl implements InternalFactory {
+
+    @Override
+    public AccessToken createAccessToken(BacklogHttpResponse res) throws BacklogException {
+        return createAccessToken(res.asString());
+    }
+
+    public AccessToken createAccessToken(String resStr) throws BacklogException {
+        return createObject(resStr, AccessToken.class, AccessTokenJSONImpl.class);
+    }
 
     @Override
     public Space createSpace(BacklogHttpResponse res) throws BacklogException {

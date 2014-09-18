@@ -1,23 +1,75 @@
 package com.nulabinc.backlog4j.conf;
 
 import com.nulabinc.backlog4j.auth.AccessToken;
+import com.nulabinc.backlog4j.auth.OAuthSupport;
+import com.nulabinc.backlog4j.auth.OnAccessTokenRefreshListener;
 
 /**
  * @author nulab-inc
  */
-public interface BacklogConfigure {
+public abstract class BacklogConfigure {
 
-    String getOAuthAuthorizationURL();
+    protected AccessToken accessToken;
+    protected String apiKey;
+    protected int connectionTimeout = 30000;
+    protected int readTimeout = 30000;
+    protected OAuthSupport oAuthSupport;
+    protected OnAccessTokenRefreshListener listener;
 
-    String getOAuthAccessTokenURL();
+    public BacklogConfigure accessToken(AccessToken accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
 
-    String getRestBaseURL();
+    public BacklogConfigure apiKey(String apiKey) {
+        this.apiKey = apiKey;
+        return this;
+    }
 
-    AccessToken getAccessToken();
+    public BacklogConfigure readTimeout(int readTimeout) {
+        this.readTimeout = readTimeout;
+        return this;
+    }
 
-    String getApiKey();
+    public BacklogConfigure connectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
+        return this;
+    }
 
-    int getReadTimeout();
+    public void setOnAccessTokenRefreshListener(OAuthSupport oAuthSupport, OnAccessTokenRefreshListener listener) {
+        this.listener = listener;
+        this.oAuthSupport = oAuthSupport;
+    }
 
-    int getConnectionTimeout();
+    public AccessToken getAccessToken() {
+        return accessToken;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public int getReadTimeout() {
+        return readTimeout;
+    }
+
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    public OAuthSupport getOAuthSupport() {
+        return oAuthSupport;
+    }
+
+    public OnAccessTokenRefreshListener getOnAccessTokenRefreshListener() {
+        return listener;
+    }
+
+    public abstract String getOAuthAuthorizationURL();
+
+    public abstract String getOAuthAccessTokenURL();
+
+    public abstract String getRestBaseURL();
+
+
 }

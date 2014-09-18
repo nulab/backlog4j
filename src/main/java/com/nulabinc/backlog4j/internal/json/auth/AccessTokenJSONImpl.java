@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.auth.AccessToken;
  */
 public class AccessTokenJSONImpl extends AccessToken {
 
+
     @JsonProperty("token_type")
     private String type;
     @JsonProperty("access_token")
@@ -16,8 +17,8 @@ public class AccessTokenJSONImpl extends AccessToken {
     @JsonProperty("refresh_token")
     private String refresh;
 
-    public AccessTokenJSONImpl(String token, Long expires, String refresh) {
-        super(token, expires, refresh);
+    public AccessTokenJSONImpl(){
+        super(null, null, null);
     }
 
     @Override

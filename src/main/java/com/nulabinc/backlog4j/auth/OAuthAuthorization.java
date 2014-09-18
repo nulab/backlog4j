@@ -8,6 +8,8 @@ import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.ApacheBacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
+import com.nulabinc.backlog4j.internal.InternalFactory;
+import com.nulabinc.backlog4j.internal.json.InternalFactoryJSONImpl;
 import com.nulabinc.backlog4j.internal.json.Jackson;
 import com.nulabinc.backlog4j.internal.json.auth.AccessTokenJSONImpl;
 import org.apache.http.NameValuePair;
@@ -30,6 +32,7 @@ public class OAuthAuthorization implements OAuthSupport {
 
     private BacklogConfigure configure;
     private BacklogHttpClient httpClient;
+    private InternalFactory factory = new InternalFactoryJSONImpl();
 
     public OAuthAuthorization(BacklogConfigure configure) {
         this.configure = configure;
@@ -85,7 +88,7 @@ public class OAuthAuthorization implements OAuthSupport {
         }
         BacklogHttpResponse httpResponse = getAccessTokenResponse(oauthCode);
         checkError(httpResponse);
-        return Jackson.fromJsonString(httpResponse.asString(), AccessTokenJSONImpl.class);
+        return factory.createAccessToken(httpResponse);
     }
 
     @Override
@@ -95,7 +98,7 @@ public class OAuthAuthorization implements OAuthSupport {
         }
         BacklogHttpResponse httpResponse = getRefreshTokenResponse();
         checkError(httpResponse);
-        return Jackson.fromJsonString(httpResponse.asString(), AccessTokenJSONImpl.class);
+        return factory.createAccessToken(httpResponse);
     }
 
     private BacklogHttpResponse getAccessTokenResponse(String oauthCode) throws BacklogException {

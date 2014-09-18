@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 /**
  * @author nulab-inc
  */
-public final class BacklogJpConfigure extends AbstractBacklogConfigure {
+public final class BacklogJpConfigure extends BacklogConfigure {
 
     private final String spaceKey;
 

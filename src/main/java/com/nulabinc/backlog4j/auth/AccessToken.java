@@ -5,10 +5,10 @@ package com.nulabinc.backlog4j.auth;
  */
 public class AccessToken {
 
-    private String type;
-    private String token;
-    private Long expires;
-    private String refresh;
+    protected String type;
+    protected String token;
+    protected Long expires;
+    protected String refresh;
 
     public AccessToken(String token, Long expires, String refresh) {
         this.token = token;

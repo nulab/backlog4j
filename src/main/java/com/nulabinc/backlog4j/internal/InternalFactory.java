@@ -2,12 +2,15 @@ package com.nulabinc.backlog4j.internal;
 
 
 import com.nulabinc.backlog4j.*;
+import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 
 /**
  * @author nulab-inc
  */
 public interface InternalFactory {
+
+    AccessToken createAccessToken(BacklogHttpResponse res) throws BacklogException;
 
     Space createSpace(BacklogHttpResponse res) throws BacklogException;
 
