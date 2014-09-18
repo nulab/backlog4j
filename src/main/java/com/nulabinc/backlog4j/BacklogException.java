@@ -18,4 +18,6 @@ public abstract class BacklogException extends RuntimeException {
     public BacklogException(Throwable cause) {
         super(cause);
     }
+
+    abstract public int getStatusCode();
 }

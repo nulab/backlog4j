@@ -56,6 +56,7 @@ public class BacklogAuthException extends BacklogException {
         return errorMessage;
     }
 
+    @Override
     public int getStatusCode() {
         return this.statusCode;
     }

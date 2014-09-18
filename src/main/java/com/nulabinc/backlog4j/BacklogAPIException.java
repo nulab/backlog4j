@@ -71,6 +71,7 @@ public class BacklogAPIException extends BacklogException {
         return backlogAPIError;
     }
 
+    @Override
     public int getStatusCode() {
         return this.statusCode;
     }
