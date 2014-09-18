@@ -6,7 +6,9 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface ChangeLog {
-    String getField(); // todo change string to enum
+
+    // status assigner resolution priority component milestone version issueType
+    String getField();
 
     String getNewValue();
 
@@ -14,7 +16,7 @@ public interface ChangeLog {
 
     AttachmentInfo getAttachmentInfo();
 
-    String getAttributeInfo(); // todo change string to model
+    AttributeInfo getAttributeInfo();
 
     NotificationInfo getNotificationInfo();
 

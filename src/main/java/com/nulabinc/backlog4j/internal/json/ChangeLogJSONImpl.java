@@ -2,8 +2,10 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.AttachmentInfo;
+import com.nulabinc.backlog4j.AttributeInfo;
 import com.nulabinc.backlog4j.ChangeLog;
 import com.nulabinc.backlog4j.NotificationInfo;
+import org.w3c.dom.Attr;
 
 /**
  * @author nulab-inc
@@ -15,7 +17,8 @@ public class ChangeLogJSONImpl implements ChangeLog {
     private String originalValue;
     @JsonDeserialize(as=AttachmentInfoJSONImpl.class)
     private AttachmentInfo attachmentInfo;
-    private String attributeInfo;
+    @JsonDeserialize(as=AttributeInfoJSONImpl.class)
+    private AttributeInfo attributeInfo;
     @JsonDeserialize(as=NotificationInfoJSONImpl.class)
     private NotificationInfo notificationInfo;
 
@@ -40,7 +43,7 @@ public class ChangeLogJSONImpl implements ChangeLog {
     }
 
     @Override
-    public String getAttributeInfo() {
+    public AttributeInfo getAttributeInfo() {
         return attributeInfo;
     }
 
