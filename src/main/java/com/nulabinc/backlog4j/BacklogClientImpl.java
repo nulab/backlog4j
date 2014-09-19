@@ -1,6 +1,5 @@
-package com.nulabinc.backlog4j.internal;
+package com.nulabinc.backlog4j;
 
-import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.api.option.*;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;

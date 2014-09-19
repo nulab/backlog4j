@@ -86,7 +86,7 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
         }
         try {
             HttpGet httpGet = new HttpGet(url);
-            System.out.println(url);
+//            System.out.println(url);
             setHeaderInfo(httpGet);
             HttpResponse httpResponse = httpClient.execute(httpGet);
             BacklogHttpResponse ires = new ApacheBacklogHttpResponse(httpResponse, httpClient.getConnectionManager());

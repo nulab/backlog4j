@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j;
 
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
-import com.nulabinc.backlog4j.internal.BacklogClientImpl;
 
 /**
  * Provides a BacklogClient instance with the given configure.
