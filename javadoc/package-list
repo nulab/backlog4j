@@ -3,9 +3,11 @@ com.nulabinc.backlog4j.api
 com.nulabinc.backlog4j.api.option
 com.nulabinc.backlog4j.auth
 com.nulabinc.backlog4j.conf
+com.nulabinc.backlog4j.http
 com.nulabinc.backlog4j.internal
+com.nulabinc.backlog4j.internal.file
 com.nulabinc.backlog4j.internal.http
 com.nulabinc.backlog4j.internal.json
 com.nulabinc.backlog4j.internal.json.activities
+com.nulabinc.backlog4j.internal.json.auth
 com.nulabinc.backlog4j.internal.json.customFields
-sample
