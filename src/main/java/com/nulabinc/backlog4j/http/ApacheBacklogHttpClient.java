@@ -232,6 +232,8 @@ public class ApacheBacklogHttpClient implements BacklogHttpClient {
         params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
         HttpProtocolParams.setUserAgent(params, userAgent);
         ThreadSafeClientConnManager mgr = new ThreadSafeClientConnManager(params, schreg);
+        mgr.setDefaultMaxPerRoute(100);
+        mgr.setMaxTotal(100);
         return new DefaultHttpClient(mgr, params);
     }
 

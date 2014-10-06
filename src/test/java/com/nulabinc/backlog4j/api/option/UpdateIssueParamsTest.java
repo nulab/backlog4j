@@ -36,12 +36,14 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
                 .milestoneIds(Arrays.asList(7000000001l, 7000000002l))
                 .notifiedUserIds(Arrays.asList(8000000001l, 8000000002l))
                 .attachmentIds(Arrays.asList(9000000001l, 9000000002l))
-                .comment("issue comment");
+                .comment("issue comment")
+                .status(Issue.StatusType.Resolved)
+                .resolution(Issue.ResolutionType.Fixed);
 
         // then
         assertEquals("1000000001", params.getIssueIdOrKeyString());
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(21, parameters.size());
+        assertEquals(23, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "summary", "test issue 1"));
         assertEquals(true, existsOneKeyValue(parameters, "issueTypeId", "2000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "priorityId", "3"));
@@ -63,8 +65,9 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", "9000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", "9000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "comment", "issue comment"));
+        assertEquals(true, existsOneKeyValue(parameters, "statusId", "3"));
+        assertEquals(true, existsOneKeyValue(parameters, "resolutionId", "0"));
     }
-
 
 
     @Test
@@ -180,11 +183,11 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         // when
         UpdateIssueParams params = new UpdateIssueParams(1000000001l);
         Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
-        map.put(3000000001l, Arrays.asList(4000000001l,4000000002l));
-        map.put(3000000002l, Arrays.asList(4000000003l,4000000004l));
+        map.put(3000000001l, Arrays.asList(4000000001l, 4000000002l));
+        map.put(3000000002l, Arrays.asList(4000000003l, 4000000004l));
         params.multipleListCustomFieldMap(map);
 
-        params.multipleListCustomField(3000000003l, Arrays.asList(4000000005l,4000000006l));
+        params.multipleListCustomField(3000000003l, Arrays.asList(4000000005l, 4000000006l));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -201,11 +204,11 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         // when
         UpdateIssueParams params = new UpdateIssueParams(1000000001l);
         Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
-        map.put(3000000001l, Arrays.asList(4000000001l,4000000002l));
-        map.put(3000000002l, Arrays.asList(4000000003l,4000000004l));
+        map.put(3000000001l, Arrays.asList(4000000001l, 4000000002l));
+        map.put(3000000002l, Arrays.asList(4000000003l, 4000000004l));
         params.checkBoxCustomFieldMap(map);
 
-        params.checkBoxCustomField(3000000003l, Arrays.asList(4000000005l,4000000006l));
+        params.checkBoxCustomField(3000000003l, Arrays.asList(4000000005l, 4000000006l));
 
         // then
         List<NameValuePair> parameters = params.getParamList();

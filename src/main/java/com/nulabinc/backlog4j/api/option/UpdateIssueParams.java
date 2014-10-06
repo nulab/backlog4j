@@ -52,6 +52,11 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams resolution(Issue.ResolutionType resolutionType) {
+        parameters.add(new BasicNameValuePair("resolutionId", String.valueOf(resolutionType.getIntValue())));
+        return this;
+    }
+
     public UpdateIssueParams startDate(String startDate) {
         parameters.add(new BasicNameValuePair("startDate", String.valueOf(startDate)));
         return this;
