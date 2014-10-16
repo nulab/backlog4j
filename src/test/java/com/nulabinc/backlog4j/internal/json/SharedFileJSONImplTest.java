@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.User;
@@ -66,5 +67,14 @@ public class SharedFileJSONImplTest extends AbstractJSONImplTest{
         Calendar calendar = Calendar.getInstance();
         calendar.set(2014, Calendar.AUGUST, 4, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(sharedFile.getCreated()));
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/shared_file.json");
+        SharedFile sharedFile1 = factory.createSharedFile(fileContentStr);
+        SharedFile sharedFile2 = factory.createSharedFile(fileContentStr);
+        assertEquals(sharedFile1, sharedFile2);
+
     }
 }

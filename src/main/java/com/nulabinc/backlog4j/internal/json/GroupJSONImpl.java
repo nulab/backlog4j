@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.Group;
 import com.nulabinc.backlog4j.User;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -67,5 +69,30 @@ public class GroupJSONImpl implements Group {
     @Override
     public Date getUpdated() {
         return updated;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Group ) {
+            Group other = (Group)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("members", members)
+                .append("displayOrder", displayOrder)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updatedUser", updatedUser)
+                .append("updated", updated)
+                .toString();
     }
 }

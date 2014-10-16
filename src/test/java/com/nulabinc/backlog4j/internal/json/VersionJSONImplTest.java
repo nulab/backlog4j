@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.Version;
 import com.nulabinc.backlog4j.ResponseList;
 import org.junit.Test;
@@ -65,6 +66,15 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         calendar.set(2014, 6, 31, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(version.getReleaseDueDate()));
         assertEquals(false, version.getArchived());
+
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/version.json");
+        Version version1 = factory.createVersion(fileContentStr);
+        Version version2 = factory.createVersion(fileContentStr);
+        assertEquals(version1, version2);
 
     }
 }

@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.*;
+import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.internal.json.activities.*;
 import org.junit.Test;
 import uk.co.it.modular.hamcrest.date.DateMatchers;
@@ -17,12 +18,11 @@ import static org.junit.Assert.assertThat;
  */
 public class ActivityJSONImplTest extends AbstractJSONImplTest {
 
-
-    //
     @Test
     public void createActivityIssueCreatedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_created.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.IssueCreated ,activity.getType());
 
@@ -64,6 +64,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityIssueUpdatedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_updated.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.IssueUpdated ,activity.getType());
 
@@ -103,6 +104,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityIssueCommentedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_commented.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
 
         assertEquals(Activity.Type.IssueCommented, activity.getType());
@@ -126,6 +128,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityWikiCreatedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_wiki_created.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.WikiCreated, activity.getType());
         WikiCreatedActivity wikiCreated = (WikiCreatedActivity) activity;
@@ -143,6 +146,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityWikiUpdatedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_wiki_updated.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.WikiUpdated, activity.getType());
         WikiUpdatedActivity wikiUpdated = (WikiUpdatedActivity) activity;
@@ -162,6 +166,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityProjectUserAddedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_project_user_added.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.ProjectUserAdded, activity.getType());
         ProjectUserAddedActivity projectUserAdded = (ProjectUserAddedActivity) activity;
@@ -183,6 +188,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
     public void createActivityProjectUserRemovedTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_project_user_removed.json");
         Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
         assertEquals(Activity.Type.ProjectUserRemoved, activity.getType());
         ProjectUserRemovedActivity projectUserRemoved = (ProjectUserRemovedActivity) activity;
@@ -202,6 +208,15 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
 
         assertEquals("よろしく", content.getComment());
 
+
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/activity_issue_created.json");
+        Activity activity1 = factory.createActivity(fileContentStr);
+        Activity activity2 = factory.createActivity(fileContentStr);
+        assertEquals(activity1, activity2);
 
     }
 }

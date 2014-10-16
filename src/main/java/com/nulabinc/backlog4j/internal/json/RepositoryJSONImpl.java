@@ -3,6 +3,8 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Repository;
 import com.nulabinc.backlog4j.User;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -93,5 +95,35 @@ public class RepositoryJSONImpl implements Repository {
     @Override
     public Date getUpdated() {
         return updated;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Repository ) {
+            Repository other = (Repository)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("projectId", projectId)
+                .append("name", name)
+                .append("description", description)
+                .append("hookUrl", hookUrl)
+                .append("httpUrl", httpUrl)
+                .append("sshUrl", sshUrl)
+                .append("displayOrder", displayOrder)
+                .append("pushedAt", pushedAt)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updatedUser", updatedUser)
+                .append("updated", updated)
+                .toString();
     }
 }

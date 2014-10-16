@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.Space;
 import org.junit.Test;
 import uk.co.it.modular.hamcrest.date.DateMatchers;
@@ -31,6 +32,15 @@ public class SpaceJSONImplTest extends AbstractJSONImplTest{
         assertThat(calendar.getTime(), DateMatchers.sameDay(space.getCreated()));
         calendar.set(2014, 3, 2, 9, 27, 7);
         assertThat(calendar.getTime(), DateMatchers.sameDay(space.getUpdated()));
+
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/space.json");
+        Space space1 = factory.createSpace(fileContentStr);
+        Space space2 = factory.createSpace(fileContentStr);
+        assertEquals(space1, space2);
 
     }
 }

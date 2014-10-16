@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.Repository;
 import com.nulabinc.backlog4j.Revision;
 import com.nulabinc.backlog4j.internal.json.RepositoryJSONImpl;
 import com.nulabinc.backlog4j.internal.json.RevisionJSONImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,5 +51,18 @@ public class GitPushedContent extends Content {
 
     public long getRevisionCount() {
         return revisionCount;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("changeType", changeType)
+                .append("ref", ref)
+                .append("revisionType", revisionType)
+                .append("repository", repository)
+                .append("revisions", revisions)
+                .append("revisionCount", revisionCount)
+                .toString();
     }
 }

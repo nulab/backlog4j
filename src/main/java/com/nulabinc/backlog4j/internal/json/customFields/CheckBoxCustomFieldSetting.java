@@ -1,5 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,5 +35,16 @@ public class CheckBoxCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     public boolean isAllowAddItem() {
         return allowAddItem;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("typeId", typeId)
+                .append("items", items)
+                .append("allowInput", allowInput)
+                .append("allowAddItem", allowAddItem)
+                .toString();
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.internal.json.GroupProjectActivityJSONImpl;
 import com.nulabinc.backlog4j.internal.json.UserJSONImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,5 +33,15 @@ public class ProjectUserRemovedContent extends Content {
 
     public List<GroupProjectActivity> getGroupProjectActivities() {
         return Arrays.asList(groupProjectActivities);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("users", users)
+                .append("comment", comment)
+                .append("groupProjectActivities", groupProjectActivities)
+                .toString();
     }
 }

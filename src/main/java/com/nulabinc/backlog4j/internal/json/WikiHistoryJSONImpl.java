@@ -3,6 +3,8 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.WikiHistory;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -66,4 +68,28 @@ public class WikiHistoryJSONImpl implements WikiHistory {
         return updated;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof WikiHistory ) {
+            WikiHistory other = (WikiHistory)obj;
+            result = new EqualsBuilder().append( pageId, other.getPageId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("pageId", pageId)
+                .append("version", version)
+                .append("name", name)
+                .append("content", content)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updatedUser", updatedUser)
+                .append("updated", updated)
+                .toString();
+    }
 }

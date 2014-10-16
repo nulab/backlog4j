@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.ResponseList;
 import org.junit.Test;
@@ -38,13 +39,28 @@ public class IssueJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, issue.getProjectId());
     }
 
-
-
     @Test
     public void createCustomFiledIssueTest() throws IOException {
         String fileContentStr = getJsonString("json/custom_field_issue.json");
         Issue issue = factory.createIssue(fileContentStr);
 
         assertEquals(1073804154, issue.getId());
+    }
+
+    @Test
+    public void equalsTest1() throws IOException {
+        String fileContentStr = getJsonString("json/issue.json");
+        Issue issue1 = factory.createIssue(fileContentStr);
+        Issue issue2 = factory.createIssue(fileContentStr);
+        assertEquals(issue1, issue2);
+
+    }
+    @Test
+    public void equalsTest2() throws IOException {
+        String fileContentStr = getJsonString("json/custom_field_issue.json");
+        Issue issue1 = factory.createIssue(fileContentStr);
+        Issue issue2 = factory.createIssue(fileContentStr);
+        assertEquals(issue1, issue2);
+
     }
 }

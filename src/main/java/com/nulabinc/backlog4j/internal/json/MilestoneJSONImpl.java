@@ -2,6 +2,9 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Milestone;
+import com.nulabinc.backlog4j.User;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -49,5 +52,29 @@ public class MilestoneJSONImpl implements Milestone {
 
     public Boolean getArchived() {
         return archived;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Milestone) {
+            Milestone other = (Milestone)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("projectId", projectId)
+                .append("name", name)
+                .append("description", description)
+                .append("startDate", startDate)
+                .append("releaseDueDate", releaseDueDate)
+                .append("archived", archived)
+                .toString();
     }
 }

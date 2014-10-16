@@ -6,6 +6,8 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
+import com.nulabinc.backlog4j.User;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
  * @author nulab-inc
@@ -41,6 +43,17 @@ public class IssueTypeJSONImpl implements IssueType {
     @Override
     public String toString() {
         return "ProjectJSONImpl extends " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof IssueType) {
+            IssueType other = (IssueType)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
     }
 
 

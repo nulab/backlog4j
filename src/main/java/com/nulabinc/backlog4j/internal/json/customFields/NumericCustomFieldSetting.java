@@ -2,6 +2,7 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomBigdecimalDeserializer;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
 
@@ -43,5 +44,17 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     public String getUnit() {
         return unit;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("typeId", typeId)
+                .append("min", min)
+                .append("max", max)
+                .append("initialValue", initialValue)
+                .append("unit", unit)
+                .toString();
     }
 }

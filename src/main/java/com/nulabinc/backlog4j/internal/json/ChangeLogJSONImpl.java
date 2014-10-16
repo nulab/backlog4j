@@ -1,10 +1,9 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.AttachmentInfo;
-import com.nulabinc.backlog4j.AttributeInfo;
-import com.nulabinc.backlog4j.ChangeLog;
-import com.nulabinc.backlog4j.NotificationInfo;
+import com.nulabinc.backlog4j.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.w3c.dom.Attr;
 
 /**
@@ -50,5 +49,28 @@ public class ChangeLogJSONImpl implements ChangeLog {
     @Override
     public NotificationInfo getNotificationInfo() {
         return notificationInfo;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof ChangeLog) {
+            ChangeLog other = (ChangeLog)obj;
+            result = new EqualsBuilder().append( field, other.getField() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("field", field)
+                .append("newValue", newValue)
+                .append("originalValue", originalValue)
+                .append("attachmentInfo", attachmentInfo)
+                .append("attributeInfo", attributeInfo)
+                .append("notificationInfo", notificationInfo)
+                .toString();
     }
 }

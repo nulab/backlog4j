@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.ResponseList;
 import org.junit.Test;
@@ -57,5 +58,14 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals("backlog", project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/project.json");
+        Project project1 = factory.createProject(fileContentStr);
+        Project project2 = factory.createProject(fileContentStr);
+        assertEquals(project1, project2);
+
     }
 }

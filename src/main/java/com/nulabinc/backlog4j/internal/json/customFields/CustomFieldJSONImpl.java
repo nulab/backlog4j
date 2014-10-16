@@ -3,6 +3,8 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.nulabinc.backlog4j.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author nulab-inc
@@ -32,5 +34,24 @@ public abstract class CustomFieldJSONImpl implements CustomField {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof CustomField ) {
+            CustomField other = (CustomField)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .toString();
     }
 }

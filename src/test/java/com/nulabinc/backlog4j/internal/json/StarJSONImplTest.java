@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.Space;
 import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.User;
 import org.junit.Test;
@@ -35,6 +36,15 @@ public class StarJSONImplTest extends AbstractJSONImplTest{
         Calendar calendar = Calendar.getInstance();
         calendar.set(2014, 6, 17, 0, 54, 2);
         assertThat(calendar.getTime(), DateMatchers.sameDay(star.getCreated()));
+
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/star.json");
+        Star star1 = factory.createStar(fileContentStr);
+        Star star2 = factory.createStar(fileContentStr);
+        assertEquals(star1, star2);
 
     }
 }

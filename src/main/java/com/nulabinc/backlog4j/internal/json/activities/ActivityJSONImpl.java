@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.internal.json.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -62,4 +64,24 @@ public abstract class ActivityJSONImpl implements Activity {
         return created;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Activity ) {
+            Activity other = (Activity)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("project", project)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .toString();
+    }
 }

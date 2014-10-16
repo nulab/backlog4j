@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.Activity;
 import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.ResponseList;
 import org.junit.Test;
@@ -40,9 +41,18 @@ public class CategoryJSONImplTest extends AbstractJSONImplTest{
     @Test
     public void createCategoryTest() throws IOException {
         String fileContentStr = getJsonString("json/category.json");
-        Category version = factory.createCategory(fileContentStr);
+        Category category = factory.createCategory(fileContentStr);
 
-        assertEquals(1073967641, version.getId());
-        assertEquals("検討", version.getName());
+        assertEquals(1073967641, category.getId());
+        assertEquals("検討", category.getName());
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/category.json");
+        Category category1 = factory.createCategory(fileContentStr);
+        Category category2 = factory.createCategory(fileContentStr);
+        assertEquals(category1, category2);
+
     }
 }

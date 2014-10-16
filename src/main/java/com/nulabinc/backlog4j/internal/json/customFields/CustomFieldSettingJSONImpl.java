@@ -2,7 +2,10 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.nulabinc.backlog4j.CustomField;
 import com.nulabinc.backlog4j.CustomFieldSetting;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author nulab-inc
@@ -54,4 +57,26 @@ public abstract class CustomFieldSettingJSONImpl implements CustomFieldSetting {
         return required;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof CustomFieldSetting) {
+            CustomFieldSetting other = (CustomFieldSetting)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("typeId", typeId)
+                .append("name", name)
+                .append("applicableIssueTypes", applicableIssueTypes)
+                .append("description", description)
+                .append("required", required)
+                .toString();
+    }
 }

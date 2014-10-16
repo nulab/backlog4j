@@ -22,4 +22,14 @@ public class AccessTokenJSONImplTest extends AbstractJSONImplTest{
         assertEquals("1234qXvEzIfWuk1gHlWbn8PQZCQdwTLqM26bZHrP4T93BGIXguBL1MBpKVmDJO4", accessToken.getRefresh());
 
     }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/access_token.json");
+        AccessToken accessToken1 = factory.createAccessToken(fileContentStr);
+        AccessToken accessToken2 = factory.createAccessToken(fileContentStr);
+        assertEquals(accessToken1, accessToken2);
+
+    }
+
 }

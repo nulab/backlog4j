@@ -3,6 +3,8 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldJSONImpl;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -203,5 +205,50 @@ public class IssueJSONImpl implements Issue {
     @Override
     public List<Star> getStars() {
         return Arrays.asList(stars);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Issue ) {
+            Issue other = (Issue)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("issueKey", issueKey)
+                .append("keyId", keyId)
+                .append("projectId", projectId)
+                .append("issueType", issueType)
+                .append("summary", summary)
+                .append("description", description)
+                .append("resolution", resolution)
+                .append("priority", priority)
+                .append("status", status)
+                .append("assignee", assignee)
+                .append("category", category)
+                .append("versions", versions)
+                .append("milestone", milestone)
+                .append("startDate", startDate)
+                .append("limitDate", limitDate)
+                .append("dueDate", dueDate)
+                .append("estimatedHours", estimatedHours)
+                .append("actualHours", actualHours)
+                .append("parentIssueId", parentIssueId)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updatedUser", updatedUser)
+                .append("updated", updated)
+                .append("customFields", customFields)
+                .append("attachments", attachments)
+                .append("sharedFiles", sharedFiles)
+                .append("stars", stars)
+                .toString();
     }
 }

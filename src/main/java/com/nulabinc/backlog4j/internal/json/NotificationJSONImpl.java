@@ -2,6 +2,8 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -75,5 +77,32 @@ public class NotificationJSONImpl implements Notification {
     @Override
     public Date getCreated() {
         return created;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof Notification ) {
+            Notification other = (Notification)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("alreadyRead", alreadyRead)
+                .append("reason", reason)
+                .append("resourceAlreadyRead", resourceAlreadyRead)
+                .append("project", project)
+                .append("issue", issue)
+                .append("comment", comment)
+                .append("sender", sender)
+                .append("user", user)
+                .append("created", created)
+                .toString();
     }
 }

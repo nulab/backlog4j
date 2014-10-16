@@ -72,6 +72,14 @@ public class WikiJSONImplTest extends AbstractJSONImplTest{
         calendar.set(2014,Calendar.AUGUST, 5, 1, 0, 11);
         assertThat(calendar.getTime(), DateMatchers.sameDay(wiki.getUpdated()));
 
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/wiki.json");
+        Wiki wiki1 = factory.createWiki(fileContentStr);
+        Wiki wiki2 = factory.createWiki(fileContentStr);
+        assertEquals(wiki1, wiki2);
 
     }
 }

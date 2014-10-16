@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.Content;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.internal.json.AttachmentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.SharedFileJSONImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,5 +54,19 @@ public class WikiUpdatedContent extends Content {
 
     public List<SharedFile> getSharedFiles() {
         return Arrays.asList(sharedFiles);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("id", id)
+                .append("name", name)
+                .append("content", content)
+                .append("diff", diff)
+                .append("version", version)
+                .append("attachments", attachments)
+                .append("sharedFiles", sharedFiles)
+                .toString();
     }
 }

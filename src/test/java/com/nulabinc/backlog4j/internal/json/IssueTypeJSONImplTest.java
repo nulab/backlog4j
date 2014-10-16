@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.IssueType;
@@ -55,5 +56,14 @@ public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, issueType.getProjectId());
         assertEquals("バグ", issueType.getName());
         assertEquals(Project.IssueTypeColor.Color2, issueType.getColor());
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/issue_type.json");
+        IssueType issueType1 = factory.createIssueType(fileContentStr);
+        IssueType issueType2 = factory.createIssueType(fileContentStr);
+        assertEquals(issueType1, issueType2);
+
     }
 }

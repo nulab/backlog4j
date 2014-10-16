@@ -1,8 +1,11 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.nulabinc.backlog4j.Revision;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.User;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
@@ -60,4 +63,29 @@ public class SharedFileJSONImpl implements SharedFile {
         return created;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if( obj instanceof SharedFile) {
+            SharedFile other = (SharedFile)obj;
+            result = new EqualsBuilder().append( id, other.getId() )
+                    .isEquals();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("type", type)
+                .append("name", name)
+                .append("dir", dir)
+                .append("size", size)
+                .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updatedUser", updatedUser)
+                .append("updated", updated)
+                .toString();
+    }
 }

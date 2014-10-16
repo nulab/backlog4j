@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.User;
 import org.junit.Test;
 
@@ -44,5 +45,14 @@ public class UserJSONImplTest extends AbstractJSONImplTest{
         assertEquals(User.RoleType.Admin, user.getRoleType());
         assertEquals(null, user.getLang());
         assertEquals("test@xxxxxxxx.xx", user.getMailAddress());
+    }
+
+    @Test
+    public void equalsTest() throws IOException {
+        String fileContentStr = getJsonString("json/user.json");
+        User user1 = factory.createUser(fileContentStr);
+        User user2 = factory.createUser(fileContentStr);
+        assertEquals(user1, user2);
+
     }
 }

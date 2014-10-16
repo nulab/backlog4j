@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.activities;
 
 import com.nulabinc.backlog4j.Content;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author nulab-inc
@@ -26,5 +27,16 @@ public class FileUpdatedContent extends Content {
 
     public long getSize() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("id", id)
+                .append("name", name)
+                .append("dir", dir)
+                .append("size", size)
+                .toString();
     }
 }

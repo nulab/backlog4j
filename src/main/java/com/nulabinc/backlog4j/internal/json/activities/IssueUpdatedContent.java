@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.internal.json.AttachmentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.ChangeJSONImpl;
 import com.nulabinc.backlog4j.internal.json.CommentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.SharedFileJSONImpl;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -61,5 +62,20 @@ public class IssueUpdatedContent extends Content {
 
     public List<SharedFile> getSharedFiles() {
         return Arrays.asList(sharedFiles);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .appendSuper(super.toString())
+                .append("id", id)
+                .append("keyId", keyId)
+                .append("summary", summary)
+                .append("description", description)
+                .append("comment", comment)
+                .append("changes", changes)
+                .append("attachments", attachments)
+                .append("sharedFiles", sharedFiles)
+                .toString();
     }
 }
