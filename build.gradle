@@ -21,8 +21,6 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
 
-    compile 'org.apache.httpcomponents:httpclient:4.2.4'
-    compile 'org.apache.httpcomponents:httpmime:4.2.4'
     compile 'org.apache.commons:commons-lang3:3.3.2'
     compile 'com.fasterxml.jackson.core:jackson-core:2.1.1'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.1'
@@ -66,7 +64,7 @@ artifacts {
 configurations {
     deployerJars
 }
-/*
+
 signing {
     sign configurations.archives
 }
@@ -115,6 +113,6 @@ uploadArchives {
         }
     }
 }
-*/
+
 
 

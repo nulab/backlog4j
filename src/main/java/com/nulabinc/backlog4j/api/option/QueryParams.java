@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for query.
@@ -34,22 +34,22 @@ public class QueryParams extends GetParams{
     }
 
     public QueryParams minId(int minId) {
-        parameters.add(new BasicNameValuePair("minId", String.valueOf(minId)));
+        parameters.add(new NameValuePair("minId", String.valueOf(minId)));
         return this;
     }
 
     public QueryParams maxId(int maxId) {
-        parameters.add(new BasicNameValuePair("maxId", String.valueOf(maxId)));
+        parameters.add(new NameValuePair("maxId", String.valueOf(maxId)));
         return this;
     }
 
     public QueryParams count(int count) {
-        parameters.add(new BasicNameValuePair("count", String.valueOf(count)));
+        parameters.add(new NameValuePair("count", String.valueOf(count)));
         return this;
     }
 
     public QueryParams order(Order order) {
-        parameters.add(new BasicNameValuePair("order", order.getStrValue()));
+        parameters.add(new NameValuePair("order", order.getStrValue()));
         return this;
     }
 

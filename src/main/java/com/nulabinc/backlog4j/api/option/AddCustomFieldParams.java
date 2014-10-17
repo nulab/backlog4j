@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.CustomFieldSetting;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ public abstract class AddCustomFieldParams extends PostParams {
 
     public AddCustomFieldParams(long projectId, CustomFieldSetting.FieldType fieldType, String name){
         this.projectId = projectId;
-        parameters.add(new BasicNameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public AddCustomFieldParams(String projectKey, CustomFieldSetting.FieldType fieldType, String name){
         this.projectKey = projectKey;
-        parameters.add(new BasicNameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public String getProjectIdOrKeyString() {
@@ -37,18 +37,18 @@ public abstract class AddCustomFieldParams extends PostParams {
 
     public AddCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
         for (Long applicableIssueType :applicableIssueTypes) {
-            parameters.add(new BasicNameValuePair("applicableIssueTypes[]", String.valueOf(applicableIssueType)));
+            parameters.add(new NameValuePair("applicableIssueTypes[]", String.valueOf(applicableIssueType)));
         }
         return this;
     }
 
     public AddCustomFieldParams description(String description) {
-        parameters.add(new BasicNameValuePair("description", description));
+        parameters.add(new NameValuePair("description", description));
         return this;
     }
 
     public AddCustomFieldParams required(boolean required) {
-        parameters.add(new BasicNameValuePair("required", String.valueOf(required)));
+        parameters.add(new NameValuePair("required", String.valueOf(required)));
         return this;
     }
 

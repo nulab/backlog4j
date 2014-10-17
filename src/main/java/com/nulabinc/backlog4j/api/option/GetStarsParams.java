@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for get stars API.
@@ -10,12 +10,12 @@ import org.apache.http.message.BasicNameValuePair;
 public class GetStarsParams extends GetParams {
 
     public GetStarsParams since(String since) {
-        parameters.add(new BasicNameValuePair("since", since));
+        parameters.add(new NameValuePair("since", since));
         return this;
     }
 
     public GetStarsParams until(String until) {
-        parameters.add(new BasicNameValuePair("until", until));
+        parameters.add(new NameValuePair("until", until));
         return this;
     }
 }

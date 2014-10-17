@@ -7,12 +7,12 @@ import com.nulabinc.backlog4j.api.option.QueryParams;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.auth.OAuthSupport;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
+import com.nulabinc.backlog4j.http.BacklogHttpClientImpl;
 import com.nulabinc.backlog4j.internal.InternalFactory;
-import com.nulabinc.backlog4j.http.ApacheBacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.InternalFactoryJSONImpl;
-import org.apache.http.NameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public abstract class BacklogClientBase {
 
     public BacklogClientBase(BacklogConfigure configure) {
         this.configure = configure;
-        this.httpClient = new ApacheBacklogHttpClient();
+        this.httpClient = new BacklogHttpClientImpl();
         configureHttpClient();
 
     }

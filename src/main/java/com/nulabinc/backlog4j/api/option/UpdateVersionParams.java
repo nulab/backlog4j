@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for update version API.
@@ -16,13 +16,13 @@ public class UpdateVersionParams extends PatchParams {
     public UpdateVersionParams(long projectId, long versionId, String name) {
         this.projectId = projectId;
         this.versionId = versionId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public UpdateVersionParams(String projectKey, long versionId, String name) {
         this.projectKey = projectKey;
         this.versionId = versionId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
         ;
     }
 
@@ -39,22 +39,22 @@ public class UpdateVersionParams extends PatchParams {
     }
 
     public UpdateVersionParams description(String description) {
-        parameters.add(new BasicNameValuePair("description", description));
+        parameters.add(new NameValuePair("description", description));
         return this;
     }
 
     public UpdateVersionParams startDate(String startDate) {
-        parameters.add(new BasicNameValuePair("startDate", startDate));
+        parameters.add(new NameValuePair("startDate", startDate));
         return this;
     }
 
     public UpdateVersionParams releaseDueDate(String releaseDueDate) {
-        parameters.add(new BasicNameValuePair("releaseDueDate", releaseDueDate));
+        parameters.add(new NameValuePair("releaseDueDate", releaseDueDate));
         return this;
     }
 
     public UpdateVersionParams archived(boolean archived) {
-        parameters.add(new BasicNameValuePair("archived", String.valueOf(archived)));
+        parameters.add(new NameValuePair("archived", String.valueOf(archived)));
         return this;
     }
 }

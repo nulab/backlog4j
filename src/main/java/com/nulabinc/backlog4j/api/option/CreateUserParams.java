@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.User;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for create user API.
@@ -13,10 +13,10 @@ public class CreateUserParams extends PostParams {
     public CreateUserParams(String userId, String password,
                                  String name, String mailAddress,
                                  User.RoleType roleType){
-        parameters.add(new BasicNameValuePair("userId", userId));
-        parameters.add(new BasicNameValuePair("password", password));
-        parameters.add(new BasicNameValuePair("name", name));
-        parameters.add(new BasicNameValuePair("mailAddress", mailAddress));
-        parameters.add(new BasicNameValuePair("roleType", String.valueOf(roleType.getIntValue())));
+        parameters.add(new NameValuePair("userId", userId));
+        parameters.add(new NameValuePair("password", password));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("mailAddress", mailAddress));
+        parameters.add(new NameValuePair("roleType", String.valueOf(roleType.getIntValue())));
     }
 }

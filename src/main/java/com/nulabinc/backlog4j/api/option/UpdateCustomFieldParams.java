@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -38,24 +38,24 @@ public abstract class UpdateCustomFieldParams extends PatchParams {
     }
 
     public UpdateCustomFieldParams name(String name) {
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
         return this;
     }
 
     public UpdateCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
         for (Long applicableIssueType :applicableIssueTypes) {
-            parameters.add(new BasicNameValuePair("applicableIssueTypes[]", String.valueOf(applicableIssueType)));
+            parameters.add(new NameValuePair("applicableIssueTypes[]", String.valueOf(applicableIssueType)));
         }
         return this;
     }
 
     public UpdateCustomFieldParams description(String description) {
-        parameters.add(new BasicNameValuePair("description", description));
+        parameters.add(new NameValuePair("description", description));
         return this;
     }
 
     public UpdateCustomFieldParams required(boolean required) {
-        parameters.add(new BasicNameValuePair("required", String.valueOf(required)));
+        parameters.add(new NameValuePair("required", String.valueOf(required)));
         return this;
     }
 }

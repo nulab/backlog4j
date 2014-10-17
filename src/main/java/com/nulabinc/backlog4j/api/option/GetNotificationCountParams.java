@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for get notification API.
@@ -10,12 +10,12 @@ import org.apache.http.message.BasicNameValuePair;
 public class GetNotificationCountParams extends GetParams {
 
     public GetNotificationCountParams alreadyRead(boolean alreadyRead) {
-        parameters.add(new BasicNameValuePair("alreadyRead", String.valueOf(alreadyRead)));
+        parameters.add(new NameValuePair("alreadyRead", String.valueOf(alreadyRead)));
         return this;
     }
 
     public GetNotificationCountParams resourceAlreadyRead(boolean resourceAlreadyRead) {
-        parameters.add(new BasicNameValuePair("resourceAlreadyRead", String.valueOf(resourceAlreadyRead)));
+        parameters.add(new NameValuePair("resourceAlreadyRead", String.valueOf(resourceAlreadyRead)));
         return this;
     }
 }

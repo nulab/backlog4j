@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.NameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 

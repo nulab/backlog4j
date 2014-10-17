@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Issue;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 import java.util.Map;
@@ -23,10 +23,10 @@ public class CreateIssueParams extends PostParams {
      * @param priority    the priority of the issue
      */
     public CreateIssueParams(long projectId, String summary, long issueTypeId, Issue.PriorityType priority) {
-        parameters.add(new BasicNameValuePair("projectId", String.valueOf(projectId)));
-        parameters.add(new BasicNameValuePair("summary", summary));
-        parameters.add(new BasicNameValuePair("issueTypeId", String.valueOf(issueTypeId)));
-        parameters.add(new BasicNameValuePair("priorityId", String.valueOf(priority.getIntValue())));
+        parameters.add(new NameValuePair("projectId", String.valueOf(projectId)));
+        parameters.add(new NameValuePair("summary", summary));
+        parameters.add(new NameValuePair("issueTypeId", String.valueOf(issueTypeId)));
+        parameters.add(new NameValuePair("priorityId", String.valueOf(priority.getIntValue())));
     }
 
     /**
@@ -36,7 +36,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams parentIssueId(long parentIssueId) {
-        parameters.add(new BasicNameValuePair("parentIssueId", String.valueOf(parentIssueId)));
+        parameters.add(new NameValuePair("parentIssueId", String.valueOf(parentIssueId)));
         return this;
     }
 
@@ -47,7 +47,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams description(String description) {
-        parameters.add(new BasicNameValuePair("description", String.valueOf(description)));
+        parameters.add(new NameValuePair("description", String.valueOf(description)));
         return this;
     }
 
@@ -58,7 +58,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams startDate(String startDate) {
-        parameters.add(new BasicNameValuePair("startDate", String.valueOf(startDate)));
+        parameters.add(new NameValuePair("startDate", String.valueOf(startDate)));
         return this;
     }
 
@@ -69,7 +69,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams dueDate(String dueDate) {
-        parameters.add(new BasicNameValuePair("dueDate", String.valueOf(dueDate)));
+        parameters.add(new NameValuePair("dueDate", String.valueOf(dueDate)));
         return this;
     }
 
@@ -80,7 +80,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams estimatedHours(float estimatedHours) {
-        parameters.add(new BasicNameValuePair("estimatedHours", String.valueOf(estimatedHours)));
+        parameters.add(new NameValuePair("estimatedHours", String.valueOf(estimatedHours)));
         return this;
 
     }
@@ -92,7 +92,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams actualHours(float actualHours) {
-        parameters.add(new BasicNameValuePair("actualHours", String.valueOf(actualHours)));
+        parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
         return this;
     }
 
@@ -104,7 +104,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams categoryIds(List<Long> categoryIds) {
         for (Long categoryId : categoryIds) {
-            parameters.add(new BasicNameValuePair("categoryId[]", categoryId.toString()));
+            parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
         }
         return this;
     }
@@ -117,7 +117,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams versionIds(List<Long> versionIds) {
         for (Long versionId : versionIds) {
-            parameters.add(new BasicNameValuePair("versionId[]", versionId.toString()));
+            parameters.add(new NameValuePair("versionId[]", versionId.toString()));
         }
         return this;
     }
@@ -130,7 +130,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams milestoneIds(List<Long> milestoneIds) {
         for (Long milestoneId : milestoneIds) {
-            parameters.add(new BasicNameValuePair("milestoneId[]", milestoneId.toString()));
+            parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
         }
         return this;
     }
@@ -142,7 +142,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams assigneeId(long assigneeId) {
-        parameters.add(new BasicNameValuePair("assigneeId", String.valueOf(assigneeId)));
+        parameters.add(new NameValuePair("assigneeId", String.valueOf(assigneeId)));
         return this;
 
     }
@@ -155,7 +155,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams notifiedUserIds(List<Long> notifiedUserIds) {
         for (Long notifiedUserId : notifiedUserIds) {
-            parameters.add(new BasicNameValuePair("notifiedUserId[]", notifiedUserId.toString()));
+            parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
         }
         return this;
 
@@ -169,7 +169,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams attachmentIds(List<Long> attachmentIds) {
         for (Long attachmentId : attachmentIds) {
-            parameters.add(new BasicNameValuePair("attachmentId[]", attachmentId.toString()));
+            parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
         }
         return this;
     }
@@ -182,7 +182,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams textCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -196,7 +196,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams textCustomFieldMap(Map<Long, String> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
         }
         return this;
     }
@@ -209,7 +209,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams textAreaCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -223,7 +223,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams textAreaCustomFieldMap(Map<Long, String> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
         }
         return this;
     }
@@ -236,7 +236,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -250,7 +250,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
         }
         return this;
     }
@@ -263,7 +263,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -277,7 +277,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams dateCustomFieldMap(Map<Long, String> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
         }
         return this;
     }
@@ -290,7 +290,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldItemId)));
         return this;
     }
@@ -304,7 +304,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams singleListCustomFieldMap(Map<Long, Long> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
         }
         return this;
     }
@@ -329,7 +329,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams radioCustomFieldMap(Map<Long, Long> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
         }
         return this;
     }
@@ -343,7 +343,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
         for (Long customFieldItemId : customFieldItemIds) {
-            parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId),
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                     String.valueOf(customFieldItemId)));
         }
         return this;
@@ -359,7 +359,7 @@ public class CreateIssueParams extends PostParams {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
             for (Long value : customFieldMap.get(key)) {
-                parameters.add(new BasicNameValuePair("customField_" + key.toString(), value.toString()));
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
             }
         }
         return this;
@@ -386,7 +386,7 @@ public class CreateIssueParams extends PostParams {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
             for (Long value : customFieldMap.get(key)) {
-                parameters.add(new BasicNameValuePair("customField_" + key.toString(), value.toString()));
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
             }
         }
         return this;
@@ -400,7 +400,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams customFieldOtherValue(long customFieldId, String otherValue) {
-        parameters.add(new BasicNameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
                 otherValue));
         return this;
     }
@@ -414,7 +414,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams customFieldOtherValueMap(Map<Long, String> customFieldOtherValueMap) {
         Set<Long> keySet = customFieldOtherValueMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new BasicNameValuePair("customField_" + key.toString() + "_otherValue", customFieldOtherValueMap.get(key)));
+            parameters.add(new NameValuePair("customField_" + key.toString() + "_otherValue", customFieldOtherValueMap.get(key)));
         }
         return this;
     }

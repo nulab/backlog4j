@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -20,22 +20,22 @@ public class UpdateNumericCustomFieldParams extends UpdateCustomFieldParams {
     }
 
     public UpdateNumericCustomFieldParams min(float min) {
-        parameters.add(new BasicNameValuePair("min", String.valueOf(min)));
+        parameters.add(new NameValuePair("min", String.valueOf(min)));
         return this;
     }
 
     public UpdateNumericCustomFieldParams max(float max) {
-        parameters.add(new BasicNameValuePair("max", String.valueOf(max)));
+        parameters.add(new NameValuePair("max", String.valueOf(max)));
         return this;
     }
 
     public UpdateNumericCustomFieldParams initialValue(float initialValue) {
-        parameters.add(new BasicNameValuePair("initialValue", String.valueOf(initialValue)));
+        parameters.add(new NameValuePair("initialValue", String.valueOf(initialValue)));
         return this;
     }
 
     public UpdateNumericCustomFieldParams unit(String unit) {
-        parameters.add(new BasicNameValuePair("unit", unit));
+        parameters.add(new NameValuePair("unit", unit));
         return this;
     }
 

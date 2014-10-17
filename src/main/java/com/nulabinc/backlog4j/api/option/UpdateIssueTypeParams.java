@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Project;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for update issue type API.
@@ -33,12 +33,12 @@ public class UpdateIssueTypeParams extends PatchParams {
     }
 
     public UpdateIssueTypeParams name(String name) {
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
         return this;
     }
 
     public UpdateIssueTypeParams color(Project.IssueTypeColor color) {
-        parameters.add(new BasicNameValuePair("color", color.getStrValue()));
+        parameters.add(new NameValuePair("color", color.getStrValue()));
         return this;
     }
 

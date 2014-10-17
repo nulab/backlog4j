@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for add version API.
@@ -14,12 +14,12 @@ public class AddVersionParams extends PostParams {
 
     public AddVersionParams(long projectId, String name) {
         this.projectId = projectId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public AddVersionParams(String projectKey, String name) {
         this.projectKey = projectKey;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public String getProjectIdOrKeyString() {
@@ -31,17 +31,17 @@ public class AddVersionParams extends PostParams {
     }
 
     public AddVersionParams description(String description) {
-        parameters.add(new BasicNameValuePair("description", description));
+        parameters.add(new NameValuePair("description", description));
         return this;
     }
 
     public AddVersionParams startDate(String startDate) {
-        parameters.add(new BasicNameValuePair("startDate", startDate));
+        parameters.add(new NameValuePair("startDate", startDate));
         return this;
     }
 
     public AddVersionParams releaseDueDate(String releaseDueDate) {
-        parameters.add(new BasicNameValuePair("releaseDueDate", releaseDueDate));
+        parameters.add(new NameValuePair("releaseDueDate", releaseDueDate));
         return this;
     }
 }

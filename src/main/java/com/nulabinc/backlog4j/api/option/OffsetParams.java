@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for offset.
@@ -33,17 +33,17 @@ public class OffsetParams extends GetParams{
     }
 
     public OffsetParams offset(int offset) {
-        parameters.add(new BasicNameValuePair("offset", String.valueOf(offset)));
+        parameters.add(new NameValuePair("offset", String.valueOf(offset)));
         return this;
     }
 
     public OffsetParams count(int count) {
-        parameters.add(new BasicNameValuePair("count", String.valueOf(count)));
+        parameters.add(new NameValuePair("count", String.valueOf(count)));
         return this;
     }
 
     public OffsetParams order(Order order) {
-        parameters.add(new BasicNameValuePair("order", order.getStrValue()));
+        parameters.add(new NameValuePair("order", order.getStrValue()));
         return this;
     }
 

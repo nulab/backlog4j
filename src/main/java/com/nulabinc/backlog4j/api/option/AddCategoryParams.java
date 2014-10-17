@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for add category API.
@@ -20,7 +20,7 @@ public class AddCategoryParams extends PostParams {
      */
     public AddCategoryParams(long projectId, String name) {
         this.projectId = projectId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     /**
@@ -31,7 +31,7 @@ public class AddCategoryParams extends PostParams {
      */
     public AddCategoryParams(String projectKey, String name) {
         this.projectKey = projectKey;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     /**

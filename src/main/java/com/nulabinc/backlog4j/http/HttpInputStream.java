@@ -1,7 +1,5 @@
 package com.nulabinc.backlog4j.http;
 
-import org.apache.http.conn.ClientConnectionManager;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -9,11 +7,9 @@ import java.io.InputStream;
  * @author nulab-inc
  */
 public class HttpInputStream extends InputStream {
-    private ClientConnectionManager clientConnectionManager;
     protected InputStream inputStream;
 
-    public HttpInputStream(InputStream inputStream, ClientConnectionManager clientConnectionManager) {
-        this.clientConnectionManager = clientConnectionManager;
+    public HttpInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
     }
 
@@ -41,7 +37,6 @@ public class HttpInputStream extends InputStream {
     @Override
     public void close() throws IOException {
         inputStream.close();
-        clientConnectionManager.shutdown();
     }
 
     @Override

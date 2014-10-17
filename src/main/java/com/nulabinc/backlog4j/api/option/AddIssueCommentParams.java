@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class AddIssueCommentParams extends PostParams {
      */
     public AddIssueCommentParams(long issueId, String content) {
         this.issueId = issueId;
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("content", content));
     }
 
     /**
@@ -33,7 +33,7 @@ public class AddIssueCommentParams extends PostParams {
      */
     public AddIssueCommentParams(String issueKey, String content) {
         this.issueKey = issueKey;
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("content", content));
     }
 
     /**
@@ -57,7 +57,7 @@ public class AddIssueCommentParams extends PostParams {
      */
     public AddIssueCommentParams notifiedUserIds(List<Long> notifiedUserIds) {
         for (Long notifiedUserId : notifiedUserIds) {
-            parameters.add(new BasicNameValuePair("notifiedUserId[]", String.valueOf(notifiedUserId)));
+            parameters.add(new NameValuePair("notifiedUserId[]", String.valueOf(notifiedUserId)));
         }
         return this;
     }
@@ -70,7 +70,7 @@ public class AddIssueCommentParams extends PostParams {
      */
     public AddIssueCommentParams attachmentIds(List<Long> attachmentIds) {
         for (Long attachmentId : attachmentIds) {
-            parameters.add(new BasicNameValuePair("attachmentId[]", String.valueOf(attachmentId)));
+            parameters.add(new NameValuePair("attachmentId[]", String.valueOf(attachmentId)));
         }
         return this;
     }

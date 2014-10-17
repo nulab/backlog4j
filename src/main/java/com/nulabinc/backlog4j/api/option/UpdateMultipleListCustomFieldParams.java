@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -22,21 +22,21 @@ public class UpdateMultipleListCustomFieldParams extends UpdateCustomFieldParams
     public UpdateMultipleListCustomFieldParams items(List<String> items) {
         if(items != null && items.size() > 0) {
             for (String item : items) {
-                parameters.add(new BasicNameValuePair("items[]", item));
+                parameters.add(new NameValuePair("items[]", item));
             }
         }else{
-            parameters.add(new BasicNameValuePair("items[]", ""));
+            parameters.add(new NameValuePair("items[]", ""));
         }
         return this;
     }
 
     public UpdateMultipleListCustomFieldParams allowInput(boolean allowInput) {
-        parameters.add(new BasicNameValuePair("allowInput", String.valueOf(allowInput)));
+        parameters.add(new NameValuePair("allowInput", String.valueOf(allowInput)));
         return this;
     }
 
     public UpdateMultipleListCustomFieldParams allowAddItem(boolean allowAddItem) {
-        parameters.add(new BasicNameValuePair("allowAddItem", String.valueOf(allowAddItem)));
+        parameters.add(new NameValuePair("allowAddItem", String.valueOf(allowAddItem)));
         return this;
     }
 

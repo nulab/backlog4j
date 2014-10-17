@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Issue;
-import org.apache.http.NameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;

@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for update issue comment API.
@@ -15,13 +15,13 @@ public class UpdateIssueCommentParams extends PatchParams {
     public UpdateIssueCommentParams(long issueId, long commentId, String content) {
         this.issueId = issueId;
         this.commentId = commentId;
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("content", content));
     }
 
     public UpdateIssueCommentParams(String issueKey, long commentId, String content) {
         this.issueKey = issueKey;
         this.commentId = commentId;
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("content", content));
     }
 
     public long getCommentId() {

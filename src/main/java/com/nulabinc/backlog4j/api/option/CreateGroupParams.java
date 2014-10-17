@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import java.util.List;
 public class CreateGroupParams extends PostParams {
 
     public CreateGroupParams(String name){
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public CreateGroupParams members(List<Long> members) {
         for (Long member : members) {
-            parameters.add(new BasicNameValuePair("members[]", member.toString()));
+            parameters.add(new NameValuePair("members[]", member.toString()));
         }
         return this;
     }

@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class AddWikiAttachmentParams extends PostParams {
     public AddWikiAttachmentParams(long wikiId, List<Long> attachmentIds){
         this.wikiId = wikiId;
         for (Long attachmentId : attachmentIds) {
-            parameters.add(new BasicNameValuePair("attachmentId[]", String.valueOf(attachmentId)));
+            parameters.add(new NameValuePair("attachmentId[]", String.valueOf(attachmentId)));
         }
     }
 

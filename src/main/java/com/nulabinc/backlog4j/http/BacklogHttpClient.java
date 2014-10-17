@@ -3,7 +3,7 @@ package com.nulabinc.backlog4j.http;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.api.option.GetParams;
 import com.nulabinc.backlog4j.api.option.QueryParams;
-import org.apache.http.NameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 import java.util.Map;

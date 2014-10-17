@@ -1,36 +1,26 @@
 package com.nulabinc.backlog4j.http;
 
 import com.nulabinc.backlog4j.BacklogAPIException;
-import com.nulabinc.backlog4j.internal.http.MimeHelper;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.entity.mime.MIME;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
- * @author nulab-inc
+ * Created by yuhkim on 2014/10/17.
  */
-public class ApacheBacklogHttpResponse implements BacklogHttpResponse{
+public class BacklogHttpResponseImpl implements BacklogHttpResponse {
+    private HttpURLConnection urlConnection;
     private InputStream inputStream;
     private int statusCode;
     private String responseAsString = null;
-    private HttpResponse httpResponse;
-    private boolean proceedInputStream = false;
 
-    public ApacheBacklogHttpResponse(HttpResponse httpResponse, ClientConnectionManager clientConnectionManager) {
-        this.httpResponse = httpResponse;
-        statusCode = httpResponse.getStatusLine().getStatusCode();
-
+    public BacklogHttpResponseImpl(HttpURLConnection urlConnection) {
         try {
-            HttpEntity entity = httpResponse.getEntity();
-            if (entity != null) {
-                inputStream = entity.getContent();
-            }
+            this.urlConnection = urlConnection;
+            this.statusCode = urlConnection.getResponseCode();
+            this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
         } catch (IOException e) {
-            throw new BacklogAPIException(e);
+            this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
         }
     }
 
@@ -38,14 +28,13 @@ public class ApacheBacklogHttpResponse implements BacklogHttpResponse{
         return statusCode;
     }
 
-    public InputStream asInputStream(){
+    public InputStream asInputStream() {
         return this.inputStream;
     }
 
     public String asString() {
-        if (!proceedInputStream && inputStream != null) {
+        if (responseAsString == null && inputStream != null) {
             responseAsString = convertStreamToString();
-            proceedInputStream = true;
         }
         return responseAsString;
     }
@@ -79,9 +68,16 @@ public class ApacheBacklogHttpResponse implements BacklogHttpResponse{
     }
 
     public String getFileNameFromContentDisposition() {
-        Header header = httpResponse.getFirstHeader(MIME.CONTENT_DISPOSITION);
-        if (header == null) return null;
-        return MimeHelper.decodeContentDispositionFilename(header.getValue());
-    }
+        String disposition = this.urlConnection.getHeaderField("Content-Disposition");
 
+        if (disposition != null) {
+            int index = disposition.indexOf("filename=");
+            if (index > 0) {
+                return disposition.substring(index + 10,
+                        disposition.length() - 1);
+            }
+        }
+
+        return null;
+    }
 }

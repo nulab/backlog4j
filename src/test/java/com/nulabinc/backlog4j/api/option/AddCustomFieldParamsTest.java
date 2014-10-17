@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.internal.json.customFields.DateCustomFieldSetting;
-import org.apache.http.NameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.Test;
 
 import java.util.Arrays;

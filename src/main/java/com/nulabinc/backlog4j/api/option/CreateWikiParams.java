@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for create wiki API.
@@ -10,13 +10,13 @@ import org.apache.http.message.BasicNameValuePair;
 public class CreateWikiParams extends PostParams {
 
     public CreateWikiParams(long projectId, String name, String content) {
-        parameters.add(new BasicNameValuePair("projectId", String.valueOf(projectId)));
-        parameters.add(new BasicNameValuePair("name", name));
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("projectId", String.valueOf(projectId)));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("content", content));
     }
 
     public CreateWikiParams mailNotify(boolean mailNotify) {
-        parameters.add(new BasicNameValuePair("mailNotify", String.valueOf(mailNotify)));
+        parameters.add(new NameValuePair("mailNotify", String.valueOf(mailNotify)));
         return this;
     }
 }

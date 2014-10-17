@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Project;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for create project API.
@@ -14,10 +14,10 @@ public class CreateProjectParams extends PostParams {
                                boolean chartEnabled, boolean subtaskingEnabled,
                                Project.TextFormattingRule textFormattingRule){
 
-        parameters.add(new BasicNameValuePair("name", name));
-        parameters.add(new BasicNameValuePair("key", projectKey));
-        parameters.add(new BasicNameValuePair("chartEnabled", String.valueOf(chartEnabled)));
-        parameters.add(new BasicNameValuePair("subtaskingEnabled", String.valueOf(subtaskingEnabled)));
-        parameters.add(new BasicNameValuePair("textFormattingRule", textFormattingRule.getStrValue()));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("key", projectKey));
+        parameters.add(new NameValuePair("chartEnabled", String.valueOf(chartEnabled)));
+        parameters.add(new NameValuePair("subtaskingEnabled", String.valueOf(subtaskingEnabled)));
+        parameters.add(new NameValuePair("textFormattingRule", textFormattingRule.getStrValue()));
     }
 }

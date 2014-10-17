@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Project;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for add issue type API.
@@ -14,13 +14,13 @@ public class AddIssueTypeParams extends PostParams {
 
     public AddIssueTypeParams(long projectId, String name, Project.IssueTypeColor color){
         this.projectId = projectId;
-        parameters.add(new BasicNameValuePair("name", name));
-        parameters.add(new BasicNameValuePair("color", color.getStrValue()));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("color", color.getStrValue()));
     }
 
     public AddIssueTypeParams(String projectKey, String name, Project.IssueTypeColor color){
-        parameters.add(new BasicNameValuePair("name", name));
-        parameters.add(new BasicNameValuePair("color", color.getStrValue()));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("color", color.getStrValue()));
         this.projectKey = projectKey;
     }
 

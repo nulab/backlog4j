@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for update category API.
@@ -16,13 +16,13 @@ public class UpdateCategoryParams extends PatchParams {
     public UpdateCategoryParams(long projectId, long categoryId, String name) {
         this.projectId = projectId;
         this.categoryId = categoryId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
     }
 
     public UpdateCategoryParams(String projectKey, long categoryId, String name) {
         this.projectKey = projectKey;
         this.categoryId = categoryId;
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
         ;
     }
 

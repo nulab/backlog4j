@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for get wiki page API.
@@ -11,10 +11,10 @@ public class GetWikisParams extends GetParams {
 
 
     public GetWikisParams(long projectId) {
-        parameters.add(new BasicNameValuePair("projectIdOrKey", String.valueOf(projectId)));
+        parameters.add(new NameValuePair("projectIdOrKey", String.valueOf(projectId)));
     }
 
     public GetWikisParams(String projectKey) {
-        parameters.add(new BasicNameValuePair("projectIdOrKey", projectKey));
+        parameters.add(new NameValuePair("projectIdOrKey", projectKey));
     }
 }

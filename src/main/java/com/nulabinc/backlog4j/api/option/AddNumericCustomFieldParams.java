@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.CustomFieldSetting;
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
 
@@ -21,22 +21,22 @@ public class AddNumericCustomFieldParams extends AddCustomFieldParams {
     }
 
     public AddNumericCustomFieldParams min(float min) {
-        parameters.add(new BasicNameValuePair("min", String.valueOf(min)));
+        parameters.add(new NameValuePair("min", String.valueOf(min)));
         return this;
     }
 
     public AddNumericCustomFieldParams max(float max) {
-        parameters.add(new BasicNameValuePair("max", String.valueOf(max)));
+        parameters.add(new NameValuePair("max", String.valueOf(max)));
         return this;
     }
 
     public AddNumericCustomFieldParams initialValue(float initialValue) {
-        parameters.add(new BasicNameValuePair("initialValue", String.valueOf(initialValue)));
+        parameters.add(new NameValuePair("initialValue", String.valueOf(initialValue)));
         return this;
     }
 
     public AddNumericCustomFieldParams unit(String unit) {
-        parameters.add(new BasicNameValuePair("unit", unit));
+        parameters.add(new NameValuePair("unit", unit));
         return this;
     }
 

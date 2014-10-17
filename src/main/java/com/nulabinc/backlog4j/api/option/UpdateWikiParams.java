@@ -1,6 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
  * Parameters for update wiki page API.
@@ -20,17 +20,17 @@ public class UpdateWikiParams extends PatchParams {
     }
 
     public UpdateWikiParams name(String name) {
-        parameters.add(new BasicNameValuePair("name", name));
+        parameters.add(new NameValuePair("name", name));
         return this;
     }
 
     public UpdateWikiParams content(String content) {
-        parameters.add(new BasicNameValuePair("content", content));
+        parameters.add(new NameValuePair("content", content));
         return this;
     }
 
     public UpdateWikiParams mailNotify(String mailNotify) {
-        parameters.add(new BasicNameValuePair("mailNotify", mailNotify));
+        parameters.add(new NameValuePair("mailNotify", mailNotify));
         return this;
     }
 }
