@@ -68,6 +68,8 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "POST", CONTENT_TYPE);
+        urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
         writeParams(urlConnection, postParams);
         return new BacklogHttpResponseImpl(urlConnection);
 
@@ -77,6 +79,8 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "PATCH", CONTENT_TYPE);
+        urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
         writeParams(urlConnection, patchParams);
         return new BacklogHttpResponseImpl(urlConnection);
     }
@@ -85,6 +89,8 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse put(String endpoint, List<NameValuePair> patchParams) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "PUT", CONTENT_TYPE);
+        urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
         writeParams(urlConnection, patchParams);
         return new BacklogHttpResponseImpl(urlConnection);
     }
@@ -93,6 +99,8 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "DELETE", CONTENT_TYPE);
+        urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         if (param != null) {
             params.add(param);
@@ -107,6 +115,8 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
 
         String boundary = "*******";
         HttpURLConnection urlConnection = openUrlConnection(url, "POST", "multipart/form-data; boundary=" + boundary);
+        urlConnection.setDoInput(true);
+        urlConnection.setDoOutput(true);
 
         writeMultiPartParams(urlConnection, postParams, boundary);
         return new BacklogHttpResponseImpl(urlConnection);
@@ -125,11 +135,10 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     private HttpURLConnection openUrlConnection(String url, String method, String contentType) {
         HttpURLConnection urlConnection;
         try {
+            System.out.println(url);
             urlConnection = (HttpURLConnection) new URL(url).openConnection();
 
             urlConnection.setUseCaches(false);
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
 
             urlConnection.setRequestProperty("Connection", "Keep-Alive");
             urlConnection.setRequestProperty("Cache-Control", "no-cache");
