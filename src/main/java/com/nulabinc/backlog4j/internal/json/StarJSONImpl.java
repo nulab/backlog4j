@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -55,14 +56,37 @@ public class StarJSONImpl implements Star {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Star) {
-            Star other = (Star)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        StarJSONImpl rhs = (StarJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.comment, rhs.comment)
+                .append(this.url, rhs.url)
+                .append(this.title, rhs.title)
+                .append(this.presenter, rhs.presenter)
+                .append(this.created, rhs.created)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(comment)
+                .append(url)
+                .append(title)
+                .append(presenter)
+                .append(created)
+                .toHashCode();
     }
 
     @Override

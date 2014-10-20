@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Priority;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -31,13 +32,28 @@ public class PriorityJSONImpl implements Priority {
 
     @Override
     public boolean equals(Object obj) {
-        boolean result = false;
-        if (obj instanceof Priority) {
-            Priority other = (Priority) obj;
-            result = new EqualsBuilder().append(id, other.getId())
-                    .isEquals();
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        PriorityJSONImpl rhs = (PriorityJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .toHashCode();
     }
 
     @Override

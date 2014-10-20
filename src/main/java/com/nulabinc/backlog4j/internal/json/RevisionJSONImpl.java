@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Revision;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -23,15 +24,31 @@ public class RevisionJSONImpl implements Revision {
         return comment;
     }
 
+
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Revision) {
-            Revision other = (Revision)obj;
-            result = new EqualsBuilder().append( rev, other.getRev() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        RevisionJSONImpl rhs = (RevisionJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.rev, rhs.rev)
+                .append(this.comment, rhs.comment)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(rev)
+                .append(comment)
+                .toHashCode();
     }
 
     @Override

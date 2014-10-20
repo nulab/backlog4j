@@ -7,6 +7,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Count;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -21,14 +22,27 @@ public class CountJSONImpl implements Count {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof User) {
-            Count other = (Count)obj;
-            result = new EqualsBuilder().append( count, other.getCount() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        CountJSONImpl rhs = (CountJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.count, rhs.count)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(count)
+                .toHashCode();
     }
 
     @Override

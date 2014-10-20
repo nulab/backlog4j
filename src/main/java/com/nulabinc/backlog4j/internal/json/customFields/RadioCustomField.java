@@ -1,5 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -30,12 +32,41 @@ public class RadioCustomField extends CustomFieldJSONImpl {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        RadioCustomField rhs = (RadioCustomField) obj;
+        return new EqualsBuilder()
+                .append(this.fieldTypeId, rhs.fieldTypeId)
+                .append(this.value, rhs.value)
+                .append(this.otherValue, rhs.otherValue)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(fieldTypeId)
+                .append(value)
+                .append(otherValue)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("fieldTypeId", fieldTypeId)
                 .append("value", value)
                 .append("otherValue", otherValue)
                 .toString();
     }
+
+
 }

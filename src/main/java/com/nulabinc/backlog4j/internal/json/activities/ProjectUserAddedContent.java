@@ -7,6 +7,8 @@ import com.nulabinc.backlog4j.GroupProjectActivity;
 import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.internal.json.GroupProjectActivityJSONImpl;
 import com.nulabinc.backlog4j.internal.json.UserJSONImpl;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -37,9 +39,36 @@ public class ProjectUserAddedContent extends Content {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ProjectUserAddedContent rhs = (ProjectUserAddedContent) obj;
+        return new EqualsBuilder()
+                .append(this.users, rhs.users)
+                .append(this.comment, rhs.comment)
+                .append(this.groupProjectActivities, rhs.groupProjectActivities)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(users)
+                .append(comment)
+                .append(groupProjectActivities)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("users", users)
                 .append("comment", comment)
                 .append("groupProjectActivities", groupProjectActivities)

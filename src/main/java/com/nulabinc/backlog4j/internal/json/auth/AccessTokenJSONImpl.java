@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nulabinc.backlog4j.Attachment;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -46,21 +47,38 @@ public class AccessTokenJSONImpl extends AccessToken {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof AccessToken) {
-            AccessToken other = (AccessToken)obj;
-            result = new EqualsBuilder().append( type, other.getType() )
-                    .append( token, other.getToken() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        AccessTokenJSONImpl rhs = (AccessTokenJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.type, rhs.type)
+                .append(this.token, rhs.token)
+                .append(this.expires, rhs.expires)
+                .append(this.refresh, rhs.refresh)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(type)
+                .append(token)
+                .append(expires)
+                .append(refresh)
+                .toHashCode();
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("type", type)
                 .append("token", token)
                 .append("expires", expires)

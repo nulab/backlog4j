@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Milestone;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -55,14 +56,39 @@ public class MilestoneJSONImpl implements Milestone {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Milestone) {
-            Milestone other = (Milestone)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        MilestoneJSONImpl rhs = (MilestoneJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.projectId, rhs.projectId)
+                .append(this.name, rhs.name)
+                .append(this.description, rhs.description)
+                .append(this.startDate, rhs.startDate)
+                .append(this.releaseDueDate, rhs.releaseDueDate)
+                .append(this.archived, rhs.archived)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(projectId)
+                .append(name)
+                .append(description)
+                .append(startDate)
+                .append(releaseDueDate)
+                .append(archived)
+                .toHashCode();
     }
 
     @Override

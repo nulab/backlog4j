@@ -63,4 +63,23 @@ public class IssueJSONImplTest extends AbstractJSONImplTest{
         assertEquals(issue1, issue2);
 
     }
+
+
+    @Test
+    public void hashCodeTest1() throws IOException {
+        String fileContentStr = getJsonString("json/issue.json");
+        Issue issue1 = factory.createIssue(fileContentStr);
+        Issue issue2 = factory.createIssue(fileContentStr);
+        assertEquals(issue1.hashCode(), issue2.hashCode());
+
+    }
+
+    @Test
+    public void hashCodeTest2() throws IOException {
+        String fileContentStr = getJsonString("json/custom_field_issue.json");
+        Issue issue1 = factory.createIssue(fileContentStr);
+        Issue issue2 = factory.createIssue(fileContentStr);
+        assertEquals(issue1.hashCode(), issue2.hashCode());
+
+    }
 }

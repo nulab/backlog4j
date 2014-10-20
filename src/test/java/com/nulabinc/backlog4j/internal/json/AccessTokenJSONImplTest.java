@@ -32,4 +32,14 @@ public class AccessTokenJSONImplTest extends AbstractJSONImplTest{
 
     }
 
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/access_token.json");
+        AccessToken accessToken1 = factory.createAccessToken(fileContentStr);
+        AccessToken accessToken2 = factory.createAccessToken(fileContentStr);
+
+        assertEquals(accessToken1.hashCode(), accessToken2.hashCode());
+
+    }
+
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.WikiHistory;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -69,14 +70,41 @@ public class WikiHistoryJSONImpl implements WikiHistory {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof WikiHistory ) {
-            WikiHistory other = (WikiHistory)obj;
-            result = new EqualsBuilder().append( pageId, other.getPageId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        WikiHistoryJSONImpl rhs = (WikiHistoryJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.pageId, rhs.pageId)
+                .append(this.version, rhs.version)
+                .append(this.name, rhs.name)
+                .append(this.content, rhs.content)
+                .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updatedUser, rhs.updatedUser)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(pageId)
+                .append(version)
+                .append(name)
+                .append(content)
+                .append(createdUser)
+                .append(created)
+                .append(updatedUser)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

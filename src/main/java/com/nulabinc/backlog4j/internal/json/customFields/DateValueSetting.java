@@ -2,6 +2,8 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomDateDeserializer;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -27,6 +29,34 @@ public class DateValueSetting {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        DateValueSetting rhs = (DateValueSetting) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.date, rhs.date)
+                .append(this.shift, rhs.shift)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(date)
+                .append(shift)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append("id", id)
@@ -34,4 +64,5 @@ public class DateValueSetting {
                 .append("shift", shift)
                 .toString();
     }
+
 }

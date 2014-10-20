@@ -7,6 +7,8 @@ import com.nulabinc.backlog4j.Repository;
 import com.nulabinc.backlog4j.Revision;
 import com.nulabinc.backlog4j.internal.json.RepositoryJSONImpl;
 import com.nulabinc.backlog4j.internal.json.RevisionJSONImpl;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -54,9 +56,42 @@ public class GitPushedContent extends Content {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        GitPushedContent rhs = (GitPushedContent) obj;
+        return new EqualsBuilder()
+                .append(this.changeType, rhs.changeType)
+                .append(this.ref, rhs.ref)
+                .append(this.revisionType, rhs.revisionType)
+                .append(this.repository, rhs.repository)
+                .append(this.revisions, rhs.revisions)
+                .append(this.revisionCount, rhs.revisionCount)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(changeType)
+                .append(ref)
+                .append(revisionType)
+                .append(repository)
+                .append(revisions)
+                .append(revisionCount)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("changeType", changeType)
                 .append("ref", ref)
                 .append("revisionType", revisionType)

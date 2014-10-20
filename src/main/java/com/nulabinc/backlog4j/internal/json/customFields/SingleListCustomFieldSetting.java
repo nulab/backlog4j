@@ -1,5 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -38,9 +40,38 @@ public class SingleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        SingleListCustomFieldSetting rhs = (SingleListCustomFieldSetting) obj;
+        return new EqualsBuilder()
+                .append(this.typeId, rhs.typeId)
+                .append(this.items, rhs.items)
+                .append(this.allowInput, rhs.allowInput)
+                .append(this.allowAddItem, rhs.allowAddItem)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(typeId)
+                .append(items)
+                .append(allowInput)
+                .append(allowAddItem)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("typeId", typeId)
                 .append("items", items)
                 .append("allowInput", allowInput)

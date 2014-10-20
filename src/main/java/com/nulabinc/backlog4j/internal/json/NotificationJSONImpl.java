@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -80,14 +81,45 @@ public class NotificationJSONImpl implements Notification {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Notification ) {
-            Notification other = (Notification)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        NotificationJSONImpl rhs = (NotificationJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.alreadyRead, rhs.alreadyRead)
+                .append(this.reason, rhs.reason)
+                .append(this.resourceAlreadyRead, rhs.resourceAlreadyRead)
+                .append(this.project, rhs.project)
+                .append(this.issue, rhs.issue)
+                .append(this.comment, rhs.comment)
+                .append(this.sender, rhs.sender)
+                .append(this.user, rhs.user)
+                .append(this.created, rhs.created)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(alreadyRead)
+                .append(reason)
+                .append(resourceAlreadyRead)
+                .append(project)
+                .append(issue)
+                .append(comment)
+                .append(sender)
+                .append(user)
+                .append(created)
+                .toHashCode();
     }
 
     @Override

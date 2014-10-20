@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.Space;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -70,15 +71,45 @@ public class SpaceJSONImpl implements Space {
         return created;
     }
 
+
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Space) {
-            Space other = (Space)obj;
-            result = new EqualsBuilder().append( spaceKey, other.getSpaceKey() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        SpaceJSONImpl rhs = (SpaceJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.spaceKey, rhs.spaceKey)
+                .append(this.name, rhs.name)
+                .append(this.ownerId, rhs.ownerId)
+                .append(this.lang, rhs.lang)
+                .append(this.timezone, rhs.timezone)
+                .append(this.reportSendTime, rhs.reportSendTime)
+                .append(this.textFormattingRule, rhs.textFormattingRule)
+                .append(this.updated, rhs.updated)
+                .append(this.created, rhs.created)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(spaceKey)
+                .append(name)
+                .append(ownerId)
+                .append(lang)
+                .append(timezone)
+                .append(reportSendTime)
+                .append(textFormattingRule)
+                .append(updated)
+                .append(created)
+                .toHashCode();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -26,6 +28,36 @@ public class ListItemSetting {
 
     public int getDisplayOrder() {
         return displayOrder;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ListItemSetting rhs = (ListItemSetting) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .append(this.allowInput, rhs.allowInput)
+                .append(this.displayOrder, rhs.displayOrder)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .append(allowInput)
+                .append(displayOrder)
+                .toHashCode();
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.ViewedProject;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -30,14 +31,29 @@ public class ViewedProjectJSONImpl implements ViewedProject {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof ViewedProject) {
-            ViewedProject other = (ViewedProject)obj;
-            result = new EqualsBuilder().append( project.getId(), other.getProject().getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ViewedProjectJSONImpl rhs = (ViewedProjectJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.project, rhs.project)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(project)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

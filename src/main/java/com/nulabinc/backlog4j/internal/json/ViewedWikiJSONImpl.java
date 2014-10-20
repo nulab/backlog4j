@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.ViewedWiki;
 import com.nulabinc.backlog4j.Wiki;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -30,14 +31,29 @@ public class ViewedWikiJSONImpl implements ViewedWiki {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof ViewedWiki) {
-            ViewedWiki other = (ViewedWiki)obj;
-            result = new EqualsBuilder().append( page.getId(), other.getPage().getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ViewedWikiJSONImpl rhs = (ViewedWikiJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.page, rhs.page)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(page)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

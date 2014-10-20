@@ -2,6 +2,7 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -47,14 +48,37 @@ public class UserJSONImpl implements User {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof User ) {
-            User other = (User)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        UserJSONImpl rhs = (UserJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .append(this.userId, rhs.userId)
+                .append(this.roleType, rhs.roleType)
+                .append(this.lang, rhs.lang)
+                .append(this.mailAddress, rhs.mailAddress)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .append(userId)
+                .append(roleType)
+                .append(lang)
+                .append(mailAddress)
+                .toHashCode();
     }
 
     @Override

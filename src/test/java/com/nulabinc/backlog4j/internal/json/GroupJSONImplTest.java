@@ -28,4 +28,5 @@ public class GroupJSONImplTest extends AbstractJSONImplTest{
 
 
     }
+
 }

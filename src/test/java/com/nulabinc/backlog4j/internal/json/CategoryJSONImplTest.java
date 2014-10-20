@@ -55,4 +55,13 @@ public class CategoryJSONImplTest extends AbstractJSONImplTest{
         assertEquals(category1, category2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/category.json");
+        Category category1 = factory.createCategory(fileContentStr);
+        Category category2 = factory.createCategory(fileContentStr);
+        assertEquals(category1.hashCode(), category2.hashCode());
+
+    }
 }

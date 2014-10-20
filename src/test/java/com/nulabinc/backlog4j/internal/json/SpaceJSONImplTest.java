@@ -43,4 +43,13 @@ public class SpaceJSONImplTest extends AbstractJSONImplTest{
         assertEquals(space1, space2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/space.json");
+        Space space1 = factory.createSpace(fileContentStr);
+        Space space2 = factory.createSpace(fileContentStr);
+        assertEquals(space1.hashCode(), space2.hashCode());
+
+    }
 }

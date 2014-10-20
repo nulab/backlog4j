@@ -77,4 +77,13 @@ public class SharedFileJSONImplTest extends AbstractJSONImplTest{
         assertEquals(sharedFile1, sharedFile2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/shared_file.json");
+        SharedFile sharedFile1 = factory.createSharedFile(fileContentStr);
+        SharedFile sharedFile2 = factory.createSharedFile(fileContentStr);
+        assertEquals(sharedFile1.hashCode(), sharedFile2.hashCode());
+
+    }
 }

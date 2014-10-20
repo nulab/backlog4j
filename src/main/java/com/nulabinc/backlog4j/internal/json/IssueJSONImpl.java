@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldJSONImpl;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
@@ -208,14 +209,81 @@ public class IssueJSONImpl implements Issue {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Issue ) {
-            Issue other = (Issue)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        IssueJSONImpl rhs = (IssueJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.issueKey, rhs.issueKey)
+                .append(this.keyId, rhs.keyId)
+                .append(this.projectId, rhs.projectId)
+                .append(this.issueType, rhs.issueType)
+                .append(this.summary, rhs.summary)
+                .append(this.description, rhs.description)
+                .append(this.resolution, rhs.resolution)
+                .append(this.priority, rhs.priority)
+                .append(this.status, rhs.status)
+                .append(this.assignee, rhs.assignee)
+                .append(this.category, rhs.category)
+                .append(this.versions, rhs.versions)
+                .append(this.milestone, rhs.milestone)
+                .append(this.startDate, rhs.startDate)
+                .append(this.limitDate, rhs.limitDate)
+                .append(this.dueDate, rhs.dueDate)
+                .append(this.estimatedHours, rhs.estimatedHours)
+                .append(this.actualHours, rhs.actualHours)
+                .append(this.parentIssueId, rhs.parentIssueId)
+                .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updatedUser, rhs.updatedUser)
+                .append(this.updated, rhs.updated)
+                .append(this.customFields, rhs.customFields)
+                .append(this.attachments, rhs.attachments)
+                .append(this.sharedFiles, rhs.sharedFiles)
+                .append(this.stars, rhs.stars)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(issueKey)
+                .append(keyId)
+                .append(projectId)
+                .append(issueType)
+                .append(summary)
+                .append(description)
+                .append(resolution)
+                .append(priority)
+                .append(status)
+                .append(assignee)
+                .append(category)
+                .append(versions)
+                .append(milestone)
+                .append(startDate)
+                .append(limitDate)
+                .append(dueDate)
+                .append(estimatedHours)
+                .append(actualHours)
+                .append(parentIssueId)
+                .append(createdUser)
+                .append(created)
+                .append(updatedUser)
+                .append(updated)
+                .append(customFields)
+                .append(attachments)
+                .append(sharedFiles)
+                .append(stars)
+                .toHashCode();
     }
 
     @Override

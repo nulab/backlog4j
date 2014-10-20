@@ -55,4 +55,13 @@ public class CustomFieldJSONImplTest extends AbstractJSONImplTest{
         assertEquals(customFieldSetting1, customFieldSetting2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/custom_field.json");
+        CustomFieldSetting customFieldSetting1 = factory.createCustomField(fileContentStr);
+        CustomFieldSetting customFieldSetting2 = factory.createCustomField(fileContentStr);
+        assertEquals(customFieldSetting1.hashCode(), customFieldSetting2.hashCode());
+
+    }
 }

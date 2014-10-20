@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Resolution;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -29,17 +30,32 @@ public class ResolutionJSONImpl implements Resolution {
         return Issue.ResolutionType.valueOf(this.id);
     }
 
+
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Resolution) {
-            Resolution other = (Resolution)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ResolutionJSONImpl rhs = (ResolutionJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .isEquals();
     }
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .toHashCode();
+    }
 
     @Override
     public String toString() {

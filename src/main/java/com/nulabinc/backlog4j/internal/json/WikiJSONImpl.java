@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -98,14 +99,49 @@ public class WikiJSONImpl implements Wiki {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Wiki ) {
-            Wiki other = (Wiki)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        WikiJSONImpl rhs = (WikiJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.projectId, rhs.projectId)
+                .append(this.name, rhs.name)
+                .append(this.content, rhs.content)
+                .append(this.tags, rhs.tags)
+                .append(this.attachments, rhs.attachments)
+                .append(this.sharedFiles, rhs.sharedFiles)
+                .append(this.stars, rhs.stars)
+                .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updatedUser, rhs.updatedUser)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(projectId)
+                .append(name)
+                .append(content)
+                .append(tags)
+                .append(attachments)
+                .append(sharedFiles)
+                .append(stars)
+                .append(createdUser)
+                .append(created)
+                .append(updatedUser)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

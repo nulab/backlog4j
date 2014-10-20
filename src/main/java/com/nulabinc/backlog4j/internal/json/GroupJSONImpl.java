@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.Group;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -72,14 +73,41 @@ public class GroupJSONImpl implements Group {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Group ) {
-            Group other = (Group)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        GroupJSONImpl rhs = (GroupJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .append(this.members, rhs.members)
+                .append(this.displayOrder, rhs.displayOrder)
+                .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updatedUser, rhs.updatedUser)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .append(members)
+                .append(displayOrder)
+                .append(createdUser)
+                .append(created)
+                .append(updatedUser)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

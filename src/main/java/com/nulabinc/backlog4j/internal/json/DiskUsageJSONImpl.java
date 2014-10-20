@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.DiskUsage;
 import com.nulabinc.backlog4j.DiskUsageDetail;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -57,6 +58,42 @@ public class DiskUsageJSONImpl implements DiskUsage {
     @Override
     public List<DiskUsageDetail> getDetails() {
         return Arrays.asList(details);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        DiskUsageJSONImpl rhs = (DiskUsageJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.capacity, rhs.capacity)
+                .append(this.issue, rhs.issue)
+                .append(this.wiki, rhs.wiki)
+                .append(this.file, rhs.file)
+                .append(this.subversion, rhs.subversion)
+                .append(this.git, rhs.git)
+                .append(this.details, rhs.details)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(capacity)
+                .append(issue)
+                .append(wiki)
+                .append(file)
+                .append(subversion)
+                .append(git)
+                .append(details)
+                .toHashCode();
     }
 
     @Override

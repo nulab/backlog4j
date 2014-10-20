@@ -66,4 +66,14 @@ public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
         assertEquals(issueType1, issueType2);
 
     }
+
+    @Test
+    public void hashCodeTest1() throws IOException {
+        String fileContentStr = getJsonString("json/issue_type.json");
+        IssueType issueType1 = factory.createIssueType(fileContentStr);
+        IssueType issueType2 = factory.createIssueType(fileContentStr);
+        assertEquals(issueType1.hashCode(), issueType2.hashCode());
+
+    }
+
 }

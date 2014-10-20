@@ -47,4 +47,13 @@ public class StarJSONImplTest extends AbstractJSONImplTest{
         assertEquals(star1, star2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/star.json");
+        Star star1 = factory.createStar(fileContentStr);
+        Star star2 = factory.createStar(fileContentStr);
+        assertEquals(star1.hashCode(), star2.hashCode());
+
+    }
 }

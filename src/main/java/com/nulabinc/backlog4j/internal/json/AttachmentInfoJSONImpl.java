@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.AttachmentInfo;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -25,13 +26,28 @@ public class AttachmentInfoJSONImpl implements AttachmentInfo {
 
     @Override
     public boolean equals(Object obj) {
-        boolean result = false;
-        if (obj instanceof AttachmentInfo) {
-            AttachmentInfo other = (AttachmentInfo) obj;
-            result = new EqualsBuilder().append(id, other.getId())
-                    .isEquals();
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        AttachmentInfoJSONImpl rhs = (AttachmentInfoJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .toHashCode();
     }
 
     @Override

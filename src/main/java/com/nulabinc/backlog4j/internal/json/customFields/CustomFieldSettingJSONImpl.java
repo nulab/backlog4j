@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.nulabinc.backlog4j.CustomField;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -57,16 +58,7 @@ public abstract class CustomFieldSettingJSONImpl implements CustomFieldSetting {
         return required;
     }
 
-    @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof CustomFieldSetting) {
-            CustomFieldSetting other = (CustomFieldSetting)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
-        }
-        return result;
-    }
+
 
     @Override
     public String toString() {
@@ -78,5 +70,39 @@ public abstract class CustomFieldSettingJSONImpl implements CustomFieldSetting {
                 .append("description", description)
                 .append("required", required)
                 .toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        CustomFieldSettingJSONImpl rhs = (CustomFieldSettingJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.typeId, rhs.typeId)
+                .append(this.name, rhs.name)
+                .append(this.applicableIssueTypes, rhs.applicableIssueTypes)
+                .append(this.description, rhs.description)
+                .append(this.required, rhs.required)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(typeId)
+                .append(name)
+                .append(applicableIssueTypes)
+                .append(description)
+                .append(required)
+                .toHashCode();
     }
 }

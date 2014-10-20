@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.DiskUsageDetail;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -48,14 +49,37 @@ public class DiskUsageDetailJSONImpl implements DiskUsageDetail {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof DiskUsageDetail) {
-            DiskUsageDetail other = (DiskUsageDetail)obj;
-            result = new EqualsBuilder().append( projectId, other.getProjectId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        DiskUsageDetailJSONImpl rhs = (DiskUsageDetailJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.projectId, rhs.projectId)
+                .append(this.issue, rhs.issue)
+                .append(this.wiki, rhs.wiki)
+                .append(this.file, rhs.file)
+                .append(this.subversion, rhs.subversion)
+                .append(this.git, rhs.git)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(projectId)
+                .append(issue)
+                .append(wiki)
+                .append(file)
+                .append(subversion)
+                .append(git)
+                .toHashCode();
     }
 
     @Override

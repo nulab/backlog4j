@@ -2,24 +2,14 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomDateDeserializer;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author nulab-inc
  */
 public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .appendSuper(super.toString())
-                .append("typeId", typeId)
-                .append("applicableIssueTypes", applicableIssueTypes)
-                .append("min", min)
-                .append("max", max)
-                .append("initialDate", initialDate)
-                .toString();
-    }
 
     public enum InitialValueType {
         Today(1), TodayPlusShiftDays(2), FixedDate(3);
@@ -78,5 +68,49 @@ public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
     public DateValueSetting getInitialDate() {
         return initialDate;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        DateCustomFieldSetting rhs = (DateCustomFieldSetting) obj;
+        return new EqualsBuilder()
+                .append(this.typeId, rhs.typeId)
+                .append(this.applicableIssueTypes, rhs.applicableIssueTypes)
+                .append(this.min, rhs.min)
+                .append(this.max, rhs.max)
+                .append(this.initialDate, rhs.initialDate)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(typeId)
+                .append(applicableIssueTypes)
+                .append(min)
+                .append(max)
+                .append(initialDate)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("typeId", typeId)
+                .append("applicableIssueTypes", applicableIssueTypes)
+                .append("min", min)
+                .append("max", max)
+                .append("initialDate", initialDate)
+                .toString();
+    }
+
 
 }

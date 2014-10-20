@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -66,15 +67,45 @@ public class ProjectJSONImpl implements Project {
         return archived;
     }
 
+
     @Override
-     public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Project) {
-            Project other = (Project)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ProjectJSONImpl rhs = (ProjectJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.projectKey, rhs.projectKey)
+                .append(this.name, rhs.name)
+                .append(this.useGantt, rhs.useGantt)
+                .append(this.useBurndown, rhs.useBurndown)
+                .append(this.chartEnabled, rhs.chartEnabled)
+                .append(this.subtaskingEnabled, rhs.subtaskingEnabled)
+                .append(this.textFormattingRule, rhs.textFormattingRule)
+                .append(this.archived, rhs.archived)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(projectKey)
+                .append(name)
+                .append(useGantt)
+                .append(useBurndown)
+                .append(chartEnabled)
+                .append(subtaskingEnabled)
+                .append(textFormattingRule)
+                .append(archived)
+                .toHashCode();
     }
 
     @Override

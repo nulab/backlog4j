@@ -2,6 +2,8 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomBigdecimalDeserializer;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
@@ -47,9 +49,40 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        NumericCustomFieldSetting rhs = (NumericCustomFieldSetting) obj;
+        return new EqualsBuilder()
+                .append(this.typeId, rhs.typeId)
+                .append(this.min, rhs.min)
+                .append(this.max, rhs.max)
+                .append(this.initialValue, rhs.initialValue)
+                .append(this.unit, rhs.unit)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(typeId)
+                .append(min)
+                .append(max)
+                .append(initialValue)
+                .append(unit)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("typeId", typeId)
                 .append("min", min)
                 .append("max", max)

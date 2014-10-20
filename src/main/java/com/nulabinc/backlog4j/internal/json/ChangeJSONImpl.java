@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nulabinc.backlog4j.Change;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -39,17 +40,34 @@ public class ChangeJSONImpl implements Change {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Change) {
-            Change other = (Change)obj;
-            result = new EqualsBuilder().append( field, other.getField())
-                    .append( type, other.getType() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ChangeJSONImpl rhs = (ChangeJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.field, rhs.field)
+                .append(this.newValue, rhs.newValue)
+                .append(this.oldValue, rhs.oldValue)
+                .append(this.type, rhs.type)
+                .isEquals();
     }
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(field)
+                .append(newValue)
+                .append(oldValue)
+                .append(type)
+                .toHashCode();
+    }
 
     @Override
     public String toString() {

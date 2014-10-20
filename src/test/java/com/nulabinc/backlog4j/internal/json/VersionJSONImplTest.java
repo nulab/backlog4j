@@ -77,4 +77,13 @@ public class VersionJSONImplTest extends AbstractJSONImplTest{
         assertEquals(version1, version2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/version.json");
+        Version version1 = factory.createVersion(fileContentStr);
+        Version version2 = factory.createVersion(fileContentStr);
+        assertEquals(version1.hashCode(), version2.hashCode());
+
+    }
 }

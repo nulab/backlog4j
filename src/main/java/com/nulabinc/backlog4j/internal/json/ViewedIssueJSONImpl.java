@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Version;
 import com.nulabinc.backlog4j.ViewedIssue;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -30,14 +31,29 @@ public class ViewedIssueJSONImpl implements ViewedIssue {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof ViewedIssue) {
-            ViewedIssue other = (ViewedIssue)obj;
-            result = new EqualsBuilder().append( issue.getId(), other.getIssue().getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        ViewedIssueJSONImpl rhs = (ViewedIssueJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.issue, rhs.issue)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(issue)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

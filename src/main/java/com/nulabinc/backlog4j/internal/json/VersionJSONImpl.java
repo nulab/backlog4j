@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Status;
 import com.nulabinc.backlog4j.Version;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -56,14 +57,39 @@ public class VersionJSONImpl implements Version {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof Version) {
-            Version other = (Version)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        VersionJSONImpl rhs = (VersionJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.projectId, rhs.projectId)
+                .append(this.name, rhs.name)
+                .append(this.description, rhs.description)
+                .append(this.startDate, rhs.startDate)
+                .append(this.releaseDueDate, rhs.releaseDueDate)
+                .append(this.archived, rhs.archived)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(projectId)
+                .append(name)
+                .append(description)
+                .append(startDate)
+                .append(releaseDueDate)
+                .append(archived)
+                .toHashCode();
     }
 
     @Override

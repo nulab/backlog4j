@@ -68,4 +68,13 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(project1, project2);
 
     }
+
+    @Test
+    public void hashCodeTest1() throws IOException {
+        String fileContentStr = getJsonString("json/project.json");
+        Project project1 = factory.createProject(fileContentStr);
+        Project project2 = factory.createProject(fileContentStr);
+        assertEquals(project1.hashCode(), project2.hashCode());
+
+    }
 }

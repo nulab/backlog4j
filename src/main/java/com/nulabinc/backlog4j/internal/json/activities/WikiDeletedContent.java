@@ -7,6 +7,8 @@ import com.nulabinc.backlog4j.Content;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.internal.json.AttachmentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.SharedFileJSONImpl;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -57,9 +59,44 @@ public class WikiDeletedContent extends Content {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        WikiDeletedContent rhs = (WikiDeletedContent) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .append(this.content, rhs.content)
+                .append(this.diff, rhs.diff)
+                .append(this.version, rhs.version)
+                .append(this.attachments, rhs.attachments)
+                .append(this.sharedFiles, rhs.sharedFiles)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .append(content)
+                .append(diff)
+                .append(version)
+                .append(attachments)
+                .append(sharedFiles)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("id", id)
                 .append("name", name)
                 .append("content", content)

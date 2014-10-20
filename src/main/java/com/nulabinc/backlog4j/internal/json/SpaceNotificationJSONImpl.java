@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.SpaceNotification;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
@@ -28,15 +29,31 @@ public class SpaceNotificationJSONImpl implements SpaceNotification {
         return updated;
     }
 
+
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof SpaceNotification) {
-            SpaceNotification other = (SpaceNotification)obj;
-            result = new EqualsBuilder().append( content, other.getContent() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        SpaceNotificationJSONImpl rhs = (SpaceNotificationJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.content, rhs.content)
+                .append(this.updated, rhs.updated)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(content)
+                .append(updated)
+                .toHashCode();
     }
 
     @Override

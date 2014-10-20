@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -36,16 +37,6 @@ public abstract class CustomFieldJSONImpl implements CustomField {
         return name;
     }
 
-    @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof CustomField ) {
-            CustomField other = (CustomField)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
-        }
-        return result;
-    }
 
     @Override
     public String toString() {
@@ -53,5 +44,31 @@ public abstract class CustomFieldJSONImpl implements CustomField {
                 .append("id", id)
                 .append("name", name)
                 .toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        CustomFieldJSONImpl rhs = (CustomFieldJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.name, rhs.name)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(name)
+                .toHashCode();
     }
 }

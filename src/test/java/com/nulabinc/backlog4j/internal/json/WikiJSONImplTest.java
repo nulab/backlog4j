@@ -82,4 +82,13 @@ public class WikiJSONImplTest extends AbstractJSONImplTest{
         assertEquals(wiki1, wiki2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/wiki.json");
+        Wiki wiki1 = factory.createWiki(fileContentStr);
+        Wiki wiki2 = factory.createWiki(fileContentStr);
+        assertEquals(wiki1.hashCode(), wiki2.hashCode());
+
+    }
 }

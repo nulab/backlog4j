@@ -219,4 +219,16 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(activity1, activity2);
 
     }
+
+
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/activity_issue_created.json");
+        Activity activity1 = factory.createActivity(fileContentStr);
+        Activity activity2 = factory.createActivity(fileContentStr);
+
+        assertEquals(activity1.hashCode(), activity2.hashCode());
+
+    }
 }

@@ -55,4 +55,13 @@ public class UserJSONImplTest extends AbstractJSONImplTest{
         assertEquals(user1, user2);
 
     }
+
+    @Test
+    public void hashCodeTest() throws IOException {
+        String fileContentStr = getJsonString("json/user.json");
+        User user1 = factory.createUser(fileContentStr);
+        User user2 = factory.createUser(fileContentStr);
+        assertEquals(user1.hashCode(), user2.hashCode());
+
+    }
 }

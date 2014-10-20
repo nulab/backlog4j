@@ -8,6 +8,8 @@ import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * @author nulab-inc
@@ -41,20 +43,42 @@ public class IssueTypeJSONImpl implements IssueType {
 
 
     @Override
-    public String toString() {
-        return "ProjectJSONImpl extends " + super.toString();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        IssueTypeJSONImpl rhs = (IssueTypeJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.projectId, rhs.projectId)
+                .append(this.name, rhs.name)
+                .append(this.color, rhs.color)
+                .isEquals();
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof IssueType) {
-            IssueType other = (IssueType)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
-        }
-        return result;
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(projectId)
+                .append(name)
+                .append(color)
+                .toHashCode();
     }
 
-
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("projectId", projectId)
+                .append("name", name)
+                .append("color", color)
+                .toString();
+    }
 }

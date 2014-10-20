@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -71,16 +72,42 @@ public class IssueCommentJSONImpl implements IssueComment {
     }
 
     @Override
-    public boolean equals(Object obj){
-        boolean result = false;
-        if( obj instanceof IssueComment ) {
-            IssueComment other = (IssueComment)obj;
-            result = new EqualsBuilder().append( id, other.getId() )
-                    .isEquals();
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
-        return result;
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        IssueCommentJSONImpl rhs = (IssueCommentJSONImpl) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.content, rhs.content)
+                .append(this.changeLog, rhs.changeLog)
+                .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updated, rhs.updated)
+                .append(this.stars, rhs.stars)
+                .append(this.notifications, rhs.notifications)
+                .isEquals();
     }
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(content)
+                .append(changeLog)
+                .append(createdUser)
+                .append(created)
+                .append(updated)
+                .append(stars)
+                .append(notifications)
+                .toHashCode();
+    }
 
     @Override
     public String toString() {

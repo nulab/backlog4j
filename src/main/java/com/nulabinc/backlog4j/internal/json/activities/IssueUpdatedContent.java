@@ -7,6 +7,8 @@ import com.nulabinc.backlog4j.internal.json.AttachmentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.ChangeJSONImpl;
 import com.nulabinc.backlog4j.internal.json.CommentJSONImpl;
 import com.nulabinc.backlog4j.internal.json.SharedFileJSONImpl;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
@@ -65,9 +67,46 @@ public class IssueUpdatedContent extends Content {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        IssueUpdatedContent rhs = (IssueUpdatedContent) obj;
+        return new EqualsBuilder()
+                .append(this.id, rhs.id)
+                .append(this.keyId, rhs.keyId)
+                .append(this.summary, rhs.summary)
+                .append(this.description, rhs.description)
+                .append(this.comment, rhs.comment)
+                .append(this.changes, rhs.changes)
+                .append(this.attachments, rhs.attachments)
+                .append(this.sharedFiles, rhs.sharedFiles)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(id)
+                .append(keyId)
+                .append(summary)
+                .append(description)
+                .append(comment)
+                .append(changes)
+                .append(attachments)
+                .append(sharedFiles)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .appendSuper(super.toString())
                 .append("id", id)
                 .append("keyId", keyId)
                 .append("summary", summary)
