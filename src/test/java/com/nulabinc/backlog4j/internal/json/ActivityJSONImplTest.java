@@ -211,6 +211,16 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
 
     }
 
+
+
+    @Test
+    public void createActivityListTest() throws IOException {
+        String fileContentStr = getJsonString("json/activities.json");
+        ResponseList<Activity> list = factory.createActivityList(fileContentStr);
+        System.out.println(list.toString());
+    }
+
+
     @Test
     public void equalsTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_created.json");
@@ -219,9 +229,6 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(activity1, activity2);
 
     }
-
-
-
     @Test
     public void hashCodeTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_created.json");

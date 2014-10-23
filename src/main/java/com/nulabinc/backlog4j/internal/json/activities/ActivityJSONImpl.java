@@ -34,7 +34,17 @@ import java.util.Date;
         @JsonSubTypes.Type(value = GitRepositoryCreatedActivity.class, name = "13"),
         @JsonSubTypes.Type(value = IssueMultiUpdatedActivity.class, name = "14"),
         @JsonSubTypes.Type(value = ProjectUserAddedActivity.class, name = "15"),
-        @JsonSubTypes.Type(value = ProjectUserRemovedActivity.class, name = "16") })
+        @JsonSubTypes.Type(value = ProjectUserRemovedActivity.class, name = "16"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "17"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "18"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "19"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "20"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "21"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "22"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "23"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "24"),
+        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "25")
+})
 public abstract class ActivityJSONImpl implements Activity {
 
     private int id;

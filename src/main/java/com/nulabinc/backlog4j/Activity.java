@@ -10,7 +10,7 @@ import java.util.Date;
 public interface Activity {
 
     enum Type {
-        IssueCreated(1), IssueUpdated(2), IssueCommented(3), IssueDeleted(4),
+        NotDefined(-1), IssueCreated(1), IssueUpdated(2), IssueCommented(3), IssueDeleted(4),
         WikiCreated(5), WikiUpdated(6), WikiDeleted(7),
         FileAdded(8), FileUpdated(9), FileDeleted(10),
         SvnCommitted(11), GitPushed(12), GitRepositoryCreated(13),
