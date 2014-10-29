@@ -14,7 +14,7 @@ public interface Activity {
         WikiCreated(5), WikiUpdated(6), WikiDeleted(7),
         FileAdded(8), FileUpdated(9), FileDeleted(10),
         SvnCommitted(11), GitPushed(12), GitRepositoryCreated(13),
-        IssueMultiUpdated(14), ProjectUserAdded(15), ProjectUserRemoved(16);
+        IssueMultiUpdated(14), ProjectUserAdded(15), ProjectUserRemoved(16), NotifyAdded(17);
 
         Type(int intValue) {
             this.intValue = intValue;
