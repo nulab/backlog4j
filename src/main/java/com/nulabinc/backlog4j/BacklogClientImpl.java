@@ -441,7 +441,12 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<SharedFile> getSharedFiles(String projectKey, String path) throws BacklogException {
-        return factory.createSharedFileList(get(buildEndpoint("projects/" + projectKey + "/files/metadata/" + path)));
+        try {
+            String encodedPath = URLEncoder.encode(path, "utf-8");
+            return factory.createSharedFileList(get(buildEndpoint("projects/" + projectKey + "/files/metadata/" + encodedPath)));
+        } catch (UnsupportedEncodingException e) {
+            throw new BacklogAPIException(e);
+        }
     }
 
     @Override
