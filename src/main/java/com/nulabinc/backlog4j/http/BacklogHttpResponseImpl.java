@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.BacklogAPIException;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.URLDecoder;
 
 /**
  * Created by yuhkim on 2014/10/17.
@@ -69,12 +70,17 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
 
     public String getFileNameFromContentDisposition() {
         String disposition = this.urlConnection.getHeaderField("Content-Disposition");
-
         if (disposition != null) {
-            int index = disposition.indexOf("filename=");
-            if (index > 0) {
-                return disposition.substring(index + 10,
-                        disposition.length() - 1);
+            String encode = disposition.substring(disposition.indexOf("=")+1,disposition.indexOf("''"));
+            String fileName = disposition.substring(disposition.indexOf("''")+2);
+            if(encode != null){
+                try {
+                    return URLDecoder.decode(fileName, encode);
+                } catch (UnsupportedEncodingException e) {
+                    throw new BacklogAPIException(e);
+                }
+            }else{
+                return fileName;
             }
         }
 
