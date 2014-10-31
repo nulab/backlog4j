@@ -3,7 +3,7 @@ package com.nulabinc.backlog4j.internal.json.activities;
 import com.nulabinc.backlog4j.Content;
 
 /**
- * Created by yuhkim on 2014/10/23.
+ * @author nulab-inc
  */
 public class NotDefinedActivity extends ActivityJSONImpl{
 

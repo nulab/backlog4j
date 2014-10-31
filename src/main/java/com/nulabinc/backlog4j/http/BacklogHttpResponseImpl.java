@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URLDecoder;
 
 /**
- * Created by yuhkim on 2014/10/17.
+ * @author nulab-inc
  */
 public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     private HttpURLConnection urlConnection;

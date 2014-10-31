@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by yuhkim on 2014/10/17.
+ * @author nulab-inc
  */
 public class BacklogHttpClientImpl implements BacklogHttpClient {
     private static final String USER_AGENT = "backlog4jv2";

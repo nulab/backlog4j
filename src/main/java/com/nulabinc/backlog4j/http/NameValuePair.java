@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.http;
 
 /**
- * Created by yuhkim on 2014/10/17.
+ * @author nulab-inc
  */
 public class NameValuePair {
     private String name;
