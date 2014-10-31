@@ -393,14 +393,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     public CustomFieldSetting addListCustomFieldItem(long projectId, long customFieldId, String name) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
-        return factory.createCustomField(post(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId +  "/items"), params));
+        return factory.createCustomField(post(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items"), params));
     }
 
     @Override
     public CustomFieldSetting addListCustomFieldItem(String projectKey, long customFieldId, String name) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
-        return factory.createCustomField(post(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId +  "/items"), params));
+        return factory.createCustomField(post(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items"), params));
     }
 
     @Override
@@ -408,7 +408,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
         return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId +  "/items/" + itemId), params));
+                buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items/" + itemId), params));
     }
 
     @Override
@@ -416,17 +416,17 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
         return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId +  "/items/" + itemId), params));
+                buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items/" + itemId), params));
     }
 
     @Override
     public CustomFieldSetting removeListCustomFieldItem(long projectId, long customFieldId, long itemId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId +  "/items/" + itemId)));
+        return factory.createCustomField(delete(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items/" + itemId)));
     }
 
     @Override
     public CustomFieldSetting removeListCustomFieldItem(String projectKey, long customFieldId, long itemId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId +  "/items/" + itemId)));
+        return factory.createCustomField(delete(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items/" + itemId)));
     }
 
     @Override
@@ -570,6 +570,27 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Notification> getIssueCommentNotifications(long issueId, long commentId) throws BacklogException {
+        return factory.createNotificationList(get(buildEndpoint("issues/" + issueId
+                + "/comments/" + commentId + "/notifications")));
+    }
+
+    @Override
+    public ResponseList<Notification> getIssueCommentNotifications(String issueKey, long commentId) throws BacklogException {
+        return factory.createNotificationList(get(buildEndpoint("issues/" + issueKey
+                + "/comments/" + commentId + "/notifications")));
+    }
+
+    @Override
+    public IssueComment addIssueCommentNotification(AddIssueCommentNotificationParams params) throws BacklogException {
+        return factory.createIssueComment(post(buildEndpoint(
+                "issues/" + params.getIssueIdOrKeyString()
+                        + "/comments/" + params.getCommentId()
+                        + "/notifications"), params));
+
+    }
+
+    @Override
     public ResponseList<Attachment> getIssueAttachments(long issueId) {
         return factory.createAttachmentList(get(buildEndpoint("issues/" + issueId + "/attachments")));
     }
@@ -618,7 +639,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public ResponseList<SharedFile> linkIssueSharedFile(long issueId, List<Long> fileIds) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for(Long fileId : fileIds){
+        for (Long fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
         return factory.createSharedFileList(post(buildEndpoint("issues/" + issueId + "/sharedFiles"), params));
@@ -627,7 +648,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public ResponseList<SharedFile> linkIssueSharedFile(String issueKey, List<Long> fileIds) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for(Long fileId : fileIds){
+        for (Long fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
         return factory.createSharedFileList(post(buildEndpoint("issues/" + issueKey + "/sharedFiles"), params));
@@ -720,9 +741,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<SharedFile>  linkWikiSharedFile(long wikiId, List<Long> fileIds) {
+    public ResponseList<SharedFile> linkWikiSharedFile(long wikiId, List<Long> fileIds) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for(Long fileId : fileIds){
+        for (Long fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
         return factory.createSharedFileList(post(buildEndpoint("wikis/" + wikiId + "/sharedFiles"), params));

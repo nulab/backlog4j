@@ -181,6 +181,35 @@ public interface IssueMethods {
     IssueComment updateIssueComment(UpdateIssueCommentParams params) throws BacklogException;
 
     /**
+     * Returns the issue comment notifications.
+     *
+     * @param issueId the issue identifier
+     * @param commentId the comment identifier
+     * @return the issue comment notifications
+     * @throws BacklogException
+     */
+    ResponseList<Notification> getIssueCommentNotifications(long issueId, long commentId) throws BacklogException;
+
+    /**
+     * Returns the issue comment notifications.
+     *
+     * @param issueKey the issue identifier
+     * @param commentId the comment identifier
+     * @return the issue comment notifications
+     * @throws BacklogException
+     */
+    ResponseList<Notification> getIssueCommentNotifications(String issueKey, long commentId) throws BacklogException;
+
+    /**
+     * Adds a issue comment notification.
+     *
+     * @param params the issue comment notification adding parameters
+     * @return the issue comment
+     * @throws BacklogException
+     */
+    IssueComment addIssueCommentNotification(AddIssueCommentNotificationParams params) throws BacklogException;
+
+    /**
      * Returns all the attachments on the issue.
      *
      * @param issueId the issue identifier
