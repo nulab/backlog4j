@@ -22,6 +22,15 @@ public interface IssueMethods {
     ResponseList<Issue> getIssues(GetIssuesParams params) throws BacklogException;
 
     /**
+     * Finds and returns all the issues count.
+     *
+     * @param params the finding issue parameters
+     * @return the issues count.
+     * @throws BacklogException
+     */
+    Count getIssuesCount(GetIssuesParams params) throws BacklogException;
+
+    /**
      * Creates a issue.
      *
      * @param params the issue creating parameters
