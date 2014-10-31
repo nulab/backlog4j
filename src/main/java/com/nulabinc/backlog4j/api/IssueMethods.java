@@ -215,6 +215,24 @@ public interface IssueMethods {
     AttachmentData downloadIssueAttachment(String issueKey, long attachmentId);
 
     /**
+     * Deletes the attachment file on the issue.
+     *
+     * @param issueId     the issue identifier
+     * @param attachmentId the attachment identifier
+     * @return the Attachment
+     */
+    Attachment deleteIssueAttachment(long issueId, long attachmentId);
+
+    /**
+     * Deletes the attachment file on the issue.
+     *
+     * @param issueKey     the issue identifier
+     * @param attachmentId the attachment identifier
+     * @return the Attachment
+     */
+    Attachment deleteIssueAttachment(String issueKey, long attachmentId);
+
+    /**
      * Returns all the shared files on the issue.
      *
      * @param issueId the issue identifier

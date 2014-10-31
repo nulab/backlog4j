@@ -596,6 +596,16 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Attachment deleteIssueAttachment(long issueId, long attachmentId) {
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueId + "/attachments" + attachmentId)));
+    }
+
+    @Override
+    public Attachment deleteIssueAttachment(String issueKey, long attachmentId) {
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueKey + "/attachments" + attachmentId)));
+    }
+
+    @Override
     public ResponseList<SharedFile> getIssueSharedFiles(long issueId) {
         return factory.createSharedFileList(get(buildEndpoint("issues/" + issueId + "/sharedFiles")));
     }
