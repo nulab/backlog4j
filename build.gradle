@@ -11,7 +11,7 @@ sourceCompatibility=1.6
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.0.6'
+version = '2.1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ artifacts {
 configurations {
     deployerJars
 }
-/*
+
 signing {
     sign configurations.archives
 }
@@ -113,4 +113,4 @@ uploadArchives {
         }
     }
 }
-*/
+

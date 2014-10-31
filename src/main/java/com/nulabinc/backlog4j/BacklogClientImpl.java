@@ -46,7 +46,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<Activity> getSpaceActivities(QueryParams params) throws BacklogException {
+    public ResponseList<Activity> getSpaceActivities(ActivityQueryParams params) throws BacklogException {
         return factory.createActivityList(get(buildEndpoint("space/activities"), params));
     }
 
@@ -142,6 +142,16 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public ResponseList<Activity> getProjectActivities(String projectKey) throws BacklogException {
         return factory.createActivityList(get(buildEndpoint("projects/" + projectKey + "/activities")));
+    }
+
+    @Override
+    public ResponseList<Activity> getProjectActivities(long projectId, ActivityQueryParams query) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("projects/" + projectId + "/activities"), query));
+    }
+
+    @Override
+    public ResponseList<Activity> getProjectActivities(String projectKey, ActivityQueryParams query) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("projects/" + projectKey + "/activities"), query));
     }
 
     @Override
@@ -820,7 +830,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<Activity> getUserActivities(long userId, QueryParams queryParams) throws BacklogException {
+    public ResponseList<Activity> getUserActivities(long userId, ActivityQueryParams queryParams) throws BacklogException {
         return factory.createActivityList(get(buildEndpoint("users/" + userId + "/activities"), queryParams));
     }
 

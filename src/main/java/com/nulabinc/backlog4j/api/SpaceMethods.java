@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.*;
+import com.nulabinc.backlog4j.api.option.ActivityQueryParams;
 import com.nulabinc.backlog4j.api.option.QueryParams;
 
 /**
@@ -33,7 +34,7 @@ public interface SpaceMethods {
      * @return the activities in a list
      * @throws BacklogException
      */
-    ResponseList<Activity> getSpaceActivities(QueryParams params) throws BacklogException;
+    ResponseList<Activity> getSpaceActivities(ActivityQueryParams params) throws BacklogException;
 
     /**
      * Returns the space icon.

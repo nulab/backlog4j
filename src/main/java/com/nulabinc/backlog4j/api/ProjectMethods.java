@@ -109,6 +109,10 @@ public interface ProjectMethods {
      */
     ResponseList<Activity> getProjectActivities(String projectKey) throws BacklogException;
 
+
+    ResponseList<Activity> getProjectActivities(long projectId, ActivityQueryParams query) throws BacklogException;
+    ResponseList<Activity> getProjectActivities(String projectKey, ActivityQueryParams query) throws BacklogException;
+
     /**
      * Adds the user to the project.
      *

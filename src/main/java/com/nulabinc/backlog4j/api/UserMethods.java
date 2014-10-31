@@ -1,10 +1,7 @@
 package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.api.option.CreateUserParams;
-import com.nulabinc.backlog4j.api.option.GetStarsParams;
-import com.nulabinc.backlog4j.api.option.OffsetParams;
-import com.nulabinc.backlog4j.api.option.QueryParams;
+import com.nulabinc.backlog4j.api.option.*;
 
 /**
  * Executes Backlog User APIs.
@@ -83,7 +80,7 @@ public interface UserMethods {
      * @return the updates in a list
      * @throws BacklogException
      */
-    ResponseList<Activity> getUserActivities(long userId, QueryParams queryParams) throws BacklogException;
+    ResponseList<Activity> getUserActivities(long userId, ActivityQueryParams queryParams) throws BacklogException;
 
     /**
      * Returns the received stars
