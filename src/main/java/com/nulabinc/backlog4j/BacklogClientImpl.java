@@ -687,6 +687,18 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Count getWikiCount(long projectId) {
+        GetParams params = new GetWikisParams(projectId);
+        return factory.createCount(get(buildEndpoint("wikis/count"), params));
+    }
+
+    @Override
+    public Count getWikiCount(String projectKey) {
+        GetParams params = new GetWikisParams(projectKey);
+        return factory.createCount(get(buildEndpoint("wikis/count"), params));
+    }
+
+    @Override
     public ResponseList<WikiTag> getWikiTags(long projectId) {
         GetParams params = new GetWikiTagsParams(projectId);
         return factory.createWikiTagList(get(buildEndpoint("wikis/tags"), params));

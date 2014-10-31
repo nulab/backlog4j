@@ -32,6 +32,22 @@ public interface WikiMethods {
     ResponseList<Wiki> getWikis(String projectKey);
 
     /**
+     * Returns Wiki pages count.
+     *
+     * @param projectId the project identifier
+     * @return the Wiki pages count
+     */
+    Count getWikiCount(long projectId);
+
+    /**
+     * Returns Wiki pages count.
+     *
+     * @param projectKey the project identifier
+     * @return the Wiki pages count
+     */
+    Count getWikiCount(String projectKey);
+
+    /**
      * Returns Wiki page's tags in the project.
      *
      * @param projectId the project identifier
