@@ -597,12 +597,12 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Attachment deleteIssueAttachment(long issueId, long attachmentId) {
-        return factory.createAttachment(delete(buildEndpoint("issues/" + issueId + "/attachments" + attachmentId)));
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueId + "/attachments/" + attachmentId)));
     }
 
     @Override
     public Attachment deleteIssueAttachment(String issueKey, long attachmentId) {
-        return factory.createAttachment(delete(buildEndpoint("issues/" + issueKey + "/attachments" + attachmentId)));
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueKey + "/attachments/" + attachmentId)));
     }
 
     @Override
