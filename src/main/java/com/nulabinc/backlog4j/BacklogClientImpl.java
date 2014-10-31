@@ -181,6 +181,16 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<User> getProjectAdministrators(long projectId) throws BacklogException {
+        return factory.createUserList(get(buildEndpoint("projects/" + projectId + "/administrators")));
+    }
+
+    @Override
+    public ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException {
+        return factory.createUserList(get(buildEndpoint("projects/" + projectKey + "/administrators")));
+    }
+
+    @Override
     public ResponseList<IssueType> getIssueTypes(long projectId) throws BacklogException {
         return factory.createIssueTypeList(get(buildEndpoint("projects/" + projectId + "/issueTypes")));
     }

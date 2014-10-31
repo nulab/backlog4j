@@ -168,6 +168,24 @@ public interface ProjectMethods {
     User removeProjectUser(String projectKey, long userId) throws BacklogException;
 
     /**
+     * Returns the project administrators.
+     *
+     * @param projectId     the project identifier
+     * @return              the project administrators
+     * @throws BacklogException
+     */
+    ResponseList<User> getProjectAdministrators(long projectId) throws BacklogException;
+
+    /**
+     * Returns the project administrators.
+     *
+     * @param projectKey    the project identifier
+     * @return              the project administrators
+     * @throws BacklogException
+     */
+    ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException;
+
+    /**
      * Returns the issue types in the project.
      *
      * @param projectId the project identifier
