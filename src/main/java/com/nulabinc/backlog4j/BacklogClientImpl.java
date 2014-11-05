@@ -191,6 +191,20 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public User addProjectAdministrator(long projectId, long userId) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("userId", String.valueOf(userId)));
+        return factory.createUser(post(buildEndpoint("projects/" + projectId + "/administrators"), params));
+    }
+
+    @Override
+    public User addProjectAdministrator(String projectKey, long userId) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("userId", String.valueOf(userId)));
+        return factory.createUser(post(buildEndpoint("projects/" + projectKey + "/administrators"), params));
+    }
+
+    @Override
     public ResponseList<User> getProjectAdministrators(long projectId) throws BacklogException {
         return factory.createUserList(get(buildEndpoint("projects/" + projectId + "/administrators")));
     }
@@ -198,6 +212,18 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException {
         return factory.createUserList(get(buildEndpoint("projects/" + projectKey + "/administrators")));
+    }
+
+    @Override
+    public User removeProjectAdministrator(long projectId, long userId) throws BacklogException {
+        return factory.createUser(delete(buildEndpoint("projects/" + projectId + "/administrators"),
+                new NameValuePair("userId", String.valueOf(userId))));
+    }
+
+    @Override
+    public User removeProjectAdministrator(String projectKey, long userId) throws BacklogException {
+        return factory.createUser(delete(buildEndpoint("projects/" + projectKey + "/administrators"),
+                new NameValuePair("userId", String.valueOf(userId))));
     }
 
     @Override

@@ -172,6 +172,26 @@ public interface ProjectMethods {
     User removeProjectUser(String projectKey, long userId) throws BacklogException;
 
     /**
+     * Adds the project administrators.
+     *
+     * @param projectId the project identifier
+     * @param userId    the user identifier
+     * @return the removed User
+     * @throws BacklogException
+     */
+    User addProjectAdministrator(long projectId, long userId) throws BacklogException;
+
+    /**
+     * Adds the project administrators.
+     *
+     * @param projectKey the project identifier
+     * @param userId    the user identifier
+     * @return the removed User
+     * @throws BacklogException
+     */
+    User addProjectAdministrator(String projectKey, long userId) throws BacklogException;
+
+    /**
      * Returns the project administrators.
      *
      * @param projectId     the project identifier
@@ -188,6 +208,26 @@ public interface ProjectMethods {
      * @throws BacklogException
      */
     ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException;
+
+    /**
+     * Deletes the project administrators.
+     *
+     * @param projectId    the project identifier
+     * @param userId    the user identifier
+     * @return the removed User
+     * @throws BacklogException
+     */
+    User removeProjectAdministrator(long projectId, long userId) throws BacklogException;
+
+    /**
+     * Deletes the project administrators.
+     *
+     * @param projectKey    the project identifier
+     * @param userId    the user identifier
+     * @return the removed User
+     * @throws BacklogException
+     */
+    User removeProjectAdministrator(String projectKey, long userId) throws BacklogException;
 
     /**
      * Returns the issue types in the project.
