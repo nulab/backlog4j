@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author nulab-inc
  */
-public class GetIssuesParamsTest extends AbstractParamsTest{
+public class GetIssuesParamsTest extends AbstractParamsTest {
     @Test
     public void createParamTest() throws UnsupportedEncodingException {
 
@@ -47,11 +47,17 @@ public class GetIssuesParamsTest extends AbstractParamsTest{
                 .statuses(Arrays.asList(Issue.StatusType.Closed, Issue.StatusType.InProgress))
                 .updatedSince("2015-01-01")
                 .updatedUntil("2015-02-01")
-                .versionIds(Arrays.asList(11000000001l, 11000000002l));
+                .versionIds(Arrays.asList(11000000001l, 11000000002l))
+                .keywordByCustomField(12000000000l, "ビール")
+                .minNumOfCustomField(12000000001l, 10.123f)
+                .maxNumOfCustomField(12000000002l, -11.999f)
+                .minDateOfCustomField(12000000003l, "2014-11-10")
+                .maxDateOfCustomField(12000000004l, "2014-11-12")
+                .itemsOfCustomField(12000000005l, Arrays.asList(13000000001l, 13000000002l));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(42, parameters.size());
+        assertEquals(49, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId[]", "2000000001"));
@@ -90,5 +96,12 @@ public class GetIssuesParamsTest extends AbstractParamsTest{
         assertEquals(true, existsOneKeyValue(parameters, "updatedUntil", "2015-02-01"));
         assertEquals(true, existsOneKeyValue(parameters, "versionId[]", "11000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "versionId[]", "11000000002"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000000", "%E3%83%93%E3%83%BC%E3%83%AB"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000001_min", "10.123"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000002_max", "-11.999"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000003_min", "2014-11-10"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000004_max", "2014-11-12"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000005[]", "13000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000005[]", "13000000002"));
     }
 }
