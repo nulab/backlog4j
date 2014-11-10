@@ -161,6 +161,13 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
+    public GetIssuesCountParams ids(List<Long> ids) {
+        for (Long id :ids) {
+            parameters.add(new NameValuePair("id[]", id.toString()));
+        }
+        return this;
+    }
+
     public GetIssuesCountParams parentIssueIds(List<Long> parentIssueIds) {
         for (Long parentIssueId :parentIssueIds) {
             parameters.add(new NameValuePair("parentIssueId[]", parentIssueId.toString()));
