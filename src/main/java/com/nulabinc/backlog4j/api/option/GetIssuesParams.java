@@ -76,77 +76,77 @@ public class GetIssuesParams extends GetParams {
         private int intValue;
     }
 
-    public GetIssuesParams(List<Long> projectIds){
-        for (Long projectId :projectIds) {
+    public GetIssuesParams(List<Long> projectIds) {
+        for (Long projectId : projectIds) {
             parameters.add(new NameValuePair("projectId[]", projectId.toString()));
         }
     }
 
     public GetIssuesParams projectIds(List<Long> projectIds) {
-        for (Long projectId :projectIds) {
+        for (Long projectId : projectIds) {
             parameters.add(new NameValuePair("projectId[]", projectId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams issueTypeIds(List<Long> issueTypeIds) {
-        for (Long issueTypeId :issueTypeIds) {
+        for (Long issueTypeId : issueTypeIds) {
             parameters.add(new NameValuePair("issueTypeId[]", issueTypeId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams categoryIds(List<Long> categoryIds) {
-        for (Long categoryId :categoryIds) {
+        for (Long categoryId : categoryIds) {
             parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams versionIds(List<Long> versionIds) {
-        for (Long versionId :versionIds) {
+        for (Long versionId : versionIds) {
             parameters.add(new NameValuePair("versionId[]", versionId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams milestoneIds(List<Long> milestoneIds) {
-        for (Long milestoneId :milestoneIds) {
+        for (Long milestoneId : milestoneIds) {
             parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams statuses(List<Issue.StatusType> statuses) {
-        for (Issue.StatusType status :statuses) {
+        for (Issue.StatusType status : statuses) {
             parameters.add(new NameValuePair("statusId[]", String.valueOf(status.getIntValue())));
         }
         return this;
     }
 
     public GetIssuesParams priorities(List<Issue.PriorityType> priorities) {
-        for (Issue.PriorityType priority :priorities) {
+        for (Issue.PriorityType priority : priorities) {
             parameters.add(new NameValuePair("priorityId[]", String.valueOf(priority.getIntValue())));
         }
         return this;
     }
 
     public GetIssuesParams assignerIds(List<Long> assignerIds) {
-        for (Long assignerId :assignerIds) {
+        for (Long assignerId : assignerIds) {
             parameters.add(new NameValuePair("assigneeId[]", assignerId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams createdUserIds(List<Long> createdUserIds) {
-        for (Long createdUserId :createdUserIds) {
+        for (Long createdUserId : createdUserIds) {
             parameters.add(new NameValuePair("createdUserId[]", createdUserId.toString()));
         }
         return this;
     }
 
     public GetIssuesParams resolutions(List<Issue.ResolutionType> resolutions) {
-        for (Issue.ResolutionType resolution :resolutions) {
+        for (Issue.ResolutionType resolution : resolutions) {
             parameters.add(new NameValuePair("resolutionId[]", String.valueOf(resolution.getIntValue())));
         }
         return this;
@@ -233,14 +233,14 @@ public class GetIssuesParams extends GetParams {
     }
 
     public GetIssuesParams ids(List<Long> ids) {
-        for (Long id :ids) {
+        for (Long id : ids) {
             parameters.add(new NameValuePair("id[]", id.toString()));
         }
         return this;
     }
 
     public GetIssuesParams parentIssueIds(List<Long> parentIssueIds) {
-        for (Long parentIssueId :parentIssueIds) {
+        for (Long parentIssueId : parentIssueIds) {
             parameters.add(new NameValuePair("parentIssueId[]", parentIssueId.toString()));
         }
         return this;
@@ -251,6 +251,48 @@ public class GetIssuesParams extends GetParams {
             parameters.add(new NameValuePair("keyword", URLEncoder.encode(keyword, "utf-8")));
         } catch (UnsupportedEncodingException e) {
             throw new BacklogAPIException(e);
+        }
+        return this;
+    }
+
+    public GetIssuesParams keywordByCustomField(long customFieldId, String keyword) throws BacklogException {
+        try {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    URLEncoder.encode(keyword, "utf-8")));
+        } catch (UnsupportedEncodingException e) {
+            throw new BacklogAPIException(e);
+        }
+        return this;
+    }
+
+    public GetIssuesParams minNumOfCustomField(long customFieldId, float min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+                String.valueOf(min)));
+        return this;
+    }
+
+    public GetIssuesParams maxNumOfCustomField(long customFieldId, float max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+                String.valueOf(max)));
+        return this;
+    }
+
+    public GetIssuesParams minDateOfCustomField(long customFieldId, String min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+                min));
+        return this;
+    }
+
+    public GetIssuesParams maxDateOfCustomField(long customFieldId, String max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+                max));
+        return this;
+    }
+
+    public GetIssuesParams itemsOfCustomField(long customFieldId, List<Long> itemIds) {
+        for (Long itemId : itemIds) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) +"[]",
+                    itemId.toString()));
         }
         return this;
     }
