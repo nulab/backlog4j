@@ -183,4 +183,46 @@ public class GetIssuesCountParams extends GetParams {
         }
         return this;
     }
+
+    public GetIssuesCountParams keywordByCustomField(long customFieldId, String keyword) throws BacklogException {
+        try {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    URLEncoder.encode(keyword, "utf-8")));
+        } catch (UnsupportedEncodingException e) {
+            throw new BacklogAPIException(e);
+        }
+        return this;
+    }
+
+    public GetIssuesCountParams minNumOfCustomField(long customFieldId, float min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+                String.valueOf(min)));
+        return this;
+    }
+
+    public GetIssuesCountParams maxNumOfCustomField(long customFieldId, float max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+                String.valueOf(max)));
+        return this;
+    }
+
+    public GetIssuesCountParams minDateOfCustomField(long customFieldId, String min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+                min));
+        return this;
+    }
+
+    public GetIssuesCountParams maxDateOfCustomField(long customFieldId, String max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+                max));
+        return this;
+    }
+
+    public GetIssuesCountParams itemsOfCustomField(long customFieldId, List<Long> itemIds) {
+        for (Long itemId : itemIds) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) +"[]",
+                    itemId.toString()));
+        }
+        return this;
+    }
 }
