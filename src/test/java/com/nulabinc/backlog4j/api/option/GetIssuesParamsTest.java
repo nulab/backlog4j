@@ -38,7 +38,6 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
                 .parentChildType(GetIssuesParams.ParentChildType.NotChildNotParent)
                 .parentIssueIds(Arrays.asList(8000000001l, 8000000002l))
                 .priorities(Arrays.asList(Issue.PriorityType.High, Issue.PriorityType.Low))
-                .projectIds(Arrays.asList(9000000001l, 9000000002l))
                 .resolutions(Arrays.asList(Issue.ResolutionType.Fixed, Issue.ResolutionType.Invalid))
                 .sharedFile(true)
                 .sort(GetIssuesParams.SortKey.Category)
@@ -57,7 +56,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
 
         // then
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(49, parameters.size());
+        assertEquals(47, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId[]", "2000000001"));
@@ -86,8 +85,6 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "parentIssueId[]", "8000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "priorityId[]", "2"));
         assertEquals(true, existsOneKeyValue(parameters, "priorityId[]", "4"));
-        assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "9000000001"));
-        assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "9000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "resolutionId[]", "0"));
         assertEquals(true, existsOneKeyValue(parameters, "resolutionId[]", "2"));
         assertEquals(true, existsOneKeyValue(parameters, "sharedFile", "true"));
