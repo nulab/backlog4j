@@ -82,13 +82,6 @@ public class GetIssuesParams extends GetParams {
         }
     }
 
-    public GetIssuesParams projectIds(List<Long> projectIds) {
-        for (Long projectId : projectIds) {
-            parameters.add(new NameValuePair("projectId[]", projectId.toString()));
-        }
-        return this;
-    }
-
     public GetIssuesParams issueTypeIds(List<Long> issueTypeIds) {
         for (Long issueTypeId : issueTypeIds) {
             parameters.add(new NameValuePair("issueTypeId[]", issueTypeId.toString()));

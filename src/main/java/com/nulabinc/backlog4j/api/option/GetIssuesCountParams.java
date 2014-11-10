@@ -36,13 +36,6 @@ public class GetIssuesCountParams extends GetParams {
         }
     }
 
-    public GetIssuesCountParams projectIds(List<Long> projectIds) {
-        for (Long projectId :projectIds) {
-            parameters.add(new NameValuePair("projectId[]", projectId.toString()));
-        }
-        return this;
-    }
-
     public GetIssuesCountParams issueTypeIds(List<Long> issueTypeIds) {
         for (Long issueTypeId :issueTypeIds) {
             parameters.add(new NameValuePair("issueTypeId[]", issueTypeId.toString()));
