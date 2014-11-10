@@ -34,7 +34,7 @@ public interface Issue {
     }
 
     enum ResolutionType {
-        Fixed(0), WontFix(1), Invalid(2), Duplication(3), CannotReproduce(4);
+        NotSet(-1), Fixed(0), WontFix(1), Invalid(2), Duplication(3), CannotReproduce(4);
 
         ResolutionType(int intValue) {
             this.intValue = intValue;
@@ -50,7 +50,7 @@ public interface Issue {
                     return d;
                 }
             }
-            return null;
+            return NotSet;
         }
 
         private int intValue;
