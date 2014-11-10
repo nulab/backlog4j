@@ -527,7 +527,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Count getIssuesCount(GetIssuesParams params) throws BacklogException {
+    public Count getIssuesCount(GetIssuesCountParams params) throws BacklogException {
         return factory.createCount(get(buildEndpoint("issues/count"), params));
     }
 
