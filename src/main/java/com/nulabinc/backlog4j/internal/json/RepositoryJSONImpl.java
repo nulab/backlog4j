@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Repository;
 import com.nulabinc.backlog4j.User;
@@ -12,6 +13,7 @@ import java.util.Date;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RepositoryJSONImpl implements Repository {
 
     private int id;

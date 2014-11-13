@@ -4,6 +4,7 @@ package com.nulabinc.backlog4j.internal.json;
  * @author nulab-inc
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.User;
@@ -14,6 +15,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class IssueTypeJSONImpl implements IssueType {
 
     private long id;

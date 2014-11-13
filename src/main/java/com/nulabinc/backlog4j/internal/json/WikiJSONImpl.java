@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WikiJSONImpl implements Wiki {
 
     private long id;

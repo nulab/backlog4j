@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.activities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Content;
 import com.nulabinc.backlog4j.Repository;
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GitRepositoryCreatedContent extends Content {
 
 

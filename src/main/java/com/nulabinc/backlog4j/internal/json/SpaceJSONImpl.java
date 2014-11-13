@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.Space;
@@ -12,6 +13,7 @@ import java.util.Date;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SpaceJSONImpl implements Space {
 
     private String spaceKey;

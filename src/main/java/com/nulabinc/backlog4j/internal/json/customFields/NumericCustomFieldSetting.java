@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomBigdecimalDeserializer;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     private int typeId = 3;

@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.DiskUsage;
 import com.nulabinc.backlog4j.DiskUsageDetail;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DiskUsageJSONImpl implements DiskUsage {
     private long capacity;
     private long issue;

@@ -4,6 +4,7 @@ package com.nulabinc.backlog4j.internal.json;
  * @author nulab-inc
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.Count;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CountJSONImpl implements Count {
 
     private int count;

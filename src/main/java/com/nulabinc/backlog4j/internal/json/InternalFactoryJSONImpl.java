@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
@@ -13,6 +14,7 @@ import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldSettingJSONI
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InternalFactoryJSONImpl implements InternalFactory {
 
     @Override

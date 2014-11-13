@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.AttachmentInfo;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -9,6 +10,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AttachmentInfoJSONImpl implements AttachmentInfo {
 
     private long id;

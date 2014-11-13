@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.nulabinc.backlog4j.*;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,

@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.activities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -14,6 +15,7 @@ import java.util.Date;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -35,15 +37,7 @@ import java.util.Date;
         @JsonSubTypes.Type(value = IssueMultiUpdatedActivity.class, name = "14"),
         @JsonSubTypes.Type(value = ProjectUserAddedActivity.class, name = "15"),
         @JsonSubTypes.Type(value = ProjectUserRemovedActivity.class, name = "16"),
-        @JsonSubTypes.Type(value = NotificationAddedActivity.class, name = "17"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "18"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "19"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "20"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "21"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "22"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "23"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "24"),
-        @JsonSubTypes.Type(value = NotDefinedActivity.class, name = "25")
+        @JsonSubTypes.Type(value = NotificationAddedActivity.class, name = "17")
 })
 public abstract class ActivityJSONImpl implements Activity {
 

@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -10,6 +11,7 @@ import org.w3c.dom.Attr;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChangeLogJSONImpl implements ChangeLog {
 
     private String field;

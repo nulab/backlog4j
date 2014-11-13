@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SingleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     private int typeId = 5;

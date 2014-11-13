@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json.activities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Content;
@@ -17,6 +18,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GitPushedContent extends Content {
 
     @JsonProperty("change_type")

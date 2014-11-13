@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.Status;
 import com.nulabinc.backlog4j.Version;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -11,6 +12,7 @@ import java.util.Date;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VersionJSONImpl implements Version {
 
     private long id;
