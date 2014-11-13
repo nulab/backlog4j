@@ -20,6 +20,8 @@ public class ProjectJSONImpl implements Project {
     private boolean subtaskingEnabled;
     private String textFormattingRule;
     private boolean archived;
+    private long displayOrder;
+
 
 
     @Override
@@ -67,6 +69,10 @@ public class ProjectJSONImpl implements Project {
         return archived;
     }
 
+    @Override
+    public long getDisplayOrder() {
+        return this.displayOrder;
+    }
 
     @Override
     public boolean equals(Object obj) {

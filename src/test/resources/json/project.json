@@ -7,5 +7,6 @@
     "chartEnabled": false,
     "subtaskingEnabled": true,
     "textFormattingRule": "backlog",
-    "archived": false
+    "archived": false,
+    "displayOrder": 2147483646
 }

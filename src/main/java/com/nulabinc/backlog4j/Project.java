@@ -81,4 +81,6 @@ public interface Project {
     String getTextFormattingRule();
 
     boolean isArchived();
+
+    long getDisplayOrder();
 }
