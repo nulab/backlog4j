@@ -113,7 +113,11 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams assigneeId(long assigneeId) {
-        parameters.add(new NameValuePair("assigneeId", String.valueOf(assigneeId)));
+        String assigneeIdStr = String.valueOf(assigneeId);
+        if(assigneeId <= 0){
+            assigneeIdStr = "";
+        }
+        parameters.add(new NameValuePair("assigneeId", assigneeIdStr));
         return this;
     }
 

@@ -69,6 +69,20 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "resolutionId", "0"));
     }
 
+    @Test
+    public void createParamEmptySetTest() throws UnsupportedEncodingException {
+
+        // when
+        UpdateIssueParams params = new UpdateIssueParams(1000000001l);
+        params.resolution(null).assigneeId(0);
+
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(2, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "resolutionId", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "assigneeId", ""));
+
+    }
+
 
     @Test
     public void createTextCustomFieldParamTest() throws UnsupportedEncodingException {
