@@ -11,7 +11,7 @@ sourceCompatibility=1.6
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.1.0'
+version = '2.1.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -64,15 +64,22 @@ artifacts {
 configurations {
     deployerJars
 }
-/*
+
 signing {
-    sign configurations.archives
+    if (!version.endsWith("-SNAPSHOT")) {
+        sign configurations.archives
+    }
 }
 
 uploadArchives {
+    // Skip uploading production archives when travis
+    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
+
     repositories {
         mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+            beforeDeployment {
+                MavenDeployment deployment -> if (!version.endsWith("-SNAPSHOT")) { signing.signPom(deployment) }
+            }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
                 authentication(userName: ossrhUsername, password: ossrhPassword)
@@ -113,5 +120,3 @@ uploadArchives {
         }
     }
 }
-*/
-
