@@ -11,7 +11,7 @@ sourceCompatibility=1.6
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.1.0-SNAPSHOT'
+version = '2.1.0'
 
 repositories {
     mavenCentral()
@@ -114,3 +114,4 @@ uploadArchives {
     }
 }
 */
+
