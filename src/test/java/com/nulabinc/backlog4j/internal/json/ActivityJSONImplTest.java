@@ -38,7 +38,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(false, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
-        assertEquals("backlog", project.getTextFormattingRule());
+        assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
 
         IssueCreatedContent content = issueCreated.getContent();
