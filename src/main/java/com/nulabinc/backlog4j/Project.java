@@ -8,7 +8,7 @@ package com.nulabinc.backlog4j;
 public interface Project {
 
     enum TextFormattingRule {
-        MarkDown("markdown"), Backlog("backlog");
+        Markdown("markdown"), Backlog("backlog");
 
         TextFormattingRule(String value) {
             this.value = value;

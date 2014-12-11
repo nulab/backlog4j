@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.ResponseList;
 import org.junit.Test;
@@ -28,7 +27,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isUseBurndown());
         assertEquals(true, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
-        assertEquals("backlog", project.getTextFormattingRule());
+        assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
 
         project = projects.get(1);
@@ -39,7 +38,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(false, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
-        assertEquals("markdown", project.getTextFormattingRule());
+        assertEquals(Project.TextFormattingRule.Markdown, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
 
     }
@@ -56,7 +55,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
-        assertEquals("backlog", project.getTextFormattingRule());
+        assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
     }
 
