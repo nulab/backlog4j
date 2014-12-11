@@ -1,9 +1,11 @@
 package com.nulabinc.backlog4j.auth;
 
+import java.io.Serializable;
+
 /**
  * @author nulab-inc
  */
-public class AccessToken {
+public class AccessToken implements Serializable {
 
     protected String type;
     protected String token;
