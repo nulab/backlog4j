@@ -53,7 +53,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams resolution(Issue.ResolutionType resolutionType) {
-        if(resolutionType == null){
+        if(resolutionType == null || resolutionType.equals(Issue.ResolutionType.NotSet)){
             parameters.add(new NameValuePair("resolutionId", ""));
         }else {
             parameters.add(new NameValuePair("resolutionId", String.valueOf(resolutionType.getIntValue())));
