@@ -18,7 +18,7 @@ public interface Project {
             return value;
         }
 
-        public static TextFormattingRule strValueOf(final String anValue) {
+        public static TextFormattingRule enumValueOf(final String anValue) {
             for (TextFormattingRule d : values()) {
                 if (d.getStrValue().equals(anValue)) {
                     return d;
@@ -78,7 +78,7 @@ public interface Project {
 
     boolean isSubtaskingEnabled();
 
-    String getTextFormattingRule();
+    TextFormattingRule getTextFormattingRule();
 
     boolean isArchived();
 
