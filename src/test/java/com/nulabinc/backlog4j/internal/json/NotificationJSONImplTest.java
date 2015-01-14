@@ -24,7 +24,7 @@ public class NotificationJSONImplTest extends AbstractJSONImplTest{
         Notification notification = notifications.get(0);
         assertEquals(808, notification.getId());
         assertEquals(false, notification.isAlreadyRead());
-        assertEquals(3, notification.getReason());
+        assertEquals(Notification.Reason.IssueCreated, notification.getReason());
         assertEquals(true, notification.isResourceAlreadyRead());
 
         Project project = notification.getProject();

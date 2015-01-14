@@ -8,11 +8,37 @@ import java.util.Date;
  * @author nulab-inc
  */
 public interface Notification {
+
+    enum Reason {
+        Assigned(1), Commented(2), IssueCreated(3), IssueUpdated(4),
+        FileAttached(5), ProjectUserAdded(6), Other(9);
+
+        Reason(int intValue) {
+            this.intValue = intValue;
+        }
+
+        public int getIntValue() {
+            return intValue;
+        }
+
+        public static Reason valueOf(final int anIntValue) {
+            for (Reason d : values()) {
+                if (d.getIntValue() == anIntValue) {
+                    return d;
+                }
+            }
+            return null;
+        }
+
+        private int intValue;
+    }
+
+
     long getId();
 
     boolean isAlreadyRead();
 
-    int getReason();
+    Reason getReason();
 
     boolean isResourceAlreadyRead();
 

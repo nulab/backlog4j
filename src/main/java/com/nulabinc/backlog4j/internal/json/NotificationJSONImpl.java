@@ -43,8 +43,8 @@ public class NotificationJSONImpl implements Notification {
     }
 
     @Override
-    public int getReason() {
-        return reason;
+    public Reason getReason() {
+        return Notification.Reason.valueOf(this.reason);
     }
 
     @Override
