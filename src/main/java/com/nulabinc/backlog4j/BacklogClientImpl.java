@@ -964,7 +964,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public int getNotificationCount(GetNotificationCountParams params) throws BacklogException {
-        return factory.createCount(get(buildEndpoint("notifications/count")))
+        return factory.createCount(get(buildEndpoint("notifications/count"), params))
                 .getCount();
     }
 
