@@ -43,7 +43,7 @@ public abstract class BacklogClientBase {
         configureHttpClient();
     }
 
-    public void setOAuthSupport(OAuthSupport oAuthSupport){
+    public void setOAuthSupport(OAuthSupport oAuthSupport) {
         this.oAuthSupport = oAuthSupport;
     }
 
@@ -75,7 +75,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
         BacklogHttpResponse ires = httpClient.get(endpoint, getParams, queryParams);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.get(endpoint, getParams, queryParams);
         }
@@ -94,7 +94,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.post(endpoint, parameters);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.post(endpoint, parameters);
         }
@@ -108,7 +108,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.patch(endpoint, parameters);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.patch(endpoint, parameters);
         }
@@ -118,7 +118,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse put(String endpoint, List<NameValuePair> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.put(endpoint, parameters);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.put(endpoint, parameters);
         }
@@ -133,7 +133,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
         BacklogHttpResponse ires = httpClient.delete(endpoint, param);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.delete(endpoint, param);
         }
@@ -143,7 +143,7 @@ public abstract class BacklogClientBase {
 
     protected BacklogHttpResponse postMultiPart(String endpoint, Map<String, Object> parameters) throws BacklogException {
         BacklogHttpResponse ires = httpClient.postMultiPart(endpoint, parameters);
-        if(needTokenRefresh(ires)){
+        if (needTokenRefresh(ires)) {
             refreshToken();
             ires = httpClient.postMultiPart(endpoint, parameters);
         }
@@ -170,7 +170,8 @@ public abstract class BacklogClientBase {
     }
 
     private boolean needTokenRefresh(BacklogHttpResponse ires) {
-        return ires.getStatusCode() == 401 &&
+        return (ires.getStatusCode() == 401 ||
+                ires.getStatusCode() == 0) && // for android bug
                 configure.getApiKey() == null &&
                 configure.getAccessToken() != null;
     }
