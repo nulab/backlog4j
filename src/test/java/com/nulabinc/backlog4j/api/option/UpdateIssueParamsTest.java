@@ -78,12 +78,9 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         params.resolution(null).assigneeId(0)
                 .dueDate(null).startDate(null)
                 .categoryIds(null).versionIds(null).milestoneIds(null)
-                .estimatedHours(null).actualHours(null)
-                .notifiedUserIds(null)
-                .attachmentIds(null);
+                .estimatedHours(null).actualHours(null);
 
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(11, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "resolutionId", ""));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId", ""));
         assertEquals(true, existsOneKeyValue(parameters, "dueDate", ""));
@@ -93,8 +90,6 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "milestoneId[]", ""));
         assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", ""));
         assertEquals(true, existsOneKeyValue(parameters, "actualHours", ""));
-        assertEquals(true, existsOneKeyValue(parameters, "notifiedUserId[]", ""));
-        assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", ""));
 
     }
 

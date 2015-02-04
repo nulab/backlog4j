@@ -64,7 +64,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams startDate(String startDate) {
-        if (startDate == null ) {
+        if (startDate == null) {
             parameters.add(new NameValuePair("startDate", ""));
         } else {
             parameters.add(new NameValuePair("startDate", String.valueOf(startDate)));
@@ -73,7 +73,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams dueDate(String dueDate) {
-        if (dueDate == null ) {
+        if (dueDate == null) {
             parameters.add(new NameValuePair("dueDate", ""));
         } else {
             parameters.add(new NameValuePair("dueDate", String.valueOf(dueDate)));
@@ -172,23 +172,15 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams notifiedUserIds(List<Long> notifiedUserIds) {
-        if (notifiedUserIds == null) {
-            parameters.add(new NameValuePair("notifiedUserId[]", ""));
-        } else {
-            for (Long notifiedUserId : notifiedUserIds) {
-                parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
-            }
+        for (Long notifiedUserId : notifiedUserIds) {
+            parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
         }
         return this;
     }
 
     public UpdateIssueParams attachmentIds(List<Long> attachmentIds) {
-        if (attachmentIds == null) {
-            parameters.add(new NameValuePair("attachmentId[]", ""));
-        } else {
-            for (Long attachmentId : attachmentIds) {
-                parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
-            }
+        for (Long attachmentId : attachmentIds) {
+            parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
         }
         return this;
     }
