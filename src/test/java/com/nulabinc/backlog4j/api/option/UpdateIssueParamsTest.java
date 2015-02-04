@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +52,7 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "description", "This is a test issue."));
         assertEquals(true, existsOneKeyValue(parameters, "startDate", "2014-08-01"));
         assertEquals(true, existsOneKeyValue(parameters, "dueDate", "2014-12-01"));
-        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16.0"));
+        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16"));
         assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12.5"));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId", "4000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "categoryId[]", "5000000001"));
@@ -74,12 +75,26 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
 
         // when
         UpdateIssueParams params = new UpdateIssueParams(1000000001l);
-        params.resolution(null).assigneeId(0);
+        params.resolution(null).assigneeId(0)
+                .dueDate(null).startDate(null)
+                .categoryIds(null).versionIds(null).milestoneIds(null)
+                .estimatedHours(null).actualHours(null)
+                .notifiedUserIds(null)
+                .attachmentIds(null);
 
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(2, parameters.size());
+        assertEquals(11, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "resolutionId", ""));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "dueDate", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "startDate", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "categoryId[]", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "versionId[]", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "milestoneId[]", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "actualHours", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "notifiedUserId[]", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", ""));
 
     }
 
@@ -233,4 +248,54 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000005"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000006"));
     }
+
+    @Test
+    public void createIntHoursParamTest() throws UnsupportedEncodingException {
+
+        // when
+        UpdateIssueParams params = new UpdateIssueParams(1000000001l);
+        params.estimatedHours(16)
+                .actualHours(12);
+
+        // then
+        assertEquals("1000000001", params.getIssueIdOrKeyString());
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(2, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16"));
+        assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12"));
+    }
+
+    @Test
+    public void createFloatHoursParamTest() throws UnsupportedEncodingException {
+
+        // when
+        UpdateIssueParams params = new UpdateIssueParams(1000000001l);
+        params.estimatedHours(16.00f)
+                .actualHours(12.12f);
+
+        // then
+        assertEquals("1000000001", params.getIssueIdOrKeyString());
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(2, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16.0"));
+        assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12.12"));
+    }
+
+
+    @Test
+    public void createBigDecimalHoursParamTest() throws UnsupportedEncodingException {
+
+        // when
+        UpdateIssueParams params = new UpdateIssueParams(1000000001l);
+        params.estimatedHours(new BigDecimal(16.00))
+                .actualHours(new BigDecimal(12.12345));
+
+        // then
+        assertEquals("1000000001", params.getIssueIdOrKeyString());
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(2, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16.00"));
+        assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12.12"));
+    }
+
 }

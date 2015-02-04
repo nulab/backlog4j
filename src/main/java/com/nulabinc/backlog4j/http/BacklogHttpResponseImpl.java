@@ -10,10 +10,10 @@ import java.net.URLDecoder;
  * @author nulab-inc
  */
 public class BacklogHttpResponseImpl implements BacklogHttpResponse {
-    private HttpURLConnection urlConnection;
-    private InputStream inputStream;
-    private int statusCode;
-    private String responseAsString = null;
+    protected HttpURLConnection urlConnection;
+    protected InputStream inputStream;
+    protected int statusCode;
+    protected String responseAsString = null;
 
     public BacklogHttpResponseImpl(HttpURLConnection urlConnection) {
         try {

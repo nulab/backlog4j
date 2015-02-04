@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.api.option;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,17 +18,18 @@ public class UpdateIssueParams extends PatchParams {
     private long issueId;
     private String issueKey;
 
-    public UpdateIssueParams(long issueId){
+    public UpdateIssueParams(long issueId) {
         this.issueId = issueId;
     }
-    public UpdateIssueParams(String issueKey){
+
+    public UpdateIssueParams(String issueKey) {
         this.issueKey = issueKey;
     }
 
     public String getIssueIdOrKeyString() {
-        if(issueKey != null){
+        if (issueKey != null) {
             return issueKey;
-        }else{
+        } else {
             return String.valueOf(issueId);
         }
     }
@@ -53,21 +55,34 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams resolution(Issue.ResolutionType resolutionType) {
-        if(resolutionType == null || resolutionType.equals(Issue.ResolutionType.NotSet)){
+        if (resolutionType == null || resolutionType.equals(Issue.ResolutionType.NotSet)) {
             parameters.add(new NameValuePair("resolutionId", ""));
-        }else {
+        } else {
             parameters.add(new NameValuePair("resolutionId", String.valueOf(resolutionType.getIntValue())));
         }
         return this;
     }
 
     public UpdateIssueParams startDate(String startDate) {
-        parameters.add(new NameValuePair("startDate", String.valueOf(startDate)));
+        if (startDate == null ) {
+            parameters.add(new NameValuePair("startDate", ""));
+        } else {
+            parameters.add(new NameValuePair("startDate", String.valueOf(startDate)));
+        }
         return this;
     }
 
     public UpdateIssueParams dueDate(String dueDate) {
-        parameters.add(new NameValuePair("dueDate", String.valueOf(dueDate)));
+        if (dueDate == null ) {
+            parameters.add(new NameValuePair("dueDate", ""));
+        } else {
+            parameters.add(new NameValuePair("dueDate", String.valueOf(dueDate)));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams estimatedHours(int estimatedHours) {
+        parameters.add(new NameValuePair("estimatedHours", String.valueOf(estimatedHours)));
         return this;
     }
 
@@ -76,8 +91,31 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams estimatedHours(BigDecimal estimatedHours) {
+        if (estimatedHours == null) {
+            parameters.add(new NameValuePair("estimatedHours", ""));
+        } else {
+            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams actualHours(int actualHours) {
+        parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
+        return this;
+    }
+
     public UpdateIssueParams actualHours(float actualHours) {
         parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
+        return this;
+    }
+
+    public UpdateIssueParams actualHours(BigDecimal actualHours) {
+        if (actualHours == null) {
+            parameters.add(new NameValuePair("actualHours", ""));
+        } else {
+            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
         return this;
     }
 
@@ -87,22 +125,34 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams categoryIds(List<Long> categoryIds) {
-        for (Long categoryId : categoryIds) {
-            parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
+        if (categoryIds == null) {
+            parameters.add(new NameValuePair("categoryId[]", ""));
+        } else {
+            for (Long categoryId : categoryIds) {
+                parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
+            }
         }
         return this;
     }
 
     public UpdateIssueParams versionIds(List<Long> versionIds) {
-        for (Long versionId : versionIds) {
-            parameters.add(new NameValuePair("versionId[]", versionId.toString()));
+        if (versionIds == null) {
+            parameters.add(new NameValuePair("versionId[]", ""));
+        } else {
+            for (Long versionId : versionIds) {
+                parameters.add(new NameValuePair("versionId[]", versionId.toString()));
+            }
         }
         return this;
     }
 
     public UpdateIssueParams milestoneIds(List<Long> milestoneIds) {
-        for (Long milestoneId : milestoneIds) {
-            parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
+        if (milestoneIds == null) {
+            parameters.add(new NameValuePair("milestoneId[]", ""));
+        } else {
+            for (Long milestoneId : milestoneIds) {
+                parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
+            }
         }
         return this;
     }
@@ -114,7 +164,7 @@ public class UpdateIssueParams extends PatchParams {
 
     public UpdateIssueParams assigneeId(long assigneeId) {
         String assigneeIdStr = String.valueOf(assigneeId);
-        if(assigneeId <= 0){
+        if (assigneeId <= 0) {
             assigneeIdStr = "";
         }
         parameters.add(new NameValuePair("assigneeId", assigneeIdStr));
@@ -122,19 +172,26 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams notifiedUserIds(List<Long> notifiedUserIds) {
-        for (Long notifiedUserId : notifiedUserIds) {
-            parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
+        if (notifiedUserIds == null) {
+            parameters.add(new NameValuePair("notifiedUserId[]", ""));
+        } else {
+            for (Long notifiedUserId : notifiedUserIds) {
+                parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
+            }
         }
         return this;
     }
 
     public UpdateIssueParams attachmentIds(List<Long> attachmentIds) {
-        for (Long attachmentId : attachmentIds) {
-            parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
+        if (attachmentIds == null) {
+            parameters.add(new NameValuePair("attachmentId[]", ""));
+        } else {
+            for (Long attachmentId : attachmentIds) {
+                parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
+            }
         }
         return this;
     }
-
 
 
     public UpdateIssueParams textCustomField(long customFieldId, String customFieldValue) {
@@ -165,7 +222,7 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams numericCustomField(long customFieldId, float customFieldValue){
+    public UpdateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
@@ -179,7 +236,7 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams dateCustomField(long customFieldId, String customFieldValue){
+    public UpdateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldValue)));
         return this;
@@ -193,7 +250,7 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams singleListCustomField(long customFieldId, long customFieldItemId){
+    public UpdateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                 String.valueOf(customFieldItemId)));
         return this;
@@ -207,7 +264,7 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams radioCustomField(long customFieldId, long customFieldItemId){
+    public UpdateIssueParams radioCustomField(long customFieldId, long customFieldItemId) {
         return singleListCustomField(customFieldId, customFieldItemId);
     }
 
@@ -219,7 +276,7 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds){
+    public UpdateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
         for (Long customFieldItemId : customFieldItemIds) {
             parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
                     String.valueOf(customFieldItemId)));
@@ -230,21 +287,21 @@ public class UpdateIssueParams extends PatchParams {
     public UpdateIssueParams multipleListCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            for(Long value: customFieldMap.get(key)){
+            for (Long value : customFieldMap.get(key)) {
                 parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
             }
         }
         return this;
     }
 
-    public UpdateIssueParams checkBoxCustomField(long customFieldId, List<Long> customFieldItemIds){
+    public UpdateIssueParams checkBoxCustomField(long customFieldId, List<Long> customFieldItemIds) {
         return multipleListCustomField(customFieldId, customFieldItemIds);
     }
 
     public UpdateIssueParams checkBoxCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            for(Long value: customFieldMap.get(key)){
+            for (Long value : customFieldMap.get(key)) {
                 parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
             }
         }
@@ -254,7 +311,7 @@ public class UpdateIssueParams extends PatchParams {
     public UpdateIssueParams listCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            for(Long value: customFieldMap.get(key)){
+            for (Long value : customFieldMap.get(key)) {
                 parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
             }
         }

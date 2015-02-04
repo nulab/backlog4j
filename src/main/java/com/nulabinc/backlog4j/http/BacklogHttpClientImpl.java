@@ -19,15 +19,15 @@ import java.util.Map;
  * @author nulab-inc
  */
 public class BacklogHttpClientImpl implements BacklogHttpClient {
-    private static final String USER_AGENT = "backlog4jv2";
-    private static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
-    private static final String CHARSET = "UTF-8";
-    private static final String LINE_FEED = "\r\n";
+    protected static final String USER_AGENT = "backlog4jv2";
+    protected static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
+    protected static final String CHARSET = "UTF-8";
+    protected static final String LINE_FEED = "\r\n";
 
-    private String apiKey;
-    private String bearerToken;
-    private int readTimeout;
-    private int connectionTimeout;
+    protected String apiKey;
+    protected String bearerToken;
+    protected int readTimeout;
+    protected int connectionTimeout;
 
     @Override
     public void setApiKey(String apiKey) {
