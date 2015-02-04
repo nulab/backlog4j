@@ -66,9 +66,10 @@ configurations {
 }
 
 signing {
-    if (!version.endsWith("-SNAPSHOT")) {
-        sign configurations.archives
-    }
+    // Skip signing snapshot archives
+    if (System.env.TRAVIS || version.endsWith("-SNAPSHOT")) return
+
+    sign configurations.archives
 }
 
 uploadArchives {
