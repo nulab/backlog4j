@@ -29,6 +29,10 @@ public class NumericCustomField extends CustomFieldJSONImpl {
         return FieldType.valueOf(fieldTypeId);
     }
 
+    public BigDecimal getValue() {
+        return value;
+    }
+
     public float getFloatValue() {
         return value.floatValue();
     }
