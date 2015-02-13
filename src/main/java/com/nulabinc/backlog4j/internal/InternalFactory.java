@@ -102,4 +102,7 @@ public interface InternalFactory {
 
     ResponseList<Group> createGroupList(BacklogHttpResponse res) throws BacklogException;
 
+    ResponseList<Webhook> createWebhookList(BacklogHttpResponse res) throws BacklogException;
+
+    Webhook createWebhook(BacklogHttpResponse res) throws BacklogException;
 }

@@ -400,6 +400,22 @@ public class InternalFactoryJSONImpl implements InternalFactory {
         return createObjectList(resStr, Attachment.class, AttachmentJSONImpl[].class);
     }
 
+    @Override
+    public ResponseList<Webhook> createWebhookList(BacklogHttpResponse res) throws BacklogException {
+        return createWebhookList(res.asString());
+    }
+    public ResponseList<Webhook> createWebhookList(String resStr) throws BacklogException {
+        return createObjectList(resStr, Webhook.class, WebhookJSONImpl[].class);
+    }
+
+    @Override
+    public Webhook createWebhook(BacklogHttpResponse res) throws BacklogException {
+        return createObject(res.asString(), Webhook.class, WebhookJSONImpl.class);
+    }
+    public Webhook createWebhook(String resStr) throws BacklogException {
+        return createObject(resStr, Webhook.class, WebhookJSONImpl.class);
+    }
+
     private <T1 , T2 extends T1> ResponseList<T1> createObjectList(String content, Class<T1> clazz1, Class<T2[]> clazz2) throws BacklogException {
         T1[] arrays = Jackson.fromJsonString(content, clazz2);
         ResponseList<T1> list = new ResponseListImpl<T1>();
