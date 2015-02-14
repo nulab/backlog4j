@@ -1020,4 +1020,48 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     public Group deleteGroup(long groupId) throws BacklogException {
         return factory.createGroup(delete(buildEndpoint("groups/" + groupId)));
     }
+
+    @Override
+    public ResponseList<Webhook> getWebhooks(long projectId) throws BacklogException {
+        return factory.createWebhookList(get(buildEndpoint("projects/" + projectId + "/webhooks")));
+    }
+
+    @Override
+    public ResponseList<Webhook> getWebhooks(String projectKey) throws BacklogException {
+        return factory.createWebhookList(get(buildEndpoint("projects/" + projectKey + "/webhooks")));
+    }
+
+    @Override
+    public Webhook createWebhook(CreateWebhookParams params) throws BacklogException {
+        return factory.createWebhook(post(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString() + "/webhooks"), params));
+    }
+
+    @Override
+    public Webhook getWebhook(long projectId, long webhookId) throws BacklogException {
+        return factory.createWebhook(get(buildEndpoint("projects/" + projectId + "/webhooks/" + webhookId)));
+    }
+
+    @Override
+    public Webhook getWebhook(String projectKey, long webhookId) throws BacklogException {
+        return factory.createWebhook(get(buildEndpoint("projects/" + projectKey + "/webhooks/" + webhookId)));
+    }
+
+    @Override
+    public Webhook updateWebhook(UpdateWebhookParams params) throws BacklogException {
+        return factory.createWebhook(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString() + "/webhooks/" + params.getWebhookId()), params));
+    }
+
+    @Override
+    public Webhook deleteWebhook(long projectId, long webhookId) throws BacklogException {
+        return factory.createWebhook(delete(
+                buildEndpoint("projects/" + projectId + "/webhooks/" + webhookId)));
+    }
+
+    @Override
+    public Webhook deleteWebhook(String projectKey, long webhookId) throws BacklogException {
+        return factory.createWebhook(delete(
+                buildEndpoint("projects/" + projectKey + "/webhooks/" + webhookId)));
+    }
 }
