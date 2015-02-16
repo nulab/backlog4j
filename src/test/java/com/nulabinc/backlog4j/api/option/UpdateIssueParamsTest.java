@@ -146,6 +146,20 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "-111.0"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "5555.121"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "123.6"));
+
+    }
+
+
+    @Test
+    public void createNumericCustomFieldParamClearTest() throws UnsupportedEncodingException {
+        // when
+        UpdateIssueParams params = new UpdateIssueParams(1000000001l);
+        params.numericCustomField(3000000003l, null);
+
+        // then
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", ""));
+
     }
 
     @Test

@@ -220,6 +220,17 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
+        if(customFieldValue == null){
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    ""));
+        }else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
+        return this;
+    }
+
     public UpdateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
