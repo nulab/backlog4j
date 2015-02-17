@@ -53,4 +53,22 @@ public class CreateWebhookParamsTest extends AbstractParamsTest{
         assertEquals(true, existsOneKeyValue(parameters, "allEvent", "true"));
         assertEquals(projectKey, params.getProjectIdOrKeyString());
     }
+
+    @Test
+    public void createParam_SetNull_Test() throws UnsupportedEncodingException {
+        // when
+        String projectKey = "PROJECT";
+        CreateWebhookParams params = new CreateWebhookParams(projectKey, null, null);
+        params.allEvent(true);
+        params.description(null);
+
+        // then
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(4, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "name", "")); // set empty
+        assertEquals(true, existsOneKeyValue(parameters, "hookUrl", ""));
+        assertEquals(true, existsOneKeyValue(parameters, "allEvent", "true"));
+        assertEquals(true, existsOneKeyValue(parameters, "description", ""));
+        assertEquals(projectKey, params.getProjectIdOrKeyString());
+    }
 }

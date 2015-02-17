@@ -18,14 +18,18 @@ public class CreateWebhookParams extends PostParams {
 
     public CreateWebhookParams(long projectId, String name, String hookUrl){
         this.projectId = projectId;
-        parameters.add(new NameValuePair("name", name));
-        parameters.add(new NameValuePair("hookUrl", hookUrl));
+        String nameValue = (name==null) ? "" : name;
+        String hookUrlValue = (hookUrl==null) ? "" : hookUrl;
+        parameters.add(new NameValuePair("name", nameValue));
+        parameters.add(new NameValuePair("hookUrl", hookUrlValue));
     }
 
     public CreateWebhookParams(String projectKey, String name, String hookUrl){
         this.projectKey = projectKey;
-        parameters.add(new NameValuePair("name", name));
-        parameters.add(new NameValuePair("hookUrl", hookUrl));
+        String nameValue = (name==null) ? "" : name;
+        String hookUrlValue = (hookUrl==null) ? "" : hookUrl;
+        parameters.add(new NameValuePair("name", nameValue));
+        parameters.add(new NameValuePair("hookUrl", hookUrlValue));
     }
 
     public String getProjectIdOrKeyString() {
@@ -43,7 +47,8 @@ public class CreateWebhookParams extends PostParams {
      * @return CreateWebhookParams instance
      */
     public CreateWebhookParams description(String description) {
-        parameters.add(new NameValuePair("description", description));
+        String value = (description==null) ? "" : description;
+        parameters.add(new NameValuePair("description", value));
         return this;
     }
 
@@ -65,9 +70,7 @@ public class CreateWebhookParams extends PostParams {
      * @return CreateWebhookParams instance
      */
     public CreateWebhookParams activityTypeIds(List<Activity.Type> activityTypeIds) {
-        if (activityTypeIds == null) {
-            parameters.add(new NameValuePair("activityTypeIds[]", ""));
-        } else {
+        if (activityTypeIds != null) {
             for (Activity.Type type : activityTypeIds) {
                 parameters.add(new NameValuePair("activityTypeIds[]", String.valueOf(type.getIntValue())));
             }
