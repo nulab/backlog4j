@@ -135,7 +135,6 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     private HttpURLConnection openUrlConnection(String url, String method, String contentType) {
         HttpURLConnection urlConnection;
         try {
-            System.out.println(url);
             urlConnection = (HttpURLConnection) new URL(url).openConnection();
 
             urlConnection.setUseCaches(false);
@@ -163,7 +162,6 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         if (params == null || params.size() == 0) return;
 
         String query = getDataString(params);
-        System.out.println(query);
         try {
             OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
             out.write(query.getBytes(CHARSET));
