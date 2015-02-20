@@ -54,6 +54,8 @@ public class RadioCustomFieldSetting extends CustomFieldSettingJSONImpl {
         }
         RadioCustomFieldSetting rhs = (RadioCustomFieldSetting) obj;
         return new EqualsBuilder()
+                .append(getId(), rhs.getId())
+                .append(getName(), rhs.getName())
                 .append(this.typeId, rhs.typeId)
                 .append(this.items, rhs.items)
                 .append(this.allowInput, rhs.allowInput)
@@ -64,6 +66,8 @@ public class RadioCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
+                .append(getId())
+                .append(getName())
                 .append(typeId)
                 .append(items)
                 .append(allowInput)
@@ -74,6 +78,8 @@ public class RadioCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("name", getName())
                 .append("typeId", typeId)
                 .append("items", items)
                 .append("allowInput", allowInput)

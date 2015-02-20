@@ -84,6 +84,8 @@ public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
         }
         DateCustomFieldSetting rhs = (DateCustomFieldSetting) obj;
         return new EqualsBuilder()
+                .append(getId(), rhs.getId())
+                .append(getName(), rhs.getName())
                 .append(this.typeId, rhs.typeId)
                 .append(this.applicableIssueTypes, rhs.applicableIssueTypes)
                 .append(this.min, rhs.min)
@@ -95,6 +97,8 @@ public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
+                .append(getId())
+                .append(getName())
                 .append(typeId)
                 .append(applicableIssueTypes)
                 .append(min)
@@ -106,6 +110,8 @@ public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("name", getName())
                 .append("typeId", typeId)
                 .append("applicableIssueTypes", applicableIssueTypes)
                 .append("min", min)

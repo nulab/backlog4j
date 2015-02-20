@@ -63,6 +63,8 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
         }
         NumericCustomFieldSetting rhs = (NumericCustomFieldSetting) obj;
         return new EqualsBuilder()
+                .append(getId(), rhs.getId())
+                .append(getName(), rhs.getName())
                 .append(this.typeId, rhs.typeId)
                 .append(this.min, rhs.min)
                 .append(this.max, rhs.max)
@@ -74,6 +76,8 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
+                .append(getId())
+                .append(getName())
                 .append(typeId)
                 .append(min)
                 .append(max)
@@ -85,6 +89,8 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("name", getName())
                 .append("typeId", typeId)
                 .append("min", min)
                 .append("max", max)

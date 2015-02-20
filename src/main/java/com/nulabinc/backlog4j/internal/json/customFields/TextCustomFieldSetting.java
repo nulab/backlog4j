@@ -36,6 +36,8 @@ public class TextCustomFieldSetting extends CustomFieldSettingJSONImpl {
         }
         TextCustomFieldSetting rhs = (TextCustomFieldSetting) obj;
         return new EqualsBuilder()
+                .append(getId(), rhs.getId())
+                .append(getName(), rhs.getName())
                 .append(this.typeId, rhs.typeId)
                 .isEquals();
     }
@@ -43,6 +45,8 @@ public class TextCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
+                .append(getId())
+                .append(getName())
                 .append(typeId)
                 .toHashCode();
     }
@@ -50,6 +54,8 @@ public class TextCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("name", getName())
                 .append("typeId", typeId)
                 .toString();
     }
