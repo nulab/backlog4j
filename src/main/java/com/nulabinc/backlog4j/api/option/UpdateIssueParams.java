@@ -240,15 +240,24 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                String.valueOf(customFieldValue)));
+        if (customFieldValue == null) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId), ""));
+        } else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue));
+        }
         return this;
     }
 
     public UpdateIssueParams dateCustomFieldMap(Map<Long, String> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+            String customFieldValue = customFieldMap.get(key);
+            if (customFieldValue == null) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), ""));
+            }else {
+                parameters.add(new NameValuePair("customField_" + key.toString(), customFieldValue));
+            }
         }
         return this;
     }
