@@ -44,8 +44,6 @@ public class IssueJSONImpl implements Issue {
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date startDate;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
-    private Date limitDate;
-    @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date dueDate;
     @JsonDeserialize(using = JacksonCustomBigdecimalDeserializer.class)
     private BigDecimal estimatedHours;
@@ -146,11 +144,6 @@ public class IssueJSONImpl implements Issue {
     }
 
     @Override
-    public Date getLimitDate() {
-        return limitDate;
-    }
-
-    @Override
     public Date getDueDate() {
         return dueDate;
     }
@@ -238,7 +231,6 @@ public class IssueJSONImpl implements Issue {
                 .append(this.versions, rhs.versions)
                 .append(this.milestone, rhs.milestone)
                 .append(this.startDate, rhs.startDate)
-                .append(this.limitDate, rhs.limitDate)
                 .append(this.dueDate, rhs.dueDate)
                 .append(this.estimatedHours, rhs.estimatedHours)
                 .append(this.actualHours, rhs.actualHours)
@@ -272,7 +264,6 @@ public class IssueJSONImpl implements Issue {
                 .append(versions)
                 .append(milestone)
                 .append(startDate)
-                .append(limitDate)
                 .append(dueDate)
                 .append(estimatedHours)
                 .append(actualHours)
@@ -306,7 +297,6 @@ public class IssueJSONImpl implements Issue {
                 .append("versions", versions)
                 .append("milestone", milestone)
                 .append("startDate", startDate)
-                .append("limitDate", limitDate)
                 .append("dueDate", dueDate)
                 .append("estimatedHours", estimatedHours)
                 .append("actualHours", actualHours)

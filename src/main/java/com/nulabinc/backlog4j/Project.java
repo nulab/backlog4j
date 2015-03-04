@@ -68,12 +68,6 @@ public interface Project {
 
     String getName();
 
-    @Deprecated
-    boolean isUseGantt();
-
-    @Deprecated
-    boolean isUseBurndown();
-
     boolean isChartEnabled();
 
     boolean isSubtaskingEnabled();

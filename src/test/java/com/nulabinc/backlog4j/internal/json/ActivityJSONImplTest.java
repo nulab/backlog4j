@@ -34,8 +34,6 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(1073761031, project.getId());
         assertEquals("TEST_PRJ1407208757143", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(false, project.isUseGantt());
-        assertEquals(false, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());

@@ -23,8 +23,6 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073835211, project.getId());
         assertEquals("TST_PRJ", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(true, project.isUseGantt());
-        assertEquals(true, project.isUseBurndown());
         assertEquals(true, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
@@ -34,8 +32,6 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073835220, project.getId());
         assertEquals("TEST_PRJ_2", project.getProjectKey());
         assertEquals("API v2 から作成したテストプロジェクト", project.getName());
-        assertEquals(false, project.isUseGantt());
-        assertEquals(false, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Markdown, project.getTextFormattingRule());
@@ -51,8 +47,6 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073835211, project.getId());
         assertEquals("TST_PRJ", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(false, project.isUseGantt());
-        assertEquals(true, project.isUseBurndown());
         assertEquals(false, project.isChartEnabled());
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
