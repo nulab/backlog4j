@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.api.option;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -86,6 +87,21 @@ public class CreateIssueParams extends PostParams {
     }
 
     /**
+     * Sets the issue estimate hours.
+     *
+     * @param estimatedHours the issue estimate hours
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams estimatedHours(BigDecimal estimatedHours) {
+        if (estimatedHours == null) {
+            parameters.add(new NameValuePair("estimatedHours", ""));
+        } else {
+            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
+        return this;
+    }
+
+    /**
      * Sets the issue actual hours.
      *
      * @param actualHours the issue actual hours
@@ -93,6 +109,21 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams actualHours(float actualHours) {
         parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
+        return this;
+    }
+
+    /**
+     * Sets the issue actual hours.
+     *
+     * @param actualHours the issue actual hours
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams actualHours(BigDecimal actualHours) {
+        if (actualHours == null) {
+            parameters.add(new NameValuePair("actualHours", ""));
+        } else {
+            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
         return this;
     }
 
