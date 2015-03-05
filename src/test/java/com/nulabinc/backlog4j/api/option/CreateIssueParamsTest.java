@@ -26,7 +26,7 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
                 .startDate("2014-08-01")
                 .dueDate("2014-12-01")
                 .estimatedHours(16)
-                .actualHours(12.5f)
+                .actualHours(12.51f)
                 .assigneeId(4000000001l)
                 .categoryIds(Arrays.asList(5000000001l, 5000000002l))
                 .versionIds(Arrays.asList(6000000001l, 6000000002l))
@@ -47,7 +47,7 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
         assertEquals(true, existsOneKeyValue(parameters, "startDate", "2014-08-01"));
         assertEquals(true, existsOneKeyValue(parameters, "dueDate", "2014-12-01"));
         assertEquals(true, existsOneKeyValue(parameters, "estimatedHours", "16.0"));
-        assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12.5"));
+        assertEquals(true, existsOneKeyValue(parameters, "actualHours", "12.51"));
         assertEquals(true, existsOneKeyValue(parameters, "assigneeId", "4000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "categoryId[]", "5000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "categoryId[]", "5000000002"));

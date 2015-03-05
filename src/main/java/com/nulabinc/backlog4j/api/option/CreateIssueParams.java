@@ -81,7 +81,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams estimatedHours(float estimatedHours) {
-        parameters.add(new NameValuePair("estimatedHours", String.valueOf(estimatedHours)));
+        parameters.add(new NameValuePair("estimatedHours", Float.toString(estimatedHours)));
         return this;
 
     }
@@ -108,7 +108,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams actualHours(float actualHours) {
-        parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
+        parameters.add(new NameValuePair("actualHours", Float.toString(actualHours)));
         return this;
     }
 

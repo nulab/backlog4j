@@ -87,7 +87,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams estimatedHours(float estimatedHours) {
-        parameters.add(new NameValuePair("estimatedHours", String.valueOf(estimatedHours)));
+        parameters.add(new NameValuePair("estimatedHours", Float.toString(estimatedHours)));
         return this;
     }
 
@@ -106,7 +106,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams actualHours(float actualHours) {
-        parameters.add(new NameValuePair("actualHours", String.valueOf(actualHours)));
+        parameters.add(new NameValuePair("actualHours", Float.toString(actualHours)));
         return this;
     }
 

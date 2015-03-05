@@ -21,17 +21,17 @@ public class AddNumericCustomFieldParams extends AddCustomFieldParams {
     }
 
     public AddNumericCustomFieldParams min(float min) {
-        parameters.add(new NameValuePair("min", String.valueOf(min)));
+        parameters.add(new NameValuePair("min", Float.toString(min)));
         return this;
     }
 
     public AddNumericCustomFieldParams max(float max) {
-        parameters.add(new NameValuePair("max", String.valueOf(max)));
+        parameters.add(new NameValuePair("max", Float.toString(max)));
         return this;
     }
 
     public AddNumericCustomFieldParams initialValue(float initialValue) {
-        parameters.add(new NameValuePair("initialValue", String.valueOf(initialValue)));
+        parameters.add(new NameValuePair("initialValue", Float.toString(initialValue)));
         return this;
     }
 
