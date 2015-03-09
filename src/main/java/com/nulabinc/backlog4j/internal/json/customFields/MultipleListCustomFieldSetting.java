@@ -16,7 +16,6 @@ public class MultipleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     private int typeId = 6;
     private ListItemSetting[] items;
-    private Boolean allowInput;
     private Boolean allowAddItem;
 
     @Override
@@ -31,10 +30,6 @@ public class MultipleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     public List<ListItemSetting> getItems() {
         return Arrays.asList(items);
-    }
-
-    public boolean isAllowInput() {
-        return allowInput;
     }
 
     public boolean isAllowAddItem() {
@@ -58,7 +53,6 @@ public class MultipleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
                 .append(getName(), rhs.getName())
                 .append(this.typeId, rhs.typeId)
                 .append(this.items, rhs.items)
-                .append(this.allowInput, rhs.allowInput)
                 .append(this.allowAddItem, rhs.allowAddItem)
                 .isEquals();
     }
@@ -70,7 +64,6 @@ public class MultipleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
                 .append(getName())
                 .append(typeId)
                 .append(items)
-                .append(allowInput)
                 .append(allowAddItem)
                 .toHashCode();
     }
@@ -82,7 +75,6 @@ public class MultipleListCustomFieldSetting extends CustomFieldSettingJSONImpl {
                 .append("name", getName())
                 .append("typeId", typeId)
                 .append("items", items)
-                .append("allowInput", allowInput)
                 .append("allowAddItem", allowAddItem)
                 .toString();
     }

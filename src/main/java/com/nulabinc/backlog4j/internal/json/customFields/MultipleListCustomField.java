@@ -16,8 +16,6 @@ public class MultipleListCustomField extends CustomFieldJSONImpl {
 
     private int fieldTypeId = 6;
     private ListItem[] value;
-    private String otherValue;
-
 
     @Override
     public int getFieldTypeId() {
@@ -31,10 +29,6 @@ public class MultipleListCustomField extends CustomFieldJSONImpl {
 
     public List<ListItem> getValue() {
         return Arrays.asList(value);
-    }
-
-    public String getOtherValue() {
-        return otherValue;
     }
 
     @Override
@@ -54,7 +48,6 @@ public class MultipleListCustomField extends CustomFieldJSONImpl {
                 .append(getName(), rhs.getName())
                 .append(this.fieldTypeId, rhs.fieldTypeId)
                 .append(this.value, rhs.value)
-                .append(this.otherValue, rhs.otherValue)
                 .isEquals();
     }
 
@@ -65,7 +58,6 @@ public class MultipleListCustomField extends CustomFieldJSONImpl {
                 .append(getName())
                 .append(fieldTypeId)
                 .append(value)
-                .append(otherValue)
                 .toHashCode();
     }
 
@@ -76,7 +68,6 @@ public class MultipleListCustomField extends CustomFieldJSONImpl {
                 .append("name", getName())
                 .append("fieldTypeId", fieldTypeId)
                 .append("value", value)
-                .append("otherValue", otherValue)
                 .toString();
     }
 }

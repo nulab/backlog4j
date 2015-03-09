@@ -13,7 +13,6 @@ public class SingleListCustomField extends CustomFieldJSONImpl {
 
     private int fieldTypeId = 5;
     private ListItem value;
-    private String otherValue;
 
     @Override
     public int getFieldTypeId() {
@@ -27,10 +26,6 @@ public class SingleListCustomField extends CustomFieldJSONImpl {
 
     public ListItem getValue() {
         return value;
-    }
-
-    public String getOtherValue() {
-        return otherValue;
     }
 
      @Override
@@ -50,7 +45,6 @@ public class SingleListCustomField extends CustomFieldJSONImpl {
                 .append(getName(), rhs.getName())
                 .append(this.fieldTypeId, rhs.fieldTypeId)
                 .append(this.value, rhs.value)
-                .append(this.otherValue, rhs.otherValue)
                 .isEquals();
     }
 
@@ -61,7 +55,6 @@ public class SingleListCustomField extends CustomFieldJSONImpl {
                 .append(getName())
                 .append(fieldTypeId)
                 .append(value)
-                .append(otherValue)
                 .toHashCode();
     }
 
@@ -72,7 +65,6 @@ public class SingleListCustomField extends CustomFieldJSONImpl {
                 .append("name", getName())
                 .append("fieldTypeId", fieldTypeId)
                 .append("value", value)
-                .append("otherValue", otherValue)
                 .toString();
     }
 
