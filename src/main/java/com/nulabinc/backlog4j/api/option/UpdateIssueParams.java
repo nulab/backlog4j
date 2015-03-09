@@ -216,7 +216,7 @@ public class UpdateIssueParams extends PatchParams {
 
     public UpdateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                String.valueOf(customFieldValue)));
+                Float.toString(customFieldValue)));
         return this;
     }
 
@@ -234,7 +234,7 @@ public class UpdateIssueParams extends PatchParams {
     public UpdateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+            parameters.add(new NameValuePair("customField_" + key.toString(), Float.toString(customFieldMap.get(key))));
         }
         return this;
     }

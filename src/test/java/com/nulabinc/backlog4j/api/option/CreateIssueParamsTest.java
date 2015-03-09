@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -106,13 +107,17 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
         map.put(3000000002l, 5555.121f);
         params.numericCustomFieldMap(map);
 
-        params.numericCustomField(3000000003l, 123.6f);
+        params.numericCustomField(3000000003l, 123.61f);
+        params.numericCustomField(3000000004l, new BigDecimal(123.67777));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "-111.0"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "5555.121"));
-        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "123.6"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "123.61"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000004", "123.6778"));
+
+
     }
 
     @Test

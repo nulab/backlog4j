@@ -268,7 +268,25 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                String.valueOf(customFieldValue)));
+                Float.toString(customFieldValue)));
+        return this;
+    }
+
+    /**
+     * Sets the textarea type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
+        if(customFieldValue == null){
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    ""));
+        }else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
         return this;
     }
 
@@ -281,7 +299,7 @@ public class CreateIssueParams extends PostParams {
     public CreateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
         Set<Long> keySet = customFieldMap.keySet();
         for (Long key : keySet) {
-            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+            parameters.add(new NameValuePair("customField_" + key.toString(), Float.toString(customFieldMap.get(key))));
         }
         return this;
     }
