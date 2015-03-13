@@ -37,7 +37,7 @@ public interface WikiMethods {
      * @param projectId the project identifier
      * @return the Wiki pages count
      */
-    Count getWikiCount(long projectId);
+    int getWikiCount(long projectId);
 
     /**
      * Returns Wiki pages count.
@@ -45,7 +45,7 @@ public interface WikiMethods {
      * @param projectKey the project identifier
      * @return the Wiki pages count
      */
-    Count getWikiCount(String projectKey);
+    int getWikiCount(String projectKey);
 
     /**
      * Returns Wiki page's tags in the project.

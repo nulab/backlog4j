@@ -527,8 +527,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Count getIssuesCount(GetIssuesCountParams params) throws BacklogException {
-        return factory.createCount(get(buildEndpoint("issues/count"), params));
+    public int getIssuesCount(GetIssuesCountParams params) throws BacklogException {
+        return factory.createCount(get(buildEndpoint("issues/count"), params)).getCount();
     }
 
     @Override
@@ -723,15 +723,15 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Count getWikiCount(long projectId) {
+    public int getWikiCount(long projectId) {
         GetParams params = new GetWikisParams(projectId);
-        return factory.createCount(get(buildEndpoint("wikis/count"), params));
+        return factory.createCount(get(buildEndpoint("wikis/count"), params)).getCount();
     }
 
     @Override
-    public Count getWikiCount(String projectKey) {
+    public int getWikiCount(String projectKey) {
         GetParams params = new GetWikisParams(projectKey);
-        return factory.createCount(get(buildEndpoint("wikis/count"), params));
+        return factory.createCount(get(buildEndpoint("wikis/count"), params)).getCount();
     }
 
     @Override
