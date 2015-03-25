@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -235,9 +236,13 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
             } else {
                 sb.append("&");
             }
-            sb.append(pair.getName());
-            sb.append("=");
-            sb.append(pair.getValue());
+            try {
+                sb.append(URLEncoder.encode(pair.getName(), "utf-8"));
+                sb.append("=");
+                sb.append(URLEncoder.encode(pair.getValue(), "utf-8"));
+            } catch (UnsupportedEncodingException e) {
+                throw new BacklogAPIException(e);
+            }
         }
         return sb.toString();
     }

@@ -1,12 +1,9 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -30,70 +27,70 @@ public class GetIssuesCountParams extends GetParams {
         private int intValue;
     }
 
-    public GetIssuesCountParams(List<Long> projectIds){
-        for (Long projectId :projectIds) {
+    public GetIssuesCountParams(List<Long> projectIds) {
+        for (Long projectId : projectIds) {
             parameters.add(new NameValuePair("projectId[]", projectId.toString()));
         }
     }
 
     public GetIssuesCountParams issueTypeIds(List<Long> issueTypeIds) {
-        for (Long issueTypeId :issueTypeIds) {
+        for (Long issueTypeId : issueTypeIds) {
             parameters.add(new NameValuePair("issueTypeId[]", issueTypeId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams categoryIds(List<Long> categoryIds) {
-        for (Long categoryId :categoryIds) {
+        for (Long categoryId : categoryIds) {
             parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams versionIds(List<Long> versionIds) {
-        for (Long versionId :versionIds) {
+        for (Long versionId : versionIds) {
             parameters.add(new NameValuePair("versionId[]", versionId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams milestoneIds(List<Long> milestoneIds) {
-        for (Long milestoneId :milestoneIds) {
+        for (Long milestoneId : milestoneIds) {
             parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams statuses(List<Issue.StatusType> statuses) {
-        for (Issue.StatusType status :statuses) {
+        for (Issue.StatusType status : statuses) {
             parameters.add(new NameValuePair("statusId[]", String.valueOf(status.getIntValue())));
         }
         return this;
     }
 
     public GetIssuesCountParams priorities(List<Issue.PriorityType> priorities) {
-        for (Issue.PriorityType priority :priorities) {
+        for (Issue.PriorityType priority : priorities) {
             parameters.add(new NameValuePair("priorityId[]", String.valueOf(priority.getIntValue())));
         }
         return this;
     }
 
     public GetIssuesCountParams assignerIds(List<Long> assignerIds) {
-        for (Long assignerId :assignerIds) {
+        for (Long assignerId : assignerIds) {
             parameters.add(new NameValuePair("assigneeId[]", assignerId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams createdUserIds(List<Long> createdUserIds) {
-        for (Long createdUserId :createdUserIds) {
+        for (Long createdUserId : createdUserIds) {
             parameters.add(new NameValuePair("createdUserId[]", createdUserId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams resolutions(List<Issue.ResolutionType> resolutions) {
-        for (Issue.ResolutionType resolution :resolutions) {
+        for (Issue.ResolutionType resolution : resolutions) {
             parameters.add(new NameValuePair("resolutionId[]", String.valueOf(resolution.getIntValue())));
         }
         return this;
@@ -155,35 +152,27 @@ public class GetIssuesCountParams extends GetParams {
     }
 
     public GetIssuesCountParams ids(List<Long> ids) {
-        for (Long id :ids) {
+        for (Long id : ids) {
             parameters.add(new NameValuePair("id[]", id.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams parentIssueIds(List<Long> parentIssueIds) {
-        for (Long parentIssueId :parentIssueIds) {
+        for (Long parentIssueId : parentIssueIds) {
             parameters.add(new NameValuePair("parentIssueId[]", parentIssueId.toString()));
         }
         return this;
     }
 
     public GetIssuesCountParams keyword(String keyword) throws BacklogException {
-        try {
-            parameters.add(new NameValuePair("keyword", URLEncoder.encode(keyword, "utf-8")));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
+        parameters.add(new NameValuePair("keyword", keyword));
         return this;
     }
 
     public GetIssuesCountParams keywordByCustomField(long customFieldId, String keyword) throws BacklogException {
-        try {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                    URLEncoder.encode(keyword, "utf-8")));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                keyword));
         return this;
     }
 
@@ -213,7 +202,7 @@ public class GetIssuesCountParams extends GetParams {
 
     public GetIssuesCountParams itemsOfCustomField(long customFieldId, List<Long> itemIds) {
         for (Long itemId : itemIds) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) +"[]",
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "[]",
                     itemId.toString()));
         }
         return this;

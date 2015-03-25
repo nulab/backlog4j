@@ -1,12 +1,9 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -240,21 +237,14 @@ public class GetIssuesParams extends GetParams {
     }
 
     public GetIssuesParams keyword(String keyword) throws BacklogException {
-        try {
-            parameters.add(new NameValuePair("keyword", URLEncoder.encode(keyword, "utf-8")));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
+        parameters.add(new NameValuePair("keyword", keyword));
         return this;
     }
 
     public GetIssuesParams keywordByCustomField(long customFieldId, String keyword) throws BacklogException {
-        try {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                    URLEncoder.encode(keyword, "utf-8")));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                keyword));
+
         return this;
     }
 
@@ -284,7 +274,7 @@ public class GetIssuesParams extends GetParams {
 
     public GetIssuesParams itemsOfCustomField(long customFieldId, List<Long> itemIds) {
         for (Long itemId : itemIds) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) +"[]",
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "[]",
                     itemId.toString()));
         }
         return this;

@@ -5,7 +5,6 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "id[]", "5000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "issueTypeId[]", "6000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "issueTypeId[]", "6000000002"));
-        assertEquals(true, existsOneKeyValue(parameters, "keyword", URLEncoder.encode("beer noodle", "utf-8")));
+        assertEquals(true, existsOneKeyValue(parameters, "keyword", "beer noodle"));
         assertEquals(true, existsOneKeyValue(parameters, "milestoneId[]", "7000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "milestoneId[]", "7000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "offset", "100"));
@@ -93,7 +92,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "updatedUntil", "2015-02-01"));
         assertEquals(true, existsOneKeyValue(parameters, "versionId[]", "11000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "versionId[]", "11000000002"));
-        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000000", "%E3%83%93%E3%83%BC%E3%83%AB"));
+        assertEquals(true, existsOneKeyValue(parameters, "customField_12000000000", "ビール"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_12000000001_min", "10.123"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_12000000002_max", "-11.999"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_12000000003_min", "2014-11-10"));
