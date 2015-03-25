@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.http.BacklogHttpClientImpl;
 import org.junit.Test;
 
 /**
@@ -14,7 +15,7 @@ public class QueryParamsTest {
         params.minId(123);
 
         // then
-        String query = params.getParamString(true);
+        String query = new BacklogHttpClientImpl().getParamsString(true, params);
         assert query.contains("&minId=123");
     }
 
@@ -25,7 +26,7 @@ public class QueryParamsTest {
         params.maxId(999);
 
         // then
-        String query = params.getParamString(true);
+        String query = new BacklogHttpClientImpl().getParamsString(true, params);
         assert query.contains("&maxId=999");
     }
 
@@ -36,7 +37,7 @@ public class QueryParamsTest {
         params.order(QueryParams.Order.Desc);
 
         // then
-        String query = params.getParamString(true);
+        String query = new BacklogHttpClientImpl().getParamsString(true, params);
         assert query.contains("&order=desc");
 
         // when
@@ -44,7 +45,7 @@ public class QueryParamsTest {
         params.order(QueryParams.Order.Asc);
 
         // then
-        query = params.getParamString(false);
+        query = new BacklogHttpClientImpl().getParamsString(false, params);
         assert query.contains("?order=asc");
 
     }
@@ -56,7 +57,7 @@ public class QueryParamsTest {
         params.count(222);
 
         // then
-        String query = params.getParamString(false);
+        String query = new BacklogHttpClientImpl().getParamsString(false, params);
         assert query.contains("?count=222");
     }
 }

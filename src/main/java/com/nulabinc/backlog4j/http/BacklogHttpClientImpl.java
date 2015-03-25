@@ -54,15 +54,27 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
         String url = getUrl(endpoint);
         boolean paramExists = (apiKey != null);
-        if (getParams != null) {
-            url += getParams.getParamString(paramExists);
+        if(getParams != null && getParams.getParamList().size() > 0){
+            url += getParamsString(paramExists, getParams);
+            paramExists = true;
         }
-        if (queryParams != null) {
-            url += queryParams.getParamString(paramExists);
+        if(queryParams != null && queryParams.getParamList().size() > 0){
+            url += getParamsString(paramExists, queryParams);
         }
 
         HttpURLConnection urlConnection = openUrlConnection(url, "GET", CONTENT_TYPE);
         return new BacklogHttpResponseImpl(urlConnection);
+    }
+
+    public String getParamsString(boolean paramExists, GetParams getParams) {
+        StringBuffer sb = new StringBuffer();
+        if (!paramExists) {
+            sb.append("?");
+        } else {
+            sb.append("&");
+        }
+        sb.append(getDataString(getParams.getParamList()));
+        return sb.toString();
     }
 
     @Override
@@ -247,7 +259,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         return sb.toString();
     }
 
-    private  void setRequestMethodUsingWorkaroundForJREBug(
+    private void setRequestMethodUsingWorkaroundForJREBug(
             final HttpURLConnection httpURLConnection, final String method) {
         try {
             httpURLConnection.setRequestMethod(method);
