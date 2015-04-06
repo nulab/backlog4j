@@ -9,9 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author nulab-inc
@@ -125,16 +123,25 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Category> getCategory() {
+        if(category == null || category.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(category);
     }
 
     @Override
     public List<Version> getVersions() {
+        if(versions == null || versions.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(versions);
     }
 
     @Override
     public List<Milestone> getMilestone() {
+        if(milestone == null || milestone.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(milestone);
     }
 
@@ -185,21 +192,33 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<CustomField> getCustomFields() {
+        if(customFields == null || customFields.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(customFields);
     }
 
     @Override
     public List<Attachment> getAttachments() {
+        if(attachments == null || attachments.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(attachments);
     }
 
     @Override
     public List<SharedFile> getSharedFiles() {
+        if(sharedFiles == null || sharedFiles.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(sharedFiles);
     }
 
     @Override
     public List<Star> getStars() {
+        if(stars == null || stars.length == 0){
+            return Collections.emptyList();
+        }
         return Arrays.asList(stars);
     }
 
