@@ -244,6 +244,26 @@ public interface IssueMethods {
     AttachmentData downloadIssueAttachment(String issueKey, long attachmentId);
 
     /**
+     * Returns the endpoint of attachment file.
+     *
+     * @param issueId     the issue identifier
+     * @param attachmentId the attachment identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getIssueAttachmentEndpoint(long issueId, long attachmentId) throws BacklogException;
+
+    /**
+     * Returns the endpoint of attachment file.
+     *
+     * @param issueKey     the issue identifier
+     * @param attachmentId the attachment identifierr
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getIssueAttachmentEndpoint(String issueKey, long attachmentId) throws BacklogException;
+
+    /**
      * Deletes the attachment file on the issue.
      *
      * @param issueId     the issue identifier

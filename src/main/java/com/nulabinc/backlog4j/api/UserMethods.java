@@ -62,6 +62,14 @@ public interface UserMethods {
      */
     Icon getUserIcon(long userId) throws BacklogException;
 
+    /**
+     * Returns the endpoint of user icon.
+     *
+     * @param userId
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getUserIconEndpoint(long userId) throws BacklogException;
 
     /**
      * Returns the user recently updates
@@ -161,5 +169,6 @@ public interface UserMethods {
      * @throws BacklogException
      */
     ResponseList<ViewedWiki> getRecentlyViewedWikis(OffsetParams params) throws BacklogException;
+
 
 }

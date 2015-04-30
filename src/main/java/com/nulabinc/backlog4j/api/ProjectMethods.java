@@ -92,6 +92,24 @@ public interface ProjectMethods {
     Icon getProjectIcon(String projectKey) throws BacklogException;
 
     /**
+     * Returns the endpoint of project icon.
+     *
+     * @param projectId the project identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getProjectIconEndpoint(long projectId) throws BacklogException;
+
+    /**
+     * Returns the endpoint of project icon.
+     *
+     * @param projectKey the project identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getProjectIconEndpoint(String projectKey) throws BacklogException;
+
+    /**
      * Returns the activities on the project.
      *
      * @param projectId the project identifier
@@ -691,6 +709,26 @@ public interface ProjectMethods {
      * @throws BacklogException
      */
     SharedFileData downloadSharedFile(String projectKey, long sharedFileId) throws BacklogException;
+
+    /**
+     * Returns the endpoint of shared file.
+     *
+     * @param projectId    the project identifier
+     * @param sharedFileId the shared file identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getIssueSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException;
+
+    /**
+     * Returns the endpoint of shared file.
+     *
+     * @param projectKey   the project identifier
+     * @param sharedFileId the shared file identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getIssueSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException;
 
     /**
      * Returns the disk usage of the project.

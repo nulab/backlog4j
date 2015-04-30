@@ -124,6 +124,16 @@ public interface WikiMethods {
     AttachmentData downloadWikiAttachment(long wikiId, long attachmentId);
 
     /**
+     * Returns the endpoint of Wiki page's attachment file.
+     *
+     * @param wikiId       the Wiki page identifier
+     * @param attachmentId the attachment identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    String getWikiAttachmentEndpoint(long wikiId, long attachmentId) throws BacklogException;
+
+    /**
      * Deletes the Wiki page's attachment file
      *
      * @param wikiId       the Wiki page identifier
