@@ -37,7 +37,10 @@ import java.util.Date;
         @JsonSubTypes.Type(value = IssueMultiUpdatedActivity.class, name = "14"),
         @JsonSubTypes.Type(value = ProjectUserAddedActivity.class, name = "15"),
         @JsonSubTypes.Type(value = ProjectUserRemovedActivity.class, name = "16"),
-        @JsonSubTypes.Type(value = NotificationAddedActivity.class, name = "17")
+        @JsonSubTypes.Type(value = NotificationAddedActivity.class, name = "17"),
+        @JsonSubTypes.Type(value = PullRequestAddedActivity.class, name = "18"),
+        @JsonSubTypes.Type(value = PullRequestUpdatedActivity.class, name = "19"),
+        @JsonSubTypes.Type(value = PullRequestCommentedActivity.class, name = "20")
 })
 public abstract class ActivityJSONImpl implements Activity {
 
