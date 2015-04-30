@@ -25,6 +25,8 @@ public class NotificationJSONImpl implements Notification {
     private Issue issue;
     @JsonDeserialize(as=IssueCommentJSONImpl.class)
     private IssueComment comment;
+//    @JsonDeserialize(as=PullRequestJSONImpl.class)
+//    private PullRequest pullRequest;
     @JsonDeserialize(as=UserJSONImpl.class)
     private User sender;
     @JsonDeserialize(as=UserJSONImpl.class)

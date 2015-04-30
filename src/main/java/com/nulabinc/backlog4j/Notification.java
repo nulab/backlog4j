@@ -11,7 +11,7 @@ public interface Notification {
 
     enum Reason {
         Assigned(1), Commented(2), IssueCreated(3), IssueUpdated(4),
-        FileAttached(5), ProjectUserAdded(6), Other(9);
+        FileAttached(5), ProjectUserAdded(6), Other(9), PullRequestCommented(11);
 
         Reason(int intValue) {
             this.intValue = intValue;
