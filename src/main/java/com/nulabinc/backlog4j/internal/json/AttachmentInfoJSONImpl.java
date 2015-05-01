@@ -27,6 +27,15 @@ public class AttachmentInfoJSONImpl implements AttachmentInfo {
     }
 
     @Override
+    public boolean isImage() {
+        String lowerCase = name.toLowerCase();
+        return (lowerCase.endsWith(".jpg") ||
+                lowerCase.endsWith(".jpeg") ||
+                lowerCase.endsWith(".png") ||
+                lowerCase.endsWith(".gif"));
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

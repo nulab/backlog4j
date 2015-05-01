@@ -19,4 +19,6 @@ public interface Attachment {
 
     Date getCreated();
 
+    boolean isImage();
+
 }

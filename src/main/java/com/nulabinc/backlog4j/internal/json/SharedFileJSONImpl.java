@@ -47,6 +47,16 @@ public class SharedFileJSONImpl implements SharedFile {
     }
 
     @Override
+    public boolean isImage() {
+        String lowerCase = name.toLowerCase();
+        return (lowerCase.endsWith(".jpg") ||
+                lowerCase.endsWith(".jpeg") ||
+                lowerCase.endsWith(".png") ||
+                lowerCase.endsWith(".gif"));
+    }
+
+
+    @Override
     public String getDir() {
         return dir;
     }

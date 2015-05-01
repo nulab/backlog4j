@@ -11,4 +11,5 @@ public interface AttachmentInfo {
 
     String getName();
 
+    boolean isImage();
 }

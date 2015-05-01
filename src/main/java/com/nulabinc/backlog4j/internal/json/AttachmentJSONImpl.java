@@ -35,6 +35,15 @@ public class AttachmentJSONImpl implements Attachment {
     }
 
     @Override
+    public boolean isImage() {
+        String lowerCase = name.toLowerCase();
+        return (lowerCase.endsWith(".jpg") ||
+                lowerCase.endsWith(".jpeg") ||
+                lowerCase.endsWith(".png") ||
+                lowerCase.endsWith(".gif"));
+    }
+
+    @Override
     public long getSize() {
         return size;
     }

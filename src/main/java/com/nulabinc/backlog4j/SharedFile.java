@@ -23,4 +23,6 @@ public interface SharedFile {
 
     Date getCreated();
 
+    boolean isImage();
+
 }

@@ -25,6 +25,14 @@ public class FileUpdatedContent extends Content {
         return name;
     }
 
+    public boolean isImage() {
+        String lowerCase = name.toLowerCase();
+        return (lowerCase.endsWith(".jpg") ||
+                lowerCase.endsWith(".jpeg") ||
+                lowerCase.endsWith(".png") ||
+                lowerCase.endsWith(".gif"));
+    }
+
     public String getDir() {
         return dir;
     }
