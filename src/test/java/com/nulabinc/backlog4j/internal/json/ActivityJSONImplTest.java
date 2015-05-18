@@ -1,7 +1,6 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.internal.json.activities.*;
 import org.junit.Test;
 import uk.co.it.modular.hamcrest.date.DateMatchers;
@@ -12,6 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by yuh kim on 2014/07/23.
@@ -205,11 +205,81 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(Activity.Type.ProjectUserRemoved, groupProjectActivities.get(0).getType());
 
         assertEquals("よろしく", content.getComment());
+    }
 
+    @Test
+    public void createActivityPullRequestAddedTest() throws IOException {
+        String fileContentStr = getJsonString("json/activity_pull_request_added.json");
+        Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
+
+        assertEquals(Activity.Type.PullRequestAdded, activity.getType());
+        PullRequestAddedActivity pullRequestAdded = (PullRequestAddedActivity) activity;
+
+        assertEquals(623559, pullRequestAdded.getId());
+
+
+        PullRequestContent content = pullRequestAdded.getContent();
+        assertEquals(148, content.getId());
+        assertEquals(112, content.getNumber());
+        assertEquals("アイコンとトグルのデザイン最適化", content.getSummary());
+        assertEquals("マージおねがいします！", content.getDescription());
+
+        assertEquals(null, content.getComment());
+        assertTrue(content.getChanges().isEmpty());
+    }
+
+    @Test
+    public void createActivityPullRequestUpdatedTest() throws IOException {
+        String fileContentStr = getJsonString("json/activity_pull_request_updated.json");
+        Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
+
+        assertEquals(Activity.Type.PullRequestUpdated, activity.getType());
+        PullRequestUpdatedActivity pullRequestUpdated = (PullRequestUpdatedActivity) activity;
+
+        assertEquals(121212, pullRequestUpdated.getId());
+
+
+        PullRequestContent content = pullRequestUpdated.getContent();
+        assertEquals(148, content.getId());
+        assertEquals(112, content.getNumber());
+        assertEquals("デザイン最適化", content.getSummary());
+        assertEquals("マージおねがいします！", content.getDescription());
+
+        assertEquals(579, content.getComment().getId());
+        assertEquals("", content.getComment().getContent());
+
+        assertEquals("status", content.getChanges().get(0).getField());
+        assertEquals("3", content.getChanges().get(0).getNewValue());
+        assertEquals("1", content.getChanges().get(0).getOldValue());
 
     }
 
+    @Test
+    public void createActivityPullRequestCommentedTest() throws IOException {
+        String fileContentStr = getJsonString("json/activity_pull_request_commented.json");
+        Activity activity = factory.createActivity(fileContentStr);
+        System.out.println(activity.toString());
 
+        assertEquals(Activity.Type.PullRequestCommented, activity.getType());
+        PullRequestCommentedActivity pullRequestCommented = (PullRequestCommentedActivity) activity;
+
+        assertEquals(3333333, pullRequestCommented.getId());
+
+
+        PullRequestContent content = pullRequestCommented.getContent();
+        assertEquals(146, content.getId());
+        assertEquals(111, content.getNumber());
+        assertEquals("統合", content.getSummary());
+        assertEquals("レビューおねがいします", content.getDescription());
+
+        assertEquals(576, content.getComment().getId());
+        assertEquals("マージしやしたー", content.getComment().getContent());
+
+        assertEquals(0, content.getChanges().size());
+
+    }
 
     @Test
     public void createActivityListTest() throws IOException {

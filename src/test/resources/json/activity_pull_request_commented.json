@@ -1,0 +1,42 @@
+
+  {
+    "id": 3333333,
+    "project": {
+      "id": 151,
+      "projectKey": "TST",
+      "name": "TEST",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "type": 20,
+    "content": {
+      "id": 146,
+      "number": 111,
+      "summary": "統合",
+      "description": "レビューおねがいします",
+      "comment": {
+        "id": 576,
+        "content": "マージしやしたー"
+      },
+      "changes": [],
+      "repository": {
+        "id": 3,
+        "name": "app",
+        "description": "リポジトリ"
+      }
+    },
+    "notifications": [],
+    "createdUser": {
+      "id": 331,
+      "userId": null,
+      "name": "Test",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "test@test.test"
+    },
+    "created": "2015-05-18T07:13:22Z"
+  }
+

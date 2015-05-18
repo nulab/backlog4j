@@ -25,8 +25,10 @@ public class NotificationJSONImpl implements Notification {
     private Issue issue;
     @JsonDeserialize(as=IssueCommentJSONImpl.class)
     private IssueComment comment;
-//    @JsonDeserialize(as=PullRequestJSONImpl.class)
-//    private PullRequest pullRequest;
+    @JsonDeserialize(as=PullRequestJSONImpl.class)
+    private PullRequest pullRequest;
+    @JsonDeserialize(as=PullRequestCommentJSONImpl.class)
+    private PullRequestComment pullRequestComment;
     @JsonDeserialize(as=UserJSONImpl.class)
     private User sender;
     @JsonDeserialize(as=UserJSONImpl.class)
@@ -80,6 +82,16 @@ public class NotificationJSONImpl implements Notification {
     }
 
     @Override
+    public PullRequest getPullRequest() {
+        return this.pullRequest;
+    }
+
+    @Override
+    public PullRequestComment getPullRequestComment() {
+        return this.pullRequestComment;
+    }
+
+    @Override
     public Date getCreated() {
         return created;
     }
@@ -104,6 +116,8 @@ public class NotificationJSONImpl implements Notification {
                 .append(this.project, rhs.project)
                 .append(this.issue, rhs.issue)
                 .append(this.comment, rhs.comment)
+                .append(this.pullRequest, rhs.pullRequest)
+                .append(this.pullRequestComment, rhs.pullRequestComment)
                 .append(this.sender, rhs.sender)
                 .append(this.user, rhs.user)
                 .append(this.created, rhs.created)
@@ -120,6 +134,8 @@ public class NotificationJSONImpl implements Notification {
                 .append(project)
                 .append(issue)
                 .append(comment)
+                .append(pullRequest)
+                .append(pullRequestComment)
                 .append(sender)
                 .append(user)
                 .append(created)
@@ -136,6 +152,8 @@ public class NotificationJSONImpl implements Notification {
                 .append("project", project)
                 .append("issue", issue)
                 .append("comment", comment)
+                .append("pullRequest", pullRequest)
+                .append("pullRequestComment", pullRequestComment)
                 .append("sender", sender)
                 .append("user", user)
                 .append("created", created)

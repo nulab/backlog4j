@@ -9,7 +9,6 @@ import com.nulabinc.backlog4j.internal.file.IconImpl;
 import com.nulabinc.backlog4j.internal.file.SharedFileDataImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.*;
 import com.nulabinc.backlog4j.http.NameValuePair;
-import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -512,7 +511,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public SharedFileData downloadSharedFile(long projectId, long sharedFileId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getIssueSharedFileEndpoint(projectId, sharedFileId));
+        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectId, sharedFileId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
@@ -520,19 +519,19 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public SharedFileData downloadSharedFile(String projectKey, long sharedFileId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getIssueSharedFileEndpoint(projectKey, sharedFileId));
+        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectKey, sharedFileId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
     }
 
     @Override
-    public String getIssueSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException {
+    public String getSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException {
         return buildEndpoint("projects/" + projectId + "/files/" + sharedFileId);
     }
 
     @Override
-    public String getIssueSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException {
+    public String getSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException {
         return buildEndpoint("projects/" + projectKey + "/files/" + sharedFileId);
     }
 

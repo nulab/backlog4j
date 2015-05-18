@@ -19,7 +19,7 @@ public class NotificationJSONImplTest extends AbstractJSONImplTest{
         String fileContentStr = getJsonString("json/notifications.json");
         ResponseList<Notification> notifications = factory.createNotificationList(fileContentStr);
 
-        assertEquals(5, notifications.size());
+        assertEquals(7, notifications.size());
 
         Notification notification = notifications.get(0);
         assertEquals(808, notification.getId());

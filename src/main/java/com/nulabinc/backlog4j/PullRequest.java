@@ -65,7 +65,7 @@ public interface PullRequest {
 
     Date getCreated();
 
-    Date getUpdatedUser();
+    User getUpdatedUser();
 
     Date getUpdated();
 

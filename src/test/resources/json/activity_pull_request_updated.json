@@ -1,0 +1,47 @@
+
+  {
+    "id": 121212,
+    "project": {
+      "id": 151,
+      "projectKey": "TST",
+      "name": "TEST",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "type": 19,
+    "content": {
+      "id": 148,
+      "number": 112,
+      "summary": "デザイン最適化",
+      "description": "マージおねがいします！",
+      "comment": {
+        "id": 579,
+        "content": ""
+      },
+      "changes": [
+        {
+          "field": "status",
+          "new_value": "3",
+          "old_value": "1"
+        }
+      ],
+      "repository": {
+        "id": 3,
+        "name": "app",
+        "description": "リポジトリ"
+      }
+    },
+    "notifications": [],
+    "createdUser": {
+      "id": 331,
+      "userId": null,
+      "name": "Test",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "test@test.test"
+    },
+    "created": "2015-05-18T07:48:52Z"
+  }

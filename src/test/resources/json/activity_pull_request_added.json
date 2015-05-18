@@ -1,0 +1,39 @@
+
+  {
+    "id": 623559,
+    "project": {
+      "id": 151,
+      "projectKey": "TST",
+      "name": "Test",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "type": 18,
+    "content": {
+      "id": 148,
+      "number": 112,
+      "summary": "アイコンとトグルのデザイン最適化",
+      "description": "マージおねがいします！",
+      "comment": null,
+      "changes": [],
+      "repository": {
+        "id": 3,
+        "name": "app",
+        "description": "リポジトリ"
+      }
+    },
+    "notifications": [],
+    "createdUser": {
+      "id": 22222222,
+      "userId": null,
+      "name": "test",
+      "roleType": 2,
+      "lang": "ja",
+      "mailAddress": "test@test.test"
+    },
+    "created": "2015-05-18T07:31:56Z"
+  }
+

@@ -718,7 +718,7 @@ public interface ProjectMethods {
      * @return the endpoint
      * @throws BacklogException
      */
-    String getIssueSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException;
+    String getSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException;
 
     /**
      * Returns the endpoint of shared file.
@@ -728,7 +728,7 @@ public interface ProjectMethods {
      * @return the endpoint
      * @throws BacklogException
      */
-    String getIssueSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException;
+    String getSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException;
 
     /**
      * Returns the disk usage of the project.
