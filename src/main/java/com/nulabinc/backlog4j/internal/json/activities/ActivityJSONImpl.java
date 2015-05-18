@@ -4,8 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.internal.json.*;
+import com.nulabinc.backlog4j.Activity;
+import com.nulabinc.backlog4j.Project;
+import com.nulabinc.backlog4j.User;
+import com.nulabinc.backlog4j.internal.json.JacksonCustomDateDeserializer;
+import com.nulabinc.backlog4j.internal.json.ProjectJSONImpl;
+import com.nulabinc.backlog4j.internal.json.UserJSONImpl;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -19,7 +23,8 @@ import java.util.Date;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
+        property = "type",
+        defaultImpl = UndefinedActivity.class)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = IssueCreatedActivity.class, name = "1"),
         @JsonSubTypes.Type(value = IssueUpdatedActivity.class, name = "2"),
@@ -111,4 +116,5 @@ public abstract class ActivityJSONImpl implements Activity {
                 .append("created", created)
                 .toString();
     }
+
 }

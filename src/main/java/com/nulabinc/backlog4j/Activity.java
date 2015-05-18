@@ -10,12 +10,12 @@ import java.util.Date;
 public interface Activity {
 
     enum Type {
-        NotDefined(-1), IssueCreated(1), IssueUpdated(2), IssueCommented(3), IssueDeleted(4),
+        Undefined(-1), IssueCreated(1), IssueUpdated(2), IssueCommented(3), IssueDeleted(4),
         WikiCreated(5), WikiUpdated(6), WikiDeleted(7),
         FileAdded(8), FileUpdated(9), FileDeleted(10),
         SvnCommitted(11), GitPushed(12), GitRepositoryCreated(13),
         IssueMultiUpdated(14), ProjectUserAdded(15), ProjectUserRemoved(16), NotifyAdded(17),
-        PullRequestAdded(18), PullRequestUpdated(19), PullRequestCommented(20);
+        PullRequestAdded(18), PullRequestUpdated(19), PullRequestCommented(20), PullRequestMerged(21);
 
         Type(int intValue) {
             this.intValue = intValue;
@@ -31,7 +31,7 @@ public interface Activity {
                     return d;
                 }
             }
-            return null;
+            return Undefined;
         }
 
         private int intValue;
