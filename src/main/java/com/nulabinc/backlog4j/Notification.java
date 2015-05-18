@@ -53,6 +53,10 @@ public interface Notification {
 
     IssueComment getComment();
 
+    PullRequest getPullRequest();
+
+    PullRequestComment getPullRequestComment();
+
     Date getCreated();
 
 }

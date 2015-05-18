@@ -1,430 +1,1596 @@
 [
-    {
-        "id": 808,
-        "alreadyRead": false,
-        "reason": 3,
-        "resourceAlreadyRead": true,
-        "project": {
-            "id": 1073761346,
-            "projectKey": "N_PRJ_1407465585420",
-            "name": "NotificationApiTest",
-            "useGantt": false,
-            "useBurndown": true,
-            "chartEnabled": false,
-            "subtaskingEnabled": true,
-            "textFormattingRule": "backlog",
-            "archived": false
-        },
-        "issue": {
-            "id": 1073804231,
-            "projectId": 1073761346,
-            "issueKey": "N_PRJ_1407465585420-3",
-            "keyId": 3,
-            "issueType": {
-                "id": 1073820610,
-                "projectId": 1073761346,
-                "name": "バグ",
-                "color": "#990000"
-            },
-            "summary": "通知テスト課題31407465588261",
-            "description": "",
-            "resolution": null,
-            "priority": {
-                "id": 2,
-                "name": "高"
-            },
-            "status": {
-                "id": 1,
-                "name": "未対応"
-            },
-            "assignee": null,
-            "category": [],
-            "versions": [],
-            "milestone": [],
-            "startDate": null,
-            "limitDate": null,
-            "dueDate": null,
-            "estimatedHours": null,
-            "actualHours": null,
-            "parentIssueId": null,
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:47Z",
-            "updatedUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "updated": "2014-08-08T02:39:47Z",
-            "customFields": [],
-            "attachments": [],
-            "sharedFiles": [],
-            "stars": []
-        },
-        "comment": {
-            "id": 1073834277,
-            "content": "",
-            "changeLog": [
-                {
-                    "field": "notification",
-                    "newValue": null,
-                    "originalValue": null,
-                    "attachmentInfo": null,
-                    "attributeInfo": null,
-                    "notificationInfo": {
-                        "type": "issue.create"
-                    }
-                }
-            ],
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:47Z",
-            "updated": "2014-08-08T02:39:47Z",
-            "stars": [],
-            "notifications": [
-                {
-                    "id": 808,
-                    "alreadyRead": false,
-                    "reason": 3,
-                    "user": {
-                        "id": 1073751781,
-                        "userId": "test_admin",
-                        "name": "あどみにさん",
-                        "roleType": 1,
-                        "lang": null,
-                        "mailAddress": "test@test.test"
-                    },
-                    "resourceAlreadyRead": false
-                }
-            ]
-        },
-        "sender": {
+  {
+    "id": 808,
+    "alreadyRead": false,
+    "reason": 3,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 1073761346,
+      "projectKey": "N_PRJ_1407465585420",
+      "name": "NotificationApiTest",
+      "useGantt": false,
+      "useBurndown": true,
+      "chartEnabled": false,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false
+    },
+    "issue": {
+      "id": 1073804231,
+      "projectId": 1073761346,
+      "issueKey": "N_PRJ_1407465585420-3",
+      "keyId": 3,
+      "issueType": {
+        "id": 1073820610,
+        "projectId": 1073761346,
+        "name": "バグ",
+        "color": "#990000"
+      },
+      "summary": "通知テスト課題31407465588261",
+      "description": "",
+      "resolution": null,
+      "priority": {
+        "id": 2,
+        "name": "高"
+      },
+      "status": {
+        "id": 1,
+        "name": "未対応"
+      },
+      "assignee": null,
+      "category": [],
+      "versions": [],
+      "milestone": [],
+      "startDate": null,
+      "limitDate": null,
+      "dueDate": null,
+      "estimatedHours": null,
+      "actualHours": null,
+      "parentIssueId": null,
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:47Z",
+      "updatedUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "updated": "2014-08-08T02:39:47Z",
+      "customFields": [],
+      "attachments": [],
+      "sharedFiles": [],
+      "stars": []
+    },
+    "comment": {
+      "id": 1073834277,
+      "content": "",
+      "changeLog": [
+        {
+          "field": "notification",
+          "newValue": null,
+          "originalValue": null,
+          "attachmentInfo": null,
+          "attributeInfo": null,
+          "notificationInfo": {
+            "type": "issue.create"
+          }
+        }
+      ],
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:47Z",
+      "updated": "2014-08-08T02:39:47Z",
+      "stars": [],
+      "notifications": [
+        {
+          "id": 808,
+          "alreadyRead": false,
+          "reason": 3,
+          "user": {
             "id": 1073751781,
             "userId": "test_admin",
             "name": "あどみにさん",
             "roleType": 1,
             "lang": null,
             "mailAddress": "test@test.test"
-        },
-        "created": "2014-08-08T02:39:47Z"
+          },
+          "resourceAlreadyRead": false
+        }
+      ]
     },
-    {
-        "id": 807,
-        "alreadyRead": false,
-        "reason": 3,
-        "resourceAlreadyRead": false,
-        "project": {
-            "id": 1073761346,
-            "projectKey": "N_PRJ_1407465585420",
-            "name": "NotificationApiTest",
-            "useGantt": false,
-            "useBurndown": false,
-            "chartEnabled": false,
-            "subtaskingEnabled": true,
-            "textFormattingRule": "backlog",
-            "archived": false
-        },
-        "issue": {
-            "id": 1073804230,
-            "projectId": 1073761346,
-            "issueKey": "N_PRJ_1407465585420-2",
-            "keyId": 2,
-            "issueType": {
-                "id": 1073820610,
-                "projectId": 1073761346,
-                "name": "バグ",
-                "color": "#990000"
-            },
-            "summary": "通知テスト課題21407465587584",
-            "description": "",
-            "resolution": null,
-            "priority": {
-                "id": 2,
-                "name": "高"
-            },
-            "status": {
-                "id": 1,
-                "name": "未対応"
-            },
-            "assignee": null,
-            "category": [],
-            "versions": [],
-            "milestone": [],
-            "startDate": null,
-            "limitDate": null,
-            "dueDate": null,
-            "estimatedHours": null,
-            "actualHours": null,
-            "parentIssueId": null,
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:46Z",
-            "updatedUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "updated": "2014-08-08T02:39:46Z",
-            "customFields": [],
-            "attachments": [],
-            "sharedFiles": [],
-            "stars": []
-        },
-        "comment": {
-            "id": 1073834276,
-            "content": "",
-            "changeLog": [
-                {
-                    "field": "notification",
-                    "newValue": null,
-                    "originalValue": null,
-                    "attachmentInfo": null,
-                    "attributeInfo": null,
-                    "notificationInfo": {
-                        "type": "issue.create"
-                    }
-                }
-            ],
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:46Z",
-            "updated": "2014-08-08T02:39:46Z",
-            "stars": [],
-            "notifications": [
-                {
-                    "id": 807,
-                    "alreadyRead": false,
-                    "reason": 3,
-                    "user": {
-                        "id": 1073751781,
-                        "userId": "test_admin",
-                        "name": "あどみにさん",
-                        "roleType": 1,
-                        "lang": null,
-                        "mailAddress": "test@test.test"
-                    },
-                    "resourceAlreadyRead": false
-                }
-            ]
-        },
-        "sender": {
+    "sender": {
+      "id": 1073751781,
+      "userId": "test_admin",
+      "name": "あどみにさん",
+      "roleType": 1,
+      "lang": null,
+      "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-08T02:39:47Z"
+  },
+  {
+    "id": 807,
+    "alreadyRead": false,
+    "reason": 3,
+    "resourceAlreadyRead": false,
+    "project": {
+      "id": 1073761346,
+      "projectKey": "N_PRJ_1407465585420",
+      "name": "NotificationApiTest",
+      "useGantt": false,
+      "useBurndown": false,
+      "chartEnabled": false,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false
+    },
+    "issue": {
+      "id": 1073804230,
+      "projectId": 1073761346,
+      "issueKey": "N_PRJ_1407465585420-2",
+      "keyId": 2,
+      "issueType": {
+        "id": 1073820610,
+        "projectId": 1073761346,
+        "name": "バグ",
+        "color": "#990000"
+      },
+      "summary": "通知テスト課題21407465587584",
+      "description": "",
+      "resolution": null,
+      "priority": {
+        "id": 2,
+        "name": "高"
+      },
+      "status": {
+        "id": 1,
+        "name": "未対応"
+      },
+      "assignee": null,
+      "category": [],
+      "versions": [],
+      "milestone": [],
+      "startDate": null,
+      "limitDate": null,
+      "dueDate": null,
+      "estimatedHours": null,
+      "actualHours": null,
+      "parentIssueId": null,
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:46Z",
+      "updatedUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "updated": "2014-08-08T02:39:46Z",
+      "customFields": [],
+      "attachments": [],
+      "sharedFiles": [],
+      "stars": []
+    },
+    "comment": {
+      "id": 1073834276,
+      "content": "",
+      "changeLog": [
+        {
+          "field": "notification",
+          "newValue": null,
+          "originalValue": null,
+          "attachmentInfo": null,
+          "attributeInfo": null,
+          "notificationInfo": {
+            "type": "issue.create"
+          }
+        }
+      ],
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:46Z",
+      "updated": "2014-08-08T02:39:46Z",
+      "stars": [],
+      "notifications": [
+        {
+          "id": 807,
+          "alreadyRead": false,
+          "reason": 3,
+          "user": {
             "id": 1073751781,
             "userId": "test_admin",
             "name": "あどみにさん",
             "roleType": 1,
             "lang": null,
             "mailAddress": "test@test.test"
-        },
-        "created": "2014-08-08T02:39:46Z"
+          },
+          "resourceAlreadyRead": false
+        }
+      ]
     },
-    {
-        "id": 806,
-        "alreadyRead": false,
-        "reason": 3,
-        "resourceAlreadyRead": false,
-        "project": {
-            "id": 1073761346,
-            "projectKey": "N_PRJ_1407465585420",
-            "name": "NotificationApiTest",
-            "useGantt": false,
-            "useBurndown": false,
-            "chartEnabled": false,
-            "subtaskingEnabled": true,
-            "textFormattingRule": "backlog",
-            "archived": false
-        },
-        "issue": {
-            "id": 1073804229,
-            "projectId": 1073761346,
-            "issueKey": "N_PRJ_1407465585420-1",
-            "keyId": 1,
-            "issueType": {
-                "id": 1073820610,
-                "projectId": 1073761346,
-                "name": "バグ",
-                "color": "#990000"
-            },
-            "summary": "通知テスト課題11407465586828",
-            "description": "",
-            "resolution": null,
-            "priority": {
-                "id": 2,
-                "name": "高"
-            },
-            "status": {
-                "id": 1,
-                "name": "未対応"
-            },
-            "assignee": null,
-            "category": [],
-            "versions": [],
-            "milestone": [],
-            "startDate": null,
-            "limitDate": null,
-            "dueDate": null,
-            "estimatedHours": null,
-            "actualHours": null,
-            "parentIssueId": null,
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:45Z",
-            "updatedUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "updated": "2014-08-08T02:39:45Z",
-            "customFields": [],
-            "attachments": [],
-            "sharedFiles": [],
-            "stars": []
-        },
-        "comment": {
-            "id": 1073834275,
-            "content": "",
-            "changeLog": [
-                {
-                    "field": "notification",
-                    "newValue": null,
-                    "originalValue": null,
-                    "attachmentInfo": null,
-                    "attributeInfo": null,
-                    "notificationInfo": {
-                        "type": "issue.create"
-                    }
-                }
-            ],
-            "createdUser": {
-                "id": 1073751781,
-                "userId": "test_admin",
-                "name": "あどみにさん",
-                "roleType": 1,
-                "lang": null,
-                "mailAddress": "test@test.test"
-            },
-            "created": "2014-08-08T02:39:45Z",
-            "updated": "2014-08-08T02:39:45Z",
-            "stars": [],
-            "notifications": [
-                {
-                    "id": 806,
-                    "alreadyRead": false,
-                    "reason": 3,
-                    "user": {
-                        "id": 1073751781,
-                        "userId": "test_admin",
-                        "name": "あどみにさん",
-                        "roleType": 1,
-                        "lang": null,
-                        "mailAddress": "test@test.test"
-                    },
-                    "resourceAlreadyRead": false
-                }
-            ]
-        },
-        "sender": {
+    "sender": {
+      "id": 1073751781,
+      "userId": "test_admin",
+      "name": "あどみにさん",
+      "roleType": 1,
+      "lang": null,
+      "mailAddress": "test@test.test"
+    },
+    "created": "2014-08-08T02:39:46Z"
+  },
+  {
+    "id": 806,
+    "alreadyRead": false,
+    "reason": 3,
+    "resourceAlreadyRead": false,
+    "project": {
+      "id": 1073761346,
+      "projectKey": "N_PRJ_1407465585420",
+      "name": "NotificationApiTest",
+      "useGantt": false,
+      "useBurndown": false,
+      "chartEnabled": false,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false
+    },
+    "issue": {
+      "id": 1073804229,
+      "projectId": 1073761346,
+      "issueKey": "N_PRJ_1407465585420-1",
+      "keyId": 1,
+      "issueType": {
+        "id": 1073820610,
+        "projectId": 1073761346,
+        "name": "バグ",
+        "color": "#990000"
+      },
+      "summary": "通知テスト課題11407465586828",
+      "description": "",
+      "resolution": null,
+      "priority": {
+        "id": 2,
+        "name": "高"
+      },
+      "status": {
+        "id": 1,
+        "name": "未対応"
+      },
+      "assignee": null,
+      "category": [],
+      "versions": [],
+      "milestone": [],
+      "startDate": null,
+      "limitDate": null,
+      "dueDate": null,
+      "estimatedHours": null,
+      "actualHours": null,
+      "parentIssueId": null,
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:45Z",
+      "updatedUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "updated": "2014-08-08T02:39:45Z",
+      "customFields": [],
+      "attachments": [],
+      "sharedFiles": [],
+      "stars": []
+    },
+    "comment": {
+      "id": 1073834275,
+      "content": "",
+      "changeLog": [
+        {
+          "field": "notification",
+          "newValue": null,
+          "originalValue": null,
+          "attachmentInfo": null,
+          "attributeInfo": null,
+          "notificationInfo": {
+            "type": "issue.create"
+          }
+        }
+      ],
+      "createdUser": {
+        "id": 1073751781,
+        "userId": "test_admin",
+        "name": "あどみにさん",
+        "roleType": 1,
+        "lang": null,
+        "mailAddress": "test@test.test"
+      },
+      "created": "2014-08-08T02:39:45Z",
+      "updated": "2014-08-08T02:39:45Z",
+      "stars": [],
+      "notifications": [
+        {
+          "id": 806,
+          "alreadyRead": false,
+          "reason": 3,
+          "user": {
             "id": 1073751781,
             "userId": "test_admin",
             "name": "あどみにさん",
             "roleType": 1,
             "lang": null,
             "mailAddress": "test@test.test"
-        },
-        "created": "2014-08-08T02:39:45Z"
+          },
+          "resourceAlreadyRead": false
+        }
+      ]
     },
-    {
-        "id": 611,
-        "alreadyRead": true,
-        "reason": 6,
-        "resourceAlreadyRead": true,
-        "project": {
-            "id": 1073760709,
-            "projectKey": "HALLOWEEN",
-            "name": "Happy Halloween",
-            "useGantt": true,
-            "useBurndown": true,
-            "chartEnabled": true,
-            "subtaskingEnabled": false,
-            "textFormattingRule": "backlog",
-            "archived": false
-        },
-        "issue": null,
-        "comment": null,
-        "sender": {
-            "id": 1073751775,
-            "userId": "test",
-            "name": "test",
-            "roleType": 1,
-            "lang": null,
-            "mailAddress": "test@test.test"
-        },
-        "created": "2014-07-31T02:13:14Z"
+    "sender": {
+      "id": 1073751781,
+      "userId": "test_admin",
+      "name": "あどみにさん",
+      "roleType": 1,
+      "lang": null,
+      "mailAddress": "test@test.test"
     },
-    {
-        "id": 610,
-        "alreadyRead": true,
-        "reason": 6,
-        "resourceAlreadyRead": false,
-        "project": {
-            "id": 2303,
-            "projectKey": "BLGMARK",
-            "name": "バックログ（マーケティング）",
-            "useGantt": false,
-            "useBurndown": false,
-            "chartEnabled": false,
-            "subtaskingEnabled": false,
-            "textFormattingRule": "backlog",
-            "archived": true
+    "created": "2014-08-08T02:39:45Z"
+  },
+  {
+    "id": 611,
+    "alreadyRead": true,
+    "reason": 6,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 1073760709,
+      "projectKey": "HALLOWEEN",
+      "name": "Happy Halloween",
+      "useGantt": true,
+      "useBurndown": true,
+      "chartEnabled": true,
+      "subtaskingEnabled": false,
+      "textFormattingRule": "backlog",
+      "archived": false
+    },
+    "issue": null,
+    "comment": null,
+    "sender": {
+      "id": 1073751775,
+      "userId": "test",
+      "name": "test",
+      "roleType": 1,
+      "lang": null,
+      "mailAddress": "test@test.test"
+    },
+    "created": "2014-07-31T02:13:14Z"
+  },
+  {
+    "id": 610,
+    "alreadyRead": true,
+    "reason": 6,
+    "resourceAlreadyRead": false,
+    "project": {
+      "id": 2303,
+      "projectKey": "BLGMARK",
+      "name": "バックログ（マーケティング）",
+      "useGantt": false,
+      "useBurndown": false,
+      "chartEnabled": false,
+      "subtaskingEnabled": false,
+      "textFormattingRule": "backlog",
+      "archived": true
+    },
+    "issue": null,
+    "comment": null,
+    "sender": {
+      "id": 1073751775,
+      "userId": "test",
+      "name": "test",
+      "roleType": 1,
+      "lang": null,
+      "mailAddress": "test@test.test"
+    },
+    "created": "2014-07-31T02:13:14Z"
+  },
+  {
+    "id": 26256163,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 118,
+      "projectId": 151,
+      "number": 85,
+      "summary": "英語の場合に、課題詳細画面で初期表示と非同期データ読み込み後で違うときがある(jsだけ)",
+      "description": "commitもれていたgenerated jsだけ追加しました。\r\n以前に修正されたcommitで、今回と同様にjs追加していなかったときのも含まれているみたいです。\r\n\r\n{code}\r\n\t\t\t_g.commentViewModel.loadLatestComments().done(function(comments) {\r\n\t\t\t});\r\n{/code}\r\nとか\r\n\r\n\r\nよろしくお願いいたします〜",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7345/fix_ajax_issue_data_format_2",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "issue": {
+        "id": 1081980412
+      },
+      "mergeCommit": "022cf53166ee22447e143f43f49f834debfb391b",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431666949000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-15T05:09:20Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-15T05:15:49Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 471,
+      "content": "ありがとうございます。マージしましたー",
+      "changeLog": [],
+      "createdUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "created": "2015-05-15T05:18:59Z",
+      "updated": "2015-05-15T05:18:59Z",
+      "stars": [
+        {
+          "id": 1075138617,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/git/BLG/app/pullRequests/85#comment-471",
+          "title": "Backlog | Git - Backlog(BLG)",
+          "presenter": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-15T05:29:16Z"
+        }
+      ],
+      "notifications": []
+    },
+    "sender": {
+      "id": 331,
+      "userId": null,
+      "name": "Yamamoto",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "yamamoto@nulab.co.jp"
+    },
+    "created": "2015-05-15T05:18:59Z"
+  },
+  {
+    "id": 26254034,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 46,
+      "projectId": 151,
+      "number": 23,
+      "summary": "詳細画面で子課題の表示条件を変えられるようにする",
+      "description": "課題検索のソートの部分を参考に移植しようと思ったのですが\r\nknockout初心者にはハードル高すぎるきがするので、\r\n状態の表示切り替えだけ実装したところで一旦切ってプルリクします。\r\n",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7304/add_filter_and_sort_on_child_issues",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "issue": {
+        "id": 1081935860
+      },
+      "mergeCommit": "27259d47c5a2677bb1180fe7dc5ca234518db8d6",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431664877000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-12T05:13:19Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-15T04:41:17Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 455,
+      "content": "金さん、\nこちらマージしました。\n手元で確認し、動作は問題なさそうですが、あとはデザイン的なところを詰めたいです。\n",
+      "changeLog": [],
+      "createdUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "created": "2015-05-15T04:49:42Z",
+      "updated": "2015-05-15T04:49:42Z",
+      "stars": [
+        {
+          "id": 1075138553,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/git/BLG/app/pullRequests/23#comment-455",
+          "title": "Backlog | Git - Backlog(BLG)",
+          "presenter": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-15T04:53:30Z"
+        }
+      ],
+      "notifications": []
+    },
+    "sender": {
+      "id": 331,
+      "userId": null,
+      "name": "Yamamoto",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "yamamoto@nulab.co.jp"
+    },
+    "created": "2015-05-15T04:49:42Z"
+  },
+  {
+    "id": 26252836,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 89,
+      "projectId": 151,
+      "number": 58,
+      "summary": "英語の場合に、課題詳細画面で初期表示と非同期データ読み込み後で違うときがある(2)",
+      "description": "別のfeature branch作ってしまったのででこちらでプルリク仕切り直します。\r\n古いブランチは消します。\r\n\r\nBLG-5517の修正で日付系が直っているのでカンマ区切りの修正だけ行いました。\r\n",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7345/fix_ajax_issue_data_format",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": null,
+      "issue": {
+        "id": 1081980412
+      },
+      "mergeCommit": "e72df4e85fb27b0c9a87707bece6c7cce73da814",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431595518000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-14T07:45:17Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-14T09:25:18Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 451,
+      "content": "金さん、\nこちらマージしちゃいましたが、hx だけ更新されてて、grunt での generate がされてなくて、js が更新されてませんでしたー。\n\nすみませんが、対応お願いできますでしょうかー？\n\"m(__)m\"\"m(__)m\"\"m(__)m\"",
+      "changeLog": [],
+      "createdUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "created": "2015-05-15T04:33:48Z",
+      "updated": "2015-05-15T04:33:48Z",
+      "stars": [],
+      "notifications": []
+    },
+    "sender": {
+      "id": 331,
+      "userId": null,
+      "name": "Yamamoto",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "yamamoto@nulab.co.jp"
+    },
+    "created": "2015-05-15T04:33:48Z"
+  },
+  {
+    "id": 26235444,
+    "alreadyRead": true,
+    "reason": 10,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 103,
+      "projectId": 151,
+      "number": 71,
+      "summary": "全体検索にユーザーの検索結果も出す、の5回目（テスト修正）",
+      "description": "ログインユーザが返るようテスト修正しました。\r\n\r\n山本さん何度もすみませんがマージよろしくお願いしますー\"(^o^)\\\"",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7326/add_global_search_urer_5",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "issue": {
+        "id": 1081955445
+      },
+      "mergeCommit": "98b8a8a4831ceb6c3a3214b7ad01da112cb80224",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431651963000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-15T00:47:00Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-15T01:06:03Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 395,
+      "content": "",
+      "changeLog": [
+        {
+          "field": "status",
+          "newValue": "Merged",
+          "originalValue": "Open"
+        }
+      ],
+      "createdUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "created": "2015-05-15T01:06:03Z",
+      "updated": "2015-05-15T01:06:03Z",
+      "stars": [],
+      "notifications": []
+    },
+    "sender": {
+      "id": 331,
+      "userId": null,
+      "name": "Yamamoto",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "yamamoto@nulab.co.jp"
+    },
+    "created": "2015-05-15T01:06:03Z"
+  },
+  {
+    "id": 26224277,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 99,
+      "projectId": 151,
+      "number": 67,
+      "summary": "全体検索にユーザーの検索結果も出す、の4回目（自分も対象に含める）",
+      "description": "自分が検索対象から除外されているので対象に含めました。\r\nよろしくお願いします〜",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7326/add_global_search_urer_4",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "issue": {
+        "id": 1081955445
+      },
+      "mergeCommit": "a97f9375ab1e48bd91f2ddd41051952dc34ff5ba",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431601821000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-14T10:59:52Z",
+      "updatedUser": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "updated": "2015-05-14T11:10:21Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 362,
+      "content": "ばっちりだとおもいますので、マージしますね。",
+      "changeLog": [],
+      "createdUser": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "created": "2015-05-14T11:10:15Z",
+      "updated": "2015-05-14T11:10:15Z",
+      "stars": [
+        {
+          "id": 1075137405,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/git/BLG/app/pullRequests/67#comment-362",
+          "title": "Backlog | Git - Backlog(BLG)",
+          "presenter": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-14T11:17:52Z"
+        }
+      ],
+      "notifications": []
+    },
+    "sender": {
+      "id": 33,
+      "userId": null,
+      "name": "Toshitaka Agata",
+      "roleType": 1,
+      "lang": "ja",
+      "mailAddress": "agata@nulab-inc.com"
+    },
+    "created": "2015-05-14T11:10:15Z"
+  },
+  {
+    "id": 26220915,
+    "alreadyRead": true,
+    "reason": 2,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": {
+      "id": 1081935860,
+      "projectId": 151,
+      "issueKey": "BLG-7304",
+      "keyId": 7304,
+      "issueType": {
+        "id": 1073897748,
+        "projectId": 151,
+        "name": "Improve",
+        "color": "#934981",
+        "displayOrder": 2
+      },
+      "summary": "詳細画面で子課題の表示条件を変えられるようにする（フィルタリング）",
+      "description": "-フィルタリング\r\nhttps://nulab-test.backlog.jp/view/SUPPORTERS-3#comment-1117940748\r\nhttp://feedback.backlog.jp/forums/140671/suggestions/4860761\r\n-ソート\r\nhttps://nulab.backlog.jp/view/BLG-7194\r\n\r\n→　この課題ではフィルタリングだけやります\r\n\r\n- [x] todo list 表示",
+      "resolution": null,
+      "priority": {
+        "id": 3,
+        "name": "中"
+      },
+      "status": {
+        "id": 2,
+        "name": "処理中"
+      },
+      "assignee": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "category": [
+        {
+          "id": 64398,
+          "name": "デザイン制作・HTMLコーディング",
+          "displayOrder": 1
+        }
+      ],
+      "versions": [],
+      "milestone": [
+        {
+          "id": 1073937204,
+          "projectId": 151,
+          "name": "2015 KAIZEN WEEK",
+          "description": "",
+          "startDate": "2015-05-11T00:00:00Z",
+          "releaseDueDate": "2015-05-15T00:00:00Z",
+          "archived": false,
+          "displayOrder": 3
+        }
+      ],
+      "startDate": null,
+      "dueDate": null,
+      "estimatedHours": null,
+      "actualHours": null,
+      "parentIssueId": null,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-11T02:45:57Z",
+      "updatedUser": {
+        "id": 1073972728,
+        "userId": null,
+        "name": "Masahiro Nagae",
+        "roleType": 2,
+        "lang": null,
+        "mailAddress": "nagae@nulab-inc.com"
+      },
+      "updated": "2015-05-15T06:02:07Z",
+      "customFields": [
+        {
+          "id": 1073759690,
+          "fieldTypeId": 7,
+          "name": "Released Beta",
+          "value": [
+            {
+              "id": 1,
+              "name": "Done",
+              "displayOrder": 0
+            }
+          ],
+          "otherValue": null
+        }
+      ],
+      "attachments": [],
+      "sharedFiles": [],
+      "stars": []
+    },
+    "comment": {
+      "id": 1118229790,
+      "content": "課題の詳細と小課題のすき間はたくさんリンクとかがあるの、配置がかなりむずかしいですね。。\n\n個人的にはパターン3で多機能までいかずとも、\nテーブルのthに▼があって押すとプルダウンが出てソートだけできれば一番スッキリです。\n\n>2で作ってベータで使ってみましょうか？一番簡単そうですし。\nという感じでひとまず置いてみるかんじだったら、金さんの課題の検索からもってきた感じでOKかと思います。",
+      "changeLog": [],
+      "createdUser": {
+        "id": 1073960947,
+        "userId": null,
+        "name": "nakagaw",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "nakagawa@nulab-inc.com"
+      },
+      "created": "2015-05-14T10:15:08Z",
+      "updated": "2015-05-14T10:15:08Z",
+      "stars": [],
+      "notifications": [
+        {
+          "id": 26220915,
+          "alreadyRead": true,
+          "reason": 2,
+          "user": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "resourceAlreadyRead": true
+        }
+      ]
+    },
+    "pullRequest": null,
+    "pullRequestComment": null,
+    "sender": {
+      "id": 1073960947,
+      "userId": null,
+      "name": "nakagaw",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "nakagawa@nulab-inc.com"
+    },
+    "created": "2015-05-14T10:15:08Z"
+  },
+  {
+    "id": 26215808,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 96,
+      "projectId": 151,
+      "number": 64,
+      "summary": "全体検索にユーザーの検索結果も出す、のテストの修正",
+      "description": "３回目のプルリクでお手数掛けてすみませんがまた縣さんに設定させていただきます〜",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7326/add_global_search_urer_3",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "issue": {
+        "id": 1081955445
+      },
+      "mergeCommit": "aea5424f725e7ccd7146a9ac53bf091be10822f9",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431595034000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-14T09:09:32Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-14T09:17:14Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 324,
+      "content": "手元でテスト通ったのを確認したので、マージさせてもらいますねー",
+      "changeLog": [],
+      "createdUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "created": "2015-05-14T09:17:08Z",
+      "updated": "2015-05-14T09:17:08Z",
+      "stars": [
+        {
+          "id": 1075137117,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/git/BLG/app/pullRequests/64#comment-324",
+          "title": "Backlog | Git - Backlog(BLG)",
+          "presenter": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-14T09:20:02Z"
+        }
+      ],
+      "notifications": []
+    },
+    "sender": {
+      "id": 331,
+      "userId": null,
+      "name": "Yamamoto",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "yamamoto@nulab.co.jp"
+    },
+    "created": "2015-05-14T09:17:08Z"
+  },
+  {
+    "id": 26213089,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 92,
+      "projectId": 151,
+      "number": 60,
+      "summary": "全体検索にユーザーの検索結果も出す、の再修正",
+      "description": "/add 10 user limit\r\n/remove mailAddress matching\r\n/change search result header color\r\n\r\n続きなので縣さんを担当に設定しますー",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7326/add_global_search_urer_2",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "issue": {
+        "id": 1081955445
+      },
+      "mergeCommit": "646546b9ac97c87c3f5c56b3e87497ad1e9eadad",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431593073000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-14T08:41:43Z",
+      "updatedUser": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "updated": "2015-05-14T08:44:33Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 308,
+      "content": "- https://jenkins.nulab.co.jp/job/BLG-app-KAIZEN-test-not-service/112/\nテストが失敗してます。\n\nもうすでにマージされた後なので、\n申し訳ないですが再度ブランチ切り直して、PRだしなおしてもらえますか？",
+      "changeLog": [],
+      "createdUser": {
+        "id": 27762,
+        "userId": null,
+        "name": "nakamura (ikikko)",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "nakamura@nulab.co.jp"
+      },
+      "created": "2015-05-14T08:49:50Z",
+      "updated": "2015-05-14T08:49:50Z",
+      "stars": [],
+      "notifications": []
+    },
+    "sender": {
+      "id": 27762,
+      "userId": null,
+      "name": "nakamura (ikikko)",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "nakamura@nulab.co.jp"
+    },
+    "created": "2015-05-14T08:49:50Z"
+  },
+  {
+    "id": 26212559,
+    "alreadyRead": true,
+    "reason": 11,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": null,
+    "comment": null,
+    "pullRequest": {
+      "id": 92,
+      "projectId": 151,
+      "number": 60,
+      "summary": "全体検索にユーザーの検索結果も出す、の再修正",
+      "description": "/add 10 user limit\r\n/remove mailAddress matching\r\n/change search result header color\r\n\r\n続きなので縣さんを担当に設定しますー",
+      "base": "beta",
+      "branch": "KAIZEN/BLG-7326/add_global_search_urer_2",
+      "status": {
+        "id": 3,
+        "name": "Merged"
+      },
+      "assignee": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "issue": {
+        "id": 1081955445
+      },
+      "mergeCommit": "646546b9ac97c87c3f5c56b3e87497ad1e9eadad",
+      "baseCommit": null,
+      "branchCommit": null,
+      "closeAt": null,
+      "mergeAt": 1431593073000,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-14T08:41:43Z",
+      "updatedUser": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "updated": "2015-05-14T08:44:33Z",
+      "stars": []
+    },
+    "pullRequestComment": {
+      "id": 307,
+      "content": "金さん、マージしました！",
+      "changeLog": [],
+      "createdUser": {
+        "id": 33,
+        "userId": null,
+        "name": "Toshitaka Agata",
+        "roleType": 1,
+        "lang": "ja",
+        "mailAddress": "agata@nulab-inc.com"
+      },
+      "created": "2015-05-14T08:44:49Z",
+      "updated": "2015-05-14T08:44:49Z",
+      "stars": [],
+      "notifications": []
+    },
+    "sender": {
+      "id": 33,
+      "userId": null,
+      "name": "Toshitaka Agata",
+      "roleType": 1,
+      "lang": "ja",
+      "mailAddress": "agata@nulab-inc.com"
+    },
+    "created": "2015-05-14T08:44:49Z"
+  },
+  {
+    "id": 26211115,
+    "alreadyRead": true,
+    "reason": 2,
+    "resourceAlreadyRead": true,
+    "project": {
+      "id": 151,
+      "projectKey": "BLG",
+      "name": "Backlog",
+      "chartEnabled": true,
+      "subtaskingEnabled": true,
+      "textFormattingRule": "backlog",
+      "archived": false,
+      "displayOrder": 1
+    },
+    "issue": {
+      "id": 1081955445,
+      "projectId": 151,
+      "issueKey": "BLG-7326",
+      "keyId": 7326,
+      "issueType": {
+        "id": 1073897748,
+        "projectId": 151,
+        "name": "Improve",
+        "color": "#934981",
+        "displayOrder": 2
+      },
+      "summary": "全体検索にユーザーの検索結果も出す",
+      "description": "",
+      "resolution": {
+        "id": 0,
+        "name": "対応済み"
+      },
+      "priority": {
+        "id": 3,
+        "name": "中"
+      },
+      "status": {
+        "id": 3,
+        "name": "処理済み"
+      },
+      "assignee": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "category": [
+        {
+          "id": 63944,
+          "name": "開発",
+          "displayOrder": 0
+        }
+      ],
+      "versions": [],
+      "milestone": [
+        {
+          "id": 1073937204,
+          "projectId": 151,
+          "name": "2015 KAIZEN WEEK",
+          "description": "",
+          "startDate": "2015-05-11T00:00:00Z",
+          "releaseDueDate": "2015-05-15T00:00:00Z",
+          "archived": false,
+          "displayOrder": 3
+        }
+      ],
+      "startDate": null,
+      "dueDate": null,
+      "estimatedHours": null,
+      "actualHours": null,
+      "parentIssueId": null,
+      "createdUser": {
+        "id": 1073931561,
+        "userId": null,
+        "name": "kim",
+        "roleType": 2,
+        "lang": "ja",
+        "mailAddress": "kim@nulab.co.jp"
+      },
+      "created": "2015-05-12T07:55:57Z",
+      "updatedUser": {
+        "id": 331,
+        "userId": null,
+        "name": "Yamamoto",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "yamamoto@nulab.co.jp"
+      },
+      "updated": "2015-05-15T02:50:43Z",
+      "customFields": [
+        {
+          "id": 1073759690,
+          "fieldTypeId": 7,
+          "name": "Released Beta",
+          "value": [
+            {
+              "id": 1,
+              "name": "Done",
+              "displayOrder": 0
+            }
+          ],
+          "otherValue": null
+        }
+      ],
+      "attachments": [
+        {
+          "id": 1078197995,
+          "name": "スクリーンショット 2015-05-12 17.26.36.png",
+          "size": 154314,
+          "createdUser": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-12T08:27:51Z"
         },
-        "issue": null,
-        "comment": null,
-        "sender": {
-            "id": 1073751775,
-            "userId": "test",
-            "name": "test",
+        {
+          "id": 1078214909,
+          "name": "Screen Shot 2015-05-14 at 16.56.01.png",
+          "size": 319298,
+          "createdUser": {
+            "id": 331,
+            "userId": null,
+            "name": "Yamamoto",
+            "roleType": 2,
+            "lang": "en",
+            "mailAddress": "yamamoto@nulab.co.jp"
+          },
+          "created": "2015-05-14T07:57:03Z"
+        }
+      ],
+      "sharedFiles": [],
+      "stars": []
+    },
+    "comment": {
+      "id": 1118217909,
+      "content": "金さん\n\n＞ヘッダ色のチェック\nってMembersの背景色ですよね？\nだとすると文字が白なのでちょっと読みにくいかなとおもいました。\n#81b419\nぐらいに落とすといいんじゃないでしょうか。",
+      "changeLog": [],
+      "createdUser": {
+        "id": 1073960947,
+        "userId": null,
+        "name": "nakagaw",
+        "roleType": 2,
+        "lang": "en",
+        "mailAddress": "nakagawa@nulab-inc.com"
+      },
+      "created": "2015-05-14T08:29:57Z",
+      "updated": "2015-05-14T08:29:57Z",
+      "stars": [
+        {
+          "id": 1075136984,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/view/BLG-7326#comment-1118217909",
+          "title": "[BLG-7326] 全体検索にユーザーの検索結果も出す | 課題の表示 - Backlog",
+          "presenter": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "created": "2015-05-14T08:31:02Z"
+        },
+        {
+          "id": 1075136986,
+          "comment": null,
+          "url": "https://nulab.backlog.jp/view/BLG-7326#comment-1118217909",
+          "title": "[BLG-7326] 全体検索にユーザーの検索結果も出す - Backlog | Show issue",
+          "presenter": {
+            "id": 33,
+            "userId": null,
+            "name": "Toshitaka Agata",
             "roleType": 1,
-            "lang": null,
-            "mailAddress": "test@test.test"
-        },
-        "created": "2014-07-31T02:13:14Z"
-    }
+            "lang": "ja",
+            "mailAddress": "agata@nulab-inc.com"
+          },
+          "created": "2015-05-14T08:31:52Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": 26211115,
+          "alreadyRead": true,
+          "reason": 2,
+          "user": {
+            "id": 1073931561,
+            "userId": null,
+            "name": "kim",
+            "roleType": 2,
+            "lang": "ja",
+            "mailAddress": "kim@nulab.co.jp"
+          },
+          "resourceAlreadyRead": true
+        }
+      ]
+    },
+    "pullRequest": null,
+    "pullRequestComment": null,
+    "sender": {
+      "id": 1073960947,
+      "userId": null,
+      "name": "nakagaw",
+      "roleType": 2,
+      "lang": "en",
+      "mailAddress": "nakagawa@nulab-inc.com"
+    },
+    "created": "2015-05-14T08:29:57Z"
+  }
 ]
