@@ -7,7 +7,7 @@ package com.nulabinc.backlog4j;
  */
 public abstract class BacklogException extends RuntimeException {
 
-    enum ErrorType {
+    public enum ErrorType {
         Undefined(-1),
         InternalError(1), LicenceError(2), LicenceExpiredError(3), AccessDeniedError(4),
         UnauthorizedOperationError(5), NoResourceError(6), InvalidRequestError(7),
