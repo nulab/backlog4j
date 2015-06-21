@@ -747,4 +747,9 @@ public interface ProjectMethods {
      * @throws BacklogException
      */
     DiskUsageDetail getProjectDiskUsage(String projectKey) throws BacklogException;
+
+    ResponseList<PullRequest> getPullRequests(String projectKey, String repoName) throws BacklogException;
+
+    ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException;
+
 }

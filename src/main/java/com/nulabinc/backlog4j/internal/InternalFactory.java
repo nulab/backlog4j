@@ -84,6 +84,8 @@ public interface InternalFactory {
 
     ResponseList<Repository> createRepositoryList(BacklogHttpResponse res) throws BacklogException;
 
+    ResponseList<PullRequest> createPullRequestList(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<ViewedIssue> createViewedIssueList(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<ViewedProject> createViewedProjectList(BacklogHttpResponse res) throws BacklogException;
