@@ -358,6 +358,14 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     }
 
     @Override
+    public PullRequestComment createPullRequestComment(BacklogHttpResponse res) throws BacklogException {
+        return createPullRequestComment(res.asString());
+    }
+    public PullRequestComment createPullRequestComment(String resStr) throws BacklogException {
+        return createObject(resStr, PullRequestComment.class, PullRequestCommentJSONImpl.class);
+    }
+
+    @Override
     public SharedFile createSharedFile(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), SharedFile.class, SharedFileJSONImpl.class);
     }

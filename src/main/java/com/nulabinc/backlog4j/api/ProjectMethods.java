@@ -752,4 +752,6 @@ public interface ProjectMethods {
 
     ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException;
 
+    PullRequestComment addPullRequestComment(AddPullRequestCommentParams params) throws BacklogException;
+
 }
