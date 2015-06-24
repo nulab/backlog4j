@@ -1036,21 +1036,88 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName) throws BacklogException {
-        return factory.createPullRequestList(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName + "/pullRequests")));
+    public Repository getGitRepository(long projectId, long repoId) throws BacklogException {
+        return factory.createRepository(get(buildEndpoint("projects/" + projectId + "/git/repositories/" + repoId)));
     }
+
+    @Override
+    public Repository getGitRepository(String projectKey, String repoName) throws BacklogException {
+        return factory.createRepository(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName)));
+    }
+
+    @Override
+    public ResponseList<PullRequest> getPullRequests(long projectId, long repoId) throws BacklogException {
+        return factory.createPullRequestList(get(buildEndpoint(
+                "projects/" + projectId +
+                "/git/repositories/" + repoId +
+                "/pullRequests")));
+    }
+
+    @Override
+    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName) throws BacklogException {
+        return factory.createPullRequestList(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" +
+                        repoName + "/pullRequests")));
+    }
+
+    @Override
+    public ResponseList<PullRequest> getPullRequests(long projectId, long repoId, PullRequestQueryParams params) throws BacklogException {
+        return factory.createPullRequestList(get(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests")));
+    }
+
     @Override
     public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException {
-        return factory.createPullRequestList(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName + "/pullRequests"), params));
+        return factory.createPullRequestList(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests"), params));
+    }
+
+    @Override
+    public PullRequest getPullRequest(long projectId, long repoId, long number) throws BacklogException {
+        return factory.createPullRequest(get(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/" + number)));
+    }
+
+    @Override
+    public PullRequest getPullRequest(String projectKey, String repoName, long number) throws BacklogException {
+        return factory.createPullRequest(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/" + number)));
+    }
+
+    @Override
+    public ResponseList<PullRequestComment> getPullRequestComments(long projectId, long repoId, long number, QueryParams params) throws BacklogException {
+        return factory.createPullRequestCommentList(post(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/" + number +
+                        "/comments")));
+    }
+
+    @Override
+    public ResponseList<PullRequestComment> getPullRequestComments(String projectKey, String repoName, long number, QueryParams params) throws BacklogException {
+        return factory.createPullRequestCommentList(post(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/" + number +
+                        "/comments")));
     }
 
     @Override
     public PullRequestComment addPullRequestComment(AddPullRequestCommentParams params) throws BacklogException {
         return factory.createPullRequestComment(post(buildEndpoint(
                 "projects/" + params.getProjectIdOrKeyString() +
-                "/git/repositories/" + params.getRepoIdOrName() +
-                "/pullRequests/" + params.getPullRequestIdOrKeyString() +
-                "/comments"), params));
+                        "/git/repositories/" + params.getRepoIdOrName() +
+                        "/pullRequests/" + params.getNumber() +
+                        "/comments"), params));
     }
 
     @Override

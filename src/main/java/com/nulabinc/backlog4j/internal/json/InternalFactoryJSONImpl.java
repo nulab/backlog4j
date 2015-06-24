@@ -337,14 +337,34 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Notification> createNotificationList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Notification.class, NotificationJSONImpl[].class);
     }
+
     public ResponseList<Notification> createNotificationList(String resStr) throws BacklogException {
         return createObjectList(resStr, Notification.class, NotificationJSONImpl[].class);
+    }
+
+    @Override
+    public Repository createRepository(BacklogHttpResponse res) throws BacklogException {
+        return createRepository(res.asString());
+    }
+
+    public Repository createRepository(String resStr) throws BacklogException {
+        return createObject(resStr, Repository.class, RepositoryJSONImpl.class);
     }
 
     @Override
     public ResponseList<Repository> createRepositoryList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Repository.class, RepositoryJSONImpl[].class);
     }
+
+    @Override
+    public PullRequest createPullRequest(BacklogHttpResponse res) throws BacklogException {
+        return createPullRequest(res.asString());
+    }
+
+    public PullRequest createPullRequest(String resStr) throws BacklogException {
+        return createObject(resStr, PullRequest.class, PullRequestJSONImpl.class);
+    }
+
     public ResponseList<Repository> createRepositoryList(String resStr) throws BacklogException {
         return createObjectList(resStr, Repository.class, RepositoryJSONImpl[].class);
     }
@@ -361,8 +381,17 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public PullRequestComment createPullRequestComment(BacklogHttpResponse res) throws BacklogException {
         return createPullRequestComment(res.asString());
     }
+
     public PullRequestComment createPullRequestComment(String resStr) throws BacklogException {
         return createObject(resStr, PullRequestComment.class, PullRequestCommentJSONImpl.class);
+    }
+
+    @Override
+    public ResponseList<PullRequestComment> createPullRequestCommentList(BacklogHttpResponse res) throws BacklogException {
+        return createPullRequestCommentList(res.asString());
+    }
+    public ResponseList<PullRequestComment> createPullRequestCommentList(String resStr) throws BacklogException {
+        return createObjectList(resStr, PullRequestComment.class, PullRequestCommentJSONImpl[].class);
     }
 
     @Override

@@ -82,11 +82,17 @@ public interface InternalFactory {
 
     ResponseList<Notification> createNotificationList(BacklogHttpResponse res) throws BacklogException;
 
+    Repository createRepository(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<Repository> createRepositoryList(BacklogHttpResponse res) throws BacklogException;
+
+    PullRequest createPullRequest(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<PullRequest> createPullRequestList(BacklogHttpResponse res) throws BacklogException;
 
     PullRequestComment createPullRequestComment(BacklogHttpResponse res) throws BacklogException;
+
+    ResponseList<PullRequestComment> createPullRequestCommentList(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<ViewedIssue> createViewedIssueList(BacklogHttpResponse res) throws BacklogException;
 

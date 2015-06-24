@@ -17,20 +17,35 @@ public class AddPullRequestCommentParams extends PostParams {
     private long repoId;
     private String repoName;
 
-    private long pullRequestId;
-    private String pullRequestKey;
+    private long number;
+
+    /**
+     * Constructor
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @param content the comment content
+     */
+    public AddPullRequestCommentParams(long projectId, long repoId, long number, String content) {
+        this.projectId = projectId;
+        this.repoId = repoId;
+        this.number = number;
+        parameters.add(new NameValuePair("content", content));
+    }
 
     /**
      * Constructor
      *
      * @param projectKey the project identifier
-     * @param pullRequestId the pull request identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
      * @param content the comment content
      */
-    public AddPullRequestCommentParams(String projectKey, String repoName, long pullRequestId, String content) {
+    public AddPullRequestCommentParams(String projectKey, String repoName, long number, String content) {
         this.projectKey = projectKey;
         this.repoName = repoName;
-        this.pullRequestId = pullRequestId;
+        this.number = number;
         parameters.add(new NameValuePair("content", content));
     }
 
@@ -63,14 +78,10 @@ public class AddPullRequestCommentParams extends PostParams {
     /**
      * Returns the pull request identifier string.
      *
-     * @return project pull request id or pull request key
+     * @return project pull request number
      */
-    public String getPullRequestIdOrKeyString() {
-        if (pullRequestKey != null) {
-            return pullRequestKey;
-        } else {
-            return String.valueOf(pullRequestId);
-        }
+    public String getNumber() {
+        return String.valueOf(number);
     }
 
     /**
