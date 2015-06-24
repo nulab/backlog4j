@@ -1036,6 +1036,24 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName) throws BacklogException {
+        return factory.createPullRequestList(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName + "/pullRequests")));
+    }
+    @Override
+    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException {
+        return factory.createPullRequestList(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName + "/pullRequests"), params));
+    }
+
+    @Override
+    public PullRequestComment addPullRequestComment(AddPullRequestCommentParams params) throws BacklogException {
+        return factory.createPullRequestComment(post(buildEndpoint(
+                "projects/" + params.getProjectIdOrKeyString() +
+                "/git/repositories/" + params.getRepoIdOrName() +
+                "/pullRequests/" + params.getPullRequestIdOrKeyString() +
+                "/comments"), params));
+    }
+
+    @Override
     public ResponseList<Group> getGroups() throws BacklogException {
         return factory.createGroupList(get(buildEndpoint("groups")));
     }
