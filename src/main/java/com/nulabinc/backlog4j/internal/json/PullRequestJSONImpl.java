@@ -19,7 +19,6 @@ import java.util.List;
 public class PullRequestJSONImpl implements PullRequest {
 
     private int id;
-    private String name;
     private long projectId;
     private long number;
     private String summary;
@@ -166,7 +165,6 @@ public class PullRequestJSONImpl implements PullRequest {
         PullRequestJSONImpl rhs = (PullRequestJSONImpl) obj;
         return new EqualsBuilder()
                 .append(this.id, rhs.id)
-                .append(this.name, rhs.name)
                 .append(this.projectId, rhs.projectId)
                 .append(this.number, rhs.number)
                 .append(this.summary, rhs.summary)
@@ -193,7 +191,6 @@ public class PullRequestJSONImpl implements PullRequest {
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(id)
-                .append(name)
                 .append(projectId)
                 .append(number)
                 .append(summary)
@@ -220,7 +217,6 @@ public class PullRequestJSONImpl implements PullRequest {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("id", id)
-                .append("name", name)
                 .append("projectId", projectId)
                 .append("number", number)
                 .append("summary", summary)
