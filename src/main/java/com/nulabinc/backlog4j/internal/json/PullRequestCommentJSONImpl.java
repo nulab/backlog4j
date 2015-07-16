@@ -24,7 +24,14 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
     private ChangeLog[] changeLog;
     @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
-
+    @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
+    private Date created;
+    @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
+    private Date updated;
+    @JsonDeserialize(as= StarJSONImpl[].class)
+    private Star[] stars;
+    @JsonDeserialize(as=NotificationJSONImpl[].class)
+    private Notification[] notifications;
 
     @Override
     public long getId() {
@@ -47,6 +54,26 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
     }
 
     @Override
+    public Date getCreated() {
+        return this.created;
+    }
+
+    @Override
+    public Date getUpdated() {
+        return this.updated;
+    }
+
+    @Override
+    public List<Star> getStars() {
+        return Arrays.asList(this.stars);
+    }
+
+    @Override
+    public List<Notification> getNotifications() {
+        return Arrays.asList(this.notifications);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -63,6 +90,10 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
                 .append(this.content, rhs.content)
                 .append(this.changeLog, rhs.changeLog)
                 .append(this.createdUser, rhs.createdUser)
+                .append(this.created, rhs.created)
+                .append(this.updated, rhs.updated)
+                .append(this.stars, rhs.stars)
+                .append(this.notifications, rhs.notifications)
                 .isEquals();
     }
 
@@ -73,6 +104,10 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
                 .append(content)
                 .append(changeLog)
                 .append(createdUser)
+                .append(created)
+                .append(updated)
+                .append(stars)
+                .append(notifications)
                 .toHashCode();
     }
 
@@ -83,6 +118,10 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
                 .append("content", content)
                 .append("changeLog", changeLog)
                 .append("createdUser", createdUser)
+                .append("created", created)
+                .append("updated", updated)
+                .append("stars", stars)
+                .append("notifications", notifications)
                 .toString();
     }
 }

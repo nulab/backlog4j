@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class PullRequestJSONImplTest extends AbstractJSONImplTest{
     @Test
     public void createPullRequestListTest() throws IOException {
-        String fileContentStr = getJsonString("json/pull_request.json");
+        String fileContentStr = getJsonString("json/pull_requests.json");
         ResponseList<PullRequest> pullRequests = factory.createPullRequestList(fileContentStr);
 
         assertEquals(1, pullRequests.size());
