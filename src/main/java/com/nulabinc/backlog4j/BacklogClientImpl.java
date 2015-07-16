@@ -1095,7 +1095,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<PullRequestComment> getPullRequestComments(long projectId, long repoId, long number, QueryParams params) throws BacklogException {
-        return factory.createPullRequestCommentList(post(buildEndpoint(
+        return factory.createPullRequestCommentList(get(buildEndpoint(
                 "projects/" + projectId +
                         "/git/repositories/" + repoId +
                         "/pullRequests/" + number +
@@ -1104,7 +1104,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<PullRequestComment> getPullRequestComments(String projectKey, String repoName, long number, QueryParams params) throws BacklogException {
-        return factory.createPullRequestCommentList(post(buildEndpoint(
+        return factory.createPullRequestCommentList(get(buildEndpoint(
                 "projects/" + projectKey +
                         "/git/repositories/" + repoName +
                         "/pullRequests/" + number +
