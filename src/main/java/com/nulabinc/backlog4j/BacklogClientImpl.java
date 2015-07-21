@@ -1066,7 +1066,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createPullRequestList(get(buildEndpoint(
                 "projects/" + projectId +
                         "/git/repositories/" + repoId +
-                        "/pullRequests")));
+                        "/pullRequests"), params));
     }
 
     @Override
@@ -1099,7 +1099,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                 "projects/" + projectId +
                         "/git/repositories/" + repoId +
                         "/pullRequests/" + number +
-                        "/comments")));
+                        "/comments"), params));
     }
 
     @Override
@@ -1108,7 +1108,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                 "projects/" + projectKey +
                         "/git/repositories/" + repoName +
                         "/pullRequests/" + number +
-                        "/comments")));
+                        "/comments"), params));
     }
 
     @Override
