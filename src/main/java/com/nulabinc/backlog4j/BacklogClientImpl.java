@@ -1049,8 +1049,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     public ResponseList<PullRequest> getPullRequests(long projectId, long repoId) throws BacklogException {
         return factory.createPullRequestList(get(buildEndpoint(
                 "projects/" + projectId +
-                "/git/repositories/" + repoId +
-                "/pullRequests")));
+                        "/git/repositories/" + repoId +
+                        "/pullRequests")));
     }
 
     @Override
@@ -1075,6 +1075,39 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                 "projects/" + projectKey +
                         "/git/repositories/" + repoName +
                         "/pullRequests"), params));
+    }
+
+    @Override
+    public int getPullRequestCount(long projectId, long repoId) throws BacklogException {
+        return factory.createCount(get(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/count"))).getCount();
+    }
+
+    @Override
+    public int getPullRequestCount(String projectKey, String repoName) throws BacklogException {
+        return factory.createCount(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/count"))).getCount();
+    }
+
+    @Override
+    public PullRequest addPullRequest(AddPullRequestParams params) throws BacklogException {
+        return factory.createPullRequest(post(buildEndpoint(
+                "projects/" + params.getProjectIdOrKeyString() +
+                        "/git/repositories/" + params.getRepoIdOrNameString() +
+                        "/pullRequests"), params));
+    }
+
+    @Override
+    public PullRequest updatePullRequest(UpdatePullRequestParams params) throws BacklogException {
+
+        return factory.createPullRequest(patch(buildEndpoint(
+                "projects/" + params.getProjectIdOrKeyString() +
+                        "/git/repositories/" + params.getRepoIdOrNameString() +
+                        "/pullRequests/" + params.getNumber()), params));
     }
 
     @Override
@@ -1118,6 +1151,101 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                         "/git/repositories/" + params.getRepoIdOrName() +
                         "/pullRequests/" + params.getNumber() +
                         "/comments"), params));
+    }
+
+    @Override
+    public int getPullRequestCommentCount(long projectId, long repoId, long number) throws BacklogException {
+        return factory.createCount(get(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/" + number +
+                        "/comments/count"))).getCount();
+    }
+
+    @Override
+    public int getPullRequestCommentCount(String projectKey, String repoName, long number) throws BacklogException {
+        return factory.createCount(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/" + number +
+                        "/comments/count"))).getCount();
+    }
+
+    @Override
+    public PullRequestComment updatePullRequestComment(UpdatePullRequestCommentParams params) throws BacklogException {
+        return factory.createPullRequestComment(patch(buildEndpoint(
+                "projects/" + params.getProjectIdOrKeyString() +
+                        "/git/repositories/" + params.getRepoIdOrName() +
+                        "/pullRequests/" + params.getNumber() +
+                        "/comments/" + params.getCommentid()), params));
+    }
+
+    @Override
+    public ResponseList<Attachment> getPullRequestAttachments(long projectId, long repoId, long number) throws BacklogException {
+        return factory.createAttachmentList(get(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/" + number +
+                        "/attachments")));
+    }
+
+    @Override
+    public ResponseList<Attachment> getPullRequestAttachments(String projectKey, String repoName, long number) throws BacklogException {
+        return factory.createAttachmentList(get(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/" + number +
+                        "/attachments")));
+    }
+
+    @Override
+    public AttachmentData downloadPullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException {
+        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectId, repoId, number, attachmentId));
+        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
+        InputStream inputStream = backlogHttpResponse.asInputStream();
+        return new AttachmentDataImpl(filename, inputStream);
+    }
+
+    @Override
+    public AttachmentData downloadPullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException {
+        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectKey, repoName, number, attachmentId));
+        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
+        InputStream inputStream = backlogHttpResponse.asInputStream();
+        return new AttachmentDataImpl(filename, inputStream);
+    }
+
+    @Override
+    public String getPullRequestAttachmentEndpoint(long projectId, long repoId, long number, long attachmentId) {
+        return buildEndpoint("projects/" + projectId +
+                "/git/repositories/" + repoId +
+                "/pullRequests/" + number +
+                "/attachments/" + attachmentId);
+    }
+
+    @Override
+    public String getPullRequestAttachmentEndpoint(String projectKey, String repoName, long number, long attachmentId) {
+        return buildEndpoint("projects/" + projectKey +
+                "/git/repositories/" + repoName +
+                "/pullRequests/" + number +
+                "/attachments/" + attachmentId);
+    }
+
+    @Override
+    public Attachment deletePullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException {
+        return factory.createAttachment(delete(buildEndpoint(
+                "projects/" + projectId +
+                        "/git/repositories/" + repoId +
+                        "/pullRequests/" + number +
+                        "/attachments/" + attachmentId)));
+    }
+
+    @Override
+    public Attachment deletePullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException {
+        return factory.createAttachment(delete(buildEndpoint(
+                "projects/" + projectKey +
+                        "/git/repositories/" + repoName +
+                        "/pullRequests/" + number +
+                        "/attachments/" + attachmentId)));
     }
 
     @Override

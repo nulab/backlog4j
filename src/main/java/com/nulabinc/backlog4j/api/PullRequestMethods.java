@@ -54,6 +54,44 @@ public interface PullRequestMethods {
     ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException;
 
     /**
+     * Returns the count of the pull requests.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @return the git pull request.
+     * @throws BacklogException
+     */
+    int getPullRequestCount(long projectId, long repoId) throws BacklogException;
+
+    /**
+     * Returns the count of the pull requests.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @return the git pull request.
+     * @throws BacklogException
+     */
+    int getPullRequestCount(String projectKey, String repoName) throws BacklogException;
+
+    /**
+     * Add a pull request.
+     *
+     * @param params the pull request adding parameters
+     * @return the git pull request.
+     * @throws BacklogException
+     */
+    PullRequest addPullRequest(AddPullRequestParams params) throws BacklogException;
+
+    /**
+     * Update a pull request.
+     *
+     * @param params the pull request updating parameters
+     * @return the git pull request.
+     * @throws BacklogException
+     */
+    PullRequest updatePullRequest(UpdatePullRequestParams params) throws BacklogException;
+
+    /**
      * Returns the pull request.
      *
      * @param projectId the project identifier
@@ -109,4 +147,126 @@ public interface PullRequestMethods {
      */
     PullRequestComment addPullRequestComment(AddPullRequestCommentParams params) throws BacklogException;
 
+    /**
+     * Returns the pull request comment count.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @return the pull request comment count
+     * @throws BacklogException
+     */
+    int getPullRequestCommentCount(long projectId, long repoId, long number) throws BacklogException;
+
+    /**
+     * Returns the pull request comment count.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
+     * @return the pull request comment count
+     * @throws BacklogException
+     */
+    int getPullRequestCommentCount(String projectKey, String repoName, long number) throws BacklogException;
+
+    /**
+     * Updates the pull request comment.
+     *
+     * @param params  the pull request comment updating parameters
+     * @return the pull request comment.
+     * @throws BacklogException
+     */
+    PullRequestComment updatePullRequestComment(UpdatePullRequestCommentParams params) throws BacklogException;
+
+    /**
+     * Returns the pull request attachment list.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @return the pull request attachment list
+     * @throws BacklogException
+     */
+    ResponseList<Attachment> getPullRequestAttachments(long projectId, long repoId, long number) throws BacklogException;
+
+    /**
+     * Returns the pull request attachment list.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
+     * @return the pull request attachment list
+     * @throws BacklogException
+     */
+    ResponseList<Attachment> getPullRequestAttachments(String projectKey, String repoName, long number) throws BacklogException;
+
+    /**
+     * Returns the attachment file data on the pull request.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the attachment file data
+     * @throws BacklogException
+     */
+    AttachmentData downloadPullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException;
+
+    /**
+     * Returns the attachment file data on the pull request.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the attachment file data
+     * @throws BacklogException
+     */
+    AttachmentData downloadPullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException;
+
+    /**
+     * Returns the endpoint of attachment file.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the endpoint
+     */
+    String getPullRequestAttachmentEndpoint(long projectId, long repoId, long number, long attachmentId);
+
+    /**
+     * Returns the endpoint of attachment file.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the endpoint
+     */
+    String getPullRequestAttachmentEndpoint(String projectKey, String repoName, long number, long attachmentId);
+
+    /**
+     * Deletes the attachment file on the pull request.
+     *
+     * @param projectId the project identifier
+     * @param repoId the repository identifier
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the Attachment
+     * @throws BacklogException
+     */
+    Attachment deletePullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException;
+
+    /**
+     * Deletes the attachment file on the pull request.
+     *
+     * @param projectKey the project identifier
+     * @param repoName the repository name
+     * @param number the pull request identifier
+     * @param attachmentId the pull request attachment identifier
+     * @return the Attachment
+     * @throws BacklogException
+     */
+    Attachment deletePullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException;
 }
