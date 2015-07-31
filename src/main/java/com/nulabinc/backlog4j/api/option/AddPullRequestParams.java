@@ -29,8 +29,6 @@ public class AddPullRequestParams extends PostParams {
     public AddPullRequestParams(long projectId, long repoId, String summary) {
         this.projectId = projectId;
         this.repoId = repoId;
-        parameters.add(new NameValuePair("projectIdOrKey", String.valueOf(projectId)));
-        parameters.add(new NameValuePair("repoIdOrName", String.valueOf(projectId)));
         parameters.add(new NameValuePair("summary", summary));
     }
 
@@ -41,12 +39,14 @@ public class AddPullRequestParams extends PostParams {
      * @param repoName      the repository identifier
      * @param summary       the pull request title
      */
-    public AddPullRequestParams(String projectKey, String repoName, String summary) {
+    public AddPullRequestParams(String projectKey, String repoName, String summary, String description,
+                                String base, String branch) {
         this.projectKey = projectKey;
         this.repoName = repoName;
-        parameters.add(new NameValuePair("projectIdOrKey", String.valueOf(projectId)));
-        parameters.add(new NameValuePair("repoIdOrName", String.valueOf(projectId)));
         parameters.add(new NameValuePair("summary", summary));
+        parameters.add(new NameValuePair("description", description));
+        parameters.add(new NameValuePair("base", base));
+        parameters.add(new NameValuePair("branch", branch));
     }
 
     public String getProjectIdOrKeyString() {
@@ -63,39 +63,6 @@ public class AddPullRequestParams extends PostParams {
         }else{
             return String.valueOf(repoId);
         }
-    }
-
-    /**
-     * Sets the description.
-     *
-     * @param description the pull request description
-     * @return AddPullRequestParams instance
-     */
-    public AddPullRequestParams description(String description) {
-        parameters.add(new NameValuePair("description", description));
-        return this;
-    }
-
-    /**
-     * Sets the base parameter.
-     *
-     * @param base the base branch name
-     * @return AddPullRequestParams instance
-     */
-    public AddPullRequestParams base(String base) {
-        parameters.add(new NameValuePair("base", base));
-        return this;
-    }
-
-    /**
-     * Sets the branch parameter.
-     *
-     * @param branch the branch name merge to
-     * @return AddPullRequestParams instance
-     */
-    public AddPullRequestParams branch(String branch) {
-        parameters.add(new NameValuePair("branch", branch));
-        return this;
     }
 
     /**
