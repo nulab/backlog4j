@@ -64,6 +64,17 @@ public class UpdatePullRequestParams extends PatchParams {
     }
 
     /**
+     * Sets the summary.
+     *
+     * @param summary the pull request description
+     * @return UpdatePullRequestParams instance
+     */
+    public UpdatePullRequestParams summary(String summary) {
+        parameters.add(new NameValuePair("summary", summary));
+        return this;
+    }
+
+    /**
      * Sets the description.
      *
      * @param description the pull request description
