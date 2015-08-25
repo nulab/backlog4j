@@ -72,6 +72,8 @@ public interface InternalFactory {
 
     Wiki createWiki(BacklogHttpResponse res) throws BacklogException;
 
+    Wiki importWiki(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<Wiki> createWikiList(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<WikiTag> createWikiTagList(BacklogHttpResponse res) throws BacklogException;

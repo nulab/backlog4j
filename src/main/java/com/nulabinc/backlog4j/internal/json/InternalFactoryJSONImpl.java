@@ -145,7 +145,6 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Issue importIssue(BacklogHttpResponse res) throws BacklogException {
         return importIssue(res.asString());
     }
-
     public Issue importIssue(String resStr) throws BacklogException {
         return createObject(resStr, Issue.class, IssueJSONImpl.class);
     }
@@ -299,6 +298,14 @@ public class InternalFactoryJSONImpl implements InternalFactory {
         return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
     }
     public Wiki createWiki(String resStr) throws BacklogException {
+        return createObject(resStr, Wiki.class, WikiJSONImpl.class);
+    }
+
+    @Override
+    public Wiki importWiki(BacklogHttpResponse res) throws BacklogException {
+        return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
+    }
+    public Wiki importWiki(String resStr) throws BacklogException {
         return createObject(resStr, Wiki.class, WikiJSONImpl.class);
     }
 
