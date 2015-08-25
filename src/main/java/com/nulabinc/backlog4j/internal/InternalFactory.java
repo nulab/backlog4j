@@ -32,6 +32,8 @@ public interface InternalFactory {
 
     Issue createIssue(BacklogHttpResponse res) throws BacklogException;
 
+    Issue importIssue(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<IssueComment> createIssueCommentList(BacklogHttpResponse res) throws BacklogException;
 
     IssueComment createIssueComment(BacklogHttpResponse res) throws BacklogException;
