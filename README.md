@@ -15,6 +15,7 @@ Backlog4j is a Backlog binding library for Java.
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
 ## Update
+* 2015/08/26 2.1.4 released
 * 2015/03/23 2.1.3 released
 * 2015/02/19 2.1.2 released
 * 2015/01/30 2.1.1 released
@@ -25,14 +26,14 @@ https://github.com/nulab/backlog4j/releases
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.1.3'
+    'com.nulab-inc:backlog4j:2.1.4'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.1.3</version>
+      <version>2.1.4</version>
     </dependency>
 
 ## How to use
@@ -77,14 +78,14 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.1.3'
+    'com.nulab-inc:backlog4j:2.1.4'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.1.3</version>
+      <version>2.1.4</version>
     </dependency>
 
 ## 使い方
@@ -110,3 +111,14 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
 
     Project project = backlog.getProject("PROJECT-KEY");
     
+
+## Android でご使用の場合
+proguard-rules に以下を追記して難読化の対象外とすることを推奨します。
+
+    #Backlog4j
+    -keep public class com.nulabinc.backlog4j.** {*;}
+
+    #Jackson(Backlog4j is using jackson)
+    -keepattributes *Annotation*,EnclosingMethod, Signature, InnerClasses
+    -keepnames class com.fasterxml.jackson.** { *; }
+    -dontwarn com.fasterxml.jackson.databind.**
