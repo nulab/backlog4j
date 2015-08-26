@@ -20,6 +20,7 @@ public class PullRequestJSONImpl implements PullRequest {
 
     private int id;
     private long projectId;
+    private long repositoryId;
     private long number;
     private String summary;
     private String description;
@@ -56,6 +57,11 @@ public class PullRequestJSONImpl implements PullRequest {
     @Override
     public long getProjectId() {
         return this.projectId;
+    }
+
+    @Override
+    public long getRepositoryId() {
+        return this.repositoryId;
     }
 
     @Override

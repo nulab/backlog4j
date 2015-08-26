@@ -2,6 +2,7 @@
     {
         "id": 2,
         "projectId": 3,
+        "repositoryId": 4,
         "number": 1,
         "summary": "test",
         "description": "test data",

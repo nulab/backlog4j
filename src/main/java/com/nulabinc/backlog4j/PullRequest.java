@@ -35,6 +35,8 @@ public interface PullRequest {
 
     long getProjectId();
 
+    long getRepositoryId();
+
     long getNumber();
 
     String getSummary();

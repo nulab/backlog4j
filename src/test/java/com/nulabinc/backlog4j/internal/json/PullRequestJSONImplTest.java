@@ -24,6 +24,7 @@ public class PullRequestJSONImplTest extends AbstractJSONImplTest{
         PullRequest pullRequest = pullRequests.get(0);
         assertEquals(2, pullRequest.getId());
         assertEquals(3, pullRequest.getProjectId());
+        assertEquals(4, pullRequest.getRepositoryId());
         assertEquals(1, pullRequest.getNumber());
         assertEquals("test", pullRequest.getSummary());
         assertEquals("test data", pullRequest.getDescription());
