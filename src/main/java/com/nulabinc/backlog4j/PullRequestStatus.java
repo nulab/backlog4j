@@ -5,7 +5,7 @@ package com.nulabinc.backlog4j;
  *
  * @author nulab-inc
  */
-public interface MergeStatus {
+public interface PullRequestStatus {
     int getId();
 
     String getName();

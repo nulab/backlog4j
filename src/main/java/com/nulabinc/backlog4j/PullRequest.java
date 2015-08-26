@@ -9,7 +9,7 @@ import java.util.List;
 public interface PullRequest {
 
     enum StatusType {
-        Open(1), InProgress(2), Merged(3), Closed(4);
+        Open(1), Merged(2), Closed(3);
 
         StatusType(int intValue) {
             this.intValue = intValue;
@@ -47,7 +47,7 @@ public interface PullRequest {
 
     String getBranch();
 
-    MergeStatus getStatus();
+    PullRequestStatus getStatus();
 
     User getAssignee();
 

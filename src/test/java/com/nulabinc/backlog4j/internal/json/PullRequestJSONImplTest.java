@@ -31,9 +31,9 @@ public class PullRequestJSONImplTest extends AbstractJSONImplTest{
         assertEquals("master", pullRequest.getBase());
         assertEquals("develop", pullRequest.getBranch());
 
-        MergeStatus mergeStatus = pullRequest.getStatus();
-        assertEquals(1, mergeStatus.getId());
-        assertEquals("Open", mergeStatus.getName());
+        PullRequestStatus pullRequestStatus = pullRequest.getStatus();
+        assertEquals(1, pullRequestStatus.getId());
+        assertEquals("Open", pullRequestStatus.getName());
 
         User assignee = pullRequest.getAssignee();
         assertEquals(5, assignee.getId());

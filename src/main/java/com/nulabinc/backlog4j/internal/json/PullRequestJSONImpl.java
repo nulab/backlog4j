@@ -26,8 +26,8 @@ public class PullRequestJSONImpl implements PullRequest {
     private String description;
     private String base;
     private String branch;
-    @JsonDeserialize(as = MergeStatusJSONImpl.class)
-    private MergeStatus status;
+    @JsonDeserialize(as = PullRequestStatusJSONImpl.class)
+    private PullRequestStatus status;
     @JsonDeserialize(as = UserJSONImpl.class)
     private User assignee;
     @JsonDeserialize(as = IssueJSONImpl.class)
@@ -90,7 +90,7 @@ public class PullRequestJSONImpl implements PullRequest {
     }
 
     @Override
-    public MergeStatus getStatus() {
+    public PullRequestStatus getStatus() {
         return this.status;
     }
 

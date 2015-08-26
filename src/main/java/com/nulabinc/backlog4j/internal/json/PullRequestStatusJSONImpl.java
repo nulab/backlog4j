@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.nulabinc.backlog4j.MergeStatus;
+import com.nulabinc.backlog4j.PullRequestStatus;
 import com.nulabinc.backlog4j.PullRequest;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author nulab-inc
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MergeStatusJSONImpl implements MergeStatus {
+public class PullRequestStatusJSONImpl implements PullRequestStatus {
 
     private int id;
     private String name;
@@ -42,7 +42,7 @@ public class MergeStatusJSONImpl implements MergeStatus {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        MergeStatusJSONImpl rhs = (MergeStatusJSONImpl) obj;
+        PullRequestStatusJSONImpl rhs = (PullRequestStatusJSONImpl) obj;
         return new EqualsBuilder()
                 .append(this.id, rhs.id)
                 .append(this.name, rhs.name)
