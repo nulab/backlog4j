@@ -30,6 +30,11 @@ public class PullRequestQueryParams extends QueryParams {
     }
 
     @Override
+    public PullRequestQueryParams count(long count) {
+        return (PullRequestQueryParams) super.count(count);
+    }
+
+    @Override
     public PullRequestQueryParams count(int count) {
         return (PullRequestQueryParams) super.count(count);
     }
@@ -40,6 +45,11 @@ public class PullRequestQueryParams extends QueryParams {
     }
 
     public PullRequestQueryParams offset(long offset) {
+        parameters.add(new NameValuePair("offset", String.valueOf(offset)));
+        return this;
+    }
+
+    public PullRequestQueryParams offset(int offset) {
         parameters.add(new NameValuePair("offset", String.valueOf(offset)));
         return this;
     }

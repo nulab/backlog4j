@@ -48,6 +48,11 @@ public class QueryParams extends GetParams{
         return this;
     }
 
+    public QueryParams count(long count) {
+        parameters.add(new NameValuePair("count", String.valueOf(count)));
+        return this;
+    }
+
     public QueryParams order(Order order) {
         parameters.add(new NameValuePair("order", order.getStrValue()));
         return this;
