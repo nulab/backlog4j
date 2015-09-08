@@ -177,11 +177,6 @@ public class GetIssuesParams extends GetParams {
         return this;
     }
 
-    public GetIssuesParams offset(int offset) {
-        parameters.add(new NameValuePair("offset", String.valueOf(offset)));
-        return this;
-    }
-
     public GetIssuesParams count(long count) {
         parameters.add(new NameValuePair("count", String.valueOf(count)));
         return this;
