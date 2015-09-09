@@ -997,6 +997,20 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public void addStarToPullRequest(long pullRequestId) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("pullRequestId", String.valueOf(pullRequestId)));
+        post(buildEndpoint("stars"), params);
+    }
+
+    @Override
+    public void addStarToPullRequestComment(long pullRequestCommentId) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("pullRequestCommentId", String.valueOf(pullRequestCommentId)));
+        post(buildEndpoint("stars"), params);
+    }
+
+    @Override
     public ResponseList<Notification> getNotifications() throws BacklogException {
         return factory.createNotificationList(get(buildEndpoint("notifications")));
     }
