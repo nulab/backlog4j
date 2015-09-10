@@ -792,6 +792,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Wiki importWiki(ImportWikiParams params) {
+        return factory.importWiki(post(buildEndpoint("wikis/import"), params));
+    }
+
+    @Override
     public Wiki getWiki(long wikiId) {
         return factory.createWiki(get(buildEndpoint("wikis/" + wikiId)));
     }

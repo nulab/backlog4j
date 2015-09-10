@@ -303,6 +303,14 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     }
 
     @Override
+    public Wiki importWiki(BacklogHttpResponse res) throws BacklogException {
+        return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
+    }
+    public Wiki importWiki(String resStr) throws BacklogException {
+        return createObject(resStr, Wiki.class, WikiJSONImpl.class);
+    }
+
+    @Override
     public ResponseList<Wiki> createWikiList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Wiki.class, WikiJSONImpl[].class);
     }
