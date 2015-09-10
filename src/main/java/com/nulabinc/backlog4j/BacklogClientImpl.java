@@ -561,6 +561,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Issue importIssue(ImportIssueParams params) throws BacklogException {
+        return factory.importIssue(post(buildEndpoint("issues/import"), params));
+    }
+
+    @Override
     public Issue updateIssue(UpdateIssueParams params) throws BacklogException {
         return factory.createIssue(patch(buildEndpoint("issues/" + params.getIssueIdOrKeyString()), params));
     }
