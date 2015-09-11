@@ -45,6 +45,8 @@ public class PullRequestJSONImpl implements PullRequest {
     private User updatedUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;
+    @JsonDeserialize(as = AttachmentJSONImpl[].class)
+    private Attachment[] attachments;
     @JsonDeserialize(as = StarJSONImpl[].class)
     private Star[] stars;
 
@@ -150,6 +152,14 @@ public class PullRequestJSONImpl implements PullRequest {
     }
 
     @Override
+    public List<Attachment> getAttachments() {
+        if(attachments == null || attachments.length == 0){
+            return Collections.emptyList();
+        }
+        return Arrays.asList(attachments);
+    }
+
+    @Override
     public List<Star> getStars() {
         if (stars == null || stars.length == 0) {
             return Collections.emptyList();
@@ -190,6 +200,7 @@ public class PullRequestJSONImpl implements PullRequest {
                 .append(this.created, rhs.created)
                 .append(this.updatedUser, rhs.updatedUser)
                 .append(this.updated, rhs.updated)
+                .append(this.attachments, rhs.attachments)
                 .append(this.stars, rhs.stars)
                 .isEquals();
     }
@@ -217,6 +228,7 @@ public class PullRequestJSONImpl implements PullRequest {
                 .append(created)
                 .append(updatedUser)
                 .append(updated)
+                .append(attachments)
                 .append(stars)
                 .toHashCode();
     }
@@ -244,6 +256,7 @@ public class PullRequestJSONImpl implements PullRequest {
                 .append("created", created)
                 .append("updatedUser", updatedUser)
                 .append("updated", updated)
+                .append("attachments", attachments)
                 .append("stars", stars)
                 .toString();
     }

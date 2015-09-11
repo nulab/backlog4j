@@ -71,5 +71,7 @@ public interface PullRequest {
 
     Date getUpdated();
 
+    List<Attachment> getAttachments();
+
     List<Star> getStars();
 }
