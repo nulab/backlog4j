@@ -35,14 +35,15 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
                 .notifiedUserIds(Arrays.asList(8000000001l, 8000000002l))
                 .attachmentIds(Arrays.asList(9000000001l, 9000000002l));
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
 
         // then
         List<NameValuePair> parameters = params.getParamList();
-        assertEquals(24, parameters.size());
+        assertEquals(25, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "projectId", "1000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "summary", "test issue 1"));
         assertEquals(true, existsOneKeyValue(parameters, "issueTypeId", "2000000001"));
@@ -64,8 +65,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "notifiedUserId[]", "8000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", "9000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "attachmentId[]", "9000000002"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -80,8 +82,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.textCustomField(3000000003l, "tea");
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -89,8 +92,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "egg"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "rice"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "tea"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -105,8 +109,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.textAreaCustomField(3000000003l, "tea");
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -114,8 +119,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "egg"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "rice"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "tea"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -131,8 +137,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         params.numericCustomField(3000000003l, 123.61f);
         params.numericCustomField(3000000004l, new BigDecimal(123.67777));
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -141,8 +148,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "5555.121"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "123.61"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000004", "123.6778"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
 
 
@@ -159,8 +167,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.dateCustomField(3000000003l, "2008-10-10");
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -168,8 +177,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "2008-10-01"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "2008-10-02"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "2008-10-10"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -184,8 +194,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.singleListCustomField(3000000003l, 4000000003l);
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -193,8 +204,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "4000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "4000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000003"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -209,8 +221,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.radioCustomField(3000000003l, 4000000003l);
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -218,8 +231,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "4000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "4000000002"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000003"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -234,8 +248,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.multipleListCustomField(3000000003l, Arrays.asList(4000000005l, 4000000006l));
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -246,8 +261,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "4000000004"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000005"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000006"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 
@@ -262,8 +278,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
 
         params.checkBoxCustomField(3000000003l, Arrays.asList(4000000005l, 4000000006l));
 
-        params.created("20150510");
+        params.created("2015-09-14T10:36:49+0900");
         params.createdUserId(4000000001l);
+        params.updated("2015-09-14T10:36:49+0900");
         params.updatedUserId(4000000001l);
 
         // then
@@ -274,8 +291,9 @@ public class ImportIssueParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "4000000004"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000005"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "4000000006"));
-        assertEquals(true, existsOneKeyValue(parameters, "created", "20150510"));
+        assertEquals(true, existsOneKeyValue(parameters, "created", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "createdUserId", "4000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "updated", "2015-09-14T10:36:49+0900"));
         assertEquals(true, existsOneKeyValue(parameters, "updatedUserId", "4000000001"));
     }
 }
