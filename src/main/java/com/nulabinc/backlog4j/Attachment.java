@@ -11,6 +11,8 @@ public interface Attachment {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     long getSize();

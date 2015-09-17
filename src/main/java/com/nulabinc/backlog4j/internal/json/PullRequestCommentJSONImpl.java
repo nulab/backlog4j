@@ -39,6 +39,11 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getContent() {
         return this.content;
     }

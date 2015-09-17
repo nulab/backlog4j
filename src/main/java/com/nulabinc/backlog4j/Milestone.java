@@ -8,11 +8,22 @@ import java.util.Date;
  * @author nulab-inc
  */
 public interface Milestone {
+
     long getId();
+
+    String getIdAsString();
+
     long getProjectId();
+
+    String getProjectIdAsString();
+
     String getName();
+
     String getDescription();
+
     Date getStartDate();
+
     Date getReleaseDueDate();
+
     Boolean getArchived();
 }

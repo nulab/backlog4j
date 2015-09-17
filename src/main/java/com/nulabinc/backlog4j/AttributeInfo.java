@@ -9,6 +9,8 @@ public interface AttributeInfo {
 
     long getId();
 
+    String getIdAsString();
+
     String getTypeId();
 
 }

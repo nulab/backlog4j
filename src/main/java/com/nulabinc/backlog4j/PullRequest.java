@@ -33,9 +33,15 @@ public interface PullRequest {
 
     long getId();
 
+    String getIdAsString();
+
     long getProjectId();
 
+    String getProjectIdAsString();
+
     long getRepositoryId();
+
+    String getRepositoryIdAsString();
 
     long getNumber();
 

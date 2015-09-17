@@ -12,6 +12,8 @@ public interface Webhook {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     String getDescription();

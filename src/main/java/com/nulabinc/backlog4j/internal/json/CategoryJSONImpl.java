@@ -22,6 +22,11 @@ public class CategoryJSONImpl implements Category {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }

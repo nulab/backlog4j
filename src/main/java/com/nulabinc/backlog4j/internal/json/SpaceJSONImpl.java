@@ -44,6 +44,11 @@ public class SpaceJSONImpl implements Space {
     }
 
     @Override
+    public String getOwnerIdAsString() {
+        return String.valueOf(this.ownerId);
+    }
+
+    @Override
     public String getLang() {
         return lang;
     }

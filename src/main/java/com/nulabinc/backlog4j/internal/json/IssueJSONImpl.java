@@ -71,6 +71,11 @@ public class IssueJSONImpl implements Issue {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getIssueKey() {
         return this.issueKey;
     }
@@ -81,8 +86,18 @@ public class IssueJSONImpl implements Issue {
     }
 
     @Override
+    public String getKeyIdAsString() {
+        return String.valueOf(this.keyId);
+    }
+
+    @Override
     public long getProjectId() {
         return this.projectId;
+    }
+
+    @Override
+    public String getProjectIdAsString() {
+        return String.valueOf(this.projectId);
     }
 
     @Override

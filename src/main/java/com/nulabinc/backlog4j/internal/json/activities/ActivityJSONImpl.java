@@ -63,6 +63,11 @@ public abstract class ActivityJSONImpl implements Activity {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public Project getProject() {
         return this.project;
     }

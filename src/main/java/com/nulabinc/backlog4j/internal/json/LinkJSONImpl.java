@@ -25,8 +25,18 @@ public class LinkJSONImpl implements Link {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public long getKeyId() {
         return keyId;
+    }
+
+    @Override
+    public String getKeyIdAsString() {
+        return String.valueOf(this.keyId);
     }
 
     @Override

@@ -39,6 +39,11 @@ public class IssueCommentJSONImpl implements IssueComment {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getContent() {
         return this.content;
     }

@@ -57,13 +57,28 @@ public class PullRequestJSONImpl implements PullRequest {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public long getProjectId() {
         return this.projectId;
     }
 
     @Override
+    public String getProjectIdAsString() {
+        return String.valueOf(this.projectId);
+    }
+
+    @Override
     public long getRepositoryId() {
         return this.repositoryId;
+    }
+
+    @Override
+    public String getRepositoryIdAsString() {
+        return String.valueOf(this.repositoryId);
     }
 
     @Override

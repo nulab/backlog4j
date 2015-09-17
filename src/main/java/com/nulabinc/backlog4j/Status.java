@@ -6,7 +6,10 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface Status {
+
     int getId();
+
+    String getIdAsString();
 
     String getName();
 

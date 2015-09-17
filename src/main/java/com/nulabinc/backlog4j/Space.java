@@ -14,6 +14,8 @@ public interface Space {
 
     long getOwnerId();
 
+    String getOwnerIdAsString();
+
     String getLang();
 
     String getTimezone();

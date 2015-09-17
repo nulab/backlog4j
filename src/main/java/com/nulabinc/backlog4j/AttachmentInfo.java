@@ -9,6 +9,8 @@ public interface AttachmentInfo {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     boolean isImage();

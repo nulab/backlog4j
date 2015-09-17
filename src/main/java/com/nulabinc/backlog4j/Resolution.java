@@ -6,7 +6,10 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface Resolution {
+
     long getId();
+
+    String getIdAsString();
 
     String getName();
 

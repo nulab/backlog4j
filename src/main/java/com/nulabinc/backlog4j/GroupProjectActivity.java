@@ -6,7 +6,10 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface GroupProjectActivity {
+
     long getId();
+
+    String getIdAsString();
 
     Activity.Type getType();
 

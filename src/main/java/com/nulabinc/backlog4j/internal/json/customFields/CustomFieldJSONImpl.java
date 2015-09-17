@@ -34,11 +34,16 @@ public abstract class CustomFieldJSONImpl implements CustomField {
     public long getId() {
         return id;
     }
+
+    @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
     @Override
     public String getName() {
         return name;
     }
-
 
     @Override
     public String toString() {
