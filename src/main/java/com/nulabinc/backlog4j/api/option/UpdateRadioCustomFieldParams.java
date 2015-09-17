@@ -15,8 +15,8 @@ public class UpdateRadioCustomFieldParams extends UpdateCustomFieldParams {
         super(projectId, customFiledId);
     }
 
-    public UpdateRadioCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateRadioCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateRadioCustomFieldParams items(List<String> items) {

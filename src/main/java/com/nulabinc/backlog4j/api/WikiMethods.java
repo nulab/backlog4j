@@ -26,10 +26,10 @@ public interface WikiMethods {
     /**
      * Returns Wiki pages in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the Wiki pages in a list
      */
-    ResponseList<Wiki> getWikis(String projectKey);
+    ResponseList<Wiki> getWikis(String projectIdOrKey);
 
     /**
      * Returns Wiki pages count.
@@ -42,10 +42,10 @@ public interface WikiMethods {
     /**
      * Returns Wiki pages count.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the Wiki pages count
      */
-    int getWikiCount(String projectKey);
+    int getWikiCount(String projectIdOrKey);
 
     /**
      * Returns Wiki page's tags in the project.
@@ -58,10 +58,10 @@ public interface WikiMethods {
     /**
      * Returns Wiki page's tags in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the Wiki page's tags in a list
      */
-    ResponseList<WikiTag> getWikiTags(String projectKey);
+    ResponseList<WikiTag> getWikiTags(String projectIdOrKey);
 
     /**
      * Create a Wiki page in the project.

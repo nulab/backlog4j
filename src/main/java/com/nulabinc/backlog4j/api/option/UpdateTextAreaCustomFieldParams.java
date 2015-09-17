@@ -11,7 +11,7 @@ public class UpdateTextAreaCustomFieldParams extends UpdateCustomFieldParams {
         super(projectId, customFiledId);
     }
 
-    public UpdateTextAreaCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateTextAreaCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 }

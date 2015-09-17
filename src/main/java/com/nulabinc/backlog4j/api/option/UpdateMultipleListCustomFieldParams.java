@@ -15,8 +15,8 @@ public class UpdateMultipleListCustomFieldParams extends UpdateCustomFieldParams
         super(projectId, customFiledId);
     }
 
-    public UpdateMultipleListCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateMultipleListCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateMultipleListCustomFieldParams items(List<String> items) {

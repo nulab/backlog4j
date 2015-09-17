@@ -11,7 +11,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 public class UpdateIssueTypeParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long issueTypeId;
 
     public UpdateIssueTypeParams(long projectId, long issueTypeId) {
@@ -19,14 +19,14 @@ public class UpdateIssueTypeParams extends PatchParams {
         this.issueTypeId = issueTypeId;
     }
 
-    public UpdateIssueTypeParams(String projectKey, long issueTypeId) {
-        this.projectKey = projectKey;
+    public UpdateIssueTypeParams(String projectIdOrKey, long issueTypeId) {
+        this.projectIdOrKey = projectIdOrKey;
         this.issueTypeId = issueTypeId;
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
+        if (projectIdOrKey != null) {
+            return projectIdOrKey;
         } else {
             return String.valueOf(projectId);
         }

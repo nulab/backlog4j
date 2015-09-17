@@ -15,6 +15,12 @@ public class CreateWikiParams extends PostParams {
         parameters.add(new NameValuePair("content", content));
     }
 
+    public CreateWikiParams(String projectId, String name, String content) {
+        parameters.add(new NameValuePair("projectId", projectId));
+        parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("content", content));
+    }
+
     public CreateWikiParams mailNotify(boolean mailNotify) {
         parameters.add(new NameValuePair("mailNotify", String.valueOf(mailNotify)));
         return this;

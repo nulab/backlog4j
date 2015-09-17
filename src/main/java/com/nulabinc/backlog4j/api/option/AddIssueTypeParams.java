@@ -10,7 +10,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class AddIssueTypeParams extends PostParams {
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
 
     public AddIssueTypeParams(long projectId, String name, Project.IssueTypeColor color){
         this.projectId = projectId;
@@ -18,15 +18,15 @@ public class AddIssueTypeParams extends PostParams {
         parameters.add(new NameValuePair("color", color.getStrValue()));
     }
 
-    public AddIssueTypeParams(String projectKey, String name, Project.IssueTypeColor color){
+    public AddIssueTypeParams(String projectIdOrKey, String name, Project.IssueTypeColor color){
         parameters.add(new NameValuePair("name", name));
         parameters.add(new NameValuePair("color", color.getStrValue()));
-        this.projectKey = projectKey;
+        this.projectIdOrKey = projectIdOrKey;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
+        if(projectIdOrKey != null){
+            return projectIdOrKey;
         }else{
             return String.valueOf(projectId);
         }

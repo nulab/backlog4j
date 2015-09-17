@@ -13,7 +13,7 @@ public class AddTextAreaCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.TextArea, name);
     }
 
-    public AddTextAreaCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.TextArea, name);
+    public AddTextAreaCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.TextArea, name);
     }
 }

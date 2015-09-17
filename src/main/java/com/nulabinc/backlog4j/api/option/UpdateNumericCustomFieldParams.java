@@ -15,8 +15,8 @@ public class UpdateNumericCustomFieldParams extends UpdateCustomFieldParams {
         super(projectId, customFiledId);
     }
 
-    public UpdateNumericCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateNumericCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateNumericCustomFieldParams min(float min) {

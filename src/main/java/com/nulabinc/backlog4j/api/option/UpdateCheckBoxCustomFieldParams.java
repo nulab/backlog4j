@@ -15,8 +15,8 @@ public class UpdateCheckBoxCustomFieldParams extends UpdateCustomFieldParams {
         super(projectId, customFiledId);
     }
 
-    public UpdateCheckBoxCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateCheckBoxCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateCheckBoxCustomFieldParams items(List<String> items) {

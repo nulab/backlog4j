@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class UpdateCustomFieldParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long customFiledId;
 
     public UpdateCustomFieldParams(long projectId, long customFiledId){
@@ -20,14 +20,14 @@ public abstract class UpdateCustomFieldParams extends PatchParams {
         this.customFiledId = customFiledId;
     }
 
-    public UpdateCustomFieldParams(String projectKey, long customFiledId){
-        this.projectKey = projectKey;
+    public UpdateCustomFieldParams(String projectIdOrKey, long customFiledId){
+        this.projectIdOrKey = projectIdOrKey;
         this.customFiledId = customFiledId;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
+        if(projectIdOrKey != null){
+            return projectIdOrKey;
         }else{
             return String.valueOf(projectId);
         }

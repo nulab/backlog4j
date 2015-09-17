@@ -16,8 +16,8 @@ public class AddMultipleListCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.MultipleList, name);
     }
 
-    public AddMultipleListCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.MultipleList, name);
+    public AddMultipleListCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.MultipleList, name);
     }
 
     public AddMultipleListCustomFieldParams items(List<String> items) {

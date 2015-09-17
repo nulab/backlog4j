@@ -2,10 +2,7 @@ package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.http.NameValuePair;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Parameters for add pull request API.
@@ -15,7 +12,7 @@ import java.util.Set;
 public class AddPullRequestParams extends PostParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long repoId;
     private String repoName;
 
@@ -35,13 +32,13 @@ public class AddPullRequestParams extends PostParams {
     /**
      * Constructor
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @param repoName      the repository identifier
      * @param summary       the pull request title
      */
-    public AddPullRequestParams(String projectKey, String repoName, String summary, String description,
+    public AddPullRequestParams(String projectIdOrKey, String repoName, String summary, String description,
                                 String base, String branch) {
-        this.projectKey = projectKey;
+        this.projectIdOrKey = projectIdOrKey;
         this.repoName = repoName;
         parameters.add(new NameValuePair("summary", summary));
         parameters.add(new NameValuePair("description", description));
@@ -50,8 +47,8 @@ public class AddPullRequestParams extends PostParams {
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
+        if(projectIdOrKey != null){
+            return projectIdOrKey;
         }else{
             return String.valueOf(projectId);
         }

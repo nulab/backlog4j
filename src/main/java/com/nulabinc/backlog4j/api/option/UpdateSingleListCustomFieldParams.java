@@ -15,8 +15,8 @@ public class UpdateSingleListCustomFieldParams extends UpdateCustomFieldParams {
         super(projectId, customFiledId);
     }
 
-    public UpdateSingleListCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateSingleListCustomFieldParams(String projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateSingleListCustomFieldParams items(List<String> items) {

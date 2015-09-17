@@ -10,7 +10,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 public class AddCategoryParams extends PostParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
 
     /**
      * Constructor
@@ -26,11 +26,11 @@ public class AddCategoryParams extends PostParams {
     /**
      * Constructor
      *
-     * @param projectKey the project identifier
-     * @param name       the category name
+     * @param projectIdOrKey    the project identifier
+     * @param name              the category name
      */
-    public AddCategoryParams(String projectKey, String name) {
-        this.projectKey = projectKey;
+    public AddCategoryParams(String projectIdOrKey, String name) {
+        this.projectIdOrKey = projectIdOrKey;
         parameters.add(new NameValuePair("name", name));
     }
 
@@ -40,8 +40,8 @@ public class AddCategoryParams extends PostParams {
      * @return project id or project key
      */
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
+        if (projectIdOrKey != null) {
+            return projectIdOrKey;
         } else {
             return String.valueOf(projectId);
         }

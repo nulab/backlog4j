@@ -12,7 +12,7 @@ import java.util.List;
 public class UpdatePullRequestCommentParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
 
     private long repoId;
     private String repoName;
@@ -40,14 +40,14 @@ public class UpdatePullRequestCommentParams extends PatchParams {
     /**
      * Constructor
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param repoName the repository name
      * @param number the pull request identifier
      * @param commentId the pull request comment identifier
      * @param content the comment content
      */
-    public UpdatePullRequestCommentParams(String projectKey, String repoName, long number, long commentId, String content) {
-        this.projectKey = projectKey;
+    public UpdatePullRequestCommentParams(String projectIdOrKey, String repoName, long number, long commentId, String content) {
+        this.projectIdOrKey = projectIdOrKey;
         this.repoName = repoName;
         this.number = number;
         this.commentId = commentId;
@@ -60,8 +60,8 @@ public class UpdatePullRequestCommentParams extends PatchParams {
      * @return project id or project key
      */
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
+        if (projectIdOrKey != null) {
+            return projectIdOrKey;
         } else {
             return String.valueOf(projectId);
         }

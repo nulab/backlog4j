@@ -10,18 +10,18 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class UpdateProjectParams extends PatchParams {
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
 
     public UpdateProjectParams(long projectId){
         this.projectId = projectId;
     }
-    public UpdateProjectParams(String projectKey){
-        this.projectKey = projectKey;
+    public UpdateProjectParams(String projectIdOrKey){
+        this.projectIdOrKey = projectIdOrKey;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
+        if(projectIdOrKey != null){
+            return projectIdOrKey;
         }else{
             return String.valueOf(projectId);
         }

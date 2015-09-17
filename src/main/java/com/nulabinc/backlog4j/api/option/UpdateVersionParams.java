@@ -10,7 +10,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 public class UpdateVersionParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long versionId;
 
     public UpdateVersionParams(long projectId, long versionId, String name) {
@@ -19,16 +19,16 @@ public class UpdateVersionParams extends PatchParams {
         parameters.add(new NameValuePair("name", name));
     }
 
-    public UpdateVersionParams(String projectKey, long versionId, String name) {
-        this.projectKey = projectKey;
+    public UpdateVersionParams(String projectIdOrKey, long versionId, String name) {
+        this.projectIdOrKey = projectIdOrKey;
         this.versionId = versionId;
         parameters.add(new NameValuePair("name", name));
         ;
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
+        if (projectIdOrKey != null) {
+            return projectIdOrKey;
         } else {
             return String.valueOf(projectId);
         }

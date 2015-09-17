@@ -13,7 +13,7 @@ public class AddTextCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.Text, name);
     }
 
-    public AddTextCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Text, name);
+    public AddTextCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Text, name);
     }
 }

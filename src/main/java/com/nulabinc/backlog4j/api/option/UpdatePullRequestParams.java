@@ -12,7 +12,7 @@ import java.util.List;
 public class UpdatePullRequestParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long repoId;
     private String repoName;
     private long number;
@@ -33,19 +33,19 @@ public class UpdatePullRequestParams extends PatchParams {
     /**
      * Constructor
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @param repoName      the repository identifier
      * @param number        the pull request title
      */
-    public UpdatePullRequestParams(String projectKey, String repoName, long number) {
-        this.projectKey = projectKey;
+    public UpdatePullRequestParams(String projectIdOrKey, String repoName, long number) {
+        this.projectIdOrKey = projectIdOrKey;
         this.repoName = repoName;
         this.number = number;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
+        if(projectIdOrKey != null){
+            return projectIdOrKey;
         }else{
             return String.valueOf(projectId);
         }

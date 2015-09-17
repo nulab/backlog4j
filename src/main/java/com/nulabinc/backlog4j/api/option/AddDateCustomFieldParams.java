@@ -17,8 +17,8 @@ public class AddDateCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.Date, name);
     }
 
-    public AddDateCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Date, name);
+    public AddDateCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Date, name);
     }
 
     public AddDateCustomFieldParams min(String min) {

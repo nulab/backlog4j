@@ -16,8 +16,8 @@ public class AddCheckBoxCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.CheckBox, name);
     }
 
-    public AddCheckBoxCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.CheckBox, name);
+    public AddCheckBoxCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.CheckBox, name);
     }
 
     public AddCheckBoxCustomFieldParams items(List<String> items) {

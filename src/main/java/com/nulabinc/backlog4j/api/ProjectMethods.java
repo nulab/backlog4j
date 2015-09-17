@@ -40,11 +40,11 @@ public interface ProjectMethods {
     /**
      * Returns the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the Project
      * @throws BacklogException
      */
-    Project getProject(String projectKey) throws BacklogException;
+    Project getProject(String projectIdOrKey) throws BacklogException;
 
     /**
      * Updates the existing project.
@@ -67,11 +67,11 @@ public interface ProjectMethods {
     /**
      * Deletes the existing project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the deleted Project
      * @throws BacklogException
      */
-    Project deleteProject(String projectKey) throws BacklogException;
+    Project deleteProject(String projectIdOrKey) throws BacklogException;
 
     /**
      * Returns the project icon.
@@ -85,11 +85,11 @@ public interface ProjectMethods {
     /**
      * Returns the project icon.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the Icon
      * @throws BacklogException
      */
-    Icon getProjectIcon(String projectKey) throws BacklogException;
+    Icon getProjectIcon(String projectIdOrKey) throws BacklogException;
 
     /**
      * Returns the endpoint of project icon.
@@ -103,11 +103,11 @@ public interface ProjectMethods {
     /**
      * Returns the endpoint of project icon.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the endpoint
      * @throws BacklogException
      */
-    String getProjectIconEndpoint(String projectKey) throws BacklogException;
+    String getProjectIconEndpoint(String projectIdOrKey) throws BacklogException;
 
     /**
      * Returns the activities on the project.
@@ -121,15 +121,31 @@ public interface ProjectMethods {
     /**
      * Returns the activities on the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the activities in a list
      * @throws BacklogException
      */
-    ResponseList<Activity> getProjectActivities(String projectKey) throws BacklogException;
+    ResponseList<Activity> getProjectActivities(String projectIdOrKey) throws BacklogException;
 
-
+    /**
+     * Returns the activities on the project.
+     *
+     * @param projectId the project identifier
+     * @param query the query parameters
+     * @return the activities in a list
+     * @throws BacklogException
+     */
     ResponseList<Activity> getProjectActivities(long projectId, ActivityQueryParams query) throws BacklogException;
-    ResponseList<Activity> getProjectActivities(String projectKey, ActivityQueryParams query) throws BacklogException;
+
+    /**
+     * Returns the activities on the project.
+     *
+     * @param projectIdOrKey the project identifier
+     * @param query the query parameters
+     * @return the activities in a list
+     * @throws BacklogException
+     */
+    ResponseList<Activity> getProjectActivities(String projectIdOrKey, ActivityQueryParams query) throws BacklogException;
 
     /**
      * Adds the user to the project.
@@ -144,12 +160,12 @@ public interface ProjectMethods {
     /**
      * Adds the user to the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param userId     the user identifier
      * @return the added User
      * @throws BacklogException
      */
-    User addProjectUser(String projectKey, long userId) throws BacklogException;
+    User addProjectUser(String projectIdOrKey, long userId) throws BacklogException;
 
     /**
      * Returns the users in the project.
@@ -163,11 +179,11 @@ public interface ProjectMethods {
     /**
      * Returns the users in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the users in a list.
      * @throws BacklogException
      */
-    ResponseList<User> getProjectUsers(String projectKey) throws BacklogException;
+    ResponseList<User> getProjectUsers(String projectIdOrKey) throws BacklogException;
 
     /**
      * Removes the user from the project.
@@ -182,12 +198,12 @@ public interface ProjectMethods {
     /**
      * Removes the user from the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param userId     the user identifier
      * @return the removed User
      * @throws BacklogException
      */
-    User removeProjectUser(String projectKey, long userId) throws BacklogException;
+    User removeProjectUser(String projectIdOrKey, long userId) throws BacklogException;
 
     /**
      * Adds the project administrators.
@@ -202,12 +218,12 @@ public interface ProjectMethods {
     /**
      * Adds the project administrators.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param userId    the user identifier
      * @return the removed User
      * @throws BacklogException
      */
-    User addProjectAdministrator(String projectKey, long userId) throws BacklogException;
+    User addProjectAdministrator(String projectIdOrKey, long userId) throws BacklogException;
 
     /**
      * Returns the project administrators.
@@ -221,11 +237,11 @@ public interface ProjectMethods {
     /**
      * Returns the project administrators.
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @return              the project administrators
      * @throws BacklogException
      */
-    ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException;
+    ResponseList<User> getProjectAdministrators(String projectIdOrKey) throws BacklogException;
 
     /**
      * Deletes the project administrators.
@@ -240,12 +256,12 @@ public interface ProjectMethods {
     /**
      * Deletes the project administrators.
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @param userId    the user identifier
      * @return the removed User
      * @throws BacklogException
      */
-    User removeProjectAdministrator(String projectKey, long userId) throws BacklogException;
+    User removeProjectAdministrator(String projectIdOrKey, long userId) throws BacklogException;
 
     /**
      * Returns the issue types in the project.
@@ -259,11 +275,11 @@ public interface ProjectMethods {
     /**
      * Returns the issue types in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the issue types in a list
      * @throws BacklogException
      */
-    ResponseList<IssueType> getIssueTypes(String projectKey) throws BacklogException;
+    ResponseList<IssueType> getIssueTypes(String projectIdOrKey) throws BacklogException;
 
     /**
      * Adds a issue type to the project.
@@ -297,13 +313,13 @@ public interface ProjectMethods {
     /**
      * Removes the existing issue type from the project.
      *
-     * @param projectKey            the project identifier
+     * @param projectIdOrKey        the project identifier
      * @param issueTypeId           the issue type identifier
      * @param substituteIssueTypeId the substitute issue type identifier
      * @return the removed IssueType
      * @throws BacklogException
      */
-    IssueType removeIssueType(String projectKey, long issueTypeId, long substituteIssueTypeId) throws BacklogException;
+    IssueType removeIssueType(String projectIdOrKey, long issueTypeId, long substituteIssueTypeId) throws BacklogException;
 
     /**
      * Returns the categories in the project.
@@ -317,11 +333,11 @@ public interface ProjectMethods {
     /**
      * Returns the categories in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the categories in a list
      * @throws BacklogException
      */
-    ResponseList<Category> getCategories(String projectKey) throws BacklogException;
+    ResponseList<Category> getCategories(String projectIdOrKey) throws BacklogException;
 
     // カテゴリーの追加
 
@@ -356,12 +372,12 @@ public interface ProjectMethods {
     /**
      * Removes the category from the project
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param categoryId the category identifier
      * @return the removed category
      * @throws BacklogException
      */
-    Category removeCategory(String projectKey, long categoryId) throws BacklogException;
+    Category removeCategory(String projectIdOrKey, long categoryId) throws BacklogException;
 
     /**
      * Returns the versions in the project.
@@ -376,11 +392,11 @@ public interface ProjectMethods {
     /**
      * Returns the versions in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the versions in a list
      * @throws BacklogException
      */
-    ResponseList<Version> getVersions(String projectKey) throws BacklogException;
+    ResponseList<Version> getVersions(String projectIdOrKey) throws BacklogException;
 
     /**
      * Adds a version to the project.
@@ -413,12 +429,12 @@ public interface ProjectMethods {
     /**
      * Removes the version from the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @param versionId  the version identifier
      * @return the removed version
      * @throws BacklogException
      */
-    Version removeVersion(String projectKey, long versionId) throws BacklogException;
+    Version removeVersion(String projectIdOrKey, long versionId) throws BacklogException;
 
     /**
      * Returns the custom fields in the project.
@@ -432,11 +448,11 @@ public interface ProjectMethods {
     /**
      * Returns the custom fields in the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the custom fields in a list
      * @throws BacklogException
      */
-    ResponseList<CustomFieldSetting> getCustomFields(String projectKey) throws BacklogException;
+    ResponseList<CustomFieldSetting> getCustomFields(String projectIdOrKey) throws BacklogException;
 
     /**
      * Adds a text type custom field to the project.
@@ -595,12 +611,12 @@ public interface ProjectMethods {
     /**
      * Removes the custom filed from the project.
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @param customFieldId the custom field identifier
      * @return the removed custom filed
      * @throws BacklogException
      */
-    CustomFieldSetting removeCustomField(String projectKey, long customFieldId) throws BacklogException;
+    CustomFieldSetting removeCustomField(String projectIdOrKey, long customFieldId) throws BacklogException;
 
     /**
      * Adds a item to the list type custom field.
@@ -616,13 +632,13 @@ public interface ProjectMethods {
     /**
      * Adds a item to the list type custom field.
      *
-     * @param projectKey    the project identifier
+     * @param projectIdOrKey    the project identifier
      * @param customFieldId the custom field identifier
      * @param name          name of the adding item
      * @return the added custom filed item
      * @throws BacklogException
      */
-    CustomFieldSetting addListCustomFieldItem(String projectKey, long customFieldId, String name) throws BacklogException;
+    CustomFieldSetting addListCustomFieldItem(String projectIdOrKey, long customFieldId, String name) throws BacklogException;
 
     /**
      * Updates the existing item of list type custom field.
@@ -639,14 +655,14 @@ public interface ProjectMethods {
     /**
      * Updates the existing item of list type custom field.
      *
-     * @param projectKey    the project identifier
-     * @param customFieldId the custom field identifier
-     * @param itemId        the item identifier
-     * @param name          name of the updating item
+     * @param projectIdOrKey    the project identifier
+     * @param customFieldId     the custom field identifier
+     * @param itemId            the item identifier
+     * @param name              name of the updating item
      * @return the updated CustomFieldSetting
      * @throws BacklogException
      */
-    CustomFieldSetting updateListCustomFieldItem(String projectKey, long customFieldId, long itemId, String name) throws BacklogException;
+    CustomFieldSetting updateListCustomFieldItem(String projectIdOrKey, long customFieldId, long itemId, String name) throws BacklogException;
 
     /**
      * Removes the item of list type custom field.
@@ -662,13 +678,13 @@ public interface ProjectMethods {
     /**
      * Removes the item of list type custom field.
      *
-     * @param projectKey    the project identifier
-     * @param customFieldId the custom field identifier
-     * @param itemId        the item identifier
+     * @param projectIdOrKey    the project identifier
+     * @param customFieldId     the custom field identifier
+     * @param itemId            the item identifier
      * @return the removed CustomFieldSetting
      * @throws BacklogException
      */
-    CustomFieldSetting removeListCustomFieldItem(String projectKey, long customFieldId, long itemId) throws BacklogException;
+    CustomFieldSetting removeListCustomFieldItem(String projectIdOrKey, long customFieldId, long itemId) throws BacklogException;
 
     /**
      * Returns the shared files in the project.
@@ -683,12 +699,12 @@ public interface ProjectMethods {
     /**
      * Returns the shared files in the project.
      *
-     * @param projectKey the project identifier
-     * @param path       path of the shared file directory
+     * @param projectIdOrKey    the project identifier
+     * @param path              path of the shared file directory
      * @return the shared files in a list
      * @throws BacklogException
      */
-    ResponseList<SharedFile> getSharedFiles(String projectKey, String path) throws BacklogException;
+    ResponseList<SharedFile> getSharedFiles(String projectIdOrKey, String path) throws BacklogException;
 
     /**
      * Returns the shared file data in the project.
@@ -703,12 +719,12 @@ public interface ProjectMethods {
     /**
      * Returns the shared file data in the project.
      *
-     * @param projectKey   the project identifier
-     * @param sharedFileId the shared file identifier
+     * @param projectIdOrKey    the project identifier
+     * @param sharedFileId      the shared file identifier
      * @return the SharedFileData
      * @throws BacklogException
      */
-    SharedFileData downloadSharedFile(String projectKey, long sharedFileId) throws BacklogException;
+    SharedFileData downloadSharedFile(String projectIdOrKey, long sharedFileId) throws BacklogException;
 
     /**
      * Returns the endpoint of shared file.
@@ -723,12 +739,12 @@ public interface ProjectMethods {
     /**
      * Returns the endpoint of shared file.
      *
-     * @param projectKey   the project identifier
-     * @param sharedFileId the shared file identifier
+     * @param projectIdOrKey    the project identifier
+     * @param sharedFileId      the shared file identifier
      * @return the endpoint
      * @throws BacklogException
      */
-    String getSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException;
+    String getSharedFileEndpoint(String projectIdOrKey, long sharedFileId) throws BacklogException;
 
     /**
      * Returns the disk usage of the project.
@@ -742,11 +758,11 @@ public interface ProjectMethods {
     /**
      * Returns the disk usage of the project.
      *
-     * @param projectKey the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the DiskUsageDetail
      * @throws BacklogException
      */
-    DiskUsageDetail getProjectDiskUsage(String projectKey) throws BacklogException;
+    DiskUsageDetail getProjectDiskUsage(String projectIdOrKey) throws BacklogException;
 
 
 

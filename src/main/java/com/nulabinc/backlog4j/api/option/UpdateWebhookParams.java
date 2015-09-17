@@ -1,13 +1,9 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Activity;
-import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Parameters for update webhook API.
@@ -17,7 +13,7 @@ import java.util.Set;
 public class UpdateWebhookParams extends PatchParams {
 
     private long projectId;
-    private String projectKey;
+    private String projectIdOrKey;
     private long webhookId;
 
     public UpdateWebhookParams(long projectId, long webhookId) {
@@ -25,14 +21,14 @@ public class UpdateWebhookParams extends PatchParams {
         this.webhookId = webhookId;
     }
 
-    public UpdateWebhookParams(String projectKey, long webhookId) {
-        this.projectKey = projectKey;
+    public UpdateWebhookParams(String projectIdOrKey, long webhookId) {
+        this.projectIdOrKey = projectIdOrKey;
         this.webhookId = webhookId;
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
+        if (projectIdOrKey != null) {
+            return projectIdOrKey;
         } else {
             return String.valueOf(projectId);
         }

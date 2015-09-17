@@ -16,8 +16,8 @@ public class AddNumericCustomFieldParams extends AddCustomFieldParams {
         super(projectId, CustomFieldSetting.FieldType.Numeric, name);
     }
 
-    public AddNumericCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Numeric, name);
+    public AddNumericCustomFieldParams(String projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Numeric, name);
     }
 
     public AddNumericCustomFieldParams min(float min) {
