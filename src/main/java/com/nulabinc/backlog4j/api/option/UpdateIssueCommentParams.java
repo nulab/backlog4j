@@ -9,7 +9,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class UpdateIssueCommentParams extends PatchParams {
     private long issueId;
-    private String issueKey;
+    private String issueIdOrKey;
     private long commentId;
 
     public UpdateIssueCommentParams(long issueId, long commentId, String content) {
@@ -18,8 +18,8 @@ public class UpdateIssueCommentParams extends PatchParams {
         parameters.add(new NameValuePair("content", content));
     }
 
-    public UpdateIssueCommentParams(String issueKey, long commentId, String content) {
-        this.issueKey = issueKey;
+    public UpdateIssueCommentParams(String issueIdOrKey, long commentId, String content) {
+        this.issueIdOrKey = issueIdOrKey;
         this.commentId = commentId;
         parameters.add(new NameValuePair("content", content));
     }
@@ -29,8 +29,8 @@ public class UpdateIssueCommentParams extends PatchParams {
     }
 
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
+        if (issueIdOrKey != null) {
+            return issueIdOrKey;
         } else {
             return String.valueOf(issueId);
         }

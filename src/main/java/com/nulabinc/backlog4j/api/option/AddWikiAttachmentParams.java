@@ -12,7 +12,6 @@ import java.util.List;
 public class AddWikiAttachmentParams extends PostParams {
 
     private long wikiId;
-    private String issueKey;
 
     public AddWikiAttachmentParams(long wikiId, List<Long> attachmentIds){
         this.wikiId = wikiId;

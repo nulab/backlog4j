@@ -12,7 +12,7 @@ import java.util.List;
 public class AddIssueCommentNotificationParams extends PostParams {
 
     private long issueId;
-    private String issueKey;
+    private String issueIdOrKey;
     private long commentId;
 
     /**
@@ -33,12 +33,12 @@ public class AddIssueCommentNotificationParams extends PostParams {
     /**
      * Constructor
      *
-     * @param issueKey           the issue identifier
+     * @param issueIdOrKey           the issue identifier
      * @param commentId         the comment identifier
      * @param notifiedUserIds   the user identifiers for notification
      */
-    public AddIssueCommentNotificationParams(String issueKey, long commentId, List<Long> notifiedUserIds) {
-        this.issueKey = issueKey;
+    public AddIssueCommentNotificationParams(String issueIdOrKey, long commentId, List<Long> notifiedUserIds) {
+        this.issueIdOrKey = issueIdOrKey;
         this.commentId = commentId;
         for (Long userId : notifiedUserIds) {
             parameters.add(new NameValuePair("notifiedUserId[]", String.valueOf(userId)));
@@ -60,8 +60,8 @@ public class AddIssueCommentNotificationParams extends PostParams {
      * @return issue id or project key
      */
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
+        if (issueIdOrKey != null) {
+            return issueIdOrKey;
         } else {
             return String.valueOf(issueId);
         }

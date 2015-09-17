@@ -12,7 +12,7 @@ import java.util.List;
 public class AddIssueCommentParams extends PostParams {
 
     private long issueId;
-    private String issueKey;
+    private String issueIdOrKey;
 
     /**
      * Constructor
@@ -28,11 +28,11 @@ public class AddIssueCommentParams extends PostParams {
     /**
      * Constructor
      *
-     * @param issueKey the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param content the comment content
      */
-    public AddIssueCommentParams(String issueKey, String content) {
-        this.issueKey = issueKey;
+    public AddIssueCommentParams(String issueIdOrKey, String content) {
+        this.issueIdOrKey = issueIdOrKey;
         parameters.add(new NameValuePair("content", content));
     }
 
@@ -42,8 +42,8 @@ public class AddIssueCommentParams extends PostParams {
      * @return issue id or issue key
      */
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
+        if (issueIdOrKey != null) {
+            return issueIdOrKey;
         } else {
             return String.valueOf(issueId);
         }

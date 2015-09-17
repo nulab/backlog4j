@@ -16,19 +16,19 @@ import java.util.Set;
 public class UpdateIssueParams extends PatchParams {
 
     private long issueId;
-    private String issueKey;
+    private String issueIdOrKey;
 
     public UpdateIssueParams(long issueId) {
         this.issueId = issueId;
     }
 
-    public UpdateIssueParams(String issueKey) {
-        this.issueKey = issueKey;
+    public UpdateIssueParams(String issueIdOrKey) {
+        this.issueIdOrKey = issueIdOrKey;
     }
 
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
+        if (issueIdOrKey != null) {
+            return issueIdOrKey;
         } else {
             return String.valueOf(issueId);
         }
