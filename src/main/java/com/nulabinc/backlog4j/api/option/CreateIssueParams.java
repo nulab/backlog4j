@@ -406,4 +406,273 @@ public class CreateIssueParams extends PostParams {
         }
         return this;
     }
+
+
+
+
+
+
+
+    /**
+     * Sets the text type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams textCustomField(long customFieldId, String customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldValue)));
+        return this;
+    }
+
+    /**
+     * Sets the text type custom field with Map.
+     *
+     * @param customFieldMap set of the identifiers and the values
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams textCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the text type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams textAreaCustomField(long customFieldId, String customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldValue)));
+        return this;
+    }
+
+    /**
+     * Sets the text type custom field with Map.
+     *
+     * @param customFieldMap set of the identifiers and the values
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams textAreaCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the textarea type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                Float.toString(customFieldValue)));
+        return this;
+    }
+
+    /**
+     * Sets the textarea type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
+        if(customFieldValue == null){
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    ""));
+        }else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the textarea type custom field with Map.
+     *
+     * @param customFieldMap set of the identifiers and the values
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), Float.toString(customFieldMap.get(key))));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the date type custom field.
+     *
+     * @param customFieldId    the identifier of custom field
+     * @param customFieldValue the value of custom field
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldValue)));
+        return this;
+    }
+
+    /**
+     * Sets the date type custom field with Map.
+     *
+     * @param customFieldMap set of the identifiers and the values
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams dateCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the single list type custom field.
+     *
+     * @param customFieldId     the identifier of custom field
+     * @param customFieldItemId the identifier of custom field item
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldItemId)));
+        return this;
+    }
+
+    /**
+     * Sets the single list type custom field with Map.
+     *
+     * @param customFieldMap set of the custom field identifiers and custom field item identifiers
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams singleListCustomFieldMap(Map<Long, Long> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the radio type custom field.
+     *
+     * @param customFieldId     the identifier of custom field
+     * @param customFieldItemId the identifier of custom field item
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams radioCustomField(long customFieldId, long customFieldItemId) {
+        return singleListCustomField(customFieldId, customFieldItemId);
+    }
+
+    /**
+     * Sets the radio type custom field with Map.
+     *
+     * @param customFieldMap set of the custom field identifiers and custom field item identifiers
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams radioCustomFieldMap(Map<Long, Long> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the multiple list type custom field.
+     *
+     * @param customFieldId      the identifier of custom field
+     * @param customFieldItemIds the identifiers of custom field items
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
+        for (Long customFieldItemId : customFieldItemIds) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    String.valueOf(customFieldItemId)));
+        }
+        return this;
+    }
+
+    /**
+     * Sets the multiple list type custom field with Map.
+     *
+     * @param customFieldMap set of the custom field identifiers and custom field item identifiers
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams multipleListCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            for (Long value : customFieldMap.get(key)) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Sets the checkbox type custom field.
+     *
+     * @param customFieldId      the identifier of custom field
+     * @param customFieldItemIds the identifiers of custom field items
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams checkBoxCustomField(long customFieldId, List<Long> customFieldItemIds) {
+        return multipleListCustomField(customFieldId, customFieldItemIds);
+    }
+
+    /**
+     * Sets the checkbox type custom field with Map.
+     *
+     * @param customFieldMap set of the custom field identifiers and custom field item identifiers
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams checkBoxCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            for (Long value : customFieldMap.get(key)) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Sets the other value for radio or checkbox type custom field.
+     *
+     * @param customFieldId the identifier of custom field
+     * @param otherValue    the other value
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams customFieldOtherValue(long customFieldId, String otherValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
+                otherValue));
+        return this;
+    }
+
+    /**
+     * Sets the other value for radio or checkbox type custom field with Map
+     *
+     * @param customFieldOtherValueMap set of the custom field identifiers and the other value
+     * @return CreateIssueParams instance
+     */
+    public CreateIssueParams customFieldOtherValueMap(Map<Long, String> customFieldOtherValueMap) {
+        Set<Long> keySet = customFieldOtherValueMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString() + "_otherValue", customFieldOtherValueMap.get(key)));
+        }
+        return this;
+    }
 }

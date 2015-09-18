@@ -66,12 +66,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createTextCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, String> map = new HashMap<Long, String>();
-        map.put(3000000001l, "egg");
-        map.put(3000000002l, "rice");
-        params.textCustomFieldMap(map);
+        params.textCustomFields(Arrays.asList(
+                new CustomFiledValue(3000000001l, "egg"),
+                new CustomFiledValue(3000000002l, "rice")));
 
-        params.textCustomField(3000000003l, "tea");
+        params.textCustomField(new CustomFiledValue(3000000003l, "tea"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -84,12 +83,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createTextAreaCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, String> map = new HashMap<Long, String>();
-        map.put(3000000001l, "egg");
-        map.put(3000000002l, "rice");
-        params.textAreaCustomFieldMap(map);
+        params.textAreaCustomFields(Arrays.asList(
+                new CustomFiledValue(3000000001l, "egg"),
+                new CustomFiledValue(3000000002l, "rice")));
 
-        params.textAreaCustomField(3000000003l, "tea");
+        params.textAreaCustomField(new CustomFiledValue(3000000003l, "tea"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -102,34 +100,30 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createNumericCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, Float> map = new HashMap<Long, Float>();
-        map.put(3000000001l, -111f);
-        map.put(3000000002l, 5555.121f);
-        params.numericCustomFieldMap(map);
+        params.numericCustomFields(Arrays.asList(
+                new CustomFiledValue(3000000001l, -111f),
+                new CustomFiledValue(3000000002l, 5555.121f)));
 
-        params.numericCustomField(3000000003l, 123.61f);
-        params.numericCustomField(3000000004l, new BigDecimal(123.67777));
+        params.numericCustomField(new CustomFiledValue(3000000003l, 123.61f));
+        params.numericCustomField(new CustomFiledValue(3000000004l, 123.67777));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000001", "-111.0"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000002", "5555.121"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_3000000003", "123.61"));
-        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000004", "123.6778"));
-
-
+        assertEquals(true, existsOneKeyValue(parameters, "customField_3000000004", "123.67777"));
     }
 
     @Test
     public void createDateCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, String> map = new HashMap<Long, String>();
-        map.put(3000000001l, "2008-10-01");
-        map.put(3000000002l, "2008-10-02");
-        params.dateCustomFieldMap(map);
+        params.dateCustomFields(Arrays.asList(
+                new CustomFiledValue(3000000001l, "2008-10-01"),
+                new CustomFiledValue(3000000002l, "2008-10-02")));
 
-        params.dateCustomField(3000000003l, "2008-10-10");
+        params.dateCustomField(new CustomFiledValue(3000000003l, "2008-10-10"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -142,12 +136,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createSingleListCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, Long> map = new HashMap<Long, Long>();
-        map.put(3000000001l, 4000000001l);
-        map.put(3000000002l, 4000000002l);
-        params.singleListCustomFieldMap(map);
+        params.singleListCustomFields(Arrays.asList(
+                new CustomFiledItem(3000000001l, 4000000001l),
+                new CustomFiledItem(3000000002l, 4000000002l)));
 
-        params.singleListCustomField(3000000003l, 4000000003l);
+        params.singleListCustomField(new CustomFiledItem(3000000003l, 4000000003l));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -160,12 +153,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createRadioCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, Long> map = new HashMap<Long, Long>();
-        map.put(3000000001l, 4000000001l);
-        map.put(3000000002l, 4000000002l);
-        params.radioCustomFieldMap(map);
+        params.radioCustomFields(Arrays.asList(
+                new CustomFiledItem(3000000001l, 4000000001l),
+                new CustomFiledItem(3000000002l, 4000000002l)));
 
-        params.radioCustomField(3000000003l, 4000000003l);
+        params.radioCustomField(new CustomFiledItem(3000000003l, 4000000003l));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -178,12 +170,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createMultipleListCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
-        map.put(3000000001l, Arrays.asList(4000000001l,4000000002l));
-        map.put(3000000002l, Arrays.asList(4000000003l,4000000004l));
-        params.multipleListCustomFieldMap(map);
+        params.multipleListCustomFields(Arrays.asList(
+                new CustomFiledItems(3000000001l, Arrays.asList(4000000001l, 4000000002l)),
+                new CustomFiledItems(3000000002l, Arrays.asList(4000000003l,4000000004l))));
 
-        params.multipleListCustomField(3000000003l, Arrays.asList(4000000005l,4000000006l));
+        params.multipleListCustomField(new CustomFiledItems(3000000003l, Arrays.asList(4000000005l, 4000000006l)));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -199,12 +190,11 @@ public class CreateIssueParamsTest extends AbstractParamsTest{
     public void createCheckBoxListCustomFieldParamTest() throws UnsupportedEncodingException {
         // when
         CreateIssueParams params = new CreateIssueParams(1000000001l, "test issue 1", 2000000001l, Issue.PriorityType.High);
-        Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
-        map.put(3000000001l, Arrays.asList(4000000001l,4000000002l));
-        map.put(3000000002l, Arrays.asList(4000000003l,4000000004l));
-        params.checkBoxCustomFieldMap(map);
+        params.checkBoxCustomFields(Arrays.asList(
+                new CustomFiledItems(3000000001l, Arrays.asList(4000000001l, 4000000002l)),
+                new CustomFiledItems(3000000002l, Arrays.asList(4000000003l, 4000000004l))));
 
-        params.checkBoxCustomField(3000000003l, Arrays.asList(4000000005l,4000000006l));
+        params.checkBoxCustomField(new CustomFiledItems(3000000003l, Arrays.asList(4000000005l, 4000000006l)));
 
         // then
         List<NameValuePair> parameters = params.getParamList();

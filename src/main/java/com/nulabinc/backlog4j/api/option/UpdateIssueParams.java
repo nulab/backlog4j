@@ -271,4 +271,163 @@ public class UpdateIssueParams extends PatchParams {
         parameters.add(new NameValuePair("comment", comment));
         return this;
     }
+
+    public UpdateIssueParams textCustomField(long customFieldId, String customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldValue)));
+        return this;
+    }
+
+    public UpdateIssueParams textCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams textAreaCustomField(long customFieldId, String customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldValue)));
+        return this;
+    }
+
+    public UpdateIssueParams textAreaCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key)));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                Float.toString(customFieldValue)));
+        return this;
+    }
+
+    public UpdateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
+        if(customFieldValue == null){
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    ""));
+        }else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams numericCustomFieldMap(Map<Long, Float> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), Float.toString(customFieldMap.get(key))));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
+        if (customFieldValue == null) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId), ""));
+        } else {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    customFieldValue));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams dateCustomFieldMap(Map<Long, String> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            String customFieldValue = customFieldMap.get(key);
+            if (customFieldValue == null) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), ""));
+            }else {
+                parameters.add(new NameValuePair("customField_" + key.toString(), customFieldValue));
+            }
+        }
+        return this;
+    }
+
+    public UpdateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                String.valueOf(customFieldItemId)));
+        return this;
+    }
+
+    public UpdateIssueParams singleListCustomFieldMap(Map<Long, Long> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams radioCustomField(long customFieldId, long customFieldItemId) {
+        return singleListCustomField(customFieldId, customFieldItemId);
+    }
+
+    public UpdateIssueParams radioCustomFieldMap(Map<Long, Long> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString(), customFieldMap.get(key).toString()));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
+        for (Long customFieldItemId : customFieldItemIds) {
+            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+                    String.valueOf(customFieldItemId)));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams multipleListCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            for (Long value : customFieldMap.get(key)) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
+            }
+        }
+        return this;
+    }
+
+    public UpdateIssueParams checkBoxCustomField(long customFieldId, List<Long> customFieldItemIds) {
+        return multipleListCustomField(customFieldId, customFieldItemIds);
+    }
+
+    public UpdateIssueParams checkBoxCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            for (Long value : customFieldMap.get(key)) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
+            }
+        }
+        return this;
+    }
+
+    public UpdateIssueParams listCustomFieldMap(Map<Long, List<Long>> customFieldMap) {
+        Set<Long> keySet = customFieldMap.keySet();
+        for (Long key : keySet) {
+            for (Long value : customFieldMap.get(key)) {
+                parameters.add(new NameValuePair("customField_" + key.toString(), value.toString()));
+            }
+        }
+        return this;
+    }
+
+    public UpdateIssueParams customFieldOtherValue(long customFieldId, String otherValue) {
+        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
+                otherValue));
+        return this;
+    }
+
+    public UpdateIssueParams customFieldOtherValueMap(Map<Long, String> customFieldOtherValueMap) {
+        Set<Long> keySet = customFieldOtherValueMap.keySet();
+        for (Long key : keySet) {
+            parameters.add(new NameValuePair("customField_" + key.toString() + "_otherValue", customFieldOtherValueMap.get(key)));
+        }
+        return this;
+    }
+
 }
