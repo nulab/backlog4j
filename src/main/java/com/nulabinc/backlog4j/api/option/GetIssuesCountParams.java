@@ -5,6 +5,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Parameters for get issue API.
@@ -27,35 +28,35 @@ public class GetIssuesCountParams extends GetParams {
         private int intValue;
     }
 
-    public GetIssuesCountParams(List<Long> projectIds) {
-        for (Long projectId : projectIds) {
+    public GetIssuesCountParams(List projectIds) {
+        for (Object projectId : projectIds) {
             parameters.add(new NameValuePair("projectId[]", projectId.toString()));
         }
     }
 
-    public GetIssuesCountParams issueTypeIds(List<Long> issueTypeIds) {
-        for (Long issueTypeId : issueTypeIds) {
+    public GetIssuesCountParams issueTypeIds(List issueTypeIds) {
+        for (Object issueTypeId : issueTypeIds) {
             parameters.add(new NameValuePair("issueTypeId[]", issueTypeId.toString()));
         }
         return this;
     }
 
-    public GetIssuesCountParams categoryIds(List<Long> categoryIds) {
-        for (Long categoryId : categoryIds) {
+    public GetIssuesCountParams categoryIds(List categoryIds) {
+        for (Object categoryId : categoryIds) {
             parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
         }
         return this;
     }
 
-    public GetIssuesCountParams versionIds(List<Long> versionIds) {
-        for (Long versionId : versionIds) {
+    public GetIssuesCountParams versionIds(List versionIds) {
+        for (Object versionId : versionIds) {
             parameters.add(new NameValuePair("versionId[]", versionId.toString()));
         }
         return this;
     }
 
-    public GetIssuesCountParams milestoneIds(List<Long> milestoneIds) {
-        for (Long milestoneId : milestoneIds) {
+    public GetIssuesCountParams milestoneIds(List milestoneIds) {
+        for (Object milestoneId : milestoneIds) {
             parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
         }
         return this;
@@ -75,15 +76,15 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
-    public GetIssuesCountParams assignerIds(List<Long> assignerIds) {
-        for (Long assignerId : assignerIds) {
+    public GetIssuesCountParams assignerIds(List assignerIds) {
+        for (Object assignerId : assignerIds) {
             parameters.add(new NameValuePair("assigneeId[]", assignerId.toString()));
         }
         return this;
     }
 
-    public GetIssuesCountParams createdUserIds(List<Long> createdUserIds) {
-        for (Long createdUserId : createdUserIds) {
+    public GetIssuesCountParams createdUserIds(List createdUserIds) {
+        for (Object createdUserId : createdUserIds) {
             parameters.add(new NameValuePair("createdUserId[]", createdUserId.toString()));
         }
         return this;
@@ -151,15 +152,15 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
-    public GetIssuesCountParams ids(List<Long> ids) {
-        for (Long id : ids) {
+    public GetIssuesCountParams ids(List ids) {
+        for (Object id : ids) {
             parameters.add(new NameValuePair("id[]", id.toString()));
         }
         return this;
     }
 
-    public GetIssuesCountParams parentIssueIds(List<Long> parentIssueIds) {
-        for (Long parentIssueId : parentIssueIds) {
+    public GetIssuesCountParams parentIssueIds(List parentIssueIds) {
+        for (Object parentIssueId : parentIssueIds) {
             parameters.add(new NameValuePair("parentIssueId[]", parentIssueId.toString()));
         }
         return this;
@@ -170,39 +171,39 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
-    public GetIssuesCountParams keywordByCustomField(long customFieldId, String keyword) throws BacklogException {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+    public GetIssuesCountParams keywordByCustomField(Object customFieldId, String keyword) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + customFieldId.toString(),
                 keyword));
         return this;
     }
 
-    public GetIssuesCountParams minNumOfCustomField(long customFieldId, float min) throws BacklogException {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+    public GetIssuesCountParams minNumOfCustomField(Object customFieldId, float min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + customFieldId.toString() + "_min",
                 String.valueOf(min)));
         return this;
     }
 
-    public GetIssuesCountParams maxNumOfCustomField(long customFieldId, float max) throws BacklogException {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+    public GetIssuesCountParams maxNumOfCustomField(Object customFieldId, float max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + customFieldId.toString() + "_max",
                 String.valueOf(max)));
         return this;
     }
 
-    public GetIssuesCountParams minDateOfCustomField(long customFieldId, String min) throws BacklogException {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_min",
+    public GetIssuesCountParams minDateOfCustomField(Object customFieldId, String min) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + customFieldId.toString() + "_min",
                 min));
         return this;
     }
 
-    public GetIssuesCountParams maxDateOfCustomField(long customFieldId, String max) throws BacklogException {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_max",
+    public GetIssuesCountParams maxDateOfCustomField(Object customFieldId, String max) throws BacklogException {
+        parameters.add(new NameValuePair("customField_" + customFieldId.toString() + "_max",
                 max));
         return this;
     }
 
-    public GetIssuesCountParams itemsOfCustomField(long customFieldId, List<Long> itemIds) {
-        for (Long itemId : itemIds) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "[]",
+    public GetIssuesCountParams itemsOfCustomField(Object customFieldId, List itemIds) {
+        for (Object itemId : itemIds) {
+            parameters.add(new NameValuePair("customField_" + customFieldId.toString() + "[]",
                     itemId.toString()));
         }
         return this;

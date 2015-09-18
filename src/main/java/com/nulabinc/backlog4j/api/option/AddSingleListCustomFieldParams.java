@@ -12,11 +12,7 @@ import java.util.List;
  */
 public class AddSingleListCustomFieldParams extends AddCustomFieldParams {
 
-    public AddSingleListCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.SingleList, name);
-    }
-
-    public AddSingleListCustomFieldParams(String projectIdOrKey, String name) {
+    public AddSingleListCustomFieldParams(Object projectIdOrKey, String name) {
         super(projectIdOrKey, CustomFieldSetting.FieldType.SingleList, name);
     }
 

@@ -12,11 +12,7 @@ import java.util.List;
  */
 public class UpdateDateCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateDateCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateDateCustomFieldParams(String projectIdOrKey, long customFiledId) {
+    public UpdateDateCustomFieldParams(Object projectIdOrKey, long customFiledId) {
         super(projectIdOrKey, customFiledId);
     }
 

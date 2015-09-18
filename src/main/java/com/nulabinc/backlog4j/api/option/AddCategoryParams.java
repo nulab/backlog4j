@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
@@ -9,19 +10,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class AddCategoryParams extends PostParams {
 
-    private long projectId;
-    private String projectIdOrKey;
-
-    /**
-     * Constructor
-     *
-     * @param projectId the project identifier
-     * @param name      the category name
-     */
-    public AddCategoryParams(long projectId, String name) {
-        this.projectId = projectId;
-        parameters.add(new NameValuePair("name", name));
-    }
+    private Object projectIdOrKey;
 
     /**
      * Constructor
@@ -29,7 +18,7 @@ public class AddCategoryParams extends PostParams {
      * @param projectIdOrKey    the project identifier
      * @param name              the category name
      */
-    public AddCategoryParams(String projectIdOrKey, String name) {
+    public AddCategoryParams(Object projectIdOrKey, String name) {
         this.projectIdOrKey = projectIdOrKey;
         parameters.add(new NameValuePair("name", name));
     }
@@ -40,10 +29,6 @@ public class AddCategoryParams extends PostParams {
      * @return project id or project key
      */
     public String getProjectIdOrKeyString() {
-        if (projectIdOrKey != null) {
-            return projectIdOrKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 }

@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class UpdateGroupParams extends PatchParams {
 
-    private long groupId;
+    private String groupId;
 
-    public UpdateGroupParams(long groupId){
-        this.groupId = groupId;
+    public UpdateGroupParams(Object groupId){
+        this.groupId = groupId.toString();
     }
 
 
@@ -23,15 +23,14 @@ public class UpdateGroupParams extends PatchParams {
         return this;
     }
 
-    public UpdateGroupParams members(List<Long> members) {
-        for (Long member : members) {
+    public UpdateGroupParams members(List members) {
+        for (Object member : members) {
             parameters.add(new NameValuePair("members[]", member.toString()));
         }
         return this;
     }
 
-
-    public long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 }

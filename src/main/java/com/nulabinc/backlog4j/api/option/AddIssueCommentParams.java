@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -11,19 +12,7 @@ import java.util.List;
  */
 public class AddIssueCommentParams extends PostParams {
 
-    private long issueId;
-    private String issueIdOrKey;
-
-    /**
-     * Constructor
-     *
-     * @param issueId the issue identifier
-     * @param content the comment content
-     */
-    public AddIssueCommentParams(long issueId, String content) {
-        this.issueId = issueId;
-        parameters.add(new NameValuePair("content", content));
-    }
+    private Object issueIdOrKey;
 
     /**
      * Constructor
@@ -31,7 +20,7 @@ public class AddIssueCommentParams extends PostParams {
      * @param issueIdOrKey the issue identifier
      * @param content the comment content
      */
-    public AddIssueCommentParams(String issueIdOrKey, String content) {
+    public AddIssueCommentParams(Object issueIdOrKey, String content) {
         this.issueIdOrKey = issueIdOrKey;
         parameters.add(new NameValuePair("content", content));
     }
@@ -42,11 +31,7 @@ public class AddIssueCommentParams extends PostParams {
      * @return issue id or issue key
      */
     public String getIssueIdOrKeyString() {
-        if (issueIdOrKey != null) {
-            return issueIdOrKey;
-        } else {
-            return String.valueOf(issueId);
-        }
+        return issueIdOrKey.toString();
     }
 
     /**
@@ -55,9 +40,9 @@ public class AddIssueCommentParams extends PostParams {
      * @param notifiedUserIds the notified user identifiers
      * @return AddIssueCommentParams instance
      */
-    public AddIssueCommentParams notifiedUserIds(List<Long> notifiedUserIds) {
-        for (Long notifiedUserId : notifiedUserIds) {
-            parameters.add(new NameValuePair("notifiedUserId[]", String.valueOf(notifiedUserId)));
+    public AddIssueCommentParams notifiedUserIds(List notifiedUserIds) {
+        for (Object notifiedUserId : notifiedUserIds) {
+            parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
         }
         return this;
     }
@@ -68,9 +53,9 @@ public class AddIssueCommentParams extends PostParams {
      * @param attachmentIds the notified file identifiers
      * @return AddIssueCommentParams instance
      */
-    public AddIssueCommentParams attachmentIds(List<Long> attachmentIds) {
-        for (Long attachmentId : attachmentIds) {
-            parameters.add(new NameValuePair("attachmentId[]", String.valueOf(attachmentId)));
+    public AddIssueCommentParams attachmentIds(List attachmentIds) {
+        for (Object attachmentId : attachmentIds) {
+            parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
         }
         return this;
     }

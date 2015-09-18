@@ -16,20 +16,11 @@ public interface WebhookMethods {
     /**
      * Returns all the webhooks.
      *
-     * @param projectId the project identifier
-     * @return the webhooks in a list.
-     * @throws BacklogException
-     */
-    ResponseList<Webhook> getWebhooks(long projectId) throws BacklogException;
-
-    /**
-     * Returns all the webhooks.
-     *
      * @param projectIdOrKey the project key
      * @return the webhooks in a list.
      * @throws BacklogException
      */
-    ResponseList<Webhook> getWebhooks(String projectIdOrKey) throws BacklogException;
+    ResponseList<Webhook> getWebhooks(Object projectIdOrKey) throws BacklogException;
 
     /**
      * Create a webhook.
@@ -43,22 +34,12 @@ public interface WebhookMethods {
     /**
      * Returns the webhook.
      *
-     * @param projectId the project identifier
-     * @param webhookId the webhook identifier
-     * @return the Webhook
-     * @throws com.nulabinc.backlog4j.BacklogException
-     */
-    Webhook getWebhook(long projectId, long webhookId) throws BacklogException;
-
-    /**
-     * Returns the webhook.
-     *
      * @param projectIdOrKey the project identifier
      * @param webhookId the webhook identifier
      * @return the Webhook
      * @throws com.nulabinc.backlog4j.BacklogException
      */
-    Webhook getWebhook(String projectIdOrKey, long webhookId) throws BacklogException;
+    Webhook getWebhook(Object projectIdOrKey, Object webhookId) throws BacklogException;
 
     /**
      * Updates the existing webhook.
@@ -72,20 +53,10 @@ public interface WebhookMethods {
     /**
      * Deletes the existing webhook.
      *
-     * @param projectId the project identifier
-     * @param webhookId the webhook identifier
-     * @return the deleted webhook
-     * @throws com.nulabinc.backlog4j.BacklogException
-     */
-    Webhook deleteWebhook(long projectId, long webhookId) throws BacklogException;
-
-    /**
-     * Deletes the existing webhook.
-     *
      * @param projectIdOrKey the project key
      * @param webhookId the webhook identifier
      * @return the deleted webhook
      * @throws com.nulabinc.backlog4j.BacklogException
      */
-    Webhook deleteWebhook(String projectIdOrKey, long webhookId) throws BacklogException;
+    Webhook deleteWebhook(Object projectIdOrKey, Object webhookId) throws BacklogException;
 }

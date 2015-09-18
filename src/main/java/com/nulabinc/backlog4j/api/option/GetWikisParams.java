@@ -9,12 +9,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class GetWikisParams extends GetParams {
 
-
-    public GetWikisParams(long projectId) {
-        parameters.add(new NameValuePair("projectIdOrKey", String.valueOf(projectId)));
-    }
-
-    public GetWikisParams(String projectKey) {
-        parameters.add(new NameValuePair("projectIdOrKey", projectKey));
+    public GetWikisParams(Object projectIdOrKey) {
+        parameters.add(new NameValuePair("projectIdOrKey", projectIdOrKey.toString()));
     }
 }

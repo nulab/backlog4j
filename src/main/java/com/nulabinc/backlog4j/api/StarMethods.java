@@ -15,7 +15,7 @@ public interface StarMethods {
      * @param issueId the issue identifier
      * @throws BacklogException
      */
-    void addStarToIssue(long issueId) throws BacklogException;
+    void addStarToIssue(Object issueId) throws BacklogException;
 
     /**
      * Adds a star to the issue comment.
@@ -23,7 +23,7 @@ public interface StarMethods {
      * @param commentId the issue comment identifier
      * @throws BacklogException
      */
-    void addStarToComment(long commentId) throws BacklogException;
+    void addStarToComment(Object commentId) throws BacklogException;
 
     /**
      * Adds a star to the wiki.
@@ -31,7 +31,7 @@ public interface StarMethods {
      * @param wikiId the wiki identifier
      * @throws BacklogException
      */
-    void addStarToWiki(long wikiId) throws BacklogException;
+    void addStarToWiki(Object wikiId) throws BacklogException;
 
     /**
      * Adds a star to the pull request.
@@ -39,7 +39,7 @@ public interface StarMethods {
      * @param pullRequestId the pull request identifier
      * @throws BacklogException
      */
-    void addStarToPullRequest(long pullRequestId) throws BacklogException;
+    void addStarToPullRequest(Object pullRequestId) throws BacklogException;
 
     /**
      * Adds a star to the pull request comment.
@@ -47,5 +47,5 @@ public interface StarMethods {
      * @param pullRequestCommentId the pull request comment identifier
      * @throws BacklogException
      */
-    void addStarToPullRequestComment(long pullRequestCommentId) throws BacklogException;
+    void addStarToPullRequestComment(Object pullRequestCommentId) throws BacklogException;
 }

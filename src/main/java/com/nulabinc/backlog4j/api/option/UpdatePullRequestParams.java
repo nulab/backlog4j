@@ -11,56 +11,33 @@ import java.util.List;
  */
 public class UpdatePullRequestParams extends PatchParams {
 
-    private long projectId;
-    private String projectIdOrKey;
-    private long repoId;
-    private String repoName;
-    private long number;
-
-    /**
-     * Constructor
-     *
-     * @param projectId   the project identifier
-     * @param repoId      the repository identifier
-     * @param number      the pull request identifier
-     */
-    public UpdatePullRequestParams(long projectId, long repoId, long number) {
-        this.projectId = projectId;
-        this.repoId = repoId;
-        this.number = number;
-    }
+    private Object projectIdOrKey;
+    private Object repoIdOrName;
+    private Object number;
 
     /**
      * Constructor
      *
      * @param projectIdOrKey    the project identifier
-     * @param repoName      the repository identifier
+     * @param repoIdOrName      the repository identifier
      * @param number        the pull request title
      */
-    public UpdatePullRequestParams(String projectIdOrKey, String repoName, long number) {
+    public UpdatePullRequestParams(Object projectIdOrKey, Object repoIdOrName, Object number) {
         this.projectIdOrKey = projectIdOrKey;
-        this.repoName = repoName;
+        this.repoIdOrName = repoIdOrName;
         this.number = number;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectIdOrKey != null){
-            return projectIdOrKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public String getRepoIdOrNameString() {
-        if(repoName != null){
-            return repoName;
-        }else{
-            return String.valueOf(repoId);
-        }
+        return repoIdOrName.toString();
     }
 
-    public long getNumber() {
-        return this.number;
+    public String getNumber() {
+        return this.number.toString();
     }
 
     /**

@@ -9,25 +9,15 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class AddVersionParams extends PostParams {
 
-    private long projectId;
-    private String projectIdOrKey;
+    private Object projectIdOrKey;
 
-    public AddVersionParams(long projectId, String name) {
-        this.projectId = projectId;
-        parameters.add(new NameValuePair("name", name));
-    }
-
-    public AddVersionParams(String projectIdOrKey, String name) {
+    public AddVersionParams(Object projectIdOrKey, String name) {
         this.projectIdOrKey = projectIdOrKey;
         parameters.add(new NameValuePair("name", name));
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectIdOrKey != null) {
-            return projectIdOrKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public AddVersionParams description(String description) {

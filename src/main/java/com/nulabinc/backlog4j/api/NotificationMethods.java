@@ -55,7 +55,7 @@ public interface NotificationMethods {
      * @param notificationId the notification identifier
      * @throws BacklogException
      */
-    void markAsReadNotification(long notificationId) throws BacklogException;
+    void markAsReadNotification(Object notificationId) throws BacklogException;
 
 
 }

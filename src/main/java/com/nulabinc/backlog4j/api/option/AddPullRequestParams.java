@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.api.option;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Parameters for add pull request API.
@@ -11,35 +12,20 @@ import java.util.List;
  */
 public class AddPullRequestParams extends PostParams {
 
-    private long projectId;
-    private String projectIdOrKey;
-    private long repoId;
-    private String repoName;
-
-    /**
-     * Constructor
-     *
-     * @param projectId   the project identifier
-     * @param repoId      the repository identifier
-     * @param summary     the pull request title
-     */
-    public AddPullRequestParams(long projectId, long repoId, String summary) {
-        this.projectId = projectId;
-        this.repoId = repoId;
-        parameters.add(new NameValuePair("summary", summary));
-    }
+    private Object projectIdOrKey;
+    private Object repoIdOrName;
 
     /**
      * Constructor
      *
      * @param projectIdOrKey    the project identifier
-     * @param repoName      the repository identifier
+     * @param repoIdOrName      the repository identifier
      * @param summary       the pull request title
      */
-    public AddPullRequestParams(String projectIdOrKey, String repoName, String summary, String description,
+    public AddPullRequestParams(Object projectIdOrKey, Object repoIdOrName, String summary, String description,
                                 String base, String branch) {
         this.projectIdOrKey = projectIdOrKey;
-        this.repoName = repoName;
+        this.repoIdOrName = repoIdOrName;
         parameters.add(new NameValuePair("summary", summary));
         parameters.add(new NameValuePair("description", description));
         parameters.add(new NameValuePair("base", base));
@@ -47,19 +33,11 @@ public class AddPullRequestParams extends PostParams {
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectIdOrKey != null){
-            return projectIdOrKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public String getRepoIdOrNameString() {
-        if(repoName != null){
-            return repoName;
-        }else{
-            return String.valueOf(repoId);
-        }
+        return repoIdOrName.toString();
     }
 
     /**
@@ -68,8 +46,8 @@ public class AddPullRequestParams extends PostParams {
      * @param issueId the isssue identifier
      * @return AddPullRequestParams instance
      */
-    public AddPullRequestParams issueId(long issueId) {
-        parameters.add(new NameValuePair("issueId", String.valueOf(issueId)));
+    public AddPullRequestParams issueId(Object issueId) {
+        parameters.add(new NameValuePair("issueId", issueId.toString()));
         return this;
     }
 
@@ -79,8 +57,8 @@ public class AddPullRequestParams extends PostParams {
      * @param assigneeId the assignee user id
      * @return AddPullRequestParams instance
      */
-    public AddPullRequestParams assigneeId(long assigneeId) {
-        parameters.add(new NameValuePair("assigneeId", String.valueOf(assigneeId)));
+    public AddPullRequestParams assigneeId(Object assigneeId) {
+        parameters.add(new NameValuePair("assigneeId", assigneeId.toString()));
         return this;
 
     }
@@ -91,8 +69,8 @@ public class AddPullRequestParams extends PostParams {
      * @param notifiedUserIds notified user identifiers
      * @return AddPullRequestParams instance
      */
-    public AddPullRequestParams notifiedUserIds(List<Long> notifiedUserIds) {
-        for (Long notifiedUserId : notifiedUserIds) {
+    public AddPullRequestParams notifiedUserIds(List notifiedUserIds) {
+        for (Object notifiedUserId : notifiedUserIds) {
             parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
         }
         return this;
@@ -105,8 +83,8 @@ public class AddPullRequestParams extends PostParams {
      * @param attachmentIds the attachment file identifiers
      * @return AddPullRequestParams instance
      */
-    public AddPullRequestParams attachmentIds(List<Long> attachmentIds) {
-        for (Long attachmentId : attachmentIds) {
+    public AddPullRequestParams attachmentIds(List attachmentIds) {
+        for (Object attachmentId : attachmentIds) {
             parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
         }
         return this;

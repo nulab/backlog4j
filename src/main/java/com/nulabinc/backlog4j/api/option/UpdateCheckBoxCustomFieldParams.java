@@ -11,11 +11,7 @@ import java.util.List;
  */
 public class UpdateCheckBoxCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateCheckBoxCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateCheckBoxCustomFieldParams(String projectIdOrKey, long customFiledId) {
+    public UpdateCheckBoxCustomFieldParams(Object projectIdOrKey, Object customFiledId) {
         super(projectIdOrKey, customFiledId);
     }
 

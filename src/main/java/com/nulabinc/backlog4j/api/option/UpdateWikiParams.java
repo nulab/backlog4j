@@ -9,14 +9,14 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class UpdateWikiParams extends PatchParams {
 
-    private long wikiId;
+    private Object wikiId;
 
-    public UpdateWikiParams(long wikiId) {
+    public UpdateWikiParams(Object wikiId) {
         this.wikiId = wikiId;
     }
 
-    public long getWikiId() {
-        return wikiId;
+    public String getWikiId() {
+        return wikiId.toString();
     }
 
     public UpdateWikiParams name(String name) {

@@ -11,16 +11,16 @@ import java.util.List;
  */
 public class AddWikiAttachmentParams extends PostParams {
 
-    private long wikiId;
+    private Object wikiId;
 
-    public AddWikiAttachmentParams(long wikiId, List<Long> attachmentIds){
+    public AddWikiAttachmentParams(Object wikiId, List attachmentIds){
         this.wikiId = wikiId;
-        for (Long attachmentId : attachmentIds) {
+        for (Object attachmentId : attachmentIds) {
             parameters.add(new NameValuePair("attachmentId[]", String.valueOf(attachmentId)));
         }
     }
 
-    public long getWikiId() {
-        return this.wikiId;
+    public String getWikiId() {
+        return this.wikiId.toString();
     }
 }

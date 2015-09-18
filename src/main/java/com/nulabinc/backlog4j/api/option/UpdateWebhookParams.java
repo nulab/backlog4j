@@ -12,30 +12,20 @@ import java.util.List;
  */
 public class UpdateWebhookParams extends PatchParams {
 
-    private long projectId;
-    private String projectIdOrKey;
-    private long webhookId;
+    private Object projectIdOrKey;
+    private Object webhookId;
 
-    public UpdateWebhookParams(long projectId, long webhookId) {
-        this.projectId = projectId;
-        this.webhookId = webhookId;
-    }
-
-    public UpdateWebhookParams(String projectIdOrKey, long webhookId) {
+    public UpdateWebhookParams(Object projectIdOrKey, long webhookId) {
         this.projectIdOrKey = projectIdOrKey;
         this.webhookId = webhookId;
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectIdOrKey != null) {
-            return projectIdOrKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    public long getWebhookId() {
-        return webhookId;
+    public String getWebhookId() {
+        return webhookId.toString();
     }
 
     public UpdateWebhookParams name(String name) {

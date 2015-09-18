@@ -47,7 +47,7 @@ public interface GroupMethods {
      * @return the Group.
      * @throws BacklogException
      */
-    Group getGroup(long groupId) throws BacklogException;
+    Group getGroup(Object groupId) throws BacklogException;
 
     /**
      * Updates the existing group.
@@ -65,5 +65,5 @@ public interface GroupMethods {
      * @return the deleted Group.
      * @throws BacklogException
      */
-    Group deleteGroup(long groupId) throws BacklogException;
+    Group deleteGroup(Object groupId) throws BacklogException;
 }

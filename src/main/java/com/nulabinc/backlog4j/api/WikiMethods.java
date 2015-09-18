@@ -18,26 +18,10 @@ public interface WikiMethods {
     /**
      * Returns Wiki pages in the project.
      *
-     * @param projectId the project identifier
-     * @return the Wiki pages in a list
-     */
-    ResponseList<Wiki> getWikis(long projectId);
-
-    /**
-     * Returns Wiki pages in the project.
-     *
      * @param projectIdOrKey the project identifier
      * @return the Wiki pages in a list
      */
-    ResponseList<Wiki> getWikis(String projectIdOrKey);
-
-    /**
-     * Returns Wiki pages count.
-     *
-     * @param projectId the project identifier
-     * @return the Wiki pages count
-     */
-    int getWikiCount(long projectId);
+    ResponseList<Wiki> getWikis(Object projectIdOrKey);
 
     /**
      * Returns Wiki pages count.
@@ -45,15 +29,7 @@ public interface WikiMethods {
      * @param projectIdOrKey the project identifier
      * @return the Wiki pages count
      */
-    int getWikiCount(String projectIdOrKey);
-
-    /**
-     * Returns Wiki page's tags in the project.
-     *
-     * @param projectId the project identifier
-     * @return the Wiki page's tags in a list
-     */
-    ResponseList<WikiTag> getWikiTags(long projectId);
+    int getWikiCount(Object projectIdOrKey);
 
     /**
      * Returns Wiki page's tags in the project.
@@ -61,7 +37,7 @@ public interface WikiMethods {
      * @param projectIdOrKey the project identifier
      * @return the Wiki page's tags in a list
      */
-    ResponseList<WikiTag> getWikiTags(String projectIdOrKey);
+    ResponseList<WikiTag> getWikiTags(Object projectIdOrKey);
 
     /**
      * Create a Wiki page in the project.
@@ -77,7 +53,7 @@ public interface WikiMethods {
      * @param wikiId the Wiki page identifier
      * @return the Wiki page
      */
-    Wiki getWiki(long wikiId);
+    Wiki getWiki(Object wikiId);
 
     /**
      * Updates an existing Wiki page in the project.
@@ -94,7 +70,7 @@ public interface WikiMethods {
      * @param mailNotify
      * @return the deleted Wiki page
      */
-    Wiki deleteWiki(long wikiId, boolean mailNotify);
+    Wiki deleteWiki(Object wikiId, boolean mailNotify);
 
     // Wiki添付ファイル一覧の取得
 
@@ -104,7 +80,7 @@ public interface WikiMethods {
      * @param wikiId the Wiki page identifier
      * @return the Wiki page's attachment files in a list
      */
-    ResponseList<Attachment> getWikiAttachments(long wikiId);
+    ResponseList<Attachment> getWikiAttachments(Object wikiId);
 
     /**
      * Attaches the files to the Wiki page.
@@ -121,7 +97,7 @@ public interface WikiMethods {
      * @param attachmentId the attachment file identifier
      * @return downloaded file data
      */
-    AttachmentData downloadWikiAttachment(long wikiId, long attachmentId);
+    AttachmentData downloadWikiAttachment(Object wikiId, Object attachmentId);
 
     /**
      * Returns the endpoint of Wiki page's attachment file.
@@ -131,7 +107,7 @@ public interface WikiMethods {
      * @return the endpoint
      * @throws BacklogException
      */
-    String getWikiAttachmentEndpoint(long wikiId, long attachmentId) throws BacklogException;
+    String getWikiAttachmentEndpoint(Object wikiId, Object attachmentId) throws BacklogException;
 
     /**
      * Deletes the Wiki page's attachment file
@@ -140,7 +116,7 @@ public interface WikiMethods {
      * @param attachmentId the attachment file identifier
      * @return deleted Wiki page's attachment file
      */
-    Attachment deleteWikiAttachment(long wikiId, long attachmentId);
+    Attachment deleteWikiAttachment(Object wikiId, Object attachmentId);
 
     /**
      * Returns the Wiki page's shared files.
@@ -148,7 +124,7 @@ public interface WikiMethods {
      * @param wikiId the Wiki page identifier
      * @return the Wiki page's shared files in a list
      */
-    ResponseList<SharedFile> getWikiSharedFiles(long wikiId);
+    ResponseList<SharedFile> getWikiSharedFiles(Object wikiId);
 
     /**
      * Links the shared files to Wiki.
@@ -157,7 +133,7 @@ public interface WikiMethods {
      * @param fileIds the shared file identifiers
      * @return the linked shared files
      */
-    ResponseList<SharedFile> linkWikiSharedFile(long wikiId, List<Long> fileIds);
+    ResponseList<SharedFile> linkWikiSharedFile(Object wikiId, List fileIds);
 
     /**
      * Removes link to shared Files from the Wiki.
@@ -166,7 +142,7 @@ public interface WikiMethods {
      * @param fileId the shared file identifier
      * @return the removed link shared file
      */
-    SharedFile unlinkWikiSharedFile(long wikiId, long fileId);
+    SharedFile unlinkWikiSharedFile(Object wikiId, Object fileId);
 
     /**
      * Returns history of the Wiki page.
@@ -174,7 +150,7 @@ public interface WikiMethods {
      * @param wikiId the Wiki page identifier
      * @return the wiki histories in a list
      */
-    ResponseList<WikiHistory> getWikiHistories(long wikiId);
+    ResponseList<WikiHistory> getWikiHistories(Object wikiId);
 
     /**
      * Returns history of the Wiki page.
@@ -183,7 +159,7 @@ public interface WikiMethods {
      * @param queryParams the query parameters
      * @return the wiki histories in a list
      */
-    ResponseList<WikiHistory> getWikiHistories(long wikiId, QueryParams queryParams);
+    ResponseList<WikiHistory> getWikiHistories(Object wikiId, QueryParams queryParams);
 
     /**
      * Returns list of stars received on the Wiki page.
@@ -191,6 +167,6 @@ public interface WikiMethods {
      * @param wikiId the Wiki page identifier
      * @return the wiki stars in a list
      */
-    ResponseList<Star> getWikiStars(long wikiId);
+    ResponseList<Star> getWikiStars(Object wikiId);
 
 }

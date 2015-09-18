@@ -11,11 +11,7 @@ import java.util.List;
  */
 public class UpdateSingleListCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateSingleListCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateSingleListCustomFieldParams(String projectIdOrKey, long customFiledId) {
+    public UpdateSingleListCustomFieldParams(Object projectIdOrKey, long customFiledId) {
         super(projectIdOrKey, customFiledId);
     }
 

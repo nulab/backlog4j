@@ -12,11 +12,7 @@ import java.util.List;
  */
 public class AddRadioCustomFieldParams extends AddCustomFieldParams {
 
-    public AddRadioCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.Radio, name);
-    }
-
-    public AddRadioCustomFieldParams(String projectIdOrKey, String name) {
+    public AddRadioCustomFieldParams(Object projectIdOrKey, String name) {
         super(projectIdOrKey, CustomFieldSetting.FieldType.Radio, name);
     }
 

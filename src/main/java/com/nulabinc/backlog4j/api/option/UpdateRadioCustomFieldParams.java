@@ -11,11 +11,7 @@ import java.util.List;
  */
 public class UpdateRadioCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateRadioCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateRadioCustomFieldParams(String projectIdOrKey, long customFiledId) {
+    public UpdateRadioCustomFieldParams(Object projectIdOrKey, Object customFiledId) {
         super(projectIdOrKey, customFiledId);
     }
 
