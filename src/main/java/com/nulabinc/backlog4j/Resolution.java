@@ -13,5 +13,5 @@ public interface Resolution {
 
     String getName();
 
-    Issue.ResolutionType getResolution();
+    Issue.ResolutionType getResolutionType();
 }

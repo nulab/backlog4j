@@ -13,5 +13,5 @@ public interface Status {
 
     String getName();
 
-    Issue.StatusType getStatus();
+    Issue.StatusType getStatusType();
 }

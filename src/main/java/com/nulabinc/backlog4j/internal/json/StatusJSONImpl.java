@@ -33,7 +33,7 @@ public class StatusJSONImpl implements Status {
     }
 
     @Override
-    public Issue.StatusType getStatus() {
+    public Issue.StatusType getStatusType() {
         return Issue.StatusType.valueOf(this.id);
     }
 

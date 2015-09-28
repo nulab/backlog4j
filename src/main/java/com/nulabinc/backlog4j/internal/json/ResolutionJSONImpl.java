@@ -33,7 +33,7 @@ public class ResolutionJSONImpl implements Resolution {
     }
 
     @Override
-    public Issue.ResolutionType getResolution() {
+    public Issue.ResolutionType getResolutionType() {
         return Issue.ResolutionType.valueOf(this.id);
     }
 

@@ -33,7 +33,7 @@ public class PriorityJSONImpl implements Priority {
     }
 
     @Override
-    public Issue.PriorityType getPriority() {
+    public Issue.PriorityType getPriorityType() {
         return Issue.PriorityType.valueOf(this.id);
     }
 

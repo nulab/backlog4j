@@ -13,5 +13,5 @@ public interface Priority {
 
     String getName();
 
-    Issue.PriorityType getPriority();
+    Issue.PriorityType getPriorityType();
 }

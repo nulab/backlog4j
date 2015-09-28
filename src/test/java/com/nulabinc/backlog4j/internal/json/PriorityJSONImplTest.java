@@ -23,17 +23,17 @@ public class PriorityJSONImplTest extends AbstractJSONImplTest{
         Priority priority = priorities.get(0);
         assertEquals(2, priority.getId());
         assertEquals("高", priority.getName());
-        assertEquals(Issue.PriorityType.High, priority.getPriority());
+        assertEquals(Issue.PriorityType.High, priority.getPriorityType());
 
         priority = priorities.get(1);
         assertEquals(3, priority.getId());
         assertEquals("中", priority.getName());
-        assertEquals(Issue.PriorityType.Normal, priority.getPriority());
+        assertEquals(Issue.PriorityType.Normal, priority.getPriorityType());
 
         priority = priorities.get(2);
         assertEquals(4, priority.getId());
         assertEquals("低", priority.getName());
-        assertEquals(Issue.PriorityType.Low, priority.getPriority());
+        assertEquals(Issue.PriorityType.Low, priority.getPriorityType());
 
     }
 }

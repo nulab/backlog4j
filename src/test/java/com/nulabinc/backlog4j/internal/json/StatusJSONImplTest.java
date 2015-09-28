@@ -23,22 +23,22 @@ public class StatusJSONImplTest extends AbstractJSONImplTest{
         Status status = statuses.get(0);
         assertEquals(1, status.getId());
         assertEquals("未対応", status.getName());
-        assertEquals(Issue.StatusType.Open, status.getStatus());
+        assertEquals(Issue.StatusType.Open, status.getStatusType());
 
         status = statuses.get(1);
         assertEquals(2, status.getId());
         assertEquals("処理中", status.getName());
-        assertEquals(Issue.StatusType.InProgress, status.getStatus());
+        assertEquals(Issue.StatusType.InProgress, status.getStatusType());
 
         status = statuses.get(2);
         assertEquals(3, status.getId());
         assertEquals("処理済み", status.getName());
-        assertEquals(Issue.StatusType.Resolved, status.getStatus());
+        assertEquals(Issue.StatusType.Resolved, status.getStatusType());
 
         status = statuses.get(3);
         assertEquals(4, status.getId());
         assertEquals("完了", status.getName());
-        assertEquals(Issue.StatusType.Closed, status.getStatus());
+        assertEquals(Issue.StatusType.Closed, status.getStatusType());
 
     }
 }
