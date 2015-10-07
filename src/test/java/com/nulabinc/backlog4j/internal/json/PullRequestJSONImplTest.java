@@ -63,5 +63,8 @@ public class PullRequestJSONImplTest extends AbstractJSONImplTest{
         calendar.set(2015, Calendar.APRIL, 24, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(pullRequest.getUpdated()));
 
+        assertEquals(1, pullRequest.getAttachments().size());
+        assertEquals(2, pullRequest.getStars().size());
+
     }
 }

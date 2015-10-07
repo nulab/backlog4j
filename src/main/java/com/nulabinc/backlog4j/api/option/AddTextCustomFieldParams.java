@@ -9,11 +9,7 @@ import com.nulabinc.backlog4j.CustomFieldSetting;
  */
 public class AddTextCustomFieldParams extends AddCustomFieldParams {
 
-    public AddTextCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.Text, name);
-    }
-
-    public AddTextCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Text, name);
+    public AddTextCustomFieldParams(Object projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Text, name);
     }
 }

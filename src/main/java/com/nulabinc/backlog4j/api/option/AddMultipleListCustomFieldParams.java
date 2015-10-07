@@ -12,12 +12,8 @@ import java.util.List;
  */
 public class AddMultipleListCustomFieldParams extends AddCustomFieldParams {
 
-    public AddMultipleListCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.MultipleList, name);
-    }
-
-    public AddMultipleListCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.MultipleList, name);
+    public AddMultipleListCustomFieldParams(Object projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.MultipleList, name);
     }
 
     public AddMultipleListCustomFieldParams items(List<String> items) {

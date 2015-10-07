@@ -9,8 +9,8 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class CreateWikiParams extends PostParams {
 
-    public CreateWikiParams(long projectId, String name, String content) {
-        parameters.add(new NameValuePair("projectId", String.valueOf(projectId)));
+    public CreateWikiParams(Object projectId, String name, String content) {
+        parameters.add(new NameValuePair("projectId", projectId.toString()));
         parameters.add(new NameValuePair("name", name));
         parameters.add(new NameValuePair("content", content));
     }

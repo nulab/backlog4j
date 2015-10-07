@@ -8,9 +8,14 @@ import java.util.Date;
  * @author nulab-inc
  */
 public interface Repository {
+
     long getId();
 
+    String getIdAsString();
+
     long getProjectId();
+
+    String getProjectIdAsString();
 
     String getName();
 

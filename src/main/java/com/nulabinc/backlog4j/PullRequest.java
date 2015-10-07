@@ -33,9 +33,15 @@ public interface PullRequest {
 
     long getId();
 
+    String getIdAsString();
+
     long getProjectId();
 
+    String getProjectIdAsString();
+
     long getRepositoryId();
+
+    String getRepositoryIdAsString();
 
     long getNumber();
 
@@ -70,6 +76,8 @@ public interface PullRequest {
     User getUpdatedUser();
 
     Date getUpdated();
+
+    List<Attachment> getAttachments();
 
     List<Star> getStars();
 }

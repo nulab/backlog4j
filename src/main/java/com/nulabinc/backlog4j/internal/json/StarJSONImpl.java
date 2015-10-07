@@ -33,6 +33,11 @@ public class StarJSONImpl implements Star {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getComment() {
         return comment;
     }

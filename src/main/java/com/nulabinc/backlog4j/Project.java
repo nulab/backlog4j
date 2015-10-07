@@ -64,6 +64,8 @@ public interface Project {
 
     long getId();
 
+    String getIdAsString();
+
     String getProjectKey();
 
     String getName();

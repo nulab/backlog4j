@@ -13,12 +13,8 @@ import java.util.List;
  */
 public class AddDateCustomFieldParams extends AddCustomFieldParams {
 
-    public AddDateCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.Date, name);
-    }
-
-    public AddDateCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Date, name);
+    public AddDateCustomFieldParams(Object projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Date, name);
     }
 
     public AddDateCustomFieldParams min(String min) {

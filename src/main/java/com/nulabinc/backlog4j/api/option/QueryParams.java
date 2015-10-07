@@ -33,13 +33,13 @@ public class QueryParams extends GetParams{
         private String value;
     }
 
-    public QueryParams minId(long minId) {
-        parameters.add(new NameValuePair("minId", String.valueOf(minId)));
+    public QueryParams minId(Object minId) {
+        parameters.add(new NameValuePair("minId", minId.toString()));
         return this;
     }
 
-    public QueryParams maxId(long maxId) {
-        parameters.add(new NameValuePair("maxId", String.valueOf(maxId)));
+    public QueryParams maxId(Object maxId) {
+        parameters.add(new NameValuePair("maxId", maxId.toString()));
         return this;
     }
 

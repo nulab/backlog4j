@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
@@ -12,12 +13,8 @@ import java.util.List;
  */
 public class AddCheckBoxCustomFieldParams extends AddCustomFieldParams {
 
-    public AddCheckBoxCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.CheckBox, name);
-    }
-
-    public AddCheckBoxCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.CheckBox, name);
+    public AddCheckBoxCustomFieldParams(Object projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.CheckBox, name);
     }
 
     public AddCheckBoxCustomFieldParams items(List<String> items) {

@@ -6,9 +6,14 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface Link {
+
     long getId();
 
+    String getIdAsString();
+
     long getKeyId();
+
+    String getKeyIdAsString();
 
     String getTitle();
 

@@ -42,6 +42,11 @@ public class NotificationJSONImpl implements Notification {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public boolean isAlreadyRead() {
         return alreadyRead;
     }

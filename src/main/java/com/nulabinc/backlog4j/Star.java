@@ -10,6 +10,8 @@ import java.util.Date;
 public interface Star {
     long getId();
 
+    String getIdAsString();
+
     String getComment();
 
     String getUrl();

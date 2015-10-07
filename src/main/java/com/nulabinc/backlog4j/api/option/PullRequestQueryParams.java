@@ -20,12 +20,12 @@ public class PullRequestQueryParams extends QueryParams {
     }
 
     @Override
-    public PullRequestQueryParams minId(long minId) {
+    public PullRequestQueryParams minId(Object minId) {
         return (PullRequestQueryParams) super.minId(minId);
     }
 
     @Override
-    public PullRequestQueryParams maxId(long maxId) {
+    public PullRequestQueryParams maxId(Object maxId) {
         return (PullRequestQueryParams) super.maxId(maxId);
     }
 

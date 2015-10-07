@@ -9,33 +9,21 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class UpdateCategoryParams extends PatchParams {
 
-    private long projectId;
-    private String projectKey;
-    private long categoryId;
+    private Object projectIdOrKey;
+    private Object categoryId;
 
-    public UpdateCategoryParams(long projectId, long categoryId, String name) {
-        this.projectId = projectId;
+    public UpdateCategoryParams(Object projectIdOrKey, Object categoryId, String name) {
+        this.projectIdOrKey = projectIdOrKey;
         this.categoryId = categoryId;
         parameters.add(new NameValuePair("name", name));
-    }
-
-    public UpdateCategoryParams(String projectKey, long categoryId, String name) {
-        this.projectKey = projectKey;
-        this.categoryId = categoryId;
-        parameters.add(new NameValuePair("name", name));
-        ;
     }
 
 
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    public long getCategoryId() {
-        return categoryId;
+    public String getCategoryId() {
+        return categoryId.toString();
     }
 }

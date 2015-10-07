@@ -12,12 +12,8 @@ import java.util.List;
  */
 public class UpdateDateCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateDateCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateDateCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateDateCustomFieldParams(Object projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateDateCustomFieldParams min(String min) {

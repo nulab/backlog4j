@@ -7,7 +7,10 @@ import java.util.List;
  * Created by yuhkim on 2015/05/18.
  */
 public interface PullRequestComment {
+
     long getId();
+
+    String getIdAsString();
 
     String getContent();
 

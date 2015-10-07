@@ -12,12 +12,8 @@ import java.util.List;
  */
 public class AddNumericCustomFieldParams extends AddCustomFieldParams {
 
-    public AddNumericCustomFieldParams(long projectId, String name) {
-        super(projectId, CustomFieldSetting.FieldType.Numeric, name);
-    }
-
-    public AddNumericCustomFieldParams(String projectKey, String name) {
-        super(projectKey, CustomFieldSetting.FieldType.Numeric, name);
+    public AddNumericCustomFieldParams(Object projectIdOrKey, String name) {
+        super(projectIdOrKey, CustomFieldSetting.FieldType.Numeric, name);
     }
 
     public AddNumericCustomFieldParams min(float min) {

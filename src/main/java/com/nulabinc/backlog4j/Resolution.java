@@ -6,9 +6,12 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface Resolution {
+
     long getId();
+
+    String getIdAsString();
 
     String getName();
 
-    Issue.ResolutionType getResolution();
+    Issue.ResolutionType getResolutionType();
 }

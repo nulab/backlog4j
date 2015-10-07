@@ -8,7 +8,10 @@ import java.util.Date;
  * @author nulab-inc
  */
 public interface WikiHistory {
+
     long getPageId();
+
+    String getPageIdAsString();
 
     int getVersion();
 

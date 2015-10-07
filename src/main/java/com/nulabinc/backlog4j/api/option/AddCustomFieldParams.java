@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
@@ -12,27 +13,16 @@ import java.util.List;
  */
 public abstract class AddCustomFieldParams extends PostParams {
 
-    private long projectId;
-    private String projectKey;
+    private Object projectIdOrKey;
 
-    public AddCustomFieldParams(long projectId, CustomFieldSetting.FieldType fieldType, String name){
-        this.projectId = projectId;
-        parameters.add(new NameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
-        parameters.add(new NameValuePair("name", name));
-    }
-
-    public AddCustomFieldParams(String projectKey, CustomFieldSetting.FieldType fieldType, String name){
-        this.projectKey = projectKey;
+    public AddCustomFieldParams(Object projectIdOrKey, CustomFieldSetting.FieldType fieldType, String name){
+        this.projectIdOrKey = projectIdOrKey;
         parameters.add(new NameValuePair("typeId", String.valueOf(fieldType.getIntValue())));
         parameters.add(new NameValuePair("name", name));
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public AddCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {

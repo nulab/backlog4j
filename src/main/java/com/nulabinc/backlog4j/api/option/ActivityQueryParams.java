@@ -18,19 +18,23 @@ public class ActivityQueryParams extends QueryParams{
         }
         return this;
     }
+
     @Override
-    public ActivityQueryParams minId(long minId) {
+    public ActivityQueryParams minId(Object minId) {
         return (ActivityQueryParams)super.minId(minId);
     }
 
-    public ActivityQueryParams maxId(long maxId) {
+    @Override
+    public ActivityQueryParams maxId(Object maxId) {
         return (ActivityQueryParams)super.maxId(maxId);
     }
 
+    @Override
     public ActivityQueryParams count(int count) {
         return (ActivityQueryParams)super.count(count);
     }
 
+    @Override
     public ActivityQueryParams order(Order order) {
         return (ActivityQueryParams)super.order(order);
     }

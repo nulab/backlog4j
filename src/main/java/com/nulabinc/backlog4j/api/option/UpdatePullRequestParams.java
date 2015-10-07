@@ -11,56 +11,33 @@ import java.util.List;
  */
 public class UpdatePullRequestParams extends PatchParams {
 
-    private long projectId;
-    private String projectKey;
-    private long repoId;
-    private String repoName;
-    private long number;
+    private Object projectIdOrKey;
+    private Object repoIdOrName;
+    private Object number;
 
     /**
      * Constructor
      *
-     * @param projectId   the project identifier
-     * @param repoId      the repository identifier
-     * @param number      the pull request identifier
-     */
-    public UpdatePullRequestParams(long projectId, long repoId, long number) {
-        this.projectId = projectId;
-        this.repoId = repoId;
-        this.number = number;
-    }
-
-    /**
-     * Constructor
-     *
-     * @param projectKey    the project identifier
-     * @param repoName      the repository identifier
+     * @param projectIdOrKey    the project identifier
+     * @param repoIdOrName      the repository identifier
      * @param number        the pull request title
      */
-    public UpdatePullRequestParams(String projectKey, String repoName, long number) {
-        this.projectKey = projectKey;
-        this.repoName = repoName;
+    public UpdatePullRequestParams(Object projectIdOrKey, Object repoIdOrName, Object number) {
+        this.projectIdOrKey = projectIdOrKey;
+        this.repoIdOrName = repoIdOrName;
         this.number = number;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public String getRepoIdOrNameString() {
-        if(repoName != null){
-            return repoName;
-        }else{
-            return String.valueOf(repoId);
-        }
+        return repoIdOrName.toString();
     }
 
-    public long getNumber() {
-        return this.number;
+    public String getNumber() {
+        return this.number.toString();
     }
 
     /**

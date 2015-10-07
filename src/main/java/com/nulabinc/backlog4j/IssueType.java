@@ -6,9 +6,14 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface IssueType {
+
     long getId();
 
+    String getIdAsString();
+
     long getProjectId();
+
+    String getProjectIdAsString();
 
     String getName();
 

@@ -37,6 +37,11 @@ public class WikiHistoryJSONImpl implements WikiHistory {
     }
 
     @Override
+    public String getPageIdAsString() {
+        return String.valueOf(this.pageId);
+    }
+
+    @Override
     public int getVersion() {
         return version;
     }

@@ -14,38 +14,19 @@ public interface GitMethods {
     /**
      * Returns the git repositories in the project.
      *
-     * @param projectId the project identifier
+     * @param projectIdOrKey the project identifier
      * @return the git repositories in a list.
      * @throws BacklogException
      */
-    ResponseList<Repository> getGitRepositories(long projectId) throws BacklogException;
-
-    /**
-     * Returns the git repositories in the project.
-     *
-     * @param projectKey the project identifier
-     * @return the git repositories in a list.
-     * @throws BacklogException
-     */
-    ResponseList<Repository> getGitRepositories(String projectKey) throws BacklogException;
+    ResponseList<Repository> getGitRepositories(Object projectIdOrKey) throws BacklogException;
 
     /**
      * Returns the git repository.
      *
-     * @param projectId the project identifier
-     * @param repoId the repository identifier
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName the repository name
      * @return the git repository.
      * @throws BacklogException
      */
-    Repository getGitRepository(long projectId, long repoId) throws BacklogException;
-
-    /**
-     * Returns the git repository.
-     *
-     * @param projectKey the project identifier
-     * @param repoName the repository name
-     * @return the git repository.
-     * @throws BacklogException
-     */
-    Repository getGitRepository(String projectKey, String repoName) throws BacklogException;
+    Repository getGitRepository(Object projectIdOrKey, Object repoIdOrName) throws BacklogException;
 }

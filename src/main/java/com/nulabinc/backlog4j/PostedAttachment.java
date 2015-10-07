@@ -9,6 +9,8 @@ public interface PostedAttachment {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     long getSize();

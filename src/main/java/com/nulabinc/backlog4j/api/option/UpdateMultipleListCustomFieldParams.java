@@ -11,12 +11,8 @@ import java.util.List;
  */
 public class UpdateMultipleListCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateMultipleListCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateMultipleListCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateMultipleListCustomFieldParams(Object projectIdOrKey, Object customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateMultipleListCustomFieldParams items(List<String> items) {

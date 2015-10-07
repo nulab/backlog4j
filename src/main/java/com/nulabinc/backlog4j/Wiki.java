@@ -9,9 +9,14 @@ import java.util.List;
  * @author nulab-inc
  */
 public interface Wiki {
+
     long getId();
 
+    String getIdAsString();
+
     long getProjectId();
+
+    String getProjectIdAsString();
 
     String getName();
 

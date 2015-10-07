@@ -23,12 +23,17 @@ public class StatusJSONImpl implements Status {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
 
     @Override
-    public Issue.StatusType getStatus() {
+    public Issue.StatusType getStatusType() {
         return Issue.StatusType.valueOf(this.id);
     }
 

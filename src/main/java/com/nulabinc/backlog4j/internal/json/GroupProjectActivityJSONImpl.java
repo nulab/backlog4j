@@ -21,6 +21,11 @@ public class GroupProjectActivityJSONImpl implements GroupProjectActivity {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public Activity.Type getType() {
         return Activity.Type.valueOf(this.type);
     }

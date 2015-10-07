@@ -11,91 +11,42 @@ import java.util.List;
  */
 public class UpdatePullRequestCommentParams extends PatchParams {
 
-    private long projectId;
-    private String projectKey;
-
-    private long repoId;
-    private String repoName;
-
-    private long number;
-    private long commentId;
+    private Object projectIdOrKey;
+    private Object repoIdOrName;
+    private Object number;
+    private Object commentId;
 
     /**
      * Constructor
      *
-     * @param projectId the project identifier
-     * @param repoId the repository identifier
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName the repository name
      * @param number the pull request identifier
      * @param commentId the pull request comment identifier
      * @param content the comment content
      */
-    public UpdatePullRequestCommentParams(long projectId, long repoId, long number, long commentId, String content) {
-        this.projectId = projectId;
-        this.repoId = repoId;
+    public UpdatePullRequestCommentParams(Object projectIdOrKey, Object repoIdOrName, Object number, Object commentId, String content) {
+        this.projectIdOrKey = projectIdOrKey;
+        this.repoIdOrName = repoIdOrName;
         this.number = number;
         this.commentId = commentId;
         parameters.add(new NameValuePair("content", content));
     }
 
-    /**
-     * Constructor
-     *
-     * @param projectKey the project identifier
-     * @param repoName the repository name
-     * @param number the pull request identifier
-     * @param commentId the pull request comment identifier
-     * @param content the comment content
-     */
-    public UpdatePullRequestCommentParams(String projectKey, String repoName, long number, long commentId, String content) {
-        this.projectKey = projectKey;
-        this.repoName = repoName;
-        this.number = number;
-        this.commentId = commentId;
-        parameters.add(new NameValuePair("content", content));
-    }
-
-    /**
-     * Returns the project identifier string.
-     *
-     * @return project id or project key
-     */
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    /**
-     * Returns the repo name identifier string.
-     *
-     * @return project repo id or repo name
-     */
     public String getRepoIdOrName() {
-        if (repoName != null) {
-            return repoName;
-        } else {
-            return String.valueOf(repoId);
-        }
+        return repoIdOrName.toString();
     }
 
-    /**
-     * Returns the pull request identifier string.
-     *
-     * @return thr pull request number
-     */
     public String getNumber() {
-        return String.valueOf(number);
+        return this.number.toString();
     }
 
-    /**
-     * Returns the pull request comment identifier string.
-     *
-     * @return thr pull request comment identifier
-     */
-    public String getCommentid() {
-        return String.valueOf(commentId);
+    public String getCommentId() {
+        return this.commentId.toString();
     }
 
     /**

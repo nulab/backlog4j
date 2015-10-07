@@ -37,6 +37,8 @@ public interface Notification {
 
     long getId();
 
+    String getIdAsString();
+
     boolean isAlreadyRead();
 
     Reason getReason();

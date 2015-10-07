@@ -31,6 +31,8 @@ public interface User {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     String getUserId();

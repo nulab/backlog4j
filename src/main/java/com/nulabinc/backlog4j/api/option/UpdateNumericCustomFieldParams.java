@@ -11,12 +11,8 @@ import java.util.List;
  */
 public class UpdateNumericCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateNumericCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateNumericCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateNumericCustomFieldParams(Object projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 
     public UpdateNumericCustomFieldParams min(float min) {

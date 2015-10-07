@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Activity;
-import com.nulabinc.backlog4j.Project;
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -13,19 +13,10 @@ import java.util.List;
  */
 public class CreateWebhookParams extends PostParams {
 
-    private long projectId;
-    private String projectKey;
+    private Object projectIdOrKey;
 
-    public CreateWebhookParams(long projectId, String name, String hookUrl){
-        this.projectId = projectId;
-        String nameValue = (name==null) ? "" : name;
-        String hookUrlValue = (hookUrl==null) ? "" : hookUrl;
-        parameters.add(new NameValuePair("name", nameValue));
-        parameters.add(new NameValuePair("hookUrl", hookUrlValue));
-    }
-
-    public CreateWebhookParams(String projectKey, String name, String hookUrl){
-        this.projectKey = projectKey;
+    public CreateWebhookParams(Object projectIdOrKey, String name, String hookUrl){
+        this.projectIdOrKey = projectIdOrKey;
         String nameValue = (name==null) ? "" : name;
         String hookUrlValue = (hookUrl==null) ? "" : hookUrl;
         parameters.add(new NameValuePair("name", nameValue));
@@ -33,11 +24,7 @@ public class CreateWebhookParams extends PostParams {
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     /**

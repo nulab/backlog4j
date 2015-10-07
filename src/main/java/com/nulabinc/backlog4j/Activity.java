@@ -39,6 +39,8 @@ public interface Activity {
 
     long getId();
 
+    String getIdAsString();
+
     Project getProject();
 
     Type getType();

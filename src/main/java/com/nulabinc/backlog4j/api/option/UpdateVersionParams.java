@@ -9,33 +9,22 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  */
 public class UpdateVersionParams extends PatchParams {
 
-    private long projectId;
-    private String projectKey;
-    private long versionId;
+    private Object projectIdOrKey;
+    private Object versionId;
 
-    public UpdateVersionParams(long projectId, long versionId, String name) {
-        this.projectId = projectId;
-        this.versionId = versionId;
-        parameters.add(new NameValuePair("name", name));
-    }
-
-    public UpdateVersionParams(String projectKey, long versionId, String name) {
-        this.projectKey = projectKey;
+    public UpdateVersionParams(Object projectIdOrKey, Object versionId, String name) {
+        this.projectIdOrKey = projectIdOrKey;
         this.versionId = versionId;
         parameters.add(new NameValuePair("name", name));
         ;
     }
 
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    public long getVersionId() {
-        return versionId;
+    public String getVersionId() {
+        return versionId.toString();
     }
 
     public UpdateVersionParams description(String description) {

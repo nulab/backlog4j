@@ -11,30 +11,20 @@ import java.util.List;
  */
 public abstract class UpdateCustomFieldParams extends PatchParams {
 
-    private long projectId;
-    private String projectKey;
-    private long customFiledId;
+    private Object projectIdOrKey;
+    private Object customFiledId;
 
-    public UpdateCustomFieldParams(long projectId, long customFiledId){
-        this.projectId = projectId;
-        this.customFiledId = customFiledId;
-    }
-
-    public UpdateCustomFieldParams(String projectKey, long customFiledId){
-        this.projectKey = projectKey;
+    public UpdateCustomFieldParams(Object projectIdOrKey, Object customFiledId){
+        this.projectIdOrKey = projectIdOrKey;
         this.customFiledId = customFiledId;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    public long getCustomFiledId() {
-        return customFiledId;
+    public String getCustomFiledId() {
+        return customFiledId.toString();
     }
 
     public UpdateCustomFieldParams name(String name) {

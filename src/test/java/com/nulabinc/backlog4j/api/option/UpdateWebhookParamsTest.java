@@ -37,7 +37,7 @@ public class UpdateWebhookParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "activityTypeIds[]", "1"));
         assertEquals(true, existsOneKeyValue(parameters, "activityTypeIds[]", "2"));
         assertEquals(String.valueOf(projectId), params.getProjectIdOrKeyString());
-        assertEquals(webhookId, params.getWebhookId());
+        assertEquals("1", params.getWebhookId());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class UpdateWebhookParamsTest extends AbstractParamsTest {
         assertEquals(1, parameters.size());
         assertEquals(true, existsOneKeyValue(parameters, "allEvent", "true"));
         assertEquals(projectKey, params.getProjectIdOrKeyString());
-        assertEquals(webhookId, params.getWebhookId());
+        assertEquals("1", params.getWebhookId());
     }
 
     @Test
@@ -77,6 +77,6 @@ public class UpdateWebhookParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "hookUrl", ""));
         assertEquals(true, existsOneKeyValue(parameters, "description", ""));
         assertEquals(String.valueOf(projectId), params.getProjectIdOrKeyString());
-        assertEquals(webhookId, params.getWebhookId());
+        assertEquals("1", params.getWebhookId());
     }
 }

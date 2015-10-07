@@ -9,22 +9,14 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  * @author nulab-inc
  */
 public class UpdateProjectParams extends PatchParams {
-    private long projectId;
-    private String projectKey;
+    private Object projectIdOrKey;
 
-    public UpdateProjectParams(long projectId){
-        this.projectId = projectId;
-    }
-    public UpdateProjectParams(String projectKey){
-        this.projectKey = projectKey;
+    public UpdateProjectParams(Object projectIdOrKey){
+        this.projectIdOrKey = projectIdOrKey;
     }
 
     public String getProjectIdOrKeyString() {
-        if(projectKey != null){
-            return projectKey;
-        }else{
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
     public UpdateProjectParams name(String name) {

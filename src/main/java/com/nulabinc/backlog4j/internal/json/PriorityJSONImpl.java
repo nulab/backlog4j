@@ -23,12 +23,17 @@ public class PriorityJSONImpl implements Priority {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
 
     @Override
-    public Issue.PriorityType getPriority() {
+    public Issue.PriorityType getPriorityType() {
         return Issue.PriorityType.valueOf(this.id);
     }
 

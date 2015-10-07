@@ -44,20 +44,11 @@ public interface IssueMethods {
     /**
      * Returns the issue.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return the Issue
      * @throws BacklogException
      */
-    Issue getIssue(long issueId) throws BacklogException;
-
-    /**
-     * Returns the issue.
-     *
-     * @param issueKey the issue identifier
-     * @return the Issue
-     * @throws BacklogException
-     */
-    Issue getIssue(String issueKey) throws BacklogException;
+    Issue getIssue(Object issueIdOrKey) throws BacklogException;
 
     /**
      * Updates an existing issue.
@@ -68,61 +59,33 @@ public interface IssueMethods {
      */
     Issue updateIssue(UpdateIssueParams params) throws BacklogException;
 
-    /**
+   /**
      * Deletes the issue.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return the deleted Issue
      * @throws BacklogException
      */
-    Issue deleteIssue(long issueId) throws BacklogException;
+    Issue deleteIssue(Object issueIdOrKey) throws BacklogException;
 
-    /**
-     * Deletes the issue.
+   /**
+     * Returns the issue comments.
      *
-     * @param issueKey the issue identifier
-     * @return the deleted Issue
-     * @throws BacklogException
-     */
-    Issue deleteIssue(String issueKey) throws BacklogException;
-
-    /**
-     * Returns the comments on the issue.
-     *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return the issue's comments in a list.
      * @throws BacklogException
      */
-    ResponseList<IssueComment> getIssueComments(long issueId) throws BacklogException;
+    ResponseList<IssueComment> getIssueComments(Object issueIdOrKey) throws BacklogException;
 
     /**
      * Returns the issue comments.
      *
-     * @param issueKey the issue identifier
-     * @return the issue's comments in a list.
-     * @throws BacklogException
-     */
-    ResponseList<IssueComment> getIssueComments(String issueKey) throws BacklogException;
-
-    /**
-     * Returns the issue comments.
-     *
-     * @param issueId     the issue identifier
+     * @param issueIdOrKey    the issue identifier
      * @param queryParams the query parameters
      * @return the issue's comments in a list.
      * @throws BacklogException
      */
-    ResponseList<IssueComment> getIssueComments(long issueId, QueryParams queryParams) throws BacklogException;
-
-    /**
-     * Returns the issue comments.
-     *
-     * @param issueKey    the issue identifier
-     * @param queryParams the query parameters
-     * @return the issue's comments in a list.
-     * @throws BacklogException
-     */
-    ResponseList<IssueComment> getIssueComments(String issueKey, QueryParams queryParams) throws BacklogException;
+    ResponseList<IssueComment> getIssueComments(Object issueIdOrKey, QueryParams queryParams) throws BacklogException;
 
     /**
      * Adds a issue comment.
@@ -136,40 +99,21 @@ public interface IssueMethods {
     /**
      * Returns the count of the issue comments.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return count of the issue comments.
      * @throws BacklogException
      */
-    int getIssueCommentCount(long issueId) throws BacklogException;
-
-    /**
-     * Returns the count of the issue comments.
-     *
-     * @param issueKey the issue identifier
-     * @return count of the issue comments.
-     * @throws BacklogException
-     */
-    int getIssueCommentCount(String issueKey) throws BacklogException;
+    int getIssueCommentCount(Object issueIdOrKey) throws BacklogException;
 
     /**
      * Returns the issue comment.
      *
-     * @param issueId   the issue identifier
+     * @param issueIdOrKey  the issue identifier
      * @param commentId the comment identifier
      * @return the issue comment
      * @throws BacklogException
      */
-    IssueComment getIssueComment(long issueId, long commentId) throws BacklogException;
-
-    /**
-     * Returns the issue comment.
-     *
-     * @param issueKey  the issue identifier
-     * @param commentId the comment identifier
-     * @return the issue comment
-     * @throws BacklogException
-     */
-    IssueComment getIssueComment(String issueKey, long commentId) throws BacklogException;
+    IssueComment getIssueComment(Object issueIdOrKey, Object commentId) throws BacklogException;
 
     /**
      * Updates an existing issue comment.
@@ -183,22 +127,12 @@ public interface IssueMethods {
     /**
      * Returns the issue comment notifications.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param commentId the comment identifier
      * @return the issue comment notifications
      * @throws BacklogException
      */
-    ResponseList<Notification> getIssueCommentNotifications(long issueId, long commentId) throws BacklogException;
-
-    /**
-     * Returns the issue comment notifications.
-     *
-     * @param issueKey the issue identifier
-     * @param commentId the comment identifier
-     * @return the issue comment notifications
-     * @throws BacklogException
-     */
-    ResponseList<Notification> getIssueCommentNotifications(String issueKey, long commentId) throws BacklogException;
+    ResponseList<Notification> getIssueCommentNotifications(Object issueIdOrKey, Object commentId) throws BacklogException;
 
     /**
      * Adds a issue comment notification.
@@ -212,125 +146,63 @@ public interface IssueMethods {
     /**
      * Returns all the attachments on the issue.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return the attachments in a list.
      */
-    ResponseList<Attachment> getIssueAttachments(long issueId);
-
-    /**
-     * Returns all the attachments on the issue.
-     *
-     * @param issueKey the issue identifier
-     * @return the attachments in a list.
-     */
-    ResponseList<Attachment> getIssueAttachments(String issueKey);
+    ResponseList<Attachment> getIssueAttachments(Object issueIdOrKey);
 
     /**
      * Returns the attachment file data on the issue.
      *
-     * @param issueId      the issue identifier
+     * @param issueIdOrKey     the issue identifier
      * @param attachmentId the attachment identifier
      * @return the AttachmentData
      */
-    AttachmentData downloadIssueAttachment(long issueId, long attachmentId);
-
-    /**
-     * Returns the attachment file data on the issue.
-     *
-     * @param issueKey     the issue identifier
-     * @param attachmentId the attachment identifier
-     * @return the AttachmentData
-     */
-    AttachmentData downloadIssueAttachment(String issueKey, long attachmentId);
+    AttachmentData downloadIssueAttachment(Object issueIdOrKey, Object attachmentId);
 
     /**
      * Returns the endpoint of attachment file.
      *
-     * @param issueId     the issue identifier
-     * @param attachmentId the attachment identifier
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getIssueAttachmentEndpoint(long issueId, long attachmentId) throws BacklogException;
-
-    /**
-     * Returns the endpoint of attachment file.
-     *
-     * @param issueKey     the issue identifier
+     * @param issueIdOrKey     the issue identifier
      * @param attachmentId the attachment identifierr
      * @return the endpoint
      * @throws BacklogException
      */
-    String getIssueAttachmentEndpoint(String issueKey, long attachmentId) throws BacklogException;
+    String getIssueAttachmentEndpoint(Object issueIdOrKey, Object attachmentId) throws BacklogException;
 
     /**
      * Deletes the attachment file on the issue.
      *
-     * @param issueId     the issue identifier
+     * @param issueIdOrKey     the issue identifier
      * @param attachmentId the attachment identifier
      * @return the Attachment
      */
-    Attachment deleteIssueAttachment(long issueId, long attachmentId);
-
-    /**
-     * Deletes the attachment file on the issue.
-     *
-     * @param issueKey     the issue identifier
-     * @param attachmentId the attachment identifier
-     * @return the Attachment
-     */
-    Attachment deleteIssueAttachment(String issueKey, long attachmentId);
+    Attachment deleteIssueAttachment(Object issueIdOrKey, Object attachmentId);
 
     /**
      * Returns all the shared files on the issue.
      *
-     * @param issueId the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @return the shared files in a list.
      */
-    ResponseList<SharedFile> getIssueSharedFiles(long issueId);
-
-    /**
-     * Returns all the shared files on the issue.
-     *
-     * @param issueKey the issue identifier
-     * @return the shared files in a list.
-     */
-    ResponseList<SharedFile> getIssueSharedFiles(String issueKey);
-
-    /**
-     * Links the shared files to the issue.
-     *
-     * @param issueId the issue identifier
-     * @param fileIds the file identifiers in a list
-     * @return the shared files in a list.
-     */
-    ResponseList<SharedFile> linkIssueSharedFile(long issueId, List<Long> fileIds);
+    ResponseList<SharedFile> getIssueSharedFiles(Object issueIdOrKey);
 
     /**
      * links the shared files to the issue.
      *
-     * @param issueKey the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param fileIds  the file identifiers in a list
      * @return the linked shared files in a list.
      */
-    ResponseList<SharedFile> linkIssueSharedFile(String issueKey, List<Long> fileIds);
+    ResponseList<SharedFile> linkIssueSharedFile(Object issueIdOrKey, List fileIds);
 
     /**
      * Deletes link of the shared file from the issue.
      *
-     * @param issueId the issue identifier
-     * @param fileId  the file identifiers
-     * @return the unlinked SharedFile
-     */
-    SharedFile unlinkIssueSharedFile(long issueId, long fileId);
-
-    /**
-     * Deletes link of the shared file from the issue.
-     *
-     * @param issueKey the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param fileId   the file identifiers
      * @return the unlinked SharedFile
      */
-    SharedFile unlinkIssueSharedFile(String issueKey, long fileId);
+    SharedFile unlinkIssueSharedFile(Object issueIdOrKey, Object fileId);
 
 }

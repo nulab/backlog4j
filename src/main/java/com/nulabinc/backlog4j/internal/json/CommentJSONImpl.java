@@ -21,6 +21,11 @@ public class CommentJSONImpl implements Comment {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getContent() {
         return content;
     }

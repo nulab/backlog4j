@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -11,36 +12,20 @@ import java.util.List;
  */
 public class AddIssueCommentNotificationParams extends PostParams {
 
-    private long issueId;
-    private String issueKey;
-    private long commentId;
+    private Object issueIdOrKey;
+    private Object commentId;
 
     /**
      * Constructor
      *
-     * @param issueId           the issue identifier
+     * @param issueIdOrKey           the issue identifier
      * @param commentId         the comment identifier
      * @param notifiedUserIds   the user identifiers for notification
      */
-    public AddIssueCommentNotificationParams(long issueId, long commentId, List<Long> notifiedUserIds) {
-        this.issueId = issueId;
+    public AddIssueCommentNotificationParams(Object issueIdOrKey, Object commentId, List notifiedUserIds) {
+        this.issueIdOrKey = issueIdOrKey;
         this.commentId = commentId;
-        for (Long userId : notifiedUserIds) {
-            parameters.add(new NameValuePair("notifiedUserId[]", String.valueOf(userId)));
-        }
-    }
-
-    /**
-     * Constructor
-     *
-     * @param issueKey           the issue identifier
-     * @param commentId         the comment identifier
-     * @param notifiedUserIds   the user identifiers for notification
-     */
-    public AddIssueCommentNotificationParams(String issueKey, long commentId, List<Long> notifiedUserIds) {
-        this.issueKey = issueKey;
-        this.commentId = commentId;
-        for (Long userId : notifiedUserIds) {
+        for (Object userId : notifiedUserIds) {
             parameters.add(new NameValuePair("notifiedUserId[]", String.valueOf(userId)));
         }
     }
@@ -50,8 +35,8 @@ public class AddIssueCommentNotificationParams extends PostParams {
      *
      * @return comment id
      */
-    public long getCommentId() {
-        return commentId;
+    public String getCommentId() {
+        return commentId.toString();
     }
 
     /**
@@ -60,10 +45,6 @@ public class AddIssueCommentNotificationParams extends PostParams {
      * @return issue id or project key
      */
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
-        } else {
-            return String.valueOf(issueId);
-        }
+        return issueIdOrKey.toString();
     }
 }

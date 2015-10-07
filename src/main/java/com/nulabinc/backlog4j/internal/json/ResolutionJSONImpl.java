@@ -23,12 +23,17 @@ public class ResolutionJSONImpl implements Resolution {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
 
     @Override
-    public Issue.ResolutionType getResolution() {
+    public Issue.ResolutionType getResolutionType() {
         return Issue.ResolutionType.valueOf(this.id);
     }
 

@@ -7,11 +7,7 @@ package com.nulabinc.backlog4j.api.option;
  */
 public class UpdateTextAreaCustomFieldParams extends UpdateCustomFieldParams {
 
-    public UpdateTextAreaCustomFieldParams(long projectId, long customFiledId) {
-        super(projectId, customFiledId);
-    }
-
-    public UpdateTextAreaCustomFieldParams(String projectKey, long customFiledId) {
-        super(projectKey, customFiledId);
+    public UpdateTextAreaCustomFieldParams(Object projectIdOrKey, long customFiledId) {
+        super(projectIdOrKey, customFiledId);
     }
 }

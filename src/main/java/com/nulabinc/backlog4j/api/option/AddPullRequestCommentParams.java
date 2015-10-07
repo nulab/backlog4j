@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -11,77 +12,35 @@ import java.util.List;
  */
 public class AddPullRequestCommentParams extends PostParams {
 
-    private long projectId;
-    private String projectKey;
-
-    private long repoId;
-    private String repoName;
-
-    private long number;
+    private Object projectIdOrKey;
+    private Object repoIdOrName;
+    private Object number;
 
     /**
      * Constructor
      *
-     * @param projectId the project identifier
-     * @param repoId the repository identifier
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName the repository name
      * @param number the pull request identifier
      * @param content the comment content
      */
-    public AddPullRequestCommentParams(long projectId, long repoId, long number, String content) {
-        this.projectId = projectId;
-        this.repoId = repoId;
+    public AddPullRequestCommentParams(Object projectIdOrKey, Object repoIdOrName, Object number, String content) {
+        this.projectIdOrKey = projectIdOrKey;
+        this.repoIdOrName = repoIdOrName;
         this.number = number;
         parameters.add(new NameValuePair("content", content));
     }
 
-    /**
-     * Constructor
-     *
-     * @param projectKey the project identifier
-     * @param repoName the repository name
-     * @param number the pull request identifier
-     * @param content the comment content
-     */
-    public AddPullRequestCommentParams(String projectKey, String repoName, long number, String content) {
-        this.projectKey = projectKey;
-        this.repoName = repoName;
-        this.number = number;
-        parameters.add(new NameValuePair("content", content));
-    }
-
-    /**
-     * Returns the project identifier string.
-     *
-     * @return project id or project key
-     */
     public String getProjectIdOrKeyString() {
-        if (projectKey != null) {
-            return projectKey;
-        } else {
-            return String.valueOf(projectId);
-        }
+        return projectIdOrKey.toString();
     }
 
-    /**
-     * Returns the repo name identifier string.
-     *
-     * @return project repo id or repo name
-     */
     public String getRepoIdOrName() {
-        if (repoName != null) {
-            return repoName;
-        } else {
-            return String.valueOf(repoId);
-        }
+        return repoIdOrName.toString();
     }
 
-    /**
-     * Returns the pull request identifier string.
-     *
-     * @return project pull request number
-     */
     public String getNumber() {
-        return String.valueOf(number);
+        return this.number.toString();
     }
 
     /**

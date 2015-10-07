@@ -11,6 +11,8 @@ public interface SharedFile {
 
     long getId();
 
+    String getIdAsString();
+
     String getType();
 
     String getName();

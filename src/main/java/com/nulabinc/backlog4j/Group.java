@@ -9,7 +9,10 @@ import java.util.List;
  * @author nulab-inc
  */
 public interface Group {
+
     long getId();
+
+    String getIdAsString();
 
     String getName();
 

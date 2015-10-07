@@ -15,8 +15,8 @@ public class CreateGroupParams extends PostParams {
         parameters.add(new NameValuePair("name", name));
     }
 
-    public CreateGroupParams members(List<Long> members) {
-        for (Long member : members) {
+    public CreateGroupParams members(List members) {
+        for (Object member : members) {
             parameters.add(new NameValuePair("members[]", member.toString()));
         }
         return this;

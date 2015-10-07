@@ -15,23 +15,14 @@ import java.util.Set;
  */
 public class UpdateIssueParams extends PatchParams {
 
-    private long issueId;
-    private String issueKey;
+    private Object issueIdOrKey;
 
-    public UpdateIssueParams(long issueId) {
-        this.issueId = issueId;
-    }
-
-    public UpdateIssueParams(String issueKey) {
-        this.issueKey = issueKey;
+    public UpdateIssueParams(Object issueIdOrKey) {
+        this.issueIdOrKey = issueIdOrKey;
     }
 
     public String getIssueIdOrKeyString() {
-        if (issueKey != null) {
-            return issueKey;
-        } else {
-            return String.valueOf(issueId);
-        }
+        return issueIdOrKey.toString();
     }
 
     public UpdateIssueParams summary(String summary) {
@@ -119,38 +110,38 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams issueTypeId(long issueTypeId) {
-        parameters.add(new NameValuePair("issueTypeId", String.valueOf(issueTypeId)));
+    public UpdateIssueParams issueTypeId(Object issueTypeId) {
+        parameters.add(new NameValuePair("issueTypeId", issueTypeId.toString()));
         return this;
     }
 
-    public UpdateIssueParams categoryIds(List<Long> categoryIds) {
+    public UpdateIssueParams categoryIds(List categoryIds) {
         if (categoryIds == null) {
             parameters.add(new NameValuePair("categoryId[]", ""));
         } else {
-            for (Long categoryId : categoryIds) {
+            for (Object categoryId : categoryIds) {
                 parameters.add(new NameValuePair("categoryId[]", categoryId.toString()));
             }
         }
         return this;
     }
 
-    public UpdateIssueParams versionIds(List<Long> versionIds) {
+    public UpdateIssueParams versionIds(List versionIds) {
         if (versionIds == null) {
             parameters.add(new NameValuePair("versionId[]", ""));
         } else {
-            for (Long versionId : versionIds) {
+            for (Object versionId : versionIds) {
                 parameters.add(new NameValuePair("versionId[]", versionId.toString()));
             }
         }
         return this;
     }
 
-    public UpdateIssueParams milestoneIds(List<Long> milestoneIds) {
+    public UpdateIssueParams milestoneIds(List milestoneIds) {
         if (milestoneIds == null) {
             parameters.add(new NameValuePair("milestoneId[]", ""));
         } else {
-            for (Long milestoneId : milestoneIds) {
+            for (Object milestoneId : milestoneIds) {
                 parameters.add(new NameValuePair("milestoneId[]", milestoneId.toString()));
             }
         }
@@ -162,29 +153,124 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams assigneeId(long assigneeId) {
-        String assigneeIdStr = String.valueOf(assigneeId);
-        if (assigneeId <= 0) {
+    public UpdateIssueParams assigneeId(Object assigneeId) {
+        String assigneeIdStr = "";
+        if(assigneeId instanceof Integer && ((Integer)assigneeId).intValue() <= 0){
             assigneeIdStr = "";
+        } else if(assigneeId != null){
+            assigneeIdStr = assigneeId.toString();
         }
         parameters.add(new NameValuePair("assigneeId", assigneeIdStr));
         return this;
     }
 
-    public UpdateIssueParams notifiedUserIds(List<Long> notifiedUserIds) {
-        for (Long notifiedUserId : notifiedUserIds) {
+    public UpdateIssueParams notifiedUserIds(List notifiedUserIds) {
+        for (Object notifiedUserId : notifiedUserIds) {
             parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
         }
         return this;
     }
 
-    public UpdateIssueParams attachmentIds(List<Long> attachmentIds) {
-        for (Long attachmentId : attachmentIds) {
+    public UpdateIssueParams attachmentIds(List attachmentIds) {
+        for (Object attachmentId : attachmentIds) {
             parameters.add(new NameValuePair("attachmentId[]", attachmentId.toString()));
         }
         return this;
     }
 
+    public UpdateIssueParams textCustomField(CustomFiledValue customFieldValue) {
+        parameters.add(new NameValuePair("customField_" + customFieldValue.getCustomFieldId(),
+                customFieldValue.getCustomFieldValue()));
+        return this;
+    }
+
+    public UpdateIssueParams textCustomFields(List<CustomFiledValue> customFieldValueList) {
+        for (CustomFiledValue customFiledValue : customFieldValueList) {
+            textCustomField(customFiledValue);
+        }
+        return this;
+    }
+
+    public UpdateIssueParams textAreaCustomField(CustomFiledValue customFieldValue) {
+        return textCustomField(customFieldValue);
+    }
+
+    public UpdateIssueParams textAreaCustomFields(List<CustomFiledValue> customFieldValueList) {
+        return textCustomFields(customFieldValueList);
+    }
+
+    public UpdateIssueParams numericCustomField(CustomFiledValue customFieldValue) {
+        return textCustomField(customFieldValue);
+    }
+
+    public UpdateIssueParams numericCustomFields(List<CustomFiledValue> customFieldValueList) {
+        return textCustomFields(customFieldValueList);
+    }
+
+    public UpdateIssueParams dateCustomField(CustomFiledValue customFieldValue) {
+        return textCustomField(customFieldValue);
+    }
+
+    public UpdateIssueParams dateCustomFields(List<CustomFiledValue> customFieldValueList) {
+        return textCustomFields(customFieldValueList);
+    }
+
+    public UpdateIssueParams singleListCustomField(CustomFiledItem customFiledItem) {
+        parameters.add(new NameValuePair("customField_" + customFiledItem.getCustomFieldId(),
+                customFiledItem.getCustomFieldItemId()));
+        return this;
+    }
+
+    public UpdateIssueParams singleListCustomFields(List<CustomFiledItem> customFiledItemList) {
+        for (CustomFiledItem customFiledItem : customFiledItemList) {
+            singleListCustomField(customFiledItem);
+        }
+        return this;
+    }
+
+    public UpdateIssueParams radioCustomField(CustomFiledItem customFiledItem) {
+        return singleListCustomField(customFiledItem);
+    }
+
+    public UpdateIssueParams radioCustomFields(List<CustomFiledItem> customFiledItemList) {
+        return singleListCustomFields(customFiledItemList);
+    }
+
+    public UpdateIssueParams multipleListCustomField(CustomFiledItems customFiledItems) {
+        for (Object id : customFiledItems.getCustomFieldItemIds()) {
+            parameters.add(new NameValuePair("customField_" + customFiledItems.getCustomFieldId(),
+                    id.toString()));
+        }
+        return this;
+    }
+
+    public UpdateIssueParams multipleListCustomFields(List<CustomFiledItems> customFiledItemsList) {
+        for (CustomFiledItems customFiledItems : customFiledItemsList) {
+            multipleListCustomField(customFiledItems);
+        }
+        return this;
+    }
+
+    public UpdateIssueParams checkBoxCustomField(CustomFiledItems customFiledItems) {
+        return multipleListCustomField(customFiledItems);
+    }
+
+    public UpdateIssueParams checkBoxCustomFields(List<CustomFiledItems> customFiledItemsList) {
+        return multipleListCustomFields(customFiledItemsList);
+    }
+
+    public UpdateIssueParams customFieldOtherValue(CustomFiledValue customFieldValue) {
+        return textCustomField(customFieldValue);
+    }
+
+    public UpdateIssueParams customFieldOtherValues(List<CustomFiledValue> customFieldValueList) {
+        return textCustomFields(customFieldValueList);
+    }
+
+    public UpdateIssueParams comment(String comment) {
+        parameters.add(new NameValuePair("comment", comment));
+        return this;
+    }
 
     public UpdateIssueParams textCustomField(long customFieldId, String customFieldValue) {
         parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
@@ -344,8 +430,4 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams comment(String comment) {
-        parameters.add(new NameValuePair("comment", comment));
-        return this;
-    }
 }

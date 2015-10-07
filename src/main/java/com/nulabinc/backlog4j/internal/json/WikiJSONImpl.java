@@ -45,6 +45,11 @@ public class WikiJSONImpl implements Wiki {
     }
 
     @Override
+    public String getIdAsString() {
+        return String.valueOf(this.id);
+    }
+
+    @Override
     public String getName() {
         return this.name;
     }
@@ -78,6 +83,11 @@ public class WikiJSONImpl implements Wiki {
     @Override
     public long getProjectId() {
         return projectId;
+    }
+
+    @Override
+    public String getProjectIdAsString() {
+        return String.valueOf(this.projectId);
     }
 
     @Override

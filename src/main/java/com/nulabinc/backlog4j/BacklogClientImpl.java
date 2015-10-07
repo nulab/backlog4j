@@ -4,19 +4,16 @@ import com.nulabinc.backlog4j.api.option.*;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
+import com.nulabinc.backlog4j.http.NameValuePair;
 import com.nulabinc.backlog4j.internal.file.AttachmentDataImpl;
 import com.nulabinc.backlog4j.internal.file.IconImpl;
 import com.nulabinc.backlog4j.internal.file.SharedFileDataImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.*;
-import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Implementation of BacklogClient.
@@ -70,7 +67,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public SpaceNotification updateSpaceNotification(String content) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new NameValuePair("content", String.valueOf(content)));
+        params.add(new NameValuePair("content", content));
         return factory.createSpaceNotification(put(buildEndpoint("space/notification"), params));
     }
 
@@ -98,13 +95,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Project getProject(long projectId) throws BacklogException {
-        return factory.createProject(get(buildEndpoint("projects/" + projectId)));
-    }
-
-    @Override
-    public Project getProject(String projectKey) throws BacklogException {
-        return factory.createProject(get(buildEndpoint("projects/" + projectKey)));
+    public Project getProject(Object projectIdOrKey) throws BacklogException {
+        return factory.createProject(get(buildEndpoint("projects/" + projectIdOrKey)));
     }
 
     @Override
@@ -113,141 +105,72 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Project deleteProject(long projectId) throws BacklogException {
-        return factory.createProject(delete(buildEndpoint("projects/" + projectId)));
+    public Project deleteProject(Object projectIdOrKey) throws BacklogException {
+        return factory.createProject(delete(buildEndpoint("projects/" + projectIdOrKey)));
     }
 
     @Override
-    public Project deleteProject(String projectKey) throws BacklogException {
-        return factory.createProject(delete(buildEndpoint("projects/" + projectKey)));
-    }
-
-    @Override
-    public Icon getProjectIcon(long projectId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getProjectIconEndpoint(projectId));
+    public Icon getProjectIcon(Object projectIdOrKey) throws BacklogException {
+        BacklogHttpResponse backlogHttpResponse = get(getProjectIconEndpoint(projectIdOrKey));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
 
     @Override
-    public Icon getProjectIcon(String projectKey) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getProjectIconEndpoint(projectKey));
-        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
-        InputStream inputStream = backlogHttpResponse.asInputStream();
-        return new IconImpl(filename, inputStream);
+    public String getProjectIconEndpoint(Object projectIdOrKey) throws BacklogException {
+        return buildEndpoint("projects/" + projectIdOrKey + "/image");
     }
 
     @Override
-    public String getProjectIconEndpoint(long projectId) throws BacklogException {
-        return buildEndpoint("projects/" + projectId + "/image");
+    public ResponseList<Activity> getProjectActivities(Object projectIdOrKey) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("projects/" + projectIdOrKey + "/activities")));
     }
 
     @Override
-    public String getProjectIconEndpoint(String projectKey) throws BacklogException {
-        return buildEndpoint("projects/" + projectKey + "/image");
+    public ResponseList<Activity> getProjectActivities(Object projectIdOrKey, ActivityQueryParams query) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("projects/" + projectIdOrKey + "/activities"), query));
     }
 
     @Override
-    public ResponseList<Activity> getProjectActivities(long projectId) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("projects/" + projectId + "/activities")));
+    public ResponseList<User> getProjectUsers(Object projectIdOrKey) throws BacklogException {
+        return factory.createUserList(get(buildEndpoint("projects/" + projectIdOrKey + "/users")));
     }
 
     @Override
-    public ResponseList<Activity> getProjectActivities(String projectKey) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("projects/" + projectKey + "/activities")));
-    }
-
-    @Override
-    public ResponseList<Activity> getProjectActivities(long projectId, ActivityQueryParams query) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("projects/" + projectId + "/activities"), query));
-    }
-
-    @Override
-    public ResponseList<Activity> getProjectActivities(String projectKey, ActivityQueryParams query) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("projects/" + projectKey + "/activities"), query));
-    }
-
-    @Override
-    public ResponseList<User> getProjectUsers(long projectId) throws BacklogException {
-        return factory.createUserList(get(buildEndpoint("projects/" + projectId + "/users")));
-    }
-
-    @Override
-    public ResponseList<User> getProjectUsers(String projectKey) throws BacklogException {
-        return factory.createUserList(get(buildEndpoint("projects/" + projectKey + "/users")));
-    }
-
-    @Override
-    public User addProjectUser(long projectId, long userId) throws BacklogException {
+    public User addProjectUser(Object projectIdOrKey, Object userId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectId + "/users"), params));
+        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/users"), params));
     }
 
     @Override
-    public User addProjectUser(String projectKey, long userId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectKey + "/users"), params));
-    }
-
-    @Override
-    public User removeProjectUser(long projectId, long userId) throws BacklogException {
-        return factory.createUser(delete(buildEndpoint("projects/" + projectId + "/users"),
+    public User removeProjectUser(Object projectIdOrKey, Object userId) throws BacklogException {
+        return factory.createUser(delete(buildEndpoint("projects/" + projectIdOrKey + "/users"),
                 new NameValuePair("userId", String.valueOf(userId))));
     }
 
     @Override
-    public User removeProjectUser(String projectKey, long userId) throws BacklogException {
-        return factory.createUser(delete(buildEndpoint("projects/" + projectKey + "/users"),
-                new NameValuePair("userId", String.valueOf(userId))));
-    }
-
-    @Override
-    public User addProjectAdministrator(long projectId, long userId) throws BacklogException {
+    public User addProjectAdministrator(Object projectIdOrKey, Object userId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectId + "/administrators"), params));
+        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/administrators"), params));
     }
 
     @Override
-    public User addProjectAdministrator(String projectKey, long userId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectKey + "/administrators"), params));
+    public ResponseList<User> getProjectAdministrators(Object projectIdOrKey) throws BacklogException {
+        return factory.createUserList(get(buildEndpoint("projects/" + projectIdOrKey + "/administrators")));
     }
 
     @Override
-    public ResponseList<User> getProjectAdministrators(long projectId) throws BacklogException {
-        return factory.createUserList(get(buildEndpoint("projects/" + projectId + "/administrators")));
-    }
-
-    @Override
-    public ResponseList<User> getProjectAdministrators(String projectKey) throws BacklogException {
-        return factory.createUserList(get(buildEndpoint("projects/" + projectKey + "/administrators")));
-    }
-
-    @Override
-    public User removeProjectAdministrator(long projectId, long userId) throws BacklogException {
-        return factory.createUser(delete(buildEndpoint("projects/" + projectId + "/administrators"),
+    public User removeProjectAdministrator(Object projectIdOrKey, Object userId) throws BacklogException {
+        return factory.createUser(delete(buildEndpoint("projects/" + projectIdOrKey + "/administrators"),
                 new NameValuePair("userId", String.valueOf(userId))));
     }
 
     @Override
-    public User removeProjectAdministrator(String projectKey, long userId) throws BacklogException {
-        return factory.createUser(delete(buildEndpoint("projects/" + projectKey + "/administrators"),
-                new NameValuePair("userId", String.valueOf(userId))));
-    }
-
-    @Override
-    public ResponseList<IssueType> getIssueTypes(long projectId) throws BacklogException {
-        return factory.createIssueTypeList(get(buildEndpoint("projects/" + projectId + "/issueTypes")));
-    }
-
-    @Override
-    public ResponseList<IssueType> getIssueTypes(String projectKey) throws BacklogException {
-        return factory.createIssueTypeList(get(buildEndpoint("projects/" + projectKey + "/issueTypes")));
+    public ResponseList<IssueType> getIssueTypes(Object projectIdOrKey) throws BacklogException {
+        return factory.createIssueTypeList(get(buildEndpoint("projects/" + projectIdOrKey + "/issueTypes")));
     }
 
     @Override
@@ -264,25 +187,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public IssueType removeIssueType(long projectId, long issueTypeId, long substituteIssueTypeId) throws BacklogException {
-        return factory.createIssueType(delete(buildEndpoint("projects/" + projectId + "/issueTypes/" + issueTypeId),
+    public IssueType removeIssueType(Object projectIdOrKey, Object issueTypeId, Object substituteIssueTypeId) throws BacklogException {
+        return factory.createIssueType(delete(buildEndpoint("projects/" + projectIdOrKey + "/issueTypes/" + issueTypeId),
                 new NameValuePair("substituteIssueTypeId", String.valueOf(substituteIssueTypeId))));
     }
 
     @Override
-    public IssueType removeIssueType(String projectKey, long issueTypeId, long substituteIssueTypeId) throws BacklogException {
-        return factory.createIssueType(delete(buildEndpoint("projects/" + projectKey + "/issueTypes/" + issueTypeId),
-                new NameValuePair("substituteIssueTypeId", String.valueOf(substituteIssueTypeId))));
-    }
-
-    @Override
-    public ResponseList<Category> getCategories(long projectId) throws BacklogException {
-        return factory.createCategoryList(get(buildEndpoint("projects/" + projectId + "/categories")));
-    }
-
-    @Override
-    public ResponseList<Category> getCategories(String projectKey) throws BacklogException {
-        return factory.createCategoryList(get(buildEndpoint("projects/" + projectKey + "/categories")));
+    public ResponseList<Category> getCategories(Object projectIdOrKey) throws BacklogException {
+        return factory.createCategoryList(get(buildEndpoint("projects/" + projectIdOrKey + "/categories")));
     }
 
     @Override
@@ -299,23 +211,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Category removeCategory(long projectId, long categoryId) throws BacklogException {
-        return factory.createCategory(delete(buildEndpoint("projects/" + projectId + "/categories/" + categoryId)));
+    public Category removeCategory(Object projectIdOrKey, Object categoryId) throws BacklogException {
+        return factory.createCategory(delete(buildEndpoint("projects/" + projectIdOrKey + "/categories/" + categoryId)));
     }
 
     @Override
-    public Category removeCategory(String projectKey, long categoryId) throws BacklogException {
-        return factory.createCategory(delete(buildEndpoint("projects/" + projectKey + "/categories/" + categoryId)));
-    }
-
-    @Override
-    public ResponseList<Version> getVersions(long projectId) throws BacklogException {
-        return factory.createVersionList(get(buildEndpoint("projects/" + projectId + "/versions")));
-    }
-
-    @Override
-    public ResponseList<Version> getVersions(String projectKey) throws BacklogException {
-        return factory.createVersionList(get(buildEndpoint("projects/" + projectKey + "/versions")));
+    public ResponseList<Version> getVersions(Object projectIdOrKey) throws BacklogException {
+        return factory.createVersionList(get(buildEndpoint("projects/" + projectIdOrKey + "/versions")));
     }
 
     @Override
@@ -331,23 +233,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Version removeVersion(long projectId, long versionId) throws BacklogException {
-        return factory.createVersion(delete(buildEndpoint("projects/" + projectId + "/versions/" + versionId)));
+    public Version removeVersion(Object projectIdOrKey, Object versionId) throws BacklogException {
+        return factory.createVersion(delete(buildEndpoint("projects/" + projectIdOrKey + "/versions/" + versionId)));
     }
 
     @Override
-    public Version removeVersion(String projectKey, long versionId) throws BacklogException {
-        return factory.createVersion(delete(buildEndpoint("projects/" + projectKey + "/versions/" + versionId)));
-    }
-
-    @Override
-    public ResponseList<CustomFieldSetting> getCustomFields(long projectId) throws BacklogException {
-        return factory.createCustomFieldList(get(buildEndpoint("projects/" + projectId + "/customFields")));
-    }
-
-    @Override
-    public ResponseList<CustomFieldSetting> getCustomFields(String projectKey) throws BacklogException {
-        return factory.createCustomFieldList(get(buildEndpoint("projects/" + projectKey + "/customFields")));
+    public ResponseList<CustomFieldSetting> getCustomFields(Object projectIdOrKey) throws BacklogException {
+        return factory.createCustomFieldList(get(buildEndpoint("projects/" + projectIdOrKey + "/customFields")));
     }
 
     @Override
@@ -440,109 +332,56 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public CustomFieldSetting removeCustomField(long projectId, long customFieldId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId)));
+    public CustomFieldSetting removeCustomField(Object projectIdOrKey, Object customFieldId) throws BacklogException {
+        return factory.createCustomField(delete(buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId)));
     }
 
     @Override
-    public CustomFieldSetting removeCustomField(String projectKey, long customFieldId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId)));
-    }
-
-    @Override
-    public CustomFieldSetting addListCustomFieldItem(long projectId, long customFieldId, String name) throws BacklogException {
+    public CustomFieldSetting addListCustomFieldItem(Object projectIdOrKey, Object customFieldId, String name) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
-        return factory.createCustomField(post(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items"), params));
+        return factory.createCustomField(post(buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items"), params));
     }
 
     @Override
-    public CustomFieldSetting addListCustomFieldItem(String projectKey, long customFieldId, String name) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new NameValuePair("name", name));
-        return factory.createCustomField(post(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items"), params));
-    }
-
-    @Override
-    public CustomFieldSetting updateListCustomFieldItem(long projectId, long customFieldId, long itemId, String name) throws BacklogException {
+    public CustomFieldSetting updateListCustomFieldItem(Object projectIdOrKey, Object customFieldId, Object itemId, String name) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
         return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items/" + itemId), params));
+                buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId), params));
     }
 
     @Override
-    public CustomFieldSetting updateListCustomFieldItem(String projectKey, long customFieldId, long itemId, String name) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new NameValuePair("name", name));
-        return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items/" + itemId), params));
+    public CustomFieldSetting removeListCustomFieldItem(Object projectIdOrKey, Object customFieldId, Object itemId) throws BacklogException {
+        return factory.createCustomField(delete(buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId)));
     }
 
     @Override
-    public CustomFieldSetting removeListCustomFieldItem(long projectId, long customFieldId, long itemId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectId + "/customFields/" + customFieldId + "/items/" + itemId)));
-    }
-
-    @Override
-    public CustomFieldSetting removeListCustomFieldItem(String projectKey, long customFieldId, long itemId) throws BacklogException {
-        return factory.createCustomField(delete(buildEndpoint("projects/" + projectKey + "/customFields/" + customFieldId + "/items/" + itemId)));
-    }
-
-    @Override
-    public ResponseList<SharedFile> getSharedFiles(long projectId, String path) throws BacklogException {
+    public ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path) throws BacklogException {
         try {
             String encodedPath = URLEncoder.encode(path, "utf-8");
-            return factory.createSharedFileList(get(buildEndpoint("projects/" + projectId + "/files/metadata/" + encodedPath)));
+            return factory.createSharedFileList(get(buildEndpoint("projects/" + projectIdOrKey + "/files/metadata/" + encodedPath)));
         } catch (UnsupportedEncodingException e) {
             throw new BacklogAPIException(e);
         }
     }
 
     @Override
-    public ResponseList<SharedFile> getSharedFiles(String projectKey, String path) throws BacklogException {
-        try {
-            String encodedPath = URLEncoder.encode(path, "utf-8");
-            return factory.createSharedFileList(get(buildEndpoint("projects/" + projectKey + "/files/metadata/" + encodedPath)));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
-    }
-
-    @Override
-    public SharedFileData downloadSharedFile(long projectId, long sharedFileId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectId, sharedFileId));
+    public SharedFileData downloadSharedFile(Object projectIdOrKey, Object sharedFileId) throws BacklogException {
+        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectIdOrKey, sharedFileId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
     }
 
     @Override
-    public SharedFileData downloadSharedFile(String projectKey, long sharedFileId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectKey, sharedFileId));
-        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
-        InputStream inputStream = backlogHttpResponse.asInputStream();
-        return new SharedFileDataImpl(filename, inputStream);
+    public String getSharedFileEndpoint(Object projectIdOrKey, Object sharedFileId) throws BacklogException {
+        return buildEndpoint("projects/" + projectIdOrKey + "/files/" + sharedFileId);
     }
 
     @Override
-    public String getSharedFileEndpoint(long projectId, long sharedFileId) throws BacklogException {
-        return buildEndpoint("projects/" + projectId + "/files/" + sharedFileId);
-    }
-
-    @Override
-    public String getSharedFileEndpoint(String projectKey, long sharedFileId) throws BacklogException {
-        return buildEndpoint("projects/" + projectKey + "/files/" + sharedFileId);
-    }
-
-    @Override
-    public DiskUsageDetail getProjectDiskUsage(long projectId) throws BacklogException {
-        return factory.createDiskUsageDetail(get(buildEndpoint("projects/" + projectId + "/diskUsage")));
-    }
-
-    @Override
-    public DiskUsageDetail getProjectDiskUsage(String projectKey) throws BacklogException {
-        return factory.createDiskUsageDetail(get(buildEndpoint("projects/" + projectKey + "/diskUsage")));
+    public DiskUsageDetail getProjectDiskUsage(Object projectIdOrKey) throws BacklogException {
+        return factory.createDiskUsageDetail(get(buildEndpoint("projects/" + projectIdOrKey + "/diskUsage")));
     }
 
     @Override
@@ -571,48 +410,23 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Issue importUpdateIssue(ImportUpdateIssueParams params) throws BacklogException {
-        return factory.createIssue(patch(buildEndpoint("issues/" + params.getIssueIdOrKeyString() + "/import"), params));
+    public Issue deleteIssue(Object issueIdOrKey) throws BacklogException {
+        return factory.createIssue(delete(buildEndpoint("issues/" + issueIdOrKey)));
     }
 
     @Override
-    public Issue deleteIssue(long issueId) throws BacklogException {
-        return factory.createIssue(delete(buildEndpoint("issues/" + issueId)));
+    public Issue getIssue(Object issueIdOrKey) throws BacklogException {
+        return factory.createIssue(get(buildEndpoint("issues/" + issueIdOrKey)));
     }
 
     @Override
-    public Issue deleteIssue(String issueKey) throws BacklogException {
-        return factory.createIssue(delete(buildEndpoint("issues/" + issueKey)));
+    public ResponseList<IssueComment> getIssueComments(Object issueIdOrKey) throws BacklogException {
+        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueIdOrKey + "/comments")));
     }
 
     @Override
-    public Issue getIssue(long issueId) throws BacklogException {
-        return factory.createIssue(get(buildEndpoint("issues/" + issueId)));
-    }
-
-    @Override
-    public Issue getIssue(String issueKey) throws BacklogException {
-        return factory.createIssue(get(buildEndpoint("issues/" + issueKey)));
-    }
-
-    @Override
-    public ResponseList<IssueComment> getIssueComments(long issueId) throws BacklogException {
-        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueId + "/comments")));
-    }
-
-    @Override
-    public ResponseList<IssueComment> getIssueComments(String issueKey) throws BacklogException {
-        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueKey + "/comments")));
-    }
-
-    @Override
-    public ResponseList<IssueComment> getIssueComments(long issueId, QueryParams queryParams) throws BacklogException {
-        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueId + "/comments"), queryParams));
-    }
-
-    @Override
-    public ResponseList<IssueComment> getIssueComments(String issueKey, QueryParams queryParams) throws BacklogException {
-        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueKey + "/comments"), queryParams));
+    public ResponseList<IssueComment> getIssueComments(Object issueIdOrKey, QueryParams queryParams) throws BacklogException {
+        return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueIdOrKey + "/comments"), queryParams));
     }
 
     @Override
@@ -621,25 +435,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public int getIssueCommentCount(long issueId) throws BacklogException {
-        return factory.createCount(get(buildEndpoint("issues/" + issueId + "/comments/count")))
+    public int getIssueCommentCount(Object issueIdOrKey) throws BacklogException {
+        return factory.createCount(get(buildEndpoint("issues/" + issueIdOrKey + "/comments/count")))
                 .getCount();
     }
 
     @Override
-    public int getIssueCommentCount(String issueKey) throws BacklogException {
-        return factory.createCount(get(buildEndpoint("issues/" + issueKey + "/comments/count")))
-                .getCount();
-    }
-
-    @Override
-    public IssueComment getIssueComment(long issueId, long commentId) throws BacklogException {
-        return factory.createIssueComment(get(buildEndpoint("issues/" + issueId + "/comments/" + commentId)));
-    }
-
-    @Override
-    public IssueComment getIssueComment(String issueKey, long commentId) throws BacklogException {
-        return factory.createIssueComment(get(buildEndpoint("issues/" + issueKey + "/comments/" + commentId)));
+    public IssueComment getIssueComment(Object issueIdOrKey, Object commentId) throws BacklogException {
+        return factory.createIssueComment(get(buildEndpoint("issues/" + issueIdOrKey + "/comments/" + commentId)));
     }
 
     @Override
@@ -650,14 +453,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<Notification> getIssueCommentNotifications(long issueId, long commentId) throws BacklogException {
-        return factory.createNotificationList(get(buildEndpoint("issues/" + issueId
-                + "/comments/" + commentId + "/notifications")));
-    }
-
-    @Override
-    public ResponseList<Notification> getIssueCommentNotifications(String issueKey, long commentId) throws BacklogException {
-        return factory.createNotificationList(get(buildEndpoint("issues/" + issueKey
+    public ResponseList<Notification> getIssueCommentNotifications(Object issueIdOrKey, Object commentId) throws BacklogException {
+        return factory.createNotificationList(get(buildEndpoint("issues/" + issueIdOrKey
                 + "/comments/" + commentId + "/notifications")));
     }
 
@@ -671,123 +468,63 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<Attachment> getIssueAttachments(long issueId) {
-        return factory.createAttachmentList(get(buildEndpoint("issues/" + issueId + "/attachments")));
+    public ResponseList<Attachment> getIssueAttachments(Object issueIdOrKey) {
+        return factory.createAttachmentList(get(buildEndpoint("issues/" + issueIdOrKey + "/attachments")));
     }
 
     @Override
-    public ResponseList<Attachment> getIssueAttachments(String issueKey) {
-        return factory.createAttachmentList(get(buildEndpoint("issues/" + issueKey + "/attachments")));
-    }
-
-    @Override
-    public AttachmentData downloadIssueAttachment(long issueId, long attachmentId) {
-        BacklogHttpResponse backlogHttpResponse = get(getIssueAttachmentEndpoint(issueId, attachmentId));
+    public AttachmentData downloadIssueAttachment(Object issueIdOrKey, Object attachmentId) {
+        BacklogHttpResponse backlogHttpResponse = get(getIssueAttachmentEndpoint(issueIdOrKey, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
 
     @Override
-    public AttachmentData downloadIssueAttachment(String issueKey, long attachmentId) {
-        BacklogHttpResponse backlogHttpResponse = get(getIssueAttachmentEndpoint(issueKey, attachmentId));
-        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
-        InputStream inputStream = backlogHttpResponse.asInputStream();
-        return new AttachmentDataImpl(filename, inputStream);
+    public String getIssueAttachmentEndpoint(Object issueIdOrKey, Object attachmentId) throws BacklogException {
+        return buildEndpoint("issues/" + issueIdOrKey + "/attachments/" + attachmentId);
     }
 
     @Override
-    public String getIssueAttachmentEndpoint(long issueId, long attachmentId) throws BacklogException {
-        return buildEndpoint("issues/" + issueId + "/attachments/" + attachmentId);
+    public Attachment deleteIssueAttachment(Object issueIdOrKey, Object attachmentId) {
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueIdOrKey + "/attachments/" + attachmentId)));
     }
 
     @Override
-    public String getIssueAttachmentEndpoint(String issueKey, long attachmentId) throws BacklogException {
-        return buildEndpoint("issues/" + issueKey + "/attachments/" + attachmentId);
+    public ResponseList<SharedFile> getIssueSharedFiles(Object issueIdOrKey) {
+        return factory.createSharedFileList(get(buildEndpoint("issues/" + issueIdOrKey + "/sharedFiles")));
     }
 
     @Override
-    public Attachment deleteIssueAttachment(long issueId, long attachmentId) {
-        return factory.createAttachment(delete(buildEndpoint("issues/" + issueId + "/attachments/" + attachmentId)));
-    }
-
-    @Override
-    public Attachment deleteIssueAttachment(String issueKey, long attachmentId) {
-        return factory.createAttachment(delete(buildEndpoint("issues/" + issueKey + "/attachments/" + attachmentId)));
-    }
-
-    @Override
-    public ResponseList<SharedFile> getIssueSharedFiles(long issueId) {
-        return factory.createSharedFileList(get(buildEndpoint("issues/" + issueId + "/sharedFiles")));
-    }
-
-    @Override
-    public ResponseList<SharedFile> getIssueSharedFiles(String issueKey) {
-        return factory.createSharedFileList(get(buildEndpoint("issues/" + issueKey + "/sharedFiles")));
-    }
-
-    @Override
-    public ResponseList<SharedFile> linkIssueSharedFile(long issueId, List<Long> fileIds) {
+    public ResponseList<SharedFile> linkIssueSharedFile(Object issueIdOrKey, List fileIds) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for (Long fileId : fileIds) {
+        for (Object fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
-        return factory.createSharedFileList(post(buildEndpoint("issues/" + issueId + "/sharedFiles"), params));
+        return factory.createSharedFileList(post(buildEndpoint("issues/" + issueIdOrKey + "/sharedFiles"), params));
     }
 
     @Override
-    public ResponseList<SharedFile> linkIssueSharedFile(String issueKey, List<Long> fileIds) {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for (Long fileId : fileIds) {
-            params.add(new NameValuePair("fileId[]", fileId.toString()));
-        }
-        return factory.createSharedFileList(post(buildEndpoint("issues/" + issueKey + "/sharedFiles"), params));
+    public SharedFile unlinkIssueSharedFile(Object issueIdOrKey, Object fileId) {
+        return factory.createSharedFile(delete(buildEndpoint("issues/" + issueIdOrKey + "/sharedFiles/" + fileId)));
     }
 
     @Override
-    public SharedFile unlinkIssueSharedFile(long issueId, long fileId) {
-        return factory.createSharedFile(delete(buildEndpoint("issues/" + issueId + "/sharedFiles/" + fileId)));
-    }
-
-    @Override
-    public SharedFile unlinkIssueSharedFile(String issueKey, long fileId) {
-        return factory.createSharedFile(delete(buildEndpoint("issues/" + issueKey + "/sharedFiles/" + fileId)));
-    }
-
-    @Override
-    public ResponseList<Wiki> getWikis(long projectId) {
-        GetParams params = new GetWikisParams(projectId);
+    public ResponseList<Wiki> getWikis(Object projectIdOrKey) {
+        GetParams params = new GetWikisParams(projectIdOrKey);
         return factory.createWikiList(get(buildEndpoint("wikis"), params));
     }
 
     @Override
-    public ResponseList<Wiki> getWikis(String projectKey) {
-        GetParams params = new GetWikisParams(projectKey);
-        return factory.createWikiList(get(buildEndpoint("wikis"), params));
-    }
-
-    @Override
-    public int getWikiCount(long projectId) {
-        GetParams params = new GetWikisParams(projectId);
+    public int getWikiCount(Object projectIdOrKey) {
+        GetParams params = new GetWikisParams(projectIdOrKey);
         return factory.createCount(get(buildEndpoint("wikis/count"), params)).getCount();
     }
 
     @Override
-    public int getWikiCount(String projectKey) {
-        GetParams params = new GetWikisParams(projectKey);
-        return factory.createCount(get(buildEndpoint("wikis/count"), params)).getCount();
-    }
+    public ResponseList<WikiTag> getWikiTags(Object projectIdOrKey) {
 
-    @Override
-    public ResponseList<WikiTag> getWikiTags(long projectId) {
-        GetParams params = new GetWikiTagsParams(projectId);
-        return factory.createWikiTagList(get(buildEndpoint("wikis/tags"), params));
-    }
-
-    @Override
-    public ResponseList<WikiTag> getWikiTags(String projectKey) {
-
-        GetParams params = new GetWikiTagsParams(projectKey);
+        GetParams params = new GetWikiTagsParams(projectIdOrKey);
         return factory.createWikiTagList(get(buildEndpoint("wikis/tags"), params));
     }
 
@@ -797,12 +534,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Wiki importWiki(ImportWikiParams params) {
-        return factory.importWiki(post(buildEndpoint("wikis/import"), params));
-    }
-
-    @Override
-    public Wiki getWiki(long wikiId) {
+    public Wiki getWiki(Object wikiId) {
         return factory.createWiki(get(buildEndpoint("wikis/" + wikiId)));
     }
 
@@ -813,14 +545,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Wiki deleteWiki(long wikiId, boolean mailNotify) {
+    public Wiki deleteWiki(Object wikiId, boolean mailNotify) {
         return factory.createWiki(delete(
                 buildEndpoint("wikis/" + wikiId),
                 new NameValuePair("mailNotify", String.valueOf(mailNotify))));
     }
 
     @Override
-    public ResponseList<Attachment> getWikiAttachments(long wikiId) {
+    public ResponseList<Attachment> getWikiAttachments(Object wikiId) {
         return factory.createAttachmentList(get(buildEndpoint("wikis/" + wikiId + "/attachments")));
     }
 
@@ -830,7 +562,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public AttachmentData downloadWikiAttachment(long wikiId, long attachmentId) {
+    public AttachmentData downloadWikiAttachment(Object wikiId, Object attachmentId) {
         BacklogHttpResponse backlogHttpResponse = get(getWikiAttachmentEndpoint(wikiId, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
@@ -838,46 +570,46 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public String getWikiAttachmentEndpoint(long wikiId, long attachmentId) throws BacklogException {
+    public String getWikiAttachmentEndpoint(Object wikiId, Object attachmentId) throws BacklogException {
         return buildEndpoint("wikis/" + wikiId + "/attachments/" + attachmentId);
     }
 
     @Override
-    public Attachment deleteWikiAttachment(long wikiId, long attachmentId) {
+    public Attachment deleteWikiAttachment(Object wikiId, Object attachmentId) {
         return factory.createAttachment(delete(buildEndpoint("wikis/" + wikiId + "/attachments/" + attachmentId)));
     }
 
     @Override
-    public ResponseList<SharedFile> getWikiSharedFiles(long wikiId) {
+    public ResponseList<SharedFile> getWikiSharedFiles(Object wikiId) {
         return factory.createSharedFileList(get(buildEndpoint("wikis/" + wikiId + "/sharedFiles")));
     }
 
     @Override
-    public ResponseList<SharedFile> linkWikiSharedFile(long wikiId, List<Long> fileIds) {
+    public ResponseList<SharedFile> linkWikiSharedFile(Object wikiId, List fileIds) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        for (Long fileId : fileIds) {
+        for (Object fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
         return factory.createSharedFileList(post(buildEndpoint("wikis/" + wikiId + "/sharedFiles"), params));
     }
 
     @Override
-    public SharedFile unlinkWikiSharedFile(long wikiId, long fileId) {
+    public SharedFile unlinkWikiSharedFile(Object wikiId, Object fileId) {
         return factory.createSharedFile(delete(buildEndpoint("wikis/" + wikiId + "/sharedFiles/" + fileId)));
     }
 
     @Override
-    public ResponseList<WikiHistory> getWikiHistories(long wikiId) {
+    public ResponseList<WikiHistory> getWikiHistories(Object wikiId) {
         return factory.createWikiHistoryList(get(buildEndpoint("wikis/" + wikiId + "/history")));
     }
 
     @Override
-    public ResponseList<WikiHistory> getWikiHistories(long wikiId, QueryParams params) {
+    public ResponseList<WikiHistory> getWikiHistories(Object wikiId, QueryParams params) {
         return factory.createWikiHistoryList(get(buildEndpoint("wikis/" + wikiId + "/history"), params));
     }
 
     @Override
-    public ResponseList<Star> getWikiStars(long wikiId) {
+    public ResponseList<Star> getWikiStars(Object wikiId) {
         return factory.createStarList(get(buildEndpoint("wikis/" + wikiId + "/stars")));
     }
 
@@ -897,41 +629,41 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Icon getUserIcon(long userId) {
-        BacklogHttpResponse backlogHttpResponse = get(getUserIconEndpoint(userId));
+    public Icon getUserIcon(Object numericUserId) {
+        BacklogHttpResponse backlogHttpResponse = get(getUserIconEndpoint(numericUserId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
     }
 
     @Override
-    public String getUserIconEndpoint(long userId) throws BacklogException {
-        return buildEndpoint("users/" + userId + "/icon");
+    public String getUserIconEndpoint(Object numericUserId) throws BacklogException {
+        return buildEndpoint("users/" + numericUserId + "/icon");
     }
 
     @Override
-    public ResponseList<Activity> getUserActivities(long userId) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("users/" + userId + "/activities")));
+    public ResponseList<Activity> getUserActivities(Object numericUserId) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("users/" + numericUserId + "/activities")));
     }
 
     @Override
-    public ResponseList<Activity> getUserActivities(long userId, ActivityQueryParams queryParams) throws BacklogException {
-        return factory.createActivityList(get(buildEndpoint("users/" + userId + "/activities"), queryParams));
+    public ResponseList<Activity> getUserActivities(Object numericUserId, ActivityQueryParams queryParams) throws BacklogException {
+        return factory.createActivityList(get(buildEndpoint("users/" + numericUserId + "/activities"), queryParams));
     }
 
     @Override
-    public ResponseList<Star> getUserStars(long userId) throws BacklogException {
-        return factory.createStarList(get(buildEndpoint("users/" + userId + "/stars")));
+    public ResponseList<Star> getUserStars(Object numericUserId) throws BacklogException {
+        return factory.createStarList(get(buildEndpoint("users/" + numericUserId + "/stars")));
     }
 
     @Override
-    public ResponseList<Star> getUserStars(long userId, QueryParams queryParams) throws BacklogException {
-        return factory.createStarList(get(buildEndpoint("users/" + userId + "/stars"), queryParams));
+    public ResponseList<Star> getUserStars(Object numericUserId, QueryParams queryParams) throws BacklogException {
+        return factory.createStarList(get(buildEndpoint("users/" + numericUserId + "/stars"), queryParams));
     }
 
     @Override
-    public int getUserStarCount(long userId, GetStarsParams params) throws BacklogException {
-        return factory.createCount(get(buildEndpoint("users/" + userId + "/stars/count"), params))
+    public int getUserStarCount(Object numericUserId, GetStarsParams params) throws BacklogException {
+        return factory.createCount(get(buildEndpoint("users/" + numericUserId + "/stars/count"), params))
                 .getCount();
     }
 
@@ -971,8 +703,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public User getUser(long userId) throws BacklogException {
-        return factory.createUser(get(buildEndpoint("users/" + userId)));
+    public User getUser(Object numericUserId) throws BacklogException {
+        return factory.createUser(get(buildEndpoint("users/" + numericUserId)));
     }
 
     @Override
@@ -981,8 +713,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public User deleteUser(long userId) throws BacklogException {
-        return factory.createUser(delete(buildEndpoint("users/" + userId)));
+    public User deleteUser(Object numericUserId) throws BacklogException {
+        return factory.createUser(delete(buildEndpoint("users/" + numericUserId)));
     }
 
     @Override
@@ -991,35 +723,35 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public void addStarToIssue(long issueId) throws BacklogException {
+    public void addStarToIssue(Object issueId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("issueId", String.valueOf(issueId)));
         post(buildEndpoint("stars"), params);
     }
 
     @Override
-    public void addStarToComment(long commentId) throws BacklogException {
+    public void addStarToComment(Object commentId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("commentId", String.valueOf(commentId)));
         post(buildEndpoint("stars"), params);
     }
 
     @Override
-    public void addStarToWiki(long wikiId) throws BacklogException {
+    public void addStarToWiki(Object wikiId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("wikiId", String.valueOf(wikiId)));
         post(buildEndpoint("stars"), params);
     }
 
     @Override
-    public void addStarToPullRequest(long pullRequestId) throws BacklogException {
+    public void addStarToPullRequest(Object pullRequestId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("pullRequestId", String.valueOf(pullRequestId)));
         post(buildEndpoint("stars"), params);
     }
 
     @Override
-    public void addStarToPullRequestComment(long pullRequestCommentId) throws BacklogException {
+    public void addStarToPullRequestComment(Object pullRequestCommentId) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("pullRequestCommentId", String.valueOf(pullRequestCommentId)));
         post(buildEndpoint("stars"), params);
@@ -1048,77 +780,44 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public void markAsReadNotification(long notificationId) throws BacklogException {
+    public void markAsReadNotification(Object notificationId) throws BacklogException {
         post(buildEndpoint("notifications/" + notificationId + "/markAsRead"));
     }
 
     @Override
-    public ResponseList<Repository> getGitRepositories(long projectId) throws BacklogException {
-        GetParams params = new GetRepositoriesParams(projectId);
+    public ResponseList<Repository> getGitRepositories(Object projectIdOrKey) throws BacklogException {
+        GetParams params = new GetRepositoriesParams(projectIdOrKey.toString());
         return factory.createRepositoryList(get(buildEndpoint("git/repositories"), params));
     }
 
     @Override
-    public ResponseList<Repository> getGitRepositories(String projectKey) throws BacklogException {
-        GetParams params = new GetRepositoriesParams(projectKey);
-        return factory.createRepositoryList(get(buildEndpoint("git/repositories"), params));
+    public Repository getGitRepository(Object projectIdOrKey, Object repoIdOrName) throws BacklogException {
+        return factory.createRepository(get(buildEndpoint(
+                "projects/" + projectIdOrKey.toString() +
+                        "/git/repositories/" + repoIdOrName.toString())));
     }
 
     @Override
-    public Repository getGitRepository(long projectId, long repoId) throws BacklogException {
-        return factory.createRepository(get(buildEndpoint("projects/" + projectId + "/git/repositories/" + repoId)));
-    }
-
-    @Override
-    public Repository getGitRepository(String projectKey, String repoName) throws BacklogException {
-        return factory.createRepository(get(buildEndpoint("projects/" + projectKey + "/git/repositories/" + repoName)));
-    }
-
-    @Override
-    public ResponseList<PullRequest> getPullRequests(long projectId, long repoId) throws BacklogException {
+    public ResponseList<PullRequest> getPullRequests(Object projectIdOrKey, Object repoIdOrName) throws BacklogException {
         return factory.createPullRequestList(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests")));
     }
 
     @Override
-    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName) throws BacklogException {
+    public ResponseList<PullRequest> getPullRequests(Object projectIdOrKey, Object repoIdOrName, PullRequestQueryParams params) throws BacklogException {
         return factory.createPullRequestList(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" +
-                        repoName + "/pullRequests")));
-    }
-
-    @Override
-    public ResponseList<PullRequest> getPullRequests(long projectId, long repoId, PullRequestQueryParams params) throws BacklogException {
-        return factory.createPullRequestList(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests"), params));
     }
 
     @Override
-    public ResponseList<PullRequest> getPullRequests(String projectKey, String repoName, PullRequestQueryParams params) throws BacklogException {
-        return factory.createPullRequestList(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
-                        "/pullRequests"), params));
-    }
-
-    @Override
-    public int getPullRequestCount(long projectId, long repoId) throws BacklogException {
+    public int getPullRequestCount(Object projectIdOrKey, Object repoIdOrName) throws BacklogException {
         return factory.createCount(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
-                        "/pullRequests/count"))).getCount();
-    }
-
-    @Override
-    public int getPullRequestCount(String projectKey, String repoName) throws BacklogException {
-        return factory.createCount(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/count"))).getCount();
     }
 
@@ -1140,35 +839,18 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public PullRequest getPullRequest(long projectId, long repoId, long number) throws BacklogException {
+    public PullRequest getPullRequest(Object projectIdOrKey, Object repoIdOrName, Object number) throws BacklogException {
         return factory.createPullRequest(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/" + number)));
     }
 
     @Override
-    public PullRequest getPullRequest(String projectKey, String repoName, long number) throws BacklogException {
-        return factory.createPullRequest(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
-                        "/pullRequests/" + number)));
-    }
-
-    @Override
-    public ResponseList<PullRequestComment> getPullRequestComments(long projectId, long repoId, long number, QueryParams params) throws BacklogException {
+    public ResponseList<PullRequestComment> getPullRequestComments(Object projectIdOrKey, Object repoIdOrName, Object number, QueryParams params) throws BacklogException {
         return factory.createPullRequestCommentList(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
-                        "/pullRequests/" + number +
-                        "/comments"), params));
-    }
-
-    @Override
-    public ResponseList<PullRequestComment> getPullRequestComments(String projectKey, String repoName, long number, QueryParams params) throws BacklogException {
-        return factory.createPullRequestCommentList(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/" + number +
                         "/comments"), params));
     }
@@ -1183,19 +865,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public int getPullRequestCommentCount(long projectId, long repoId, long number) throws BacklogException {
+    public int getPullRequestCommentCount(Object projectIdOrKey, Object repoIdOrName, Object number) throws BacklogException {
         return factory.createCount(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
-                        "/pullRequests/" + number +
-                        "/comments/count"))).getCount();
-    }
-
-    @Override
-    public int getPullRequestCommentCount(String projectKey, String repoName, long number) throws BacklogException {
-        return factory.createCount(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/" + number +
                         "/comments/count"))).getCount();
     }
@@ -1206,73 +879,39 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                 "projects/" + params.getProjectIdOrKeyString() +
                         "/git/repositories/" + params.getRepoIdOrName() +
                         "/pullRequests/" + params.getNumber() +
-                        "/comments/" + params.getCommentid()), params));
+                        "/comments/" + params.getCommentId()), params));
     }
 
     @Override
-    public ResponseList<Attachment> getPullRequestAttachments(long projectId, long repoId, long number) throws BacklogException {
+    public ResponseList<Attachment> getPullRequestAttachments(Object projectIdOrKey, Object repoIdOrName, Object number) throws BacklogException {
         return factory.createAttachmentList(get(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/" + number +
                         "/attachments")));
     }
 
     @Override
-    public ResponseList<Attachment> getPullRequestAttachments(String projectKey, String repoName, long number) throws BacklogException {
-        return factory.createAttachmentList(get(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
-                        "/pullRequests/" + number +
-                        "/attachments")));
-    }
-
-    @Override
-    public AttachmentData downloadPullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectId, repoId, number, attachmentId));
+    public AttachmentData downloadPullRequestAttachment(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) throws BacklogException {
+        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectIdOrKey, repoIdOrName, number, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
 
     @Override
-    public AttachmentData downloadPullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectKey, repoName, number, attachmentId));
-        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
-        InputStream inputStream = backlogHttpResponse.asInputStream();
-        return new AttachmentDataImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getPullRequestAttachmentEndpoint(long projectId, long repoId, long number, long attachmentId) {
-        return buildEndpoint("projects/" + projectId +
-                "/git/repositories/" + repoId +
+    public String getPullRequestAttachmentEndpoint(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) {
+        return buildEndpoint("projects/" + projectIdOrKey +
+                "/git/repositories/" + repoIdOrName +
                 "/pullRequests/" + number +
                 "/attachments/" + attachmentId);
     }
 
     @Override
-    public String getPullRequestAttachmentEndpoint(String projectKey, String repoName, long number, long attachmentId) {
-        return buildEndpoint("projects/" + projectKey +
-                "/git/repositories/" + repoName +
-                "/pullRequests/" + number +
-                "/attachments/" + attachmentId);
-    }
-
-    @Override
-    public Attachment deletePullRequestAttachment(long projectId, long repoId, long number, long attachmentId) throws BacklogException {
+    public Attachment deletePullRequestAttachment(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) throws BacklogException {
         return factory.createAttachment(delete(buildEndpoint(
-                "projects/" + projectId +
-                        "/git/repositories/" + repoId +
-                        "/pullRequests/" + number +
-                        "/attachments/" + attachmentId)));
-    }
-
-    @Override
-    public Attachment deletePullRequestAttachment(String projectKey, String repoName, long number, long attachmentId) throws BacklogException {
-        return factory.createAttachment(delete(buildEndpoint(
-                "projects/" + projectKey +
-                        "/git/repositories/" + repoName +
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
                         "/pullRequests/" + number +
                         "/attachments/" + attachmentId)));
     }
@@ -1293,7 +932,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Group getGroup(long groupId) throws BacklogException {
+    public Group getGroup(Object groupId) throws BacklogException {
         return factory.createGroup(get(buildEndpoint("groups/" + groupId)));
     }
 
@@ -1303,18 +942,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Group deleteGroup(long groupId) throws BacklogException {
+    public Group deleteGroup(Object groupId) throws BacklogException {
         return factory.createGroup(delete(buildEndpoint("groups/" + groupId)));
     }
 
     @Override
-    public ResponseList<Webhook> getWebhooks(long projectId) throws BacklogException {
-        return factory.createWebhookList(get(buildEndpoint("projects/" + projectId + "/webhooks")));
-    }
-
-    @Override
-    public ResponseList<Webhook> getWebhooks(String projectKey) throws BacklogException {
-        return factory.createWebhookList(get(buildEndpoint("projects/" + projectKey + "/webhooks")));
+    public ResponseList<Webhook> getWebhooks(Object projectIdOrKey) throws BacklogException {
+        return factory.createWebhookList(get(buildEndpoint("projects/" + projectIdOrKey + "/webhooks")));
     }
 
     @Override
@@ -1324,13 +958,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Webhook getWebhook(long projectId, long webhookId) throws BacklogException {
-        return factory.createWebhook(get(buildEndpoint("projects/" + projectId + "/webhooks/" + webhookId)));
-    }
-
-    @Override
-    public Webhook getWebhook(String projectKey, long webhookId) throws BacklogException {
-        return factory.createWebhook(get(buildEndpoint("projects/" + projectKey + "/webhooks/" + webhookId)));
+    public Webhook getWebhook(Object projectIdOrKey, Object webhookId) throws BacklogException {
+        return factory.createWebhook(get(buildEndpoint("projects/" + projectIdOrKey + "/webhooks/" + webhookId)));
     }
 
     @Override
@@ -1338,16 +967,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createWebhook(patch(
                 buildEndpoint("projects/" + params.getProjectIdOrKeyString() + "/webhooks/" + params.getWebhookId()), params));
     }
-
     @Override
-    public Webhook deleteWebhook(long projectId, long webhookId) throws BacklogException {
+    public Webhook deleteWebhook(Object projectIdOrKey, Object webhookId) throws BacklogException {
         return factory.createWebhook(delete(
-                buildEndpoint("projects/" + projectId + "/webhooks/" + webhookId)));
-    }
-
-    @Override
-    public Webhook deleteWebhook(String projectKey, long webhookId) throws BacklogException {
-        return factory.createWebhook(delete(
-                buildEndpoint("projects/" + projectKey + "/webhooks/" + webhookId)));
+                buildEndpoint("projects/" + projectIdOrKey + "/webhooks/" + webhookId)));
     }
 }

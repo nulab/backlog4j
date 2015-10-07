@@ -31,6 +31,8 @@ public interface CustomField {
 
     long getId();
 
+    String getIdAsString();
+
     String getName();
 
     int getFieldTypeId();

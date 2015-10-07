@@ -82,11 +82,17 @@ public interface Issue {
 
     long getId();
 
+    String getIdAsString();
+
     String getIssueKey();
 
     long getKeyId();
 
+    String getKeyIdAsString();
+
     long getProjectId();
+
+    String getProjectIdAsString();
 
     IssueType getIssueType();
 
