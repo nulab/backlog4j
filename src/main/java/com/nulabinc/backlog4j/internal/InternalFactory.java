@@ -32,6 +32,8 @@ public interface InternalFactory {
 
     Issue createIssue(BacklogHttpResponse res) throws BacklogException;
 
+    Issue importIssue(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<IssueComment> createIssueCommentList(BacklogHttpResponse res) throws BacklogException;
 
     IssueComment createIssueComment(BacklogHttpResponse res) throws BacklogException;
@@ -69,6 +71,8 @@ public interface InternalFactory {
     Version createVersion(BacklogHttpResponse res) throws BacklogException;
 
     Wiki createWiki(BacklogHttpResponse res) throws BacklogException;
+
+    Wiki importWiki(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<Wiki> createWikiList(BacklogHttpResponse res) throws BacklogException;
 
