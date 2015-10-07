@@ -410,6 +410,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Issue importUpdateIssue(ImportUpdateIssueParams params) throws BacklogException {
+        return factory.createIssue(patch(buildEndpoint("issues/" + params.getIssueIdOrKeyString() + "/import"), params));
+    }
+
+    @Override
     public Issue deleteIssue(Object issueIdOrKey) throws BacklogException {
         return factory.createIssue(delete(buildEndpoint("issues/" + issueIdOrKey)));
     }
@@ -531,6 +536,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Wiki createWiki(CreateWikiParams params) {
         return factory.createWiki(post(buildEndpoint("wikis"), params));
+    }
+
+    @Override
+    public Wiki importWiki(ImportWikiParams params) {
+        return factory.importWiki(post(buildEndpoint("wikis/import"), params));
     }
 
     @Override
