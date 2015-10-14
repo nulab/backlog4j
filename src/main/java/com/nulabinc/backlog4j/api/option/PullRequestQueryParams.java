@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author nulab-inc
  */
-public class PullRequestQueryParams extends GetParams {
+public class PullRequestQueryParams extends QueryParams {
 
     public PullRequestQueryParams statusType(List<PullRequest.StatusType> statusType) {
         for (PullRequest.StatusType type : statusType) {
@@ -40,25 +40,31 @@ public class PullRequestQueryParams extends GetParams {
         return this;
     }
 
+    @Override
     public PullRequestQueryParams minId(Object minId) {
-        parameters.add(new NameValuePair("minId", minId.toString()));
-        return this;
+        return (PullRequestQueryParams) super.minId(minId);
     }
 
+    @Override
     public PullRequestQueryParams maxId(Object maxId) {
-        parameters.add(new NameValuePair("maxId", maxId.toString()));
-        return this;
+        return (PullRequestQueryParams) super.maxId(maxId);
     }
 
-    public PullRequestQueryParams count(int count) {
-        parameters.add(new NameValuePair("count", String.valueOf(count)));
-        return this;
-    }
-
+    @Override
     public PullRequestQueryParams count(long count) {
-        parameters.add(new NameValuePair("count", String.valueOf(count)));
-        return this;
+        return (PullRequestQueryParams) super.count(count);
     }
+
+    @Override
+    public PullRequestQueryParams count(int count) {
+        return (PullRequestQueryParams) super.count(count);
+    }
+
+    @Override
+    public PullRequestQueryParams order(Order order) {
+        return (PullRequestQueryParams) super.order(order);
+    }
+
     public PullRequestQueryParams offset(long offset) {
         parameters.add(new NameValuePair("offset", String.valueOf(offset)));
         return this;
