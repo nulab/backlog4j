@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author nulab-inc
  */
-public class PullRequestQueryParams extends QueryParams {
+public class PullRequestQueryParams extends GetParams {
 
     public PullRequestQueryParams statusType(List<PullRequest.StatusType> statusType) {
         for (PullRequest.StatusType type : statusType) {
@@ -19,31 +19,36 @@ public class PullRequestQueryParams extends QueryParams {
         return this;
     }
 
-    @Override
-    public PullRequestQueryParams minId(Object minId) {
-        return (PullRequestQueryParams) super.minId(minId);
+    public PullRequestQueryParams assigneeIds(List assigneeIds) {
+        for (Object assigneeId : assigneeIds) {
+            parameters.add(new NameValuePair("assigneeId[]", assigneeId.toString()));
+        }
+        return this;
     }
 
-    @Override
-    public PullRequestQueryParams maxId(Object maxId) {
-        return (PullRequestQueryParams) super.maxId(maxId);
+    public PullRequestQueryParams issueIds(List issueIds) {
+        for (Object issueId : issueIds) {
+            parameters.add(new NameValuePair("issueId[]", issueId.toString()));
+        }
+        return this;
     }
 
-    @Override
-    public PullRequestQueryParams count(long count) {
-        return (PullRequestQueryParams) super.count(count);
+    public PullRequestQueryParams createdUserIds(List createdUserIds) {
+        for (Object createdUserId : createdUserIds) {
+            parameters.add(new NameValuePair("createdUserId[]", createdUserId.toString()));
+        }
+        return this;
     }
 
-    @Override
     public PullRequestQueryParams count(int count) {
-        return (PullRequestQueryParams) super.count(count);
+        parameters.add(new NameValuePair("count", String.valueOf(count)));
+        return this;
     }
 
-    @Override
-    public PullRequestQueryParams order(Order order) {
-        return (PullRequestQueryParams) super.order(order);
+    public PullRequestQueryParams count(long count) {
+        parameters.add(new NameValuePair("count", String.valueOf(count)));
+        return this;
     }
-
     public PullRequestQueryParams offset(long offset) {
         parameters.add(new NameValuePair("offset", String.valueOf(offset)));
         return this;

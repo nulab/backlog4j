@@ -42,6 +42,17 @@ public interface PullRequestMethods {
     int getPullRequestCount(Object projectIdOrKey, Object repoIdOrName) throws BacklogException;
 
     /**
+     * Returns the count of the pull requests.
+     *
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName the repository name
+     * @param params the finding pull request parameters.
+     * @return the git pull request.
+     * @throws BacklogException
+     */
+    int getPullRequestCount(Object projectIdOrKey, Object repoIdOrName, PullRequestQueryParams params) throws BacklogException;
+
+    /**
      * Add a pull request.
      *
      * @param params the pull request adding parameters

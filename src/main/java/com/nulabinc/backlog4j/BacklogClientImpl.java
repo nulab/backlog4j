@@ -832,6 +832,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public int getPullRequestCount(Object projectIdOrKey, Object repoIdOrName, PullRequestQueryParams params) throws BacklogException {
+        return factory.createCount(get(buildEndpoint(
+                "projects/" + projectIdOrKey +
+                        "/git/repositories/" + repoIdOrName +
+                        "/pullRequests/count"), params)).getCount();
+    }
+
+    @Override
     public PullRequest addPullRequest(AddPullRequestParams params) throws BacklogException {
         return factory.createPullRequest(post(buildEndpoint(
                 "projects/" + params.getProjectIdOrKeyString() +
