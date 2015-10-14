@@ -40,6 +40,16 @@ public class PullRequestQueryParams extends GetParams {
         return this;
     }
 
+    public PullRequestQueryParams minId(Object minId) {
+        parameters.add(new NameValuePair("minId", minId.toString()));
+        return this;
+    }
+
+    public PullRequestQueryParams maxId(Object maxId) {
+        parameters.add(new NameValuePair("maxId", maxId.toString()));
+        return this;
+    }
+
     public PullRequestQueryParams count(int count) {
         parameters.add(new NameValuePair("count", String.valueOf(count)));
         return this;
