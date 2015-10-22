@@ -521,6 +521,44 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Wiki> getWikis(GetWikisParams params) {
+        ResponseList<Wiki> wikis = factory.createWikiList(get(buildEndpoint("wikis"), params));
+        // API でソート出来ないのでここでソートする
+        sortWikis(wikis, params.getSort(), params.getOrder());
+        return null;
+    }
+
+    public static void sortWikis(ResponseList<Wiki> wikis,
+                           final GetWikisParams.SortKey sort,
+                           final GetWikisParams.Order order){
+        if(sort != null && order != null){
+            Collections.sort(wikis, new Comparator<Wiki>(){
+                @Override
+                public int compare(Wiki wiki1, Wiki wiki2) {
+                    switch (sort) {
+                        case Name:
+                            String name1 = wiki1.getName();
+                            String name2 = wiki2.getName();
+                            return order.equals(GetWikisParams.Order.Asc) ?
+                                    name1.compareTo(name2) : name2.compareTo(name1);
+                        case Created:
+                            Date created1 = wiki1.getCreated();
+                            Date created2 = wiki2.getCreated();
+                            return order.equals(GetWikisParams.Order.Asc) ?
+                                    created1.compareTo(created2) : created2.compareTo(created1);
+                        case Updated:
+                            Date updated1 = wiki1.getUpdated();
+                            Date updated2 = wiki2.getUpdated();
+                            return order.equals(GetWikisParams.Order.Asc) ?
+                                    updated1.compareTo(updated2) : updated2.compareTo(updated1);
+                    }
+                    return 0;
+                }
+            });
+        }
+    }
+
+    @Override
     public int getWikiCount(Object projectIdOrKey) {
         GetParams params = new GetWikisParams(projectIdOrKey);
         return factory.createCount(get(buildEndpoint("wikis/count"), params)).getCount();

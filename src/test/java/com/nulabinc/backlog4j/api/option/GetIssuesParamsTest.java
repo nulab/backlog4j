@@ -19,7 +19,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
 
         // when
         GetIssuesParams params = new GetIssuesParams(Arrays.asList(1000000001l, 1000000002l));
-        params.assignerIds(Arrays.asList(2000000001l, 2000000002l))
+        params.assigneeIds(Arrays.asList(2000000001l, 2000000002l))
                 .attachment(true)
                 .categoryIds(Arrays.asList(3000000001l, 3000000002l))
                 .count(9999)

@@ -1,10 +1,7 @@
 package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.api.option.AddWikiAttachmentParams;
-import com.nulabinc.backlog4j.api.option.CreateWikiParams;
-import com.nulabinc.backlog4j.api.option.QueryParams;
-import com.nulabinc.backlog4j.api.option.UpdateWikiParams;
+import com.nulabinc.backlog4j.api.option.*;
 
 import java.util.List;
 
@@ -22,6 +19,14 @@ public interface WikiMethods {
      * @return the Wiki pages in a list
      */
     ResponseList<Wiki> getWikis(Object projectIdOrKey);
+
+    /**
+     * Returns Wiki pages in the project.
+     *
+     * @param params the finding wiki parameters
+     * @return the Wiki pages in a list
+     */
+    ResponseList<Wiki> getWikis(GetWikisParams params);
 
     /**
      * Returns Wiki pages count.
