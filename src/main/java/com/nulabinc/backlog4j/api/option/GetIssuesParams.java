@@ -121,9 +121,9 @@ public class GetIssuesParams extends GetParams {
         return this;
     }
 
-    public GetIssuesParams assignerIds(List assignerIds) {
-        for (Object assignerId : assignerIds) {
-            parameters.add(new NameValuePair("assigneeId[]", assignerId.toString()));
+    public GetIssuesParams assigneeIds(List assigneeIds) {
+        for (Object assigneeId : assigneeIds) {
+            parameters.add(new NameValuePair("assigneeId[]", assigneeId.toString()));
         }
         return this;
     }

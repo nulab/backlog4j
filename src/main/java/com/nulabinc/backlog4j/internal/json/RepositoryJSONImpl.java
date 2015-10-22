@@ -62,7 +62,7 @@ public class RepositoryJSONImpl implements Repository {
 
     @Override
     public String getProjectIdAsString() {
-        return null;
+        return String.valueOf(this.projectId);
     }
 
     @Override
