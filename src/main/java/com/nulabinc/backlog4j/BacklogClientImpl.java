@@ -525,7 +525,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         ResponseList<Wiki> wikis = factory.createWikiList(get(buildEndpoint("wikis"), params));
         // API でソート出来ないのでここでソートする
         sortWikis(wikis, params.getSort(), params.getOrder());
-        return null;
+        return wikis;
     }
 
     public static void sortWikis(ResponseList<Wiki> wikis,
