@@ -10,7 +10,8 @@ import com.nulabinc.backlog4j.auth.OAuthSupport;
  */
 public interface BacklogClient extends ProjectMethods, IssueMethods, SpaceMethods,
         WikiMethods, ResolutionMethods, StatusMethods, PriorityMethods, UserMethods,
-        StarMethods, NotificationMethods, GitMethods, PullRequestMethods, GroupMethods, WebhookMethods, ImportMethods {
+        StarMethods, NotificationMethods, GitMethods, PullRequestMethods, GroupMethods, WebhookMethods, ImportMethods,
+        BacklogUrlSupport {
 
     void setOAuthSupport(OAuthSupport oAuthSupport);
 }

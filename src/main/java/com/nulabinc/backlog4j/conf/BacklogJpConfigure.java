@@ -30,4 +30,9 @@ public final class BacklogJpConfigure extends BacklogConfigure {
     public String getRestBaseURL() {
         return "https://" + spaceKey + ".backlog.jp/api/v2";
     }
+
+    @Override
+    public String getWebAppBaseURL() {
+        return "https://" + spaceKey + ".backlog.jp";
+    }
 }

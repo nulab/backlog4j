@@ -23,7 +23,7 @@ import java.util.Map;
  *
  * @author nulab-inc
  */
-public abstract class BacklogClientBase {
+public abstract class BacklogClientBase{
 
     protected BacklogHttpClient httpClient;
     protected BacklogConfigure configure;

@@ -529,10 +529,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     public static void sortWikis(ResponseList<Wiki> wikis,
-                           final GetWikisParams.SortKey sort,
-                           final GetWikisParams.Order order){
-        if(sort != null && order != null){
-            Collections.sort(wikis, new Comparator<Wiki>(){
+                                 final GetWikisParams.SortKey sort,
+                                 final GetWikisParams.Order order) {
+        if (sort != null && order != null) {
+            Collections.sort(wikis, new Comparator<Wiki>() {
                 @Override
                 public int compare(Wiki wiki1, Wiki wiki2) {
                     switch (sort) {
@@ -1023,9 +1023,36 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createWebhook(patch(
                 buildEndpoint("projects/" + params.getProjectIdOrKeyString() + "/webhooks/" + params.getWebhookId()), params));
     }
+
     @Override
     public Webhook deleteWebhook(Object projectIdOrKey, Object webhookId) throws BacklogException {
         return factory.createWebhook(delete(
                 buildEndpoint("projects/" + projectIdOrKey + "/webhooks/" + webhookId)));
+    }
+
+    @Override
+    public String getPullRequestUrl(Project project, Repository repository, PullRequest pullRequest) {
+        return configure.getWebAppBaseURL() + "/git/" + project.getProjectKey() + "/" +
+                repository.getName() + "/pullRequests/" + pullRequest.getNumber();
+    }
+
+    @Override
+    public String getPullRequestUrl(Project project, Repository repository, PullRequest pullRequest, PullRequestComment pullRequestComment) {
+        return getPullRequestUrl(project, repository, pullRequest) + "#comment-" + pullRequestComment.getId();
+    }
+
+    @Override
+    public String getIssueUrl(Issue issue) {
+        return configure.getWebAppBaseURL() + "/view/" + issue.getIssueKey();
+    }
+
+    @Override
+    public String getIssueUrl(Issue issue, IssueComment issueComment) {
+        return getIssueUrl(issue) + "#comment-" + issueComment.getId();
+    }
+
+    @Override
+    public String getWikiUrl(Project project, Wiki wiki) {
+        return configure.getWebAppBaseURL() + "/wiki/" + project.getProjectKey() + "/" + wiki.getName();
     }
 }

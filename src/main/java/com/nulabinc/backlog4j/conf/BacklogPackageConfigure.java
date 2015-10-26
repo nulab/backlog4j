@@ -8,9 +8,6 @@ import java.net.MalformedURLException;
 public class BacklogPackageConfigure extends BacklogConfigure {
 
     private String url;
-    private String authorizationUrl;
-    private String accessTokenUrl;
-    private String restBaseUrl;
 
     public BacklogPackageConfigure(String url) throws MalformedURLException {
 
@@ -19,25 +16,30 @@ public class BacklogPackageConfigure extends BacklogConfigure {
         }
 
         if (url.endsWith("/")) {
-            this.url = url;
+            this.url = url.substring(0, url.length() -1);
         } else {
-            this.url = url + "/";
+            this.url = url;
         }
     }
 
     @Override
     public String getOAuthAuthorizationURL() {
-        return this.url + "OAuth2AccessRequest.action";
+        return this.url + "/OAuth2AccessRequest.action";
     }
 
     @Override
     public String getOAuthAccessTokenURL() {
-        return this.url + "api/v2/oauth2/token";
+        return this.url + "/api/v2/oauth2/token";
     }
 
     @Override
     public String getRestBaseURL() {
-        return this.restBaseUrl = this.url + "api/v2";
+        return this.url + "/api/v2";
+    }
+
+    @Override
+    public String getWebAppBaseURL() {
+        return this.url;
     }
 
 }

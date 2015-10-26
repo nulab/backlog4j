@@ -14,11 +14,19 @@ public class BacklogPackageConfigureTest {
 
         // when
         String testUrl = "https://test.com";
-       BacklogConfigure configure = new BacklogPackageConfigure(testUrl);
+        BacklogConfigure configure = new BacklogPackageConfigure(testUrl);
 
         // then
-        String expected = testUrl + "/api/v2";
-        assertEquals(expected , configure.getRestBaseURL());
+        String expected = "https://test.com/api/v2";
+        assertEquals(expected, configure.getRestBaseURL());
+
+        // when
+        testUrl = "https://test.com/abcd/";
+        configure = new BacklogPackageConfigure(testUrl);
+
+        // then
+        expected =  "https://test.com/abcd/api/v2";
+        assertEquals(expected, configure.getRestBaseURL());
 
     }
 }

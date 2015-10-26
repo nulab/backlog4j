@@ -30,4 +30,9 @@ public class BacklogToolConfigure extends BacklogConfigure {
     public String getRestBaseURL() {
         return "https://" + spaceKey + ".backlogtool.com/api/v2";
     }
+
+    @Override
+    public String getWebAppBaseURL() {
+        return "https://" + spaceKey + ".backlogtool.com";
+    }
 }

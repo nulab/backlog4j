@@ -57,5 +57,6 @@ public abstract class BacklogConfigure {
 
     public abstract String getRestBaseURL();
 
+    public abstract String getWebAppBaseURL();
 
 }
