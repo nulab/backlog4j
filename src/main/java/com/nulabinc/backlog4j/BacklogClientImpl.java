@@ -1037,7 +1037,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public String getPullRequestUrl(Project project, Repository repository, PullRequest pullRequest, PullRequestComment pullRequestComment) {
+    public String getPullRequestCommentUrl(Project project, Repository repository, PullRequest pullRequest, PullRequestComment pullRequestComment) {
         return getPullRequestUrl(project, repository, pullRequest) + "#comment-" + pullRequestComment.getId();
     }
 
@@ -1047,7 +1047,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public String getIssueUrl(Issue issue, IssueComment issueComment) {
+    public String getIssueCommentUrl(Issue issue, IssueComment issueComment) {
         return getIssueUrl(issue) + "#comment-" + issueComment.getId();
     }
 

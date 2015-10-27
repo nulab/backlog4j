@@ -12,14 +12,14 @@ interface BacklogUrlSupport {
                                      PullRequest pullRequest);
 
     // https://spacexxx.backlog.jp/git/TEST_PROJECT/app_repository/pullRequests/123#comment-1074239043
-    String getPullRequestUrl (Project project,  Repository repository,
-                                     PullRequest pullRequest, PullRequestComment pullRequestComment);
+    String getPullRequestCommentUrl(Project project, Repository repository,
+                                    PullRequest pullRequest, PullRequestComment pullRequestComment);
 
     // https://spacexxx.backlog.jp/view/TEST_PROJECT-123
     String getIssueUrl (Issue issue);
 
     // https://spacexxx.backlog.jp/view/TEST_PROJECT-123#comment-1212
-    String getIssueUrl (Issue issue, IssueComment issueComment);
+    String getIssueCommentUrl(Issue issue, IssueComment issueComment);
 
     // https://spacexxx.backlog.jp/wiki/TEST_PROJECT/Home
     String getWikiUrl (Project project, Wiki wiki);
