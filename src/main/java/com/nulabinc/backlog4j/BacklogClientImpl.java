@@ -1053,6 +1053,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public String getWikiUrl(Project project, Wiki wiki) {
-        return configure.getWebAppBaseURL() + "/wiki/" + project.getProjectKey() + "/" + wiki.getName();
+        try {
+            return configure.getWebAppBaseURL() + "/wiki/" + project.getProjectKey() + "/" + URLEncoder.encode(wiki.getName(), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
