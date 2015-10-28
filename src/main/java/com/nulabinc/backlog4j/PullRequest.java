@@ -9,7 +9,7 @@ import java.util.List;
 public interface PullRequest {
 
     enum StatusType {
-        Open(1), Merged(2), Closed(3);
+        Open(1), Closed(2), Merged(3);
 
         StatusType(int intValue) {
             this.intValue = intValue;
