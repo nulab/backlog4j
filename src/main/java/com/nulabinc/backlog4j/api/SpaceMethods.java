@@ -45,14 +45,6 @@ public interface SpaceMethods {
     Icon getSpaceIcon() throws BacklogException;
 
     /**
-     * Returns the endpoint of space icon.
-     *
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getSpaceIconEndpoint() throws BacklogException;
-
-    /**
      * Returns the space information.
      *
      * @return the SpaceNotification

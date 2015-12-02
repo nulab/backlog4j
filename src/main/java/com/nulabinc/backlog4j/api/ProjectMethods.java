@@ -65,15 +65,6 @@ public interface ProjectMethods {
     Icon getProjectIcon(Object projectIdOrKey) throws BacklogException;
 
     /**
-     * Returns the endpoint of project icon.
-     *
-     * @param projectIdOrKey the project identifier
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getProjectIconEndpoint(Object projectIdOrKey) throws BacklogException;
-
-    /**
      * Returns the activities on the project.
      *
      * @param projectIdOrKey the project identifier
@@ -481,16 +472,6 @@ public interface ProjectMethods {
      * @throws BacklogException
      */
     SharedFileData downloadSharedFile(Object projectIdOrKey, Object sharedFileId) throws BacklogException;
-
-    /**
-     * Returns the endpoint of shared file.
-     *
-     * @param projectIdOrKey    the project identifier
-     * @param sharedFileId      the shared file identifier
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getSharedFileEndpoint(Object projectIdOrKey, Object sharedFileId) throws BacklogException;
 
     /**
      * Returns the disk usage of the project.

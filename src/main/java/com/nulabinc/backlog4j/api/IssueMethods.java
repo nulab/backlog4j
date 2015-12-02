@@ -161,16 +161,6 @@ public interface IssueMethods {
     AttachmentData downloadIssueAttachment(Object issueIdOrKey, Object attachmentId);
 
     /**
-     * Returns the endpoint of attachment file.
-     *
-     * @param issueIdOrKey     the issue identifier
-     * @param attachmentId the attachment identifierr
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getIssueAttachmentEndpoint(Object issueIdOrKey, Object attachmentId) throws BacklogException;
-
-    /**
      * Deletes the attachment file on the issue.
      *
      * @param issueIdOrKey     the issue identifier

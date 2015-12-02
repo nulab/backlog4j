@@ -147,17 +147,6 @@ public interface PullRequestMethods {
     AttachmentData downloadPullRequestAttachment(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) throws BacklogException;
 
     /**
-     * Returns the endpoint of attachment file.
-     *
-     * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param attachmentId the pull request attachment identifier
-     * @return the endpoint
-     */
-    String getPullRequestAttachmentEndpoint(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId);
-
-    /**
      * Deletes the attachment file on the pull request.
      *
      * @param projectIdOrKey the project identifier

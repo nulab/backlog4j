@@ -29,17 +29,19 @@ public abstract class BacklogClientBase{
     protected BacklogConfigure configure;
     protected InternalFactory factory = new InternalFactoryJSONImpl();
     protected OAuthSupport oAuthSupport;
+    protected BacklogEndPointSupport backlogEndPointSupport;
 
     public BacklogClientBase(BacklogConfigure configure) {
         this.configure = configure;
         this.httpClient = new BacklogHttpClientImpl();
+        this.backlogEndPointSupport = new BacklogEndPointSupport(configure);
         configureHttpClient();
-
     }
 
     public BacklogClientBase(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
+        this.backlogEndPointSupport = new BacklogEndPointSupport(configure);
         configureHttpClient();
     }
 

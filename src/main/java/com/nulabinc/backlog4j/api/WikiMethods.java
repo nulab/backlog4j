@@ -103,17 +103,6 @@ public interface WikiMethods {
      * @return downloaded file data
      */
     AttachmentData downloadWikiAttachment(Object wikiId, Object attachmentId);
-
-    /**
-     * Returns the endpoint of Wiki page's attachment file.
-     *
-     * @param wikiId       the Wiki page identifier
-     * @param attachmentId the attachment identifier
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getWikiAttachmentEndpoint(Object wikiId, Object attachmentId) throws BacklogException;
-
     /**
      * Deletes the Wiki page's attachment file
      *

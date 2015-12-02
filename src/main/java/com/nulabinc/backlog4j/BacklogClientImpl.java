@@ -30,7 +30,6 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         super(configure, httpClient);
     }
 
-
     @Override
     public Space getSpace() throws BacklogException {
         return factory.createSpace(get(buildEndpoint("space")));
@@ -48,15 +47,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Icon getSpaceIcon() throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getSpaceIconEndpoint());
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getSpaceIconEndpoint());
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getSpaceIconEndpoint() throws BacklogException {
-        return buildEndpoint("space/image");
     }
 
     @Override
@@ -111,15 +105,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Icon getProjectIcon(Object projectIdOrKey) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getProjectIconEndpoint(projectIdOrKey));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getProjectIconEndpoint(projectIdOrKey));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getProjectIconEndpoint(Object projectIdOrKey) throws BacklogException {
-        return buildEndpoint("projects/" + projectIdOrKey + "/image");
     }
 
     @Override
@@ -368,15 +357,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public SharedFileData downloadSharedFile(Object projectIdOrKey, Object sharedFileId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getSharedFileEndpoint(projectIdOrKey, sharedFileId));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getSharedFileEndpoint(projectIdOrKey, sharedFileId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new SharedFileDataImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getSharedFileEndpoint(Object projectIdOrKey, Object sharedFileId) throws BacklogException {
-        return buildEndpoint("projects/" + projectIdOrKey + "/files/" + sharedFileId);
     }
 
     @Override
@@ -479,15 +463,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public AttachmentData downloadIssueAttachment(Object issueIdOrKey, Object attachmentId) {
-        BacklogHttpResponse backlogHttpResponse = get(getIssueAttachmentEndpoint(issueIdOrKey, attachmentId));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getIssueAttachmentEndpoint(issueIdOrKey, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getIssueAttachmentEndpoint(Object issueIdOrKey, Object attachmentId) throws BacklogException {
-        return buildEndpoint("issues/" + issueIdOrKey + "/attachments/" + attachmentId);
     }
 
     @Override
@@ -611,15 +590,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public AttachmentData downloadWikiAttachment(Object wikiId, Object attachmentId) {
-        BacklogHttpResponse backlogHttpResponse = get(getWikiAttachmentEndpoint(wikiId, attachmentId));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getWikiAttachmentEndpoint(wikiId, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getWikiAttachmentEndpoint(Object wikiId, Object attachmentId) throws BacklogException {
-        return buildEndpoint("wikis/" + wikiId + "/attachments/" + attachmentId);
     }
 
     @Override
@@ -678,15 +652,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Icon getUserIcon(Object numericUserId) {
-        BacklogHttpResponse backlogHttpResponse = get(getUserIconEndpoint(numericUserId));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getUserIconEndpoint(numericUserId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new IconImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getUserIconEndpoint(Object numericUserId) throws BacklogException {
-        return buildEndpoint("users/" + numericUserId + "/icon");
     }
 
     @Override
@@ -949,18 +918,10 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public AttachmentData downloadPullRequestAttachment(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) throws BacklogException {
-        BacklogHttpResponse backlogHttpResponse = get(getPullRequestAttachmentEndpoint(projectIdOrKey, repoIdOrName, number, attachmentId));
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getPullRequestAttachmentEndpoint(projectIdOrKey, repoIdOrName, number, attachmentId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
-    }
-
-    @Override
-    public String getPullRequestAttachmentEndpoint(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) {
-        return buildEndpoint("projects/" + projectIdOrKey +
-                "/git/repositories/" + repoIdOrName +
-                "/pullRequests/" + number +
-                "/attachments/" + attachmentId);
     }
 
     @Override

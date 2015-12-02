@@ -63,15 +63,6 @@ public interface UserMethods {
     Icon getUserIcon(Object numericUserId) throws BacklogException;
 
     /**
-     * Returns the endpoint of user icon.
-     *
-     * @param numericUserId the user identifier
-     * @return the endpoint
-     * @throws BacklogException
-     */
-    String getUserIconEndpoint(Object numericUserId) throws BacklogException;
-
-    /**
      * Returns the user recently updates
      *
      * @param numericUserId the user identifier
