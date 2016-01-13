@@ -70,6 +70,10 @@ public interface InternalFactory {
 
     Version createVersion(BacklogHttpResponse res) throws BacklogException;
 
+    ResponseList<Milestone> createMilestoneList(BacklogHttpResponse res) throws BacklogException;
+
+    Milestone createMilestone(BacklogHttpResponse res) throws BacklogException;
+
     Wiki createWiki(BacklogHttpResponse res) throws BacklogException;
 
     Wiki importWiki(BacklogHttpResponse res) throws BacklogException;

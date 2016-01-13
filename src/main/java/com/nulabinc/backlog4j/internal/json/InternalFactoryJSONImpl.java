@@ -295,6 +295,22 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     }
 
     @Override
+    public Milestone createMilestone(BacklogHttpResponse res) throws BacklogException {
+        return createObject(res.asString(), Milestone.class, MilestoneJSONImpl.class);
+    }
+    public Milestone createMilestone(String resStr) throws BacklogException {
+        return createObject(resStr, Milestone.class, MilestoneJSONImpl.class);
+    }
+
+    @Override
+    public ResponseList<Milestone> createMilestoneList(BacklogHttpResponse res) throws BacklogException {
+        return createObjectList(res.asString(), Milestone.class, MilestoneJSONImpl[].class);
+    }
+    public ResponseList<Milestone> createMilestoneList(String resStr) throws BacklogException {
+        return createObjectList(resStr, Milestone.class, MilestoneJSONImpl[].class);
+    }
+
+    @Override
     public Wiki createWiki(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
     }

@@ -257,6 +257,43 @@ public interface ProjectMethods {
     Version removeVersion(Object projectIdOrKey, Object versionId) throws BacklogException;
 
     /**
+     * Returns the Milestones in the project.
+     *
+     * @param projectIdOrKey the project identifier
+     * @return the Milestones in a list
+     * @throws BacklogException
+     */
+    ResponseList<Milestone> getMilestones(Object projectIdOrKey) throws BacklogException;
+
+    /**
+     * Adds a Milestone to the project.
+     *
+     * @param params the adding Milestone parameters.
+     * @return the added Milestone
+     * @throws BacklogException
+     */
+    Milestone addMilestone(AddMilestoneParams params) throws BacklogException;
+
+    /**
+     * Updates the existing Milestone in the project.
+     *
+     * @param params the updating Milestone parameters.
+     * @return the updated Milestone
+     * @throws BacklogException
+     */
+    Milestone updateMilestone(UpdateMilestoneParams params) throws BacklogException;
+
+    /**
+     * Removes the Milestone from the project.
+     *
+     * @param projectIdOrKey the project identifier
+     * @param MilestoneId  the Milestone identifier
+     * @return the removed Milestone
+     * @throws BacklogException
+     */
+    Milestone removeMilestone(Object projectIdOrKey, Object MilestoneId) throws BacklogException;
+
+    /**
      * Returns the custom fields in the project.
      *
      * @param projectIdOrKey the project identifier

@@ -8,6 +8,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 import com.nulabinc.backlog4j.internal.file.AttachmentDataImpl;
 import com.nulabinc.backlog4j.internal.file.IconImpl;
 import com.nulabinc.backlog4j.internal.file.SharedFileDataImpl;
+import com.nulabinc.backlog4j.internal.json.ResponseListImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.*;
 
 import java.io.InputStream;
@@ -224,6 +225,34 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Version removeVersion(Object projectIdOrKey, Object versionId) throws BacklogException {
         return factory.createVersion(delete(buildEndpoint("projects/" + projectIdOrKey + "/versions/" + versionId)));
+    }
+
+    @Override
+    public ResponseList<Milestone> getMilestones(Object projectIdOrKey) throws BacklogException {
+        ResponseList<Milestone> list = new ResponseListImpl<Milestone>();
+        for (Milestone milestone : factory.createMilestoneList(get(buildEndpoint("projects/" + projectIdOrKey + "/versions")))) {
+            if (!milestone.getArchived()) {
+                list.add(milestone);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public Milestone addMilestone(AddMilestoneParams params) throws BacklogException {
+        return factory.createMilestone(post(buildEndpoint("projects/" + params.getProjectIdOrKeyString() + "/versions"), params));
+    }
+
+    @Override
+    public Milestone updateMilestone(UpdateMilestoneParams params) throws BacklogException {
+        return factory.createMilestone(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/versions/" + params.getVersionId()), params));
+    }
+
+    @Override
+    public Milestone removeMilestone(Object projectIdOrKey, Object MilestoneId) throws BacklogException {
+        return factory.createMilestone(delete(buildEndpoint("projects/" + projectIdOrKey + "/versions/" + MilestoneId)));
     }
 
     @Override
