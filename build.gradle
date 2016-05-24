@@ -8,6 +8,7 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 sourceCompatibility=1.6
+tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
