@@ -189,7 +189,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
 
         try {
             OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-            PrintWriter writer = new PrintWriter(out);
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(out, "UTF-8")));
             for (Map.Entry<String, Object> entry : params.entrySet()) {
                 String name = entry.getKey();
                 Object value = entry.getValue();
