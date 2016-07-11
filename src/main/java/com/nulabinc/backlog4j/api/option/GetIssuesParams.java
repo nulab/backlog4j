@@ -60,7 +60,7 @@ public class GetIssuesParams extends GetParams {
     }
 
     public enum ParentChildType {
-        All(1), NotChild(1), Child(2), NotChildNotParent(3), Parent(4);
+        All(0), NotChild(1), Child(2), NotChildNotParent(3), Parent(4);
 
         ParentChildType(int intValue) {
             this.intValue = intValue;
