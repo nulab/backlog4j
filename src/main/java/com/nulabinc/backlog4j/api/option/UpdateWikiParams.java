@@ -29,8 +29,8 @@ public class UpdateWikiParams extends PatchParams {
         return this;
     }
 
-    public UpdateWikiParams mailNotify(String mailNotify) {
-        parameters.add(new NameValuePair("mailNotify", mailNotify));
+    public UpdateWikiParams mailNotify(boolean mailNotify) {
+        parameters.add(new NameValuePair("mailNotify", String.valueOf(mailNotify)));
         return this;
     }
 }
