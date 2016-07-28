@@ -1050,4 +1050,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
             return null;
         }
     }
+
+    @Override
+    public Watch getWatch(Long watchingId) throws BacklogException {
+        return factory.createWatch(get(buildEndpoint("watchings/" + watchingId)));
+    }
 }
