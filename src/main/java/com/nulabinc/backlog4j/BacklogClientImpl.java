@@ -1066,4 +1066,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createWatchList(get(buildEndpoint("users/" + numericUserId + "/watchings")));
     }
 
+    @Override
+    public void addWatchingToIssue(Object issueIdOrKey, String note) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("issueIdOrKey", String.valueOf(issueIdOrKey)));
+        if (note != null) {
+            params.add(new NameValuePair("note", note));
+        }
+        post(buildEndpoint("watchings"), params);
+    }
+
 }
