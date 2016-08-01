@@ -1086,4 +1086,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createWatch(delete(buildEndpoint("watchings/" + watchingId)));
     }
 
+    @Override
+    public void markAsCheckedUserWatches(Object numericUserId) throws BacklogException {
+        post(buildEndpoint("users/" + numericUserId + "/watchings/markAsChecked"));
+    }
+
 }

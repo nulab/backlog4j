@@ -45,4 +45,12 @@ public interface WatchingMethods {
      */
     Watch deleteWatch(Object watchingId) throws BacklogException;
 
+    /**
+     * Marks the watching as already read.
+     *
+     * @param numericUserId the user identifier
+     * @throws BacklogException
+     */
+    void markAsCheckedUserWatches(Object numericUserId) throws BacklogException;
+
 }
