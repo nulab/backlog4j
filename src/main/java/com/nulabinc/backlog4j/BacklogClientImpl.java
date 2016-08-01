@@ -1081,4 +1081,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createWatch(patch(buildEndpoint("watchings/" + params.getWatchingIdString()), params));
     }
 
+    @Override
+    public Watch deleteWatch(Object watchingId) throws BacklogException {
+        return factory.createWatch(delete(buildEndpoint("watchings/" + watchingId)));
+    }
+
 }

@@ -36,4 +36,13 @@ public interface WatchingMethods {
      */
     Watch updateWatch(UpdateWatchParams params) throws BacklogException;
 
+    /**
+     * Deletes the existing watching.
+     *
+     * @param watchingId the watching identifier
+     * @return the deleted watching
+     * @throws BacklogException
+     */
+    Watch deleteWatch(Object watchingId) throws BacklogException;
+
 }
