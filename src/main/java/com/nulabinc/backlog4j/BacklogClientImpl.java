@@ -1076,4 +1076,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         post(buildEndpoint("watchings"), params);
     }
 
+    @Override
+    public Watch updateWatch(UpdateWatchParams params) throws BacklogException {
+        return factory.createWatch(patch(buildEndpoint("watchings/" + params.getWatchingIdString()), params));
+    }
+
 }
