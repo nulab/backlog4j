@@ -25,6 +25,6 @@ public interface WatchingMethods {
      * @param note
      * @throws BacklogException
      */
-    void addWatchingToIssue(Object watchingId, String note) throws BacklogException;
+    void addWatchToIssue(Object watchingId, String note) throws BacklogException;
 
 }
