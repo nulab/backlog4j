@@ -178,6 +178,6 @@ public interface UserMethods {
      * @return the watchings in a list
      * @throws BacklogException
      */
-    ResponseList<Watch> getUserWatchings(Object numericUserId) throws BacklogException;
+    ResponseList<Watch> getUserWatches(Object numericUserId) throws BacklogException;
 
 }

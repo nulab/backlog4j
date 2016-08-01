@@ -1062,7 +1062,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public ResponseList<Watch> getUserWatchings(Object numericUserId) throws BacklogException {
+    public ResponseList<Watch> getUserWatches(Object numericUserId) throws BacklogException {
         return factory.createWatchList(get(buildEndpoint("users/" + numericUserId + "/watchings")));
     }
 
