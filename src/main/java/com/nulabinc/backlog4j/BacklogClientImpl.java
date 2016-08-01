@@ -1061,4 +1061,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         return factory.createCount(get(buildEndpoint("users/" + numericUserId + "/watchings/count"), params)).getCount();
     }
 
+    @Override
+    public ResponseList<Watch> getUserWatchings(Object numericUserId) throws BacklogException {
+        return factory.createWatchList(get(buildEndpoint("users/" + numericUserId + "/watchings")));
+    }
+
 }

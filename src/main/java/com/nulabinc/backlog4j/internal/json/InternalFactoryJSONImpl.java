@@ -498,6 +498,12 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Watch createWatch(BacklogHttpResponse res) throws BacklogException {
         return createWatch(res.asString());
     }
+
+    @Override
+    public ResponseList<Watch> createWatchList(BacklogHttpResponse res) throws BacklogException {
+        return createObjectList(res.asString(), Watch.class, WatchJSONImpl[].class);
+    }
+
     public Watch createWatch(String resStr) throws BacklogException {
         return createObject(resStr, Watch.class, WatchJSONImpl.class);
     }

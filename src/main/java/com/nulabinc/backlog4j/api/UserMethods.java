@@ -171,4 +171,13 @@ public interface UserMethods {
      */
     int getUserWatchCount(Object numericUserId, GetWatchesParams params) throws BacklogException;
 
+    /**
+     * Returns the received watchings
+     *
+     * @param numericUserId the user identifier
+     * @return the watchings in a list
+     * @throws BacklogException
+     */
+    ResponseList<Watch> getUserWatchings(Object numericUserId) throws BacklogException;
+
 }
