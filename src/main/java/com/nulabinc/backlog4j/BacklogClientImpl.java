@@ -1067,13 +1067,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public void addWatchToIssue(Object issueIdOrKey, String note) throws BacklogException {
+    public Watch addWatchToIssue(Object issueIdOrKey, String note) throws BacklogException {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("issueIdOrKey", String.valueOf(issueIdOrKey)));
         if (note != null) {
             params.add(new NameValuePair("note", note));
         }
-        post(buildEndpoint("watchings"), params);
+        return factory.createWatch(post(buildEndpoint("watchings"), params));
     }
 
     @Override
