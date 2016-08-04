@@ -1,0 +1,70 @@
+{
+    "id": 1000,
+    "alreadyRead": true,
+    "note": "This is a note for the watching issue.",
+    "type": "issue",
+    "issue": {
+        "id": 4531,
+        "projectId": 2,
+        "issueKey": "TEST2-17",
+        "keyId": 17,
+        "issueType": {
+            "id": 7,
+            "projectId": 2,
+            "name": "Bug",
+            "color": "#990000",
+            "displayOrder": 0
+        },
+        "summary": "aaa",
+        "description": "",
+        "resolutions": null,
+        "priority": {
+            "id": 3,
+            "name": "Normal"
+        },
+        "status": {
+            "id": 1,
+            "name": "Open"
+        },
+        "assignee": {
+            "id": 2,
+            "name": "eguchi",
+            "roleType": 2,
+            "lang": null,
+            "mailAddress": "eguchi@nulab.example"
+        },
+        "category": [],
+        "versions": [],
+        "milestone": [],
+        "startDate": "2013-08-29T15:00:00Z",
+        "dueDate": "2013-09-03T15:00:00Z",
+        "estimatedHours": null,
+        "actualHours": null,
+        "parentIssueId": null,
+        "createdUser": {
+            "id": 1,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": "ja",
+            "mailAddress": "eguchi@nulab.example"
+        },
+        "created": "2013-04-23T07:38:59Z",
+        "updatedUser": {
+            "id": 1,
+            "userId": "admin",
+            "name": "admin",
+            "roleType": 1,
+            "lang": "ja",
+            "mailAddress": "eguchi@nulab.example"
+        },
+        "updated": "2013-09-06T09:25:41Z",
+        "customFields": [],
+        "attachments": [],
+        "sharedFiles": [],
+        "stars": []
+    },
+    "created": "2013-10-31T06:58:59Z",
+    "updated": "2013-10-31T06:58:59Z"
+}
+

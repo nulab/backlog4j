@@ -161,5 +161,23 @@ public interface UserMethods {
      */
     ResponseList<ViewedWiki> getRecentlyViewedWikis(OffsetParams params) throws BacklogException;
 
+    /**
+     * Returns the received watch count
+     *
+     * @param numericUserId the user identifier
+     * @param params watch count parameters
+     * @return the count of received watch
+     * @throws BacklogException
+     */
+    int getUserWatchCount(Object numericUserId, GetWatchesParams params) throws BacklogException;
+
+    /**
+     * Returns the received watchings
+     *
+     * @param numericUserId the user identifier
+     * @return the watchings in a list
+     * @throws BacklogException
+     */
+    ResponseList<Watch> getUserWatches(Object numericUserId) throws BacklogException;
 
 }
