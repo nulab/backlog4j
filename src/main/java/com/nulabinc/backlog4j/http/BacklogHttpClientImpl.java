@@ -208,7 +208,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
                     writer.append("--" + boundary).append(LINE_FEED);
                     writer.append("Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + fileName + "\"")
                             .append(LINE_FEED);
-                    writer.append("Content-Type: application/octet-stream")
+                    writer.append("Content-Type: application/octet-stream; charset=" + CHARSET)
                             .append(LINE_FEED);
                     writer.append("Content-Transfer-Encoding: binary").append(LINE_FEED);
                     writer.append(LINE_FEED);
