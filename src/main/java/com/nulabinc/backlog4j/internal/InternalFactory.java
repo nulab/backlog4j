@@ -123,4 +123,9 @@ public interface InternalFactory {
     ResponseList<Webhook> createWebhookList(BacklogHttpResponse res) throws BacklogException;
 
     Webhook createWebhook(BacklogHttpResponse res) throws BacklogException;
+
+    Watch createWatch(BacklogHttpResponse res) throws BacklogException;
+
+    ResponseList<Watch> createWatchList(BacklogHttpResponse res) throws BacklogException;
+
 }

@@ -1050,4 +1050,45 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
             return null;
         }
     }
+
+    @Override
+    public Watch getWatch(Long watchingId) throws BacklogException {
+        return factory.createWatch(get(buildEndpoint("watchings/" + watchingId)));
+    }
+
+    @Override
+    public int getUserWatchCount(Object numericUserId, GetWatchesParams params) throws BacklogException {
+        return factory.createCount(get(buildEndpoint("users/" + numericUserId + "/watchings/count"), params)).getCount();
+    }
+
+    @Override
+    public ResponseList<Watch> getUserWatches(Object numericUserId) throws BacklogException {
+        return factory.createWatchList(get(buildEndpoint("users/" + numericUserId + "/watchings")));
+    }
+
+    @Override
+    public Watch addWatchToIssue(Object issueIdOrKey, String note) throws BacklogException {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new NameValuePair("issueIdOrKey", String.valueOf(issueIdOrKey)));
+        if (note != null) {
+            params.add(new NameValuePair("note", note));
+        }
+        return factory.createWatch(post(buildEndpoint("watchings"), params));
+    }
+
+    @Override
+    public Watch updateWatch(UpdateWatchParams params) throws BacklogException {
+        return factory.createWatch(patch(buildEndpoint("watchings/" + params.getWatchingIdString()), params));
+    }
+
+    @Override
+    public Watch deleteWatch(Object watchingId) throws BacklogException {
+        return factory.createWatch(delete(buildEndpoint("watchings/" + watchingId)));
+    }
+
+    @Override
+    public void markAsCheckedUserWatches(Object numericUserId) throws BacklogException {
+        post(buildEndpoint("users/" + numericUserId + "/watchings/markAsChecked"));
+    }
+
 }
