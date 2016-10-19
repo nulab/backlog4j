@@ -5,7 +5,7 @@ import com.nulabinc.backlog4j.Watch;
 import com.nulabinc.backlog4j.api.option.UpdateWatchParams;
 
 /**
- * Created by hayashi on 2016/07/26.
+ * Executes Backlog Watch APIs.
  */
 public interface WatchingMethods {
 

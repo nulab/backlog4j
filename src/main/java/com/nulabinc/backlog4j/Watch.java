@@ -3,7 +3,7 @@ package com.nulabinc.backlog4j;
 import java.util.Date;
 
 /**
- * Created by hayashi on 2016/07/26.
+ * The interface for Backlog Watch data.
  */
 public interface Watch {
 
