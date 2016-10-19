@@ -15,7 +15,7 @@ Backlog4j is a Backlog binding library for Java.
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
 ## Update
-* 2016/11/18 2.2.0 released
+* 2016/10/18 2.2.0 released
 * 2015/12/16 2.1.5 released
 * 2015/08/26 2.1.4 released
 * 2015/03/23 2.1.3 released
