@@ -82,6 +82,16 @@ public class SharedFileJSONImpl implements SharedFile {
     }
 
     @Override
+    public User getUpdatedUser() {
+        return updatedUser;
+    }
+
+    @Override
+    public Date getUpdated() {
+        return updated;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
