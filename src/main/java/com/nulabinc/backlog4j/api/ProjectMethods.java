@@ -490,6 +490,7 @@ public interface ProjectMethods {
      */
     CustomFieldSetting removeListCustomFieldItem(Object projectIdOrKey, Object customFieldId, Object itemId) throws BacklogException;
 
+
     /**
      * Returns the shared files in the project.
      *
@@ -497,8 +498,18 @@ public interface ProjectMethods {
      * @param path              path of the shared file directory
      * @return the shared files in a list
      * @throws BacklogException
+     */ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path) throws BacklogException;
+
+    /**
+     * Returns the shared files in the project.
+     *
+     * @param projectIdOrKey    the project identifier
+     * @param path              path of the shared file directory
+     * @param queryParams the query parameters
+     * @return the shared files in a list
+     * @throws BacklogException
      */
-    ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path) throws BacklogException;
+    ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path, QueryParams queryParams) throws BacklogException;
 
     /**
      * Returns the shared file data in the project.
