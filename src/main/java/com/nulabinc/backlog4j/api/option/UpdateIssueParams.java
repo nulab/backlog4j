@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class UpdateIssueParams extends PatchParams {
 
-    public final long PARENT_ISSUE_NOT_SET = -1;
+    public static final long PARENT_ISSUE_NOT_SET = -1;
 
     private Object issueIdOrKey;
 
