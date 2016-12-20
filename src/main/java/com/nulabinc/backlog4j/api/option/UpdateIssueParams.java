@@ -15,6 +15,8 @@ import java.util.Set;
  */
 public class UpdateIssueParams extends PatchParams {
 
+    public final long PARENT_ISSUE_NOT_SET = -1;
+
     private Object issueIdOrKey;
 
     public UpdateIssueParams(Object issueIdOrKey) {
@@ -31,7 +33,11 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams parentIssueId(long parentIssueId) {
-        parameters.add(new NameValuePair("parentIssueId", String.valueOf(parentIssueId)));
+        if (parentIssueId == PARENT_ISSUE_NOT_SET) {
+            parameters.add(new NameValuePair("parentIssueId", ""));
+        } else {
+            parameters.add(new NameValuePair("parentIssueId", String.valueOf(parentIssueId)));
+        }
         return this;
     }
 
