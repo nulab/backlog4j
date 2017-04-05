@@ -223,7 +223,6 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
                     out.flush();
                     inputStream.close();
 
-                    writer.append(LINE_FEED);
                     writer.flush();
                 } else {
                     throw new BacklogAPIException("Illegal parameter type name=" + name + ",value=" + value);
