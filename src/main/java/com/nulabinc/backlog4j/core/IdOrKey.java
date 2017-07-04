@@ -32,7 +32,7 @@ public class IdOrKey {
         return new IdOrKey(Union.<Long, String>left(id));
     }
 
-    public static IdOrKey id(int id) {
-        return new IdOrKey(Union.<Long, String>left((long)id));
+    public static IdOrKey id(Integer id) {
+        return new IdOrKey(Union.<Long, String>left(id.longValue()));
     }
 }

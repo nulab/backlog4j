@@ -34,14 +34,16 @@ public class Union<T1, T2> {
     public static <T, U> Union<T, U> left(T t1) throws InvalidParameterException {
         if (t1 == null) {
             throw new InvalidParameterException("value can't be null");
+        } else {
+            return new Union<T, U>(t1, null);
         }
-        return new Union<T, U>(t1, null);
     }
 
     public static <T, U> Union<T, U> right(U t2) throws InvalidParameterException {
         if (t2 == null) {
             throw new InvalidParameterException("value can't be null");
+        } else {
+            return new Union<T, U>(null, t2);
         }
-        return new Union<T, U>(null, t2);
     }
 }
