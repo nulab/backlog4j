@@ -2,6 +2,9 @@ package com.nulabinc.backlog4j.core;
 
 import java.util.Optional;
 
+/**
+ * @author nulab-inc
+ */
 public class IdOrKey {
     private Union<Long, String> idOrKey;
 

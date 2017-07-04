@@ -3,6 +3,9 @@ package com.nulabinc.backlog4j.core;
 import java.security.InvalidParameterException;
 import java.util.Optional;
 
+/**
+ * @author nulab-inc
+ */
 public class Union<T1, T2> {
     private T1 t1;
     private T2 t2;

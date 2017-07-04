@@ -6,6 +6,9 @@ import java.security.InvalidParameterException;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author nulab-inc
+ */
 public class UnionTest {
 
     @Test
