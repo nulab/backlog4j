@@ -1,7 +1,6 @@
 package com.nulabinc.backlog4j.core;
 
 import java.security.InvalidParameterException;
-import java.util.Optional;
 
 /**
  * @author nulab-inc
