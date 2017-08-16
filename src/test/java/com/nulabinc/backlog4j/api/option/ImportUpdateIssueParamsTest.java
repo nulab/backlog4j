@@ -85,7 +85,7 @@ public class ImportUpdateIssueParamsTest extends AbstractParamsTest {
 
         // when
         ImportUpdateIssueParams params = new ImportUpdateIssueParams(1000000001l);
-        params.resolution(null).assigneeId(0)
+        params.resolution(null).assigneeId(0L)
                 .dueDate(null).startDate(null)
                 .categoryIds(null).versionIds(null).milestoneIds(null)
                 .estimatedHours(null).actualHours(null);

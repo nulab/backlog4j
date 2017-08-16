@@ -159,16 +159,21 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
-    public UpdateIssueParams assigneeId(long assigneeId) {
+    public UpdateIssueParams assigneeId(Long assigneeId) {
         String assigneeIdStr = "";
         if(assigneeId <= 0) {
             assigneeIdStr = "";
+        } else {
+            assigneeIdStr = assigneeId.toString();
         }
         parameters.add(new NameValuePair("assigneeId", assigneeIdStr));
         return this;
     }
 
     public UpdateIssueParams assigneeId(String assigneeId) {
+        if (assigneeId.equals("")) {
+            return assigneeId(0L);
+        }
         return assigneeId(Long.parseLong(assigneeId));
     }
 

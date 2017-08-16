@@ -31,7 +31,7 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
                 .dueDate("2014-12-01")
                 .estimatedHours(16)
                 .actualHours(12.5f)
-                .assigneeId(4000000001l)
+                .assigneeId(4000000001L)
                 .categoryIds(Arrays.asList(5000000001l, 5000000002l))
                 .versionIds(Arrays.asList(6000000001l, 6000000002l))
                 .milestoneIds(Arrays.asList(7000000001l, 7000000002l))
@@ -75,7 +75,7 @@ public class UpdateIssueParamsTest extends AbstractParamsTest {
 
         // when
         UpdateIssueParams params = new UpdateIssueParams(1000000001l);
-        params.resolution(null).assigneeId(0)
+        params.resolution(null).assigneeId(0L)
                 .dueDate(null).startDate(null)
                 .categoryIds(null).versionIds(null).milestoneIds(null)
                 .estimatedHours(null).actualHours(null);
