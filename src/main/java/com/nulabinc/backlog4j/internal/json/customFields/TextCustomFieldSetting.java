@@ -1,9 +1,12 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nulabinc.backlog4j.CustomFieldListItemSetting;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 /**
  * @author nulab-inc
@@ -58,5 +61,10 @@ public class TextCustomFieldSetting extends CustomFieldSettingJSONImpl {
                 .append("name", getName())
                 .append("typeId", typeId)
                 .toString();
+    }
+
+    @Override
+    public List<? extends CustomFieldListItemSetting> getItems() {
+        return null;
     }
 }

@@ -2,12 +2,14 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.nulabinc.backlog4j.CustomFieldListItemSetting;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomBigdecimalDeserializer;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author nulab-inc
@@ -97,5 +99,10 @@ public class NumericCustomFieldSetting extends CustomFieldSettingJSONImpl {
                 .append("initialValue", initialValue)
                 .append("unit", unit)
                 .toString();
+    }
+
+    @Override
+    public List<? extends CustomFieldListItemSetting> getItems() {
+        return null;
     }
 }

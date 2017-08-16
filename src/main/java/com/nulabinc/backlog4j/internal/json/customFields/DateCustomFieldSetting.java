@@ -2,10 +2,13 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.nulabinc.backlog4j.CustomFieldListItemSetting;
 import com.nulabinc.backlog4j.internal.json.JacksonCustomDateDeserializer;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 /**
  * @author nulab-inc
@@ -57,6 +60,11 @@ public class DateCustomFieldSetting extends CustomFieldSettingJSONImpl {
     @Override
     public long[] getApplicableIssueTypes() {
         return applicableIssueTypes;
+    }
+
+    @Override
+    public List<? extends CustomFieldListItemSetting> getItems() {
+        return null;
     }
 
     public java.util.Date getMin() {

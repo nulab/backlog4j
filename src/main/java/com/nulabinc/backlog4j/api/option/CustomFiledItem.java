@@ -12,6 +12,16 @@ public class CustomFiledItem {
         this.customFieldItemId = customFieldItemId;
     }
 
+    public CustomFiledItem(long customFieldId, long customFieldItemId){
+        this.customFieldId = customFieldId;
+        this.customFieldItemId = customFieldItemId;
+    }
+
+    public CustomFiledItem(long customFieldId, String customFieldItemName){
+        this.customFieldId = customFieldId;
+        this.customFieldItemId = customFieldItemId;
+    }
+
     public String getCustomFieldId() {
         return customFieldId.toString();
     }
