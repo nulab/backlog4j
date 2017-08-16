@@ -10,7 +10,7 @@ Backlog4j is a Backlog binding library for Java.
     * [http://backlogtool.com](http:///backlogtool.com)
 
 * Backlog API version 2
-    * [http://developer.nulab-inc.com/docs/backlog/api/2/](http://developer.nulab-inc.com/docs/backlog/api/2/)
+    * [https://developer.nulab-inc.com/docs/backlog/](https://developer.nulab-inc.com/docs/backlog/)
 
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
