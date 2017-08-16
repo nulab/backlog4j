@@ -168,6 +168,10 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams assigneeId(String assigneeId) {
+        return assigneeId(Long.parseLong(assigneeId));
+    }
+
     public UpdateIssueParams notifiedUserIds(List notifiedUserIds) {
         for (Object notifiedUserId : notifiedUserIds) {
             parameters.add(new NameValuePair("notifiedUserId[]", notifiedUserId.toString()));
