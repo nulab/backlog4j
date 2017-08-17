@@ -159,6 +159,10 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams assigneeId(Integer assigneeId) {
+        return assigneeId(new Long(assigneeId));
+    }
+    
     public UpdateIssueParams assigneeId(Long assigneeId) {
         String assigneeIdStr = "";
         if(assigneeId <= 0) {
