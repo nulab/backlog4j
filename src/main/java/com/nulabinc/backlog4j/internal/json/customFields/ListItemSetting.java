@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json.customFields;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nulabinc.backlog4j.CustomFieldListItemSetting;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author nulab-inc
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ListItemSetting {
+public class ListItemSetting implements CustomFieldListItemSetting {
 
     private long id;
     private String name;
