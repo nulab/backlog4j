@@ -3,7 +3,6 @@ package com.nulabinc.backlog4j.api.option;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Parameters for add pull request API.

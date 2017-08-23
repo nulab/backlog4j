@@ -5,7 +5,6 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Parameters for get issue API.
