@@ -39,7 +39,10 @@ https://github.com/nulab/backlog4j/releases
 
 ## How to use
 Make BacklogConfigure with your space id and your api key.
-    
+
+    # If your space is in backlog.com
+    BacklogConfigure configure = new BacklogComConfigure("yourSpaceId").apiKey("yourApiKey");
+
     # If your space is in backlogtool.com
     BacklogConfigure configure = new BacklogToolConfigure("yourSpaceId").apiKey("yourApiKey");
 
@@ -98,6 +101,9 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
 
 以下の例では スペースIDとAPIキーを用いて BacklogConfigure を設定しています。
 
+    # あなたのスペースが backlog.com 内にある場合 
+    BacklogConfigure configure = new BacklogComConfigure("yourSpaceId").apiKey("yourApiKey");
+    
     # あなたのスペースが backlog.jp 内にある場合 
     BacklogConfigure configure = new BacklogJpConfigure("yourSpaceId").apiKey("yourApiKey");
     
