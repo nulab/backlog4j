@@ -1,12 +1,11 @@
 package com.nulabinc.backlog4j.internal.json.activities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.Change;
-import com.nulabinc.backlog4j.Comment;
-import com.nulabinc.backlog4j.Content;
-import com.nulabinc.backlog4j.Repository;
+import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.internal.json.ChangeJSONImpl;
 import com.nulabinc.backlog4j.internal.json.CommentJSONImpl;
+import com.nulabinc.backlog4j.internal.json.IssueJSONImpl;
 import com.nulabinc.backlog4j.internal.json.RepositoryJSONImpl;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -18,6 +17,7 @@ import java.util.List;
 /**
  * @author nulab-inc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PullRequestContent extends Content {
 
     private long id;
@@ -30,6 +30,8 @@ public class PullRequestContent extends Content {
     private Change[] changes;
     @JsonDeserialize(as=RepositoryJSONImpl.class)
     private Repository repository;
+    @JsonDeserialize(as=IssueJSONImpl.class)
+    private Issue issue;
 
     public long getId() {
         return this.id;
@@ -59,6 +61,8 @@ public class PullRequestContent extends Content {
         return repository;
     }
 
+    public Issue getIssue() { return issue; }
+ 
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

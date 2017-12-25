@@ -227,6 +227,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
 
         assertEquals(null, content.getComment());
         assertTrue(content.getChanges().isEmpty());
+        assertEquals(77777777, content.getIssue().getId());
     }
 
     @Test
