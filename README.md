@@ -27,14 +27,14 @@ https://github.com/nulab/backlog4j/releases
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.2.0'
+    'com.nulab-inc:backlog4j:2.2.1'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.2.0</version>
+      <version>2.2.1</version>
     </dependency>
 
 ## How to use
@@ -82,14 +82,14 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.2.0'
+    'com.nulab-inc:backlog4j:2.2.1'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.2.0</version>
+      <version>2.2.1</version>
     </dependency>
 
 ## 使い方
