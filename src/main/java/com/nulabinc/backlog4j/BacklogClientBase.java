@@ -1,9 +1,6 @@
 package com.nulabinc.backlog4j;
 
-import com.nulabinc.backlog4j.api.option.GetParams;
-import com.nulabinc.backlog4j.api.option.PatchParams;
-import com.nulabinc.backlog4j.api.option.PostParams;
-import com.nulabinc.backlog4j.api.option.QueryParams;
+import com.nulabinc.backlog4j.api.option.*;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.auth.OAuthSupport;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
@@ -85,7 +82,6 @@ public abstract class BacklogClientBase{
         return ires;
     }
 
-
     protected BacklogHttpResponse post(String endpoint) throws BacklogException {
         return this.post(endpoint, new ArrayList<NameValuePair>());
     }
@@ -130,6 +126,10 @@ public abstract class BacklogClientBase{
 
     protected BacklogHttpResponse delete(String endpoint) throws BacklogException {
         return this.delete(endpoint, new ArrayList<NameValuePair>());
+    }
+
+    protected BacklogHttpResponse delete(String endpoint, DeleteParams deleteParams) throws BacklogException {
+        return this.patch(endpoint, deleteParams.getParamList());
     }
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
