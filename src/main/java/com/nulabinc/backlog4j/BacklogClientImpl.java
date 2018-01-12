@@ -433,6 +433,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Attachment importDeleteAttachment(Object issueIdOrKey, Object attachmentId, ImportDeleteAttachmentParams params) throws BacklogException {
+        return factory.createAttachment(delete(buildEndpoint("issues/" + issueIdOrKey + "/attachments/import/" + attachmentId), params));
+    }
+
+    @Override
     public Issue deleteIssue(Object issueIdOrKey) throws BacklogException {
         return factory.createIssue(delete(buildEndpoint("issues/" + issueIdOrKey)));
     }
