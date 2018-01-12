@@ -109,15 +109,11 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     @Override
-    public BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
+    public BacklogHttpResponse delete(String endpoint, List<NameValuePair> params) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "DELETE", CONTENT_TYPE);
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        if (param != null) {
-            params.add(param);
-        }
         writeParams(urlConnection, params);
         return new BacklogHttpResponseImpl(urlConnection);
     }

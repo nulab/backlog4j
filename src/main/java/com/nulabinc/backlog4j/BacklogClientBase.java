@@ -129,15 +129,22 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse delete(String endpoint) throws BacklogException {
-        return this.delete(endpoint, null);
-
+        return this.delete(endpoint, new ArrayList<NameValuePair>());
     }
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
-        BacklogHttpResponse ires = httpClient.delete(endpoint, param);
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        if (param != null) {
+            params.add(param);
+        }
+        return this.delete(endpoint, params);
+    }
+
+    protected BacklogHttpResponse delete(String endpoint, List<NameValuePair> parameters) throws BacklogException {
+        BacklogHttpResponse ires = httpClient.delete(endpoint, parameters);
         if (needTokenRefresh(ires)) {
             refreshToken();
-            ires = httpClient.delete(endpoint, param);
+            ires = httpClient.delete(endpoint, parameters);
         }
         checkError(ires);
         return ires;

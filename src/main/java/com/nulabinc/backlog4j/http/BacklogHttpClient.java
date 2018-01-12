@@ -20,6 +20,6 @@ public interface BacklogHttpClient {
     BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException;
     BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
     BacklogHttpResponse put(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
-    BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException;
+    BacklogHttpResponse delete(String endpoint, List<NameValuePair> deleteParams) throws BacklogException;
     BacklogHttpResponse postMultiPart(String endpoint, Map<String, Object> postParams) throws BacklogException;
 }
