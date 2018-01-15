@@ -129,7 +129,7 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse delete(String endpoint, DeleteParams deleteParams) throws BacklogException {
-        return this.patch(endpoint, deleteParams.getParamList());
+        return this.delete(endpoint, deleteParams.getParamList());
     }
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
