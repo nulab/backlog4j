@@ -16,12 +16,16 @@ import com.nulabinc.backlog4j.api.option.ImportWikiParams;
  */
 public interface ImportMethods {
 
+    @Deprecated
     Issue importIssue(ImportIssueParams params) throws BacklogException;
 
+    @Deprecated
     Issue importUpdateIssue(ImportUpdateIssueParams params) throws BacklogException;
 
+    @Deprecated
     Attachment importDeleteAttachment(Object issueIdOrKey, Object attachmentId, ImportDeleteAttachmentParams params) throws BacklogException;
 
+    @Deprecated
     Wiki importWiki(ImportWikiParams params);
 
 }
