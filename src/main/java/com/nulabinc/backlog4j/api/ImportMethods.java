@@ -20,7 +20,7 @@ public interface ImportMethods {
 
     Issue importUpdateIssue(ImportUpdateIssueParams params) throws BacklogException;
 
-    Attachment importDeleteAttachment(Object issueIdOrKey, Object attachmentId, ImportDeleteAttachmentParams params) throws BacklogException;
+    Attachment deleteAttachment(Object issueIdOrKey, Object attachmentId, ImportDeleteAttachmentParams params) throws BacklogException;
 
     Wiki importWiki(ImportWikiParams params);
 
