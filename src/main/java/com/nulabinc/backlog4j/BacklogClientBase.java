@@ -1,9 +1,6 @@
 package com.nulabinc.backlog4j;
 
-import com.nulabinc.backlog4j.api.option.GetParams;
-import com.nulabinc.backlog4j.api.option.PatchParams;
-import com.nulabinc.backlog4j.api.option.PostParams;
-import com.nulabinc.backlog4j.api.option.QueryParams;
+import com.nulabinc.backlog4j.api.option.*;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.auth.OAuthSupport;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
@@ -85,7 +82,6 @@ public abstract class BacklogClientBase{
         return ires;
     }
 
-
     protected BacklogHttpResponse post(String endpoint) throws BacklogException {
         return this.post(endpoint, new ArrayList<NameValuePair>());
     }
@@ -129,15 +125,26 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse delete(String endpoint) throws BacklogException {
-        return this.delete(endpoint, null);
+        return this.delete(endpoint, new ArrayList<NameValuePair>());
+    }
 
+    protected BacklogHttpResponse delete(String endpoint, DeleteParams deleteParams) throws BacklogException {
+        return this.delete(endpoint, deleteParams.getParamList());
     }
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
-        BacklogHttpResponse ires = httpClient.delete(endpoint, param);
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        if (param != null) {
+            params.add(param);
+        }
+        return this.delete(endpoint, params);
+    }
+
+    protected BacklogHttpResponse delete(String endpoint, List<NameValuePair> parameters) throws BacklogException {
+        BacklogHttpResponse ires = httpClient.delete(endpoint, parameters);
         if (needTokenRefresh(ires)) {
             refreshToken();
-            ires = httpClient.delete(endpoint, param);
+            ires = httpClient.delete(endpoint, parameters);
         }
         checkError(ires);
         return ires;
