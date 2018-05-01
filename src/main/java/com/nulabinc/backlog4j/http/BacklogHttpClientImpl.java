@@ -8,10 +8,7 @@ import com.nulabinc.backlog4j.api.option.QueryParams;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +26,25 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     protected String bearerToken;
     protected int readTimeout;
     protected int connectionTimeout;
+
+    public BacklogHttpClientImpl() {
+        final String proxyUser = System.getProperty("https.proxyUser");
+        final String proxyPass = System.getProperty("https.proxyPassword");
+
+        if (proxyUser != null && proxyPass != null) {
+            Authenticator.setDefault(
+                    new Authenticator() {
+                        @Override
+                        public PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(
+                                    proxyUser,
+                                    proxyPass.toCharArray()
+                            );
+                        }
+                    }
+            );
+        }
+    }
 
     @Override
     public void setApiKey(String apiKey) {
