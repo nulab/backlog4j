@@ -5,11 +5,12 @@ import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.api.option.GetParams;
 import com.nulabinc.backlog4j.api.option.QueryParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.net.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import java.util.Map;
  * @author nulab-inc
  */
 public class BacklogHttpClientImpl implements BacklogHttpClient {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     protected static final String USER_AGENT = "backlog4jv2";
     protected static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
     protected static final String CHARSET = "UTF-8";
@@ -79,7 +82,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         }
 
         HttpURLConnection urlConnection = openUrlConnection(url, "GET", CONTENT_TYPE);
-        return new BacklogHttpResponseImpl(urlConnection);
+        return handleResponse(urlConnection);
     }
 
     public String getParamsString(boolean paramExists, GetParams getParams) {
@@ -100,8 +103,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
         writeParams(urlConnection, postParams);
-        return new BacklogHttpResponseImpl(urlConnection);
-
+        return handleResponse(urlConnection);
     }
 
     @Override
@@ -111,7 +113,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
         writeParams(urlConnection, patchParams);
-        return new BacklogHttpResponseImpl(urlConnection);
+        return handleResponse(urlConnection);
     }
 
     @Override
@@ -121,7 +123,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
         writeParams(urlConnection, patchParams);
-        return new BacklogHttpResponseImpl(urlConnection);
+        return handleResponse(urlConnection);
     }
 
     @Override
@@ -131,7 +133,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
         writeParams(urlConnection, params);
-        return new BacklogHttpResponseImpl(urlConnection);
+        return handleResponse(urlConnection);
     }
 
     @Override
@@ -144,8 +146,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         urlConnection.setDoOutput(true);
 
         writeMultiPartParams(urlConnection, postParams, boundary);
-        return new BacklogHttpResponseImpl(urlConnection);
-
+        return handleResponse(urlConnection);
     }
 
 
@@ -158,6 +159,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     private HttpURLConnection openUrlConnection(String url, String method, String contentType) {
+        logger.info("Open URL connection method: " + method + " and URI: " + url);
         HttpURLConnection urlConnection;
         try {
             urlConnection = (HttpURLConnection) new URL(url).openConnection();
@@ -178,6 +180,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
             }
 
         } catch (IOException e) {
+            logger.error("Failed to open URL connection error: " + e.getMessage());
             throw new BacklogAPIException(e);
         }
         return urlConnection;
@@ -310,5 +313,12 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    private BacklogHttpResponse handleResponse(final HttpURLConnection connection) {
+        BacklogHttpResponse response = new BacklogHttpResponseImpl(connection);
+
+        logger.info("Received response with status: " + response.getStatusCode());
+        return response;
     }
 }
