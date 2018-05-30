@@ -23,8 +23,9 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     protected static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
     protected static final String CHARSET = "UTF-8";
     protected static final String LINE_FEED = "\r\n";
+    protected static final String DEFAULT_USER_AGENT = "backlog4jv2";
 
-    protected String userAgent = "backlog4jv2";
+    protected String userAgent = DEFAULT_USER_AGENT;
     protected String apiKey;
     protected String bearerToken;
     protected int readTimeout;
