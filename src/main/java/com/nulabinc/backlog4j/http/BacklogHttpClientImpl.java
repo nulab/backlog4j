@@ -24,7 +24,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     protected static final String CHARSET = "UTF-8";
     protected static final String LINE_FEED = "\r\n";
     protected static final String PACKAGE_VERSION = BacklogHttpClientImpl.class.getPackage().getImplementationVersion();
-    protected static final String DEFAULT_USER_AGENT = "backlog4jv" + PACKAGE_VERSION;
+    protected static final String DEFAULT_USER_AGENT = "backlog4j/" + PACKAGE_VERSION;
 
     protected String userAgent = DEFAULT_USER_AGENT;
     protected String apiKey;
