@@ -16,6 +16,8 @@ public interface BacklogHttpClient {
     void setBearerToken(String bearerToken);
     void setReadTimeout(int readTimeout);
     void setConnectionTimeout(int connectionTimeout);
+    void setUserAgent(String userAgent);
+    String getUserAgent();
     BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException;
     BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException;
     BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
