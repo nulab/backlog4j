@@ -1,11 +1,8 @@
 package com.nulabinc.backlog4j;
 
 import com.nulabinc.backlog4j.api.option.GetWikisParams;
-import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.conf.BacklogJpConfigure;
 import com.nulabinc.backlog4j.internal.json.ResponseListImpl;
-import com.nulabinc.backlog4j.internal.json.WikiJSONImpl;
-import junit.framework.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
