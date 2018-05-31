@@ -3,7 +3,7 @@
 Backlog4j is a Backlog binding library for Java.
 (英語の下に日本文が記載されています)
 
-![Backlog icon](https://raw.githubusercontent.com/nulab/backlog4j/master/icon.png)
+<img src="https://raw.githubusercontent.com/nulab/backlog4j/master/icon.png" width="64" height="64">
 
 * Backlog 
     * [https://backlog.com/](https://backlog.com/)
