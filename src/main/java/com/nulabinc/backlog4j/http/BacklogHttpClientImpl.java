@@ -20,11 +20,13 @@ import java.util.Map;
 public class BacklogHttpClientImpl implements BacklogHttpClient {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    protected static final String USER_AGENT = "backlog4jv2";
     protected static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
     protected static final String CHARSET = "UTF-8";
     protected static final String LINE_FEED = "\r\n";
+    protected static final String PACKAGE_VERSION = BacklogHttpClientImpl.class.getPackage().getImplementationVersion();
+    protected static final String DEFAULT_USER_AGENT = "backlog4j/" + PACKAGE_VERSION;
 
+    protected String userAgent = DEFAULT_USER_AGENT;
     protected String apiKey;
     protected String bearerToken;
     protected int readTimeout;
@@ -68,6 +70,12 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public void setConnectionTimeout(int connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
     }
+
+    @Override
+    public void setUserAgent(String userAgent) { this.userAgent = userAgent; }
+
+    @Override
+    public String getUserAgent() { return this.userAgent; }
 
     @Override
     public BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
@@ -172,7 +180,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
             setRequestMethodUsingWorkaroundForJREBug(urlConnection, method);
             urlConnection.setReadTimeout(this.readTimeout);
             urlConnection.setConnectTimeout(this.connectionTimeout);
-            urlConnection.setRequestProperty("User-Agent", USER_AGENT);
+            urlConnection.setRequestProperty("User-Agent", userAgent);
             urlConnection.setRequestProperty("Content-Type", contentType);
 
             if (apiKey == null && bearerToken != null) {
