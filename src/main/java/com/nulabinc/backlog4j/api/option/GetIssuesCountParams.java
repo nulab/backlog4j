@@ -75,9 +75,20 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
+    @Deprecated
+    /**
+     * please use assigneeIds
+     */
     public GetIssuesCountParams assignerIds(List assignerIds) {
         for (Object assignerId : assignerIds) {
             parameters.add(new NameValuePair("assigneeId[]", assignerId.toString()));
+        }
+        return this;
+    }
+
+    public GetIssuesCountParams assigneeIds(List assigneeIds) {
+        for (Object assigneeId : assigneeIds) {
+            parameters.add(new NameValuePair("assigneeId[]", assigneeId.toString()));
         }
         return this;
     }
