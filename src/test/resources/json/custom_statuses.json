@@ -1,0 +1,23 @@
+[
+  {
+    "id": 100,
+    "projectId": 1,
+    "name": "保留中 / Pending",
+    "color": "#e30000",
+    "displayOrder": 1000
+  },
+  {
+    "id": 101,
+    "projectId": 2,
+    "name": "調査中 / Researching",
+    "color": "#7ea800",
+    "displayOrder": 1001
+  },
+  {
+    "id": 102,
+    "projectId": 2,
+    "name": "リリース待ち / Waiting For Release",
+    "color": "#990000",
+    "displayOrder": 1002
+  }
+]

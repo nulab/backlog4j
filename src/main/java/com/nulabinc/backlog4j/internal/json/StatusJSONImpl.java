@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.Status;
@@ -16,6 +17,9 @@ public class StatusJSONImpl implements Status {
 
     private int id;
     private String name;
+    private int displayOrder;
+    private long projectId;
+    private String color;
 
     @Override
     public int getId() {
@@ -36,6 +40,22 @@ public class StatusJSONImpl implements Status {
     public Issue.StatusType getStatusType() {
         return Issue.StatusType.valueOf(this.id);
     }
+
+    @Override
+    public long getProjectId() {
+        return this.projectId;
+    }
+
+    @Override
+    public String getProjectIdAsString() {
+        return String.valueOf(this.projectId);
+    }
+
+    @Override
+    public Project.CustomStatusColor getColor() { return Project.CustomStatusColor.strValueOf(this.color); }
+
+    @Override
+    public int getDisplayOrder() { return this.displayOrder; }
 
     @Override
     public boolean equals(Object obj) {
