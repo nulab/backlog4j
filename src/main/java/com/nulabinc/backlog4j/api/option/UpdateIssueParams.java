@@ -51,6 +51,11 @@ public class UpdateIssueParams extends PatchParams {
         return this;
     }
 
+    public UpdateIssueParams statusId(int statusId) {
+        parameters.add(new NameValuePair("statusId", String.valueOf(statusId)));
+        return this;
+    }
+
     public UpdateIssueParams resolution(Issue.ResolutionType resolutionType) {
         if (resolutionType == null || resolutionType.equals(Issue.ResolutionType.NotSet)) {
             parameters.add(new NameValuePair("resolutionId", ""));
