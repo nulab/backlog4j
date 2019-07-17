@@ -184,7 +184,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<Status> getStatuses(Object projectIdOrKey) throws BacklogException {
-        return factory.createStatusList(get(buildEndpoint("projects/" + projectIdOrKey + "/status")));
+        return factory.createStatusList(get(buildEndpoint("projects/" + projectIdOrKey + "/statuses")));
     }
 
     @Override
