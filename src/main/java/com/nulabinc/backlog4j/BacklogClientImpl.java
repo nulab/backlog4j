@@ -183,6 +183,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Status> getStatuses(Object projectIdOrKey) throws BacklogException {
+        return factory.createStatusList(get(buildEndpoint("projects/" + projectIdOrKey + "/status")));
+    }
+
+    @Override
     public ResponseList<Category> getCategories(Object projectIdOrKey) throws BacklogException {
         return factory.createCategoryList(get(buildEndpoint("projects/" + projectIdOrKey + "/categories")));
     }
