@@ -100,4 +100,21 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertEquals(true, existsOneKeyValue(parameters, "customField_12000000005[]", "13000000001"));
         assertEquals(true, existsOneKeyValue(parameters, "customField_12000000005[]", "13000000002"));
     }
+
+    @Test
+    public void createParamWithCustomStatusTest() throws UnsupportedEncodingException {
+
+        // when
+        GetIssuesParams params = new GetIssuesParams(Arrays.asList(1000000001l, 1000000002l));
+        params.statusIds(Arrays.asList(9000000001l, 9000000002l));
+
+        // then
+        List<NameValuePair> parameters = params.getParamList();
+        System.out.println(parameters);
+        assertEquals(4, parameters.size());
+        assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "projectId[]", "1000000002"));
+        assertEquals(true, existsOneKeyValue(parameters, "statusId[]", "9000000001"));
+        assertEquals(true, existsOneKeyValue(parameters, "statusId[]", "9000000002"));
+    }
 }
