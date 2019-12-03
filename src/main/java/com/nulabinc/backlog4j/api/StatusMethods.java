@@ -1,10 +1,8 @@
 package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.BacklogException;
-import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.Status;
-import com.nulabinc.backlog4j.api.option.UpdateCategoryParams;
 import com.nulabinc.backlog4j.api.option.UpdateStatusParams;
 
 /**
