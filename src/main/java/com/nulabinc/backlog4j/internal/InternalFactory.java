@@ -60,6 +60,8 @@ public interface InternalFactory {
 
     ResponseList<Status> createStatusList(BacklogHttpResponse res) throws BacklogException;
 
+    Status createStatus(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<Star> createStarList(BacklogHttpResponse res) throws BacklogException;
 
     Star createStar(BacklogHttpResponse res) throws BacklogException;
