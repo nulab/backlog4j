@@ -678,7 +678,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     public Status addStatus(AddStatusParams params) throws BacklogException {
         return factory.createStatus(post(
                 buildEndpoint("projects/" + params.getProjectIdOrKeyString()
-                        + "/statuses/"), params));
+                        + "/statuses"), params));
     }
 
     @Override

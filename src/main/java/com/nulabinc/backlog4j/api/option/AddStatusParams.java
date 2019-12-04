@@ -15,7 +15,7 @@ public class AddStatusParams extends PostParams {
     public AddStatusParams(Object projectIdOrKey, String name, Project.CustomStatusColor color) {
         this.projectIdOrKey = projectIdOrKey;
         parameters.add(new NameValuePair("name", name));
-        parameters.add(new NameValuePair( "color", color.getStrValue()));
+        parameters.add(new NameValuePair("color", color.getStrValue()));
     }
 
 
