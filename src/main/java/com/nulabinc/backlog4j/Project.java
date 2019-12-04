@@ -63,20 +63,16 @@ public interface Project {
     }
 
     enum CustomStatusColor {
-        Color1("#ed8077"),
-        Color2("#4488c5"),
-        Color3("#5eb5a6"),
-        Color4("#b0be3c"),
-        Color5("#ea2c00"),
-        Color6("#e87758"),
-        Color7("#e07b9a"),
-        Color8("#868cb7"),
-        Color9("#3b9dbd"),
-        Color10("#4caf93"),
-        Color11("#b0be3c"),
-        Color12("#eda62a"),
-        Color13("#f42858"),
-        Color14("#393939");
+        Color1("#ea2c00"),
+        Color2("#e87758"),
+        Color3("#e07b9a"),
+        Color4("#868cb7"),
+        Color5("#3b9dbd"),
+        Color6("#4caf93"),
+        Color7("#b0be3c"),
+        Color8("#eda62a"),
+        Color9("#f42858"),
+        Color10("#393939");
 
         CustomStatusColor(String value) {
             this.value = value;
