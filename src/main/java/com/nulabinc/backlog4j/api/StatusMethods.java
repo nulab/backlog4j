@@ -49,4 +49,14 @@ public interface StatusMethods {
      */
     ResponseList<Status> updateOrderOfStatus(UpdateOrderOfStatusParams params) throws BacklogException;
 
+    /**
+     * Removes the status in the project.
+     *
+     * @param projectIdOrKey the project identifier
+     * @param statusId the status identifier
+     * @param substituteStatusId the substitute status identifier
+     * @return the removed status
+     * @throws BacklogException
+     */
+    Status removeStatus(Object projectIdOrKey, Object statusId, Object substituteStatusId) throws BacklogException;
 }
