@@ -12,10 +12,11 @@ public class UpdateStatusParams extends PatchParams {
     private Object projectIdOrKey;
     private Object statusId;
 
-    public UpdateStatusParams(Object projectIdOrKey, Object statusId, String name) {
+    public UpdateStatusParams(Object projectIdOrKey, Object statusId, String name, String color) {
         this.projectIdOrKey = projectIdOrKey;
         this.statusId = statusId;
         parameters.add(new NameValuePair("name", name));
+        parameters.add(new NameValuePair("color", color));
     }
 
 
