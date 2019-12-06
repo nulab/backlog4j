@@ -689,6 +689,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Status> updateOrderOfStatus(UpdateOrderOfStatusParams params) throws BacklogException {
+        return factory.createStatusList(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/statuses/updateDisplayOrder"), params));
+    }
+
+    @Override
     public Icon getUserIcon(Object numericUserId) {
         BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getUserIconEndpoint(numericUserId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
