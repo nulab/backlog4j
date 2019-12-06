@@ -1,5 +1,6 @@
 language: java
-jdk: oraclejdk8
+jdk:
+  - openjdk8
 after_success:
 - "./gradlew uploadArchives"
 - curl -u $JENKINS_USER:$JENKINS_PASS -X POST https://jenkins.nulab.co.jp/job/BLG-backlog-api-v2-test/build

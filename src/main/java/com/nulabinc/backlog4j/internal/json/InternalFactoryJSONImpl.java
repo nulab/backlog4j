@@ -250,6 +250,12 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Status> createStatusList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Status.class, StatusJSONImpl[].class);
     }
+
+    @Override
+    public Status createStatus(BacklogHttpResponse res) throws BacklogException {
+        return createObject(res.asString(), Status.class, StatusJSONImpl.class);
+    }
+
     public ResponseList<Status> createStatusList(String resStr) throws BacklogException {
         return createObjectList(resStr, Status.class, StatusJSONImpl[].class);
     }

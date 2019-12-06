@@ -675,6 +675,13 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Status updateStatus(UpdateStatusParams params) throws BacklogException {
+        return factory.createStatus(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/statuses/" + params.getStatusId()), params));
+    }
+
+    @Override
     public Icon getUserIcon(Object numericUserId) {
         BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getUserIconEndpoint(numericUserId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
