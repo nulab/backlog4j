@@ -3,6 +3,7 @@ package com.nulabinc.backlog4j.api;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.Status;
+import com.nulabinc.backlog4j.api.option.AddStatusParams;
 import com.nulabinc.backlog4j.api.option.UpdateOrderOfStatusParams;
 import com.nulabinc.backlog4j.api.option.UpdateStatusParams;
 
@@ -20,6 +21,15 @@ public interface StatusMethods {
      * @throws BacklogException
      */
     ResponseList<Status> getStatuses() throws BacklogException;
+
+    /**
+     * Add status in the project.
+     *
+     * @param params the adding status parameters.
+     * @return the added status
+     * @throws BacklogException
+     */
+    Status addStatus(AddStatusParams params) throws BacklogException;
 
     /**
      * Updates the existing status in the project.

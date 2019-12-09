@@ -59,7 +59,7 @@ public class StatusJSONImplTest extends AbstractJSONImplTest{
         assertEquals(100, status.getId());
         assertEquals("保留中 / Pending", status.getName());
         assertEquals(Issue.StatusType.Custom, status.getStatusType());
-        assertEquals(Project.CustomStatusColor.Color5, status.getColor());
+        assertEquals(Project.CustomStatusColor.Color1, status.getColor());
         assertEquals(1, status.getProjectId());
         assertEquals("1", status.getProjectIdAsString());
         assertEquals(1000, status.getDisplayOrder());
@@ -68,7 +68,7 @@ public class StatusJSONImplTest extends AbstractJSONImplTest{
         assertEquals(101, status.getId());
         assertEquals("調査中 / Researching", status.getName());
         assertEquals(Issue.StatusType.Custom, status.getStatusType());
-        assertEquals(Project.CustomStatusColor.Color4, status.getColor());
+        assertEquals(Project.CustomStatusColor.Color7, status.getColor());
         assertEquals(2, status.getProjectId());
         assertEquals("2", status.getProjectIdAsString());
         assertEquals(1001, status.getDisplayOrder());
@@ -77,7 +77,7 @@ public class StatusJSONImplTest extends AbstractJSONImplTest{
         assertEquals(102, status.getId());
         assertEquals("リリース待ち / Waiting For Release", status.getName());
         assertEquals(Issue.StatusType.Custom, status.getStatusType());
-        assertEquals(Project.CustomStatusColor.Color6, status.getColor());
+        assertEquals(Project.CustomStatusColor.Color2, status.getColor());
         assertEquals(2, status.getProjectId());
         assertEquals("2", status.getProjectIdAsString());
         assertEquals(1002, status.getDisplayOrder());
