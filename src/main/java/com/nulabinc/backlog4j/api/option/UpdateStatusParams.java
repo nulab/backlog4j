@@ -1,5 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
+import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 /**
@@ -12,11 +13,11 @@ public class UpdateStatusParams extends PatchParams {
     private Object projectIdOrKey;
     private Object statusId;
 
-    public UpdateStatusParams(Object projectIdOrKey, Object statusId, String name, String color) {
+    public UpdateStatusParams(Object projectIdOrKey, Object statusId, String name, Project.CustomStatusColor color) {
         this.projectIdOrKey = projectIdOrKey;
         this.statusId = statusId;
         parameters.add(new NameValuePair("name", name));
-        parameters.add(new NameValuePair("color", color));
+        parameters.add(new NameValuePair("color", color.getStrValue()));
     }
 
 
