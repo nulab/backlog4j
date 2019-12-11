@@ -696,6 +696,16 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Status removeStatus(Object projectIdOrKey, Object statusId, Object substituteStatusId) throws BacklogException {
+        return factory.createStatus(
+                delete(
+                        buildEndpoint("projects/" + projectIdOrKey + "/statuses/" + statusId),
+                        new NameValuePair("substituteStatusId", String.valueOf(substituteStatusId))
+                )
+        );
+    }
+
+    @Override
     public Icon getUserIcon(Object numericUserId) {
         BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getUserIconEndpoint(numericUserId));
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
