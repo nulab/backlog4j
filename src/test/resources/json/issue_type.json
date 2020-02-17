@@ -2,5 +2,7 @@
     "id": 1074178332,
     "projectId": 1073836557,
     "name": "バグ",
-    "color": "#990000"
+    "color": "#990000",
+    "templateSummary": "bug subject",
+    "templateDescription": "bug description"
 }

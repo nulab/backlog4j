@@ -35,4 +35,14 @@ public class UpdateIssueTypeParams extends PatchParams {
     public String getIssueTypeId() {
         return issueTypeId.toString();
     }
+
+    public UpdateIssueTypeParams templateSummary(String templateSummary) {
+        parameters.add(new NameValuePair("templateSummary", templateSummary));
+        return this;
+    }
+
+    public UpdateIssueTypeParams templateDescription(String templateDescription) {
+        parameters.add(new NameValuePair("templateDescription", templateDescription));
+        return this;
+    }
 }
