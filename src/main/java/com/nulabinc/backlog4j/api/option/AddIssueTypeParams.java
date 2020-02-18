@@ -21,4 +21,14 @@ public class AddIssueTypeParams extends PostParams {
     public String getProjectIdOrKeyString() {
         return projectIdOrKey.toString();
     }
+
+    public AddIssueTypeParams templateSummary(String templateSummary) {
+        parameters.add(new NameValuePair("templateSummary", templateSummary));
+        return this;
+    }
+
+    public AddIssueTypeParams templateDescription(String templateDescription) {
+        parameters.add(new NameValuePair("templateDescription", templateDescription));
+        return this;
+    }
 }
