@@ -8,5 +8,6 @@
     "subtaskingEnabled": true,
     "textFormattingRule": "backlog",
     "archived": false,
-    "displayOrder": 2147483646
+    "displayOrder": 2147483646,
+    "useDevAttributes": true
 }

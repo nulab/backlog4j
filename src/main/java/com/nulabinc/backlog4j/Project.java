@@ -111,4 +111,6 @@ public interface Project {
     boolean isArchived();
 
     long getDisplayOrder();
+
+    boolean useDevAttributes();
 }
