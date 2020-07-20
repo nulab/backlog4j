@@ -70,7 +70,7 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
-    public boolean useDevAttributes() { return useDevAttributes; }
+    public boolean getUseDevAttributes() { return useDevAttributes; }
 
     @Override
     public boolean equals(Object obj) {

@@ -112,5 +112,5 @@ public interface Project {
 
     long getDisplayOrder();
 
-    boolean useDevAttributes();
+    boolean getUseDevAttributes();
 }

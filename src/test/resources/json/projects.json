@@ -9,7 +9,7 @@
         "subtaskingEnabled": true,
         "textFormattingRule": "backlog",
         "archived": false,
-        "useDevAttributes": false
+        "useDevAttributes": true
     },
     {
         "id": 1073835220,
