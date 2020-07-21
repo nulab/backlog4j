@@ -22,6 +22,7 @@ public class ProjectJSONImpl implements Project {
     private String textFormattingRule;
     private boolean archived;
     private long displayOrder;
+    private boolean useDevAttributes;
 
     @Override
     public long getId() {
@@ -69,6 +70,9 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
+    public boolean getUseDevAttributes() { return useDevAttributes; }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -88,6 +92,7 @@ public class ProjectJSONImpl implements Project {
                 .append(this.subtaskingEnabled, rhs.subtaskingEnabled)
                 .append(this.textFormattingRule, rhs.textFormattingRule)
                 .append(this.archived, rhs.archived)
+                .append(this.useDevAttributes, rhs.useDevAttributes)
                 .isEquals();
     }
 
@@ -101,6 +106,7 @@ public class ProjectJSONImpl implements Project {
                 .append(subtaskingEnabled)
                 .append(textFormattingRule)
                 .append(archived)
+                .append(useDevAttributes)
                 .toHashCode();
     }
 
@@ -114,6 +120,7 @@ public class ProjectJSONImpl implements Project {
                 .append("subtaskingEnabled", subtaskingEnabled)
                 .append("textFormattingRule", textFormattingRule)
                 .append("archived", archived)
+                .append("useDevAttributes", useDevAttributes)
                 .toString();
     }
 }
