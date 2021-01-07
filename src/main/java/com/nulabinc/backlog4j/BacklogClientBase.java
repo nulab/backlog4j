@@ -14,6 +14,8 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Base of BacklogClient.
@@ -21,6 +23,8 @@ import java.util.Map;
  * @author nulab-inc
  */
 public abstract class BacklogClientBase{
+
+    private final Logger logger = LoggerFactory.getLogger(BacklogClientBase.class);
 
     protected BacklogHttpClient httpClient;
     protected BacklogConfigure configure;
@@ -78,6 +82,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.get(endpoint, getParams, queryParams);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
@@ -96,6 +101,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.post(endpoint, parameters);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
@@ -110,6 +116,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.patch(endpoint, parameters);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
@@ -120,6 +127,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.put(endpoint, parameters);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
@@ -146,6 +154,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.delete(endpoint, parameters);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
@@ -156,6 +165,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.postMultiPart(endpoint, parameters);
         }
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
         checkError(ires);
         return ires;
     }
