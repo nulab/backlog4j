@@ -5,6 +5,9 @@ import com.nulabinc.backlog4j.BacklogAPIException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URLDecoder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
  * @author nulab-inc
@@ -14,15 +17,38 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     protected InputStream inputStream;
     protected int statusCode;
     protected String responseAsString = null;
+    protected LocalDateTime rateLimitResetDate = null;
+    protected String rateLimitReset = null;
 
     public BacklogHttpResponseImpl(HttpURLConnection urlConnection) {
         try {
             this.urlConnection = urlConnection;
             this.statusCode = urlConnection.getResponseCode();
-            this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
+            if (200 <= this.statusCode && this.statusCode <= 299) {
+                this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
+            } else {
+                this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
+            }
+            rateLimitReset = urlConnection.getHeaderField("X-RateLimit-Reset");
+            setRateLimitResetDate(rateLimitReset);
         } catch (IOException e) {
             this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
         }
+    }
+
+    public String getRateLimitReset() {
+        return rateLimitReset;
+    }
+
+    private void setRateLimitResetDate(String rateLimitReset) {
+        try {
+            rateLimitResetDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(Long.parseLong(rateLimitReset)), ZoneId.systemDefault());
+        } catch (Exception e) {
+        }
+    }
+
+    public LocalDateTime getRateLimitResetDate() {
+        return rateLimitResetDate;
     }
 
     public int getStatusCode() {
