@@ -25,7 +25,7 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
         try {
             this.urlConnection = urlConnection;
             this.statusCode = urlConnection.getResponseCode();
-            if (200 <= this.statusCode && this.statusCode <= 299) {
+            if (this.statusCode < 400) {
                 this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
             } else {
                 this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
