@@ -1,6 +1,7 @@
 package com.nulabinc.backlog4j.http;
 
 import com.nulabinc.backlog4j.BacklogAPIException;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -41,6 +42,9 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     }
 
     private void setRateLimitResetDate(String rateLimitReset) {
+        if (StringUtils.isBlank(rateLimitReset)) {
+            return;
+        }
         try {
             rateLimitResetDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(Long.parseLong(rateLimitReset)), ZoneId.systemDefault());
         } catch (Exception e) {
