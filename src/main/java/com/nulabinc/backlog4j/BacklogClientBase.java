@@ -11,6 +11,8 @@ import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.InternalFactoryJSONImpl;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +84,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.get(endpoint, getParams, queryParams);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
     }
@@ -101,7 +103,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.post(endpoint, parameters);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
     }
@@ -116,7 +118,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.patch(endpoint, parameters);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
     }
@@ -127,7 +129,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.put(endpoint, parameters);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
     }
@@ -154,7 +156,7 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.delete(endpoint, parameters);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
     }
@@ -165,9 +167,21 @@ public abstract class BacklogClientBase{
             refreshToken();
             ires = httpClient.postMultiPart(endpoint, parameters);
         }
-        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+        loggingResponse(endpoint, ires);
         checkError(ires);
         return ires;
+    }
+
+    private void loggingResponse(String endpoint, BacklogHttpResponse ires) {
+        logger.info("status code:" + ires.getStatusCode() + " url:" + endpoint);
+    }
+
+    private String getRateLimitResetFormatedDate(BacklogHttpResponse ires) {
+        if (ires.getRateLimitResetDate() == null) {
+            return "";
+        }
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        return dtf.format(ires.getRateLimitResetDate());
     }
 
     protected String buildEndpoint(String connection) {
@@ -184,7 +198,11 @@ public abstract class BacklogClientBase{
                 ires.getStatusCode() != 202 &&
                 ires.getStatusCode() != 203 &&
                 ires.getStatusCode() != 204) {
-            throw new BacklogAPIException("backlog api request failed.", ires);
+            if (ires.getStatusCode() == 429) {
+                throw new BacklogAPIException("The API usage limit has been exceeded, and will be available again from " + getRateLimitResetFormatedDate(ires) + ".", ires);
+            } else {
+                throw new BacklogAPIException("backlog api request failed.", ires);
+            }
         }
     }
 
