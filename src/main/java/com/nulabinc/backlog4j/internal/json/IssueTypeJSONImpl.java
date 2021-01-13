@@ -22,6 +22,8 @@ public class IssueTypeJSONImpl implements IssueType {
     private long projectId;
     private String name;
     private String color;
+    private String templateSummary;
+    private String templateDescription;
 
     @Override
     public long getId() {
@@ -53,6 +55,11 @@ public class IssueTypeJSONImpl implements IssueType {
         return Project.IssueTypeColor.strValueOf(this.color);
     }
 
+    @Override
+    public String getTemplateSummary() { return this.templateSummary; }
+
+    @Override
+    public String getTemplateDescription() { return this.templateDescription; }
 
     @Override
     public boolean equals(Object obj) {
@@ -71,6 +78,8 @@ public class IssueTypeJSONImpl implements IssueType {
                 .append(this.projectId, rhs.projectId)
                 .append(this.name, rhs.name)
                 .append(this.color, rhs.color)
+                .append(this.templateSummary, rhs.templateSummary)
+                .append(this.templateDescription, rhs.templateDescription)
                 .isEquals();
     }
 
@@ -81,6 +90,8 @@ public class IssueTypeJSONImpl implements IssueType {
                 .append(projectId)
                 .append(name)
                 .append(color)
+                .append(templateSummary)
+                .append(templateDescription)
                 .toHashCode();
     }
 
@@ -91,6 +102,8 @@ public class IssueTypeJSONImpl implements IssueType {
                 .append("projectId", projectId)
                 .append("name", name)
                 .append("color", color)
+                .append("templateSummary", templateSummary)
+                .append("templateDescription", templateDescription)
                 .toString();
     }
 }

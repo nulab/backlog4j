@@ -181,6 +181,15 @@ public interface ProjectMethods {
     IssueType removeIssueType(Object projectIdOrKey, Object issueTypeId, Object substituteIssueTypeId) throws BacklogException;
 
     /**
+     * Returns the issue statuses in the project.
+     *
+     * @param projectIdOrKey the project identifier
+     * @return the statuses in a list
+     * @throws BacklogException
+     */
+    ResponseList<Status> getStatuses(Object projectIdOrKey) throws BacklogException;
+
+    /**
      * Returns the categories in the project.
      *
      * @param projectIdOrKey the project identifier

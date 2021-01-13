@@ -18,4 +18,8 @@ public interface IssueType {
     String getName();
 
     Project.IssueTypeColor getColor();
+
+    String getTemplateSummary();
+
+    String getTemplateDescription();
 }

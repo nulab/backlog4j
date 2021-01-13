@@ -68,6 +68,13 @@ public class GetIssuesCountParams extends GetParams {
         return this;
     }
 
+    public GetIssuesCountParams statusIds(List statusIds) {
+        for (Object statusId : statusIds) {
+            parameters.add(new NameValuePair("statusId[]", statusId.toString()));
+        }
+        return this;
+    }
+
     public GetIssuesCountParams priorities(List<Issue.PriorityType> priorities) {
         for (Issue.PriorityType priority : priorities) {
             parameters.add(new NameValuePair("priorityId[]", String.valueOf(priority.getIntValue())));

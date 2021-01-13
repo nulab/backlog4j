@@ -7,15 +7,17 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceCompatibility=1.6
+sourceCompatibility=1.7
 tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.3.2-SNAPSHOT'
+version = '2.3.4-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+    maven {
+        url 'https://repo1.maven.org/maven2/'
+    }
 }
 
 dependencies {
@@ -26,7 +28,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.1.1'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.1'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.1.1'
-    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-api:1.7.30'
 }
 
 javadoc {

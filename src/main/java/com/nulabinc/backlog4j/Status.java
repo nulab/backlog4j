@@ -14,4 +14,12 @@ public interface Status {
     String getName();
 
     Issue.StatusType getStatusType();
+
+    Project.CustomStatusColor getColor();
+
+    long getProjectId();
+
+    String getProjectIdAsString();
+
+    int getDisplayOrder();
 }

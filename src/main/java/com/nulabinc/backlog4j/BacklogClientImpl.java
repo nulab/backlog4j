@@ -183,6 +183,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Status> getStatuses(Object projectIdOrKey) throws BacklogException {
+        return factory.createStatusList(get(buildEndpoint("projects/" + projectIdOrKey + "/statuses")));
+    }
+
+    @Override
     public ResponseList<Category> getCategories(Object projectIdOrKey) throws BacklogException {
         return factory.createCategoryList(get(buildEndpoint("projects/" + projectIdOrKey + "/categories")));
     }
@@ -667,6 +672,37 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public ResponseList<Status> getStatuses() throws BacklogException {
         return factory.createStatusList(get(buildEndpoint("statuses")));
+    }
+
+    @Override
+    public Status addStatus(AddStatusParams params) throws BacklogException {
+        return factory.createStatus(post(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/statuses"), params));
+    }
+
+    @Override
+    public Status updateStatus(UpdateStatusParams params) throws BacklogException {
+        return factory.createStatus(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/statuses/" + params.getStatusId()), params));
+    }
+
+    @Override
+    public ResponseList<Status> updateOrderOfStatus(UpdateOrderOfStatusParams params) throws BacklogException {
+        return factory.createStatusList(patch(
+                buildEndpoint("projects/" + params.getProjectIdOrKeyString()
+                        + "/statuses/updateDisplayOrder"), params));
+    }
+
+    @Override
+    public Status removeStatus(Object projectIdOrKey, Object statusId, Object substituteStatusId) throws BacklogException {
+        return factory.createStatus(
+                delete(
+                        buildEndpoint("projects/" + projectIdOrKey + "/statuses/" + statusId),
+                        new NameValuePair("substituteStatusId", String.valueOf(substituteStatusId))
+                )
+        );
     }
 
     @Override

@@ -114,6 +114,13 @@ public class GetIssuesParams extends GetParams {
         return this;
     }
 
+    public GetIssuesParams statusIds(List statusIds) {
+        for (Object statusId : statusIds) {
+            parameters.add(new NameValuePair("statusId[]", statusId.toString()));
+        }
+        return this;
+    }
+
     public GetIssuesParams priorities(List<Issue.PriorityType> priorities) {
         for (Issue.PriorityType priority : priorities) {
             parameters.add(new NameValuePair("priorityId[]", String.valueOf(priority.getIntValue())));

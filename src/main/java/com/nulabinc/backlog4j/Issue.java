@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface Issue {
     enum StatusType {
-        Open(1), InProgress(2), Resolved(3), Closed(4);
+        Open(1), InProgress(2), Resolved(3), Closed(4), Custom(-1);
 
         StatusType(int intValue) {
             this.intValue = intValue;
@@ -27,7 +27,7 @@ public interface Issue {
                     return d;
                 }
             }
-            return null;
+            return Custom;
         }
 
         private int intValue;

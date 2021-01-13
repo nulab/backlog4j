@@ -173,6 +173,9 @@ public class BacklogClientImplTest {
         public long getDisplayOrder() {
             return 0;
         }
+
+        @Override
+        public boolean getUseDevAttributes() { return true; }
     }
 
     private class DummyWiki implements Wiki {

@@ -27,6 +27,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
+        assertEquals(true, project.getUseDevAttributes());
 
         project = projects.get(1);
         assertEquals(1073835220, project.getId());
@@ -36,6 +37,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Markdown, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
+        assertEquals(false, project.getUseDevAttributes());
 
     }
 
@@ -51,6 +53,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertEquals(false, project.isArchived());
+        assertEquals(true, project.getUseDevAttributes());
     }
 
     @Test

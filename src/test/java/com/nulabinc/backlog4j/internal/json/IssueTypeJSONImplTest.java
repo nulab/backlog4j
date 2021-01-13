@@ -26,12 +26,16 @@ public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, issueType.getProjectId());
         assertEquals("バグ", issueType.getName());
         assertEquals(Project.IssueTypeColor.Color2, issueType.getColor());
+        assertEquals("subject", issueType.getTemplateSummary());
+        assertEquals("description", issueType.getTemplateDescription());
 
         issueType = issueTypes.get(1);
         assertEquals(1074178333, issueType.getId());
         assertEquals(1073836557, issueType.getProjectId());
         assertEquals("タスク", issueType.getName());
         assertEquals(Project.IssueTypeColor.Color7, issueType.getColor());
+        assertEquals(null, issueType.getTemplateSummary());
+        assertEquals(null, issueType.getTemplateDescription());
 
         issueType = issueTypes.get(2);
         assertEquals(1074178334, issueType.getId());
@@ -56,6 +60,8 @@ public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, issueType.getProjectId());
         assertEquals("バグ", issueType.getName());
         assertEquals(Project.IssueTypeColor.Color2, issueType.getColor());
+        assertEquals("bug subject", issueType.getTemplateSummary());
+        assertEquals("bug description", issueType.getTemplateDescription());
     }
 
     @Test

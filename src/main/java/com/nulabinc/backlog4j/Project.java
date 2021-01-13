@@ -62,6 +62,38 @@ public interface Project {
         private String value;
     }
 
+    enum CustomStatusColor {
+        Color1("#ea2c00"),
+        Color2("#e87758"),
+        Color3("#e07b9a"),
+        Color4("#868cb7"),
+        Color5("#3b9dbd"),
+        Color6("#4caf93"),
+        Color7("#b0be3c"),
+        Color8("#eda62a"),
+        Color9("#f42858"),
+        Color10("#393939");
+
+        CustomStatusColor(String value) {
+            this.value = value;
+        }
+
+        public String getStrValue() {
+            return value;
+        }
+
+        public static CustomStatusColor strValueOf(final String anValue) {
+            for (CustomStatusColor d : values()) {
+                if (d.getStrValue().equals(anValue)) {
+                    return d;
+                }
+            }
+            return null;
+        }
+
+        private String value;
+    }
+
     long getId();
 
     String getIdAsString();
@@ -79,4 +111,6 @@ public interface Project {
     boolean isArchived();
 
     long getDisplayOrder();
+
+    boolean getUseDevAttributes();
 }
