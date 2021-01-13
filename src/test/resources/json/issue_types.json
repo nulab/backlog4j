@@ -3,24 +3,32 @@
         "id": 1074178332,
         "projectId": 1073836557,
         "name": "バグ",
-        "color": "#990000"
+        "color": "#990000",
+        "templateSummary": "subject",
+        "templateDescription": "description"
     },
     {
         "id": 1074178333,
         "projectId": 1073836557,
         "name": "タスク",
-        "color": "#7ea800"
+        "color": "#7ea800",
+        "templateSummary": null,
+        "templateDescription": null
     },
     {
         "id": 1074178334,
         "projectId": 1073836557,
         "name": "要望",
-        "color": "#ff9200"
+        "color": "#ff9200",
+        "templateSummary": null,
+        "templateDescription": null
     },
     {
         "id": 1074178335,
         "projectId": 1073836557,
         "name": "その他",
-        "color": "#2779ca"
+        "color": "#2779ca",
+        "templateSummary": null,
+        "templateDescription": null
     }
 ]

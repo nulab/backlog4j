@@ -8,7 +8,8 @@
         "chartEnabled": true,
         "subtaskingEnabled": true,
         "textFormattingRule": "backlog",
-        "archived": false
+        "archived": false,
+        "useDevAttributes": true
     },
     {
         "id": 1073835220,
@@ -19,6 +20,7 @@
         "chartEnabled": false,
         "subtaskingEnabled": true,
         "textFormattingRule": "markdown",
-        "archived": false
+        "archived": false,
+        "useDevAttributes": false
     }
 ]

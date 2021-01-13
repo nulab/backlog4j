@@ -1,10 +1,12 @@
 package com.nulabinc.backlog4j.http;
 
 import com.nulabinc.backlog4j.BacklogAPIException;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URLDecoder;
+import java.util.Date;
 
 /**
  * @author nulab-inc
@@ -14,15 +16,41 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     protected InputStream inputStream;
     protected int statusCode;
     protected String responseAsString = null;
+    protected Date rateLimitResetDate = null;
+    protected String rateLimitReset = null;
 
     public BacklogHttpResponseImpl(HttpURLConnection urlConnection) {
         try {
             this.urlConnection = urlConnection;
             this.statusCode = urlConnection.getResponseCode();
-            this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
+            if (this.statusCode < 400) {
+                this.inputStream = new BufferedInputStream(urlConnection.getInputStream());
+            } else {
+                this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
+            }
+            rateLimitReset = urlConnection.getHeaderField("X-RateLimit-Reset");
+            setRateLimitResetDate(rateLimitReset);
         } catch (IOException e) {
             this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
         }
+    }
+
+    public String getRateLimitReset() {
+        return rateLimitReset;
+    }
+
+    private void setRateLimitResetDate(String rateLimitReset) {
+        if (StringUtils.isBlank(rateLimitReset)) {
+            return;
+        }
+        try {
+            rateLimitResetDate = new Date(Long.parseLong(rateLimitReset)*1000);
+        } catch (Exception e) {
+        }
+    }
+
+    public Date getRateLimitResetDate() {
+        return rateLimitResetDate;
     }
 
     public int getStatusCode() {
