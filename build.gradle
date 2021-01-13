@@ -12,7 +12,7 @@ tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.4.1'
+version = '2.4.1-SNAPSHOT'
 
 repositories {
     maven {
@@ -72,14 +72,14 @@ configurations {
 
 signing {
     // Skip signing snapshot archives
-//    if (System.env.TRAVIS || version.endsWith("-SNAPSHOT")) return
+    if (System.env.TRAVIS || version.endsWith("-SNAPSHOT")) return
 
     sign configurations.archives
 }
 
 uploadArchives {
     // Skip uploading production archives when travis
-//    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
+    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
 
     repositories {
         mavenDeployer {
