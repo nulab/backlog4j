@@ -6,9 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URLDecoder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * @author nulab-inc
@@ -18,7 +16,7 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     protected InputStream inputStream;
     protected int statusCode;
     protected String responseAsString = null;
-    protected LocalDateTime rateLimitResetDate = null;
+    protected Date rateLimitResetDate = null;
     protected String rateLimitReset = null;
 
     public BacklogHttpResponseImpl(HttpURLConnection urlConnection) {
@@ -46,12 +44,12 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
             return;
         }
         try {
-            rateLimitResetDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(Long.parseLong(rateLimitReset)), ZoneId.systemDefault());
+            rateLimitResetDate = new Date(Long.parseLong(rateLimitReset)*1000);
         } catch (Exception e) {
         }
     }
 
-    public LocalDateTime getRateLimitResetDate() {
+    public Date getRateLimitResetDate() {
         return rateLimitResetDate;
     }
 

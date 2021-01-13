@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.http;
 
 import java.io.InputStream;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author nulab-inc
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public interface BacklogHttpResponse {
     int getStatusCode();
 
-    LocalDateTime getRateLimitResetDate();
+    Date getRateLimitResetDate();
 
     String getRateLimitReset();
 
