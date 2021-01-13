@@ -15,25 +15,25 @@ Backlog4j is a Backlog binding library for Java.
 ![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
 
 ## Update
-* 2019/12/12 2.3.3 released
+* 2020/01/14 2.4.0 released
+  2019/12/12 2.3.3 released
 * 2018/10/18 2.3.2 released
 * 2018/05/31 2.3.1 released
 * 2017/12/25 2.2.1 released
-* 2016/10/18 2.2.0 released
 https://github.com/nulab/backlog4j/releases
 
 ## Install
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.3.3'
+    'com.nulab-inc:backlog4j:2.4.0'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.3.3</version>
+      <version>2.4.0</version>
     </dependency>
 
 ## How to use
@@ -81,14 +81,14 @@ Backlog4j は Backlog API 簡単にアクセスするためのJavaクライア�
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.3.3'
+    'com.nulab-inc:backlog4j:2.4.0'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.3.3</version>
+      <version>2.4.0</version>
     </dependency>
 
 ## 使い方
