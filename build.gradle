@@ -7,12 +7,12 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceCompatibility=1.6
+sourceCompatibility=1.7
 tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.3.4-SNAPSHOT'
+version = '2.4.0'
 
 repositories {
     mavenCentral()
@@ -76,7 +76,7 @@ signing {
 
 uploadArchives {
     // Skip uploading production archives when travis
-    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
+//    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
 
     repositories {
         mavenDeployer {
