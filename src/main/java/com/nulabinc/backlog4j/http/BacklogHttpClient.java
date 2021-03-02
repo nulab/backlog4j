@@ -19,7 +19,7 @@ public interface BacklogHttpClient {
     void setUserAgent(String userAgent);
     String getUserAgent();
     BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException;
-    BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException;
+    BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams, List<NameValuePair> headers) throws BacklogException;
     BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
     BacklogHttpResponse put(String endpoint, List<NameValuePair> patchParams) throws BacklogException;
     BacklogHttpResponse delete(String endpoint, List<NameValuePair> deleteParams) throws BacklogException;

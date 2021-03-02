@@ -107,7 +107,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
         params.add(new NameValuePair("client_secret", clientSecret));
         params.add(new NameValuePair("redirect_uri", redirectUrl));
         params.add(new NameValuePair("grant_type", "authorization_code"));
-        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<NameValuePair>());
         checkError(ires);
         return ires;
 
@@ -119,7 +119,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
         params.add(new NameValuePair("client_secret", clientSecret));
         params.add(new NameValuePair("refresh_token", configure.getAccessToken().getRefresh()));
         params.add(new NameValuePair("grant_type", "refresh_token"));
-        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params);
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<NameValuePair>());
         checkError(ires);
         return ires;
     }

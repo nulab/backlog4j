@@ -89,18 +89,18 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse post(String endpoint) throws BacklogException {
-        return this.post(endpoint, new ArrayList<NameValuePair>());
+        return this.post(endpoint, new ArrayList<NameValuePair>(), new ArrayList<NameValuePair>());
     }
 
     protected BacklogHttpResponse post(String endpoint, PostParams postParams) throws BacklogException {
-        return this.post(endpoint, postParams.getParamList());
+        return this.post(endpoint, postParams.getParamList(), new ArrayList<NameValuePair>());
     }
 
-    protected BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters) throws BacklogException {
-        BacklogHttpResponse ires = httpClient.post(endpoint, parameters);
+    protected BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters, List<NameValuePair> headers) throws BacklogException {
+        BacklogHttpResponse ires = httpClient.post(endpoint, parameters, headers);
         if (needTokenRefresh(ires)) {
             refreshToken();
-            ires = httpClient.post(endpoint, parameters);
+            ires = httpClient.post(endpoint, parameters, headers);
         }
         loggingResponse(endpoint, ires);
         checkError(ires);
