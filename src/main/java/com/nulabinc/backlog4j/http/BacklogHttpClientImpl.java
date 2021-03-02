@@ -9,6 +9,7 @@ import com.nulabinc.backlog4j.api.option.QueryParams;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -102,11 +103,16 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     @Override
-    public BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams) throws BacklogException {
+    public BacklogHttpResponse post(String endpoint, List<NameValuePair> postParams, List<NameValuePair> headers) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "POST", CONTENT_TYPE);
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
+        if (headers != null) {
+            for (NameValuePair pair : headers) {
+                urlConnection.setRequestProperty(pair.getName(), pair.getValue());
+            }
+        }
         writeParams(urlConnection, postParams);
         return handleResponse(urlConnection);
     }
