@@ -371,7 +371,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new NameValuePair("name", name));
         return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId), params));
+                buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId), params, new ArrayList<NameValuePair>()));
     }
 
     @Override

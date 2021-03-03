@@ -118,7 +118,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     @Override
-    public BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException {
+    public BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams, List<NameValuePair> headers) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "PATCH", CONTENT_TYPE);
         urlConnection.setDoInput(true);
