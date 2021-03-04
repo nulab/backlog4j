@@ -12,7 +12,7 @@ tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.4.2'
+version = '2.4.3-SNAPSHOT'
 
 repositories {
     maven {
