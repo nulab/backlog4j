@@ -108,21 +108,18 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         HttpURLConnection urlConnection = openUrlConnection(url, "POST", CONTENT_TYPE);
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
-        if (headers != null) {
-            for (NameValuePair pair : headers) {
-                urlConnection.setRequestProperty(pair.getName(), pair.getValue());
-            }
-        }
+        setHeaders(urlConnection, headers);
         writeParams(urlConnection, postParams);
         return handleResponse(urlConnection);
     }
 
     @Override
-    public BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams) throws BacklogException {
+    public BacklogHttpResponse patch(String endpoint, List<NameValuePair> patchParams, List<NameValuePair> headers) throws BacklogException {
         String url = getUrl(endpoint);
         HttpURLConnection urlConnection = openUrlConnection(url, "PATCH", CONTENT_TYPE);
         urlConnection.setDoInput(true);
         urlConnection.setDoOutput(true);
+        setHeaders(urlConnection, headers);
         writeParams(urlConnection, patchParams);
         return handleResponse(urlConnection);
     }
@@ -320,6 +317,14 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
                 }
             } catch (final Exception e) {
                 throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private void setHeaders(final HttpURLConnection connection, final List<NameValuePair> headers) {
+        if (headers != null) {
+            for (NameValuePair pair : headers) {
+                connection.setRequestProperty(pair.getName(), pair.getValue());
             }
         }
     }

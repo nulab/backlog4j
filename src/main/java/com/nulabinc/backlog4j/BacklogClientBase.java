@@ -108,14 +108,14 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse patch(String endpoint, PatchParams postParams) throws BacklogException {
-        return this.patch(endpoint, postParams.getParamList());
+        return this.patch(endpoint, postParams.getParamList(), new ArrayList<NameValuePair>());
     }
 
-    protected BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters) throws BacklogException {
-        BacklogHttpResponse ires = httpClient.patch(endpoint, parameters);
+    protected BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters, List<NameValuePair> headers) throws BacklogException {
+        BacklogHttpResponse ires = httpClient.patch(endpoint, parameters, headers);
         if (needTokenRefresh(ires)) {
             refreshToken();
-            ires = httpClient.patch(endpoint, parameters);
+            ires = httpClient.patch(endpoint, parameters, headers);
         }
         loggingResponse(endpoint, ires);
         checkError(ires);
