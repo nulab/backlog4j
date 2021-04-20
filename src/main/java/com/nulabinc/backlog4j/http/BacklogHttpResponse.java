@@ -9,9 +9,9 @@ import java.util.Date;
 public interface BacklogHttpResponse {
     int getStatusCode();
 
-    Integer getRateLimitLimit();
+    int getRateLimitLimit();
 
-    Integer getRateLimitRemaining();
+    int getRateLimitRemaining();
 
     Date getRateLimitResetDate();
 
