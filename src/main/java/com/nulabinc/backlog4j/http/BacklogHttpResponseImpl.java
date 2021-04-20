@@ -16,6 +16,8 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     protected InputStream inputStream;
     protected int statusCode;
     protected String responseAsString = null;
+    protected Integer rateLimitLimit = null;
+    protected Integer rateLimitRemaining = null;
     protected Date rateLimitResetDate = null;
     protected String rateLimitReset = null;
 
@@ -28,11 +30,21 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
             } else {
                 this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
             }
+            rateLimitLimit = Integer.valueOf(urlConnection.getHeaderField("X-RateLimit-Limit"));
+            rateLimitRemaining = Integer.valueOf(urlConnection.getHeaderField("X-RateLimit-Remaining"));
             rateLimitReset = urlConnection.getHeaderField("X-RateLimit-Reset");
             setRateLimitResetDate(rateLimitReset);
         } catch (IOException e) {
             this.inputStream = new BufferedInputStream(urlConnection.getErrorStream());
         }
+    }
+
+    public Integer getRateLimitLimit() {
+        return rateLimitLimit;
+    }
+
+    public Integer getRateLimitRemaining() {
+        return rateLimitRemaining;
     }
 
     public String getRateLimitReset() {
