@@ -1,4 +1,4 @@
-# Backlog4j [![Build Status](https://travis-ci.org/nulab/backlog4j.svg?branch=master)](https://travis-ci.org/nulab/backlog4j)
+# Backlog4j [![Build Status](https://travis-ci.com/nulab/backlog4j.svg?branch=master)](https://travis-ci.com/nulab/backlog4j)
 
 Backlog4j is a Backlog binding library for Java.
 (英語の下に日本文が記載されています)
