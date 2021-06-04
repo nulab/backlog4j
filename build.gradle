@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.11'
+    testCompile 'junit:junit:4.13.2'
     testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
 
     compile 'org.apache.commons:commons-lang3:3.3.2'
