@@ -21,13 +21,13 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.11'
+    testCompile 'junit:junit:4.13.2'
     testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
 
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.1.1'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.1'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.12.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     compile 'org.slf4j:slf4j-api:1.7.30'
 }
 
@@ -88,11 +88,11 @@ uploadArchives {
             }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'', password: hasProperty('ossrhPassword')?ossrhPassword:'')
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'', password: hasProperty('ossrhPassword')?ossrhPassword:'')
             }
 
             pom.project {
