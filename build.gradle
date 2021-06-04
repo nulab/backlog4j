@@ -25,9 +25,9 @@ dependencies {
     testCompile 'uk.co.modular-it:hamcrest-date:0.9.5'
 
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.1.1'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.1'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.12.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     compile 'org.slf4j:slf4j-api:1.7.30'
 }
 
