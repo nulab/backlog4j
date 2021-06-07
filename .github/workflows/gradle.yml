@@ -3,6 +3,11 @@
 
 name: Java CI with Gradle
 
+on:
+  push:
+    tags:
+      - 'v*'
+
 jobs:
   build:
 
