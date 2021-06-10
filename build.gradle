@@ -4,7 +4,7 @@ buildscript {
     }
 }
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 sourceCompatibility=1.7
@@ -70,59 +70,55 @@ configurations {
     deployerJars
 }
 
-signing {
-    // Skip signing snapshot archives
-    if (System.env.TRAVIS || version.endsWith("-SNAPSHOT")) return
-
-    sign configurations.archives
+ext {
+    isReleasedVersion = !System.env.TRAVIS && !project.version.endsWith("-SNAPSHOT")
 }
 
-uploadArchives {
-    // Skip uploading production archives when travis
-    if (System.env.TRAVIS && !version.endsWith("-SNAPSHOT")) return
-
-    repositories {
-        mavenDeployer {
-            beforeDeployment {
-                MavenDeployment deployment -> if (!version.endsWith("-SNAPSHOT")) { signing.signPom(deployment) }
-            }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'', password: hasProperty('ossrhPassword')?ossrhPassword:'')
-            }
-
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: System.getenv('OSSRH_USER_NAME'), password: System.getenv('OSSRH_PASSWORD'))
-            }
-
-            pom.project {
-                name 'Backlog4j'
-                packaging 'jar'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = 'Backlog4j'
                 // optionally artifactId can be defined here
-                description 'Backlog4j is a Backlog binding library for Java.'
-                url 'https://github.com/nulab/backlog4j'
-
+                description = 'Backlog4j is a Backlog binding library for Java.'
                 scm {
-                    connection 'https://github.com/nulab/backlog4j.git'
-                    developerConnection 'https://github.com/nulab/backlog4j.git'
-                    url 'https://github.com/nulab/backlog4j.git'
+                    connection = 'https://github.com/nulab/backlog4j.git'
+                    developerConnection = 'https://github.com/nulab/backlog4j.git'
+                    url = 'https://github.com/nulab/backlog4j.git'
                 }
-
                 licenses {
                     license {
-                        name 'MIT License'
-                        url 'http://www.opensource.org/licenses/mit-license.php'
+                        name = 'MIT License'
+                        url = 'http://www.opensource.org/licenses/mit-license.php'
                     }
                 }
-
                 developers {
                     developer {
-                        id 'kimzo'
-                        name 'Yuh Kim'
-                        email 'kim@nulab.co.jp'
+                        id = 'kimzo'
+                        name = 'Yuh Kim'
+                        email = 'kim@nulab.com'
                     }
                 }
             }
         }
     }
+
+    repositories {
+        maven {
+            credentials {
+                username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+                password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+            }
+            if (!isReleasedVersion) {
+                url = "https://oss.sonatype.org/content/repositories/snapshots"
+            } else {
+                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
