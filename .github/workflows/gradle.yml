@@ -19,13 +19,13 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x gradlew      x
     - name: Build with Gradle
       run: ./gradlew build 
-    - name: Deploy to sonatype
-      env:
-        OSSRH_USER_NAME: ${{ secrets.OSSRH_USER_NAME }}
-        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        OSSRH_GPG_SECRET_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
-        OSSRH_GPG_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-      run: ./gradlew uploadArchives
+    - name: Release Maven package
+      uses: samuelmeuli/action-maven-publish@v1
+      with:
+        gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+        gpg_passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+        nexus_username: ${{ secrets.OSSRH_USER_NAME }}
+        nexus_password: ${{ secrets.OSSRH_PASSWORD }}
