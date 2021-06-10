@@ -26,4 +26,6 @@ jobs:
       env:
         OSSRH_USER_NAME: ${{ secrets.OSSRH_USER_NAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        OSSRH_GPG_SECRET_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+        OSSRH_GPG_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
       run: ./gradlew uploadArchives
