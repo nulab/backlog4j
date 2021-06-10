@@ -1,26 +1,30 @@
-# Backlog4j [![Build Status](https://github.com/nulab/backlog4j/actions/workflows/build.yml/badge.svg?branch=master)](https://travis-ci.com/nulab/backlog4j)
+# Backlog4j ![Build Status](https://github.com/nulab/backlog4j/actions/workflows/build.yml/badge.svg?branch=master)
 
 Backlog4j is a Backlog binding library for Java.
 (英語の下に日本文が記載されています)
 
-<img src="https://raw.githubusercontent.com/nulab/backlog4j/master/Backlog_logo.png">
+<img src="https://raw.githubusercontent.com/nulab/backlog4j/master/Backlog_logo.png" width='200'>
+
 
 * Backlog 
     * [https://backlog.com/](https://backlog.com/)
     * [https://backlog.com/ja/](https://backlog.com/ja/)
-
+ 
 * Backlog API version 2
-    * [https://developer.nulab.com/docs/backlog/#](https://developer.nulab-inc.com/docs/backlog/)
-  
-## Update
+    * [https://developer.nulab.com/docs/backlog/#](https://developer.nulab.com/docs/backlog/#)
+    * [https://developer.nulab.com/ja/docs/backlog/#](https://developer.nulab.com/ja/docs/backlog/#)
+
+
+## Updates
 * 2021/06/10 2.4.4 released
 * 2021/04/23 2.4.3 released
 * 2021/03/03 2.4.2 released
 * 2021/03/03 2.4.1 released
 * 2021/01/13 2.4.0 released
+
 https://github.com/nulab/backlog4j/releases
 
-## Install
+## How to Install
 
 ### gradle
 
