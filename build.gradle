@@ -12,7 +12,7 @@ tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.4.4'
+version = '2.4.5-SNAPSHOT'
 
 repositories {
     maven {
@@ -78,10 +78,18 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            artifact sourceJar {
+                classifier = 'sources'
+                extension  = 'jar'
+            }
+            artifact javadocJar {
+                classifier = 'javadoc'
+                extension  = 'jar'
+            }
             pom {
                 name = 'Backlog4j'
-                // optionally artifactId can be defined here
                 description = 'Backlog4j is a Backlog binding library for Java.'
+                url = 'https://github.com/nulab/backlog4j'
                 scm {
                     connection = 'https://github.com/nulab/backlog4j.git'
                     developerConnection = 'https://github.com/nulab/backlog4j.git'
