@@ -1,39 +1,37 @@
-# Backlog4j [![Build Status](https://travis-ci.com/nulab/backlog4j.svg?branch=master)](https://travis-ci.com/nulab/backlog4j)
+# Backlog4j [![Build Status](https://github.com/nulab/backlog4j/actions/workflows/build.yml/badge.svg?branch=master)](https://travis-ci.com/nulab/backlog4j)
 
 Backlog4j is a Backlog binding library for Java.
 (英語の下に日本文が記載されています)
 
-<img src="https://raw.githubusercontent.com/nulab/backlog4j/master/icon.png" width="64" height="64">
+<img src="https://raw.githubusercontent.com/nulab/backlog4j/master/Backlog_logo.png">
 
 * Backlog 
     * [https://backlog.com/](https://backlog.com/)
     * [https://backlog.com/ja/](https://backlog.com/ja/)
 
 * Backlog API version 2
-    * [https://developer.nulab-inc.com/docs/backlog/](https://developer.nulab-inc.com/docs/backlog/)
-
-![Nulab developer icon](https://raw.githubusercontent.com/nulab/backlog4j/master/dev_icon.png)
-
+    * [https://developer.nulab.com/docs/backlog/#](https://developer.nulab-inc.com/docs/backlog/)
+  
 ## Update
+* 2021/06/10 2.4.4 released
 * 2021/04/23 2.4.3 released
 * 2021/03/03 2.4.2 released
 * 2021/03/03 2.4.1 released
 * 2021/01/13 2.4.0 released
-* 2019/12/12 2.3.3 released
 https://github.com/nulab/backlog4j/releases
 
 ## Install
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.4.3'
+    'com.nulab-inc:backlog4j:2.4.4'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.4.3</version>
+      <version>2.4.4</version>
     </dependency>
 
 ## How to use
@@ -75,20 +73,20 @@ MIT License
 
 
 # Backlog4j とは
-Backlog4j は Backlog API 簡単にアクセスするためのJavaクライアントライブラリです。
+Backlog4j は Backlog API (https://developer.nulab.com/ja/docs/backlog/#) に簡単にアクセスするためのJavaクライアントライブラリです。
 
 ## インストール
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.4.3'
+    'com.nulab-inc:backlog4j:2.4.4'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.4.3</version>
+      <version>2.4.4</version>
     </dependency>
 
 ## 使い方
