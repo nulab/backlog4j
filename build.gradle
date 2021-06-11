@@ -12,7 +12,7 @@ tasks.withType(JavaCompile){ options.encoding = 'UTF-8' }
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.4.5'
+version = '2.4.5-SNAPSHOT'
 
 repositories {
     maven {
@@ -75,10 +75,10 @@ ext {
 }
 
 publishing {
-    // only snapshot version can be auto published
-    if(isReleasedVersion && System.getenv("AUTO_PUBLISH")) return
     publications {
         mavenJava(MavenPublication) {
+            // only snapshot version can be auto published
+            if(isReleasedVersion && System.getenv("AUTO_PUBLISH")) return
             from components.java
             artifact sourceJar {
                 classifier = 'sources'
