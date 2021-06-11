@@ -6,8 +6,6 @@ name: Build
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -25,3 +23,13 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build test
+      
+    #Publish snapshot auto
+    - name: Publish snapshot
+      run: ./gradlew publish
+      env:
+        IS_SNAPSHOT: true
+        OSSRH_USERNAME: ${{secrets.OSSRH_USER_NAME}}
+        OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}}
+
+     

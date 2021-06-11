@@ -71,7 +71,7 @@ configurations {
 }
 
 ext {
-    isReleasedVersion = !System.env.TRAVIS && !project.version.endsWith("-SNAPSHOT")
+    isReleasedVersion = !project.version.endsWith("-SNAPSHOT") && !System.getenv("IS_SNAPSHOT")
 }
 
 publishing {
@@ -128,5 +128,6 @@ publishing {
 }
 
 signing {
+    if (!isReleasedVersion) return
     sign publishing.publications.mavenJava
 }
