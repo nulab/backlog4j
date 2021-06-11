@@ -130,6 +130,5 @@ publishing {
 }
 
 signing {
-    if (!isReleasedVersion) return
     sign publishing.publications.mavenJava
 }
