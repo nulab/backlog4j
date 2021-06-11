@@ -71,10 +71,12 @@ configurations {
 }
 
 ext {
-    isReleasedVersion = !project.version.endsWith("-SNAPSHOT") && !System.getenv("IS_SNAPSHOT")
+    isReleasedVersion = !project.version.endsWith("-SNAPSHOT")
 }
 
 publishing {
+    // only snapshot version can be auto published
+    if(isReleasedVersion && System.getenv("AUTO_PUBLISH")) return
     publications {
         mavenJava(MavenPublication) {
             from components.java
