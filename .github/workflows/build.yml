@@ -24,11 +24,16 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build test
       
-    #Publish snapshot auto
-    - name: Publish snapshot
-      run: ./gradlew publish
+    #After decoding the secret key, place the file in ~ /. Gradle/ secring.gpg
+    - name: Decode
+      run: |
+        echo "${{secrets.SIGNING_SECRET_KEY_RING_FILE}}" > ~/.gradle/secring.gpg.b64
+        base64 -d ~/.gradle/secring.gpg.b64 > ~/.gradle/secring.gpg
+
+    #Publish project
+    - name: Publish
+      run: ./gradlew publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password=${{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo ~/.gradle/secring.gpg)
       env:
-        AUTO_PUBLISH: true
         OSSRH_USERNAME: ${{secrets.OSSRH_USER_NAME}}
         OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}}
 
