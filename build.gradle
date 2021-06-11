@@ -130,5 +130,6 @@ publishing {
 }
 
 signing {
+    if(isReleasedVersion && System.getenv("AUTO_PUBLISH")) return
     sign publishing.publications.mavenJava
 }
