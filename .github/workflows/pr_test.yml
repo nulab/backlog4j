@@ -5,10 +5,6 @@ name: PR_Test
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
 
 jobs:
   build:
