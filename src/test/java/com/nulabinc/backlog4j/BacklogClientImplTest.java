@@ -175,6 +175,16 @@ public class BacklogClientImplTest {
         }
 
         @Override
+        public boolean getUseWiki() {
+            return true;
+        }
+
+        @Override
+        public boolean getUseFileSharing() {
+            return true;
+        }
+
+        @Override
         public boolean getUseDevAttributes() { return true; }
     }
 

@@ -6,16 +6,17 @@ Backlog4j is a Backlog binding library for Java.
 <img src="https://raw.githubusercontent.com/nulab/backlog4j/master/Backlog_logo.png" width='200'>
 
 
-* Backlog 
+* Backlog
     * [https://backlog.com/](https://backlog.com/)
     * [https://backlog.com/ja/](https://backlog.com/ja/)
- 
+
 * Backlog API version 2
     * [https://developer.nulab.com/docs/backlog/#](https://developer.nulab.com/docs/backlog/#)
     * [https://developer.nulab.com/ja/docs/backlog/#](https://developer.nulab.com/ja/docs/backlog/#)
 
 
 ## Updates
+* 2022/03/29 2.5.0 released
 * 2021/06/10 2.4.4 released
 * 2021/04/23 2.4.3 released
 * 2021/03/03 2.4.2 released
@@ -28,14 +29,14 @@ https://github.com/nulab/backlog4j/releases
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.4.4'
+    'com.nulab-inc:backlog4j:2.5.0'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.4.4</version>
+      <version>2.5.0</version>
     </dependency>
 
 ## How to use
@@ -49,9 +50,9 @@ Make BacklogConfigure with your space id and your api key.
 
     # If your space is in backlog.jp
     BacklogConfigure configure = new BacklogJpConfigure("yourSpaceId").apiKey("yourApiKey");
-                            
+
 And get the BacklogClient.
-                            
+
     BacklogClient backlog = new BacklogClientFactory(configure).newClient();
 
 
@@ -83,14 +84,14 @@ Backlog4j は Backlog API (https://developer.nulab.com/ja/docs/backlog/#) に簡
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.4.4'
+    'com.nulab-inc:backlog4j:2.5.0'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.4.4</version>
+      <version>2.5.0</version>
     </dependency>
 
 ## 使い方
@@ -102,23 +103,23 @@ Backlog4j は Backlog API (https://developer.nulab.com/ja/docs/backlog/#) に簡
 
 以下の例では スペースIDとAPIキーを用いて BacklogConfigure を設定しています。
 
-    # あなたのスペースが backlog.com 内にある場合 
+    # あなたのスペースが backlog.com 内にある場合
     BacklogConfigure configure = new BacklogComConfigure("yourSpaceId").apiKey("yourApiKey");
-    
-    # あなたのスペースが backlog.jp 内にある場合 
+
+    # あなたのスペースが backlog.jp 内にある場合
     BacklogConfigure configure = new BacklogJpConfigure("yourSpaceId").apiKey("yourApiKey");
-    
+
     # あなたのスペースが backlogtool.com 内にある場合
     BacklogConfigure configure = new BacklogToolConfigure("yourSpaceId").apiKey("yourApiKey");
 
 続いて BacklogClient を生成します。
-                            
+
     BacklogClient backlog = new BacklogClientFactory(configure).newClient();
 
 そして、取得したいプロジェクトのキーを指定し、プロジェクト情報をAPI経由で取得します。
 
     Project project = backlog.getProject("PROJECT-KEY");
-    
+
 
 ## Android でご使用の場合
 proguard-rules に以下を追記して難読化の対象外とすることを推奨します。

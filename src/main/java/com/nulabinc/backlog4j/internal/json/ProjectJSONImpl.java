@@ -1,9 +1,7 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Project;
-import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -22,6 +20,8 @@ public class ProjectJSONImpl implements Project {
     private String textFormattingRule;
     private boolean archived;
     private long displayOrder;
+    private boolean useWiki;
+    private boolean useFileSharing;
     private boolean useDevAttributes;
 
     @Override
@@ -70,6 +70,12 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
+    public boolean getUseFileSharing() { return useFileSharing; }
+
+    @Override
+    public boolean getUseWiki() { return useWiki; }
+
+    @Override
     public boolean getUseDevAttributes() { return useDevAttributes; }
 
     @Override
@@ -83,7 +89,10 @@ public class ProjectJSONImpl implements Project {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        ProjectJSONImpl rhs = (ProjectJSONImpl) obj;
+        return createEqualsBuilder((ProjectJSONImpl) obj).isEquals();
+    }
+
+    protected EqualsBuilder createEqualsBuilder(ProjectJSONImpl rhs) {
         return new EqualsBuilder()
                 .append(this.id, rhs.id)
                 .append(this.projectKey, rhs.projectKey)
@@ -92,12 +101,17 @@ public class ProjectJSONImpl implements Project {
                 .append(this.subtaskingEnabled, rhs.subtaskingEnabled)
                 .append(this.textFormattingRule, rhs.textFormattingRule)
                 .append(this.archived, rhs.archived)
-                .append(this.useDevAttributes, rhs.useDevAttributes)
-                .isEquals();
+                .append(this.useFileSharing, rhs.useFileSharing)
+                .append(this.useWiki, rhs.useWiki)
+                .append(this.useDevAttributes, rhs.useDevAttributes);
     }
 
     @Override
     public int hashCode() {
+        return createHashCodeBuilder().toHashCode();
+    }
+
+    protected HashCodeBuilder createHashCodeBuilder() {
         return new HashCodeBuilder()
                 .append(id)
                 .append(projectKey)
@@ -106,12 +120,17 @@ public class ProjectJSONImpl implements Project {
                 .append(subtaskingEnabled)
                 .append(textFormattingRule)
                 .append(archived)
-                .append(useDevAttributes)
-                .toHashCode();
+                .append(useFileSharing)
+                .append(useWiki)
+                .append(useDevAttributes);
     }
 
     @Override
     public String toString() {
+        return createToStringBuilder().toString();
+    }
+
+    protected ToStringBuilder createToStringBuilder() {
         return new ToStringBuilder(this)
                 .append("id", id)
                 .append("projectKey", projectKey)
@@ -120,7 +139,8 @@ public class ProjectJSONImpl implements Project {
                 .append("subtaskingEnabled", subtaskingEnabled)
                 .append("textFormattingRule", textFormattingRule)
                 .append("archived", archived)
-                .append("useDevAttributes", useDevAttributes)
-                .toString();
+                .append("useFileSharing", useFileSharing)
+                .append("useWiki", useWiki)
+                .append("useDevAttributes", useDevAttributes);
     }
 }

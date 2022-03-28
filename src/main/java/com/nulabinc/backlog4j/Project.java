@@ -112,5 +112,9 @@ public interface Project {
 
     long getDisplayOrder();
 
+    boolean getUseWiki();
+
+    boolean getUseFileSharing();
+
     boolean getUseDevAttributes();
 }

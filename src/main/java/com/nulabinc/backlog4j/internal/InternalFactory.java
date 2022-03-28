@@ -22,7 +22,7 @@ public interface InternalFactory {
 
     ResponseList<Project> createProjectList(BacklogHttpResponse res) throws BacklogException;
 
-    Project createProject(BacklogHttpResponse res) throws BacklogException;
+    ProjectWithVCS createProject(BacklogHttpResponse res) throws BacklogException;
 
     ResponseList<Activity> createActivityList(BacklogHttpResponse res) throws BacklogException;
 

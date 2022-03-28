@@ -8,6 +8,11 @@
     "subtaskingEnabled": true,
     "textFormattingRule": "backlog",
     "archived": false,
+    "useWiki": true,
+    "useFileSharing": true,
+    "useWikiTreeView": true,
+    "useSubversion": true,
+    "useGit": true,
     "displayOrder": 2147483646,
     "useDevAttributes": true
 }

@@ -9,6 +9,8 @@
         "subtaskingEnabled": true,
         "textFormattingRule": "backlog",
         "archived": false,
+        "useWiki": true,
+        "useFileSharing": true,
         "useDevAttributes": true
     },
     {
@@ -21,6 +23,8 @@
         "subtaskingEnabled": true,
         "textFormattingRule": "markdown",
         "archived": false,
+        "useWiki": false,
+        "useFileSharing": false,
         "useDevAttributes": false
     }
 ]
