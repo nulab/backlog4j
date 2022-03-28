@@ -72,12 +72,12 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     }
 
     @Override
-    public Project createProject(BacklogHttpResponse res) throws BacklogException {
+    public ProjectWithVCS createProject(BacklogHttpResponse res) throws BacklogException {
         return createProject(res.asString());
     }
 
-    public Project createProject(String resStr) throws BacklogException {
-        return createObject(resStr, Project.class, ProjectJSONImpl.class);
+    public ProjectWithVCS createProject(String resStr) throws BacklogException {
+        return createObject(resStr, ProjectWithVCS.class, ProjectWithVCSJSONImpl.class);
     }
 
     @Override

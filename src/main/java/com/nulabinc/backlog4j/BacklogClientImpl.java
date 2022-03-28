@@ -85,17 +85,17 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
-    public Project createProject(CreateProjectParams params) throws BacklogException {
+    public ProjectWithVCS createProject(CreateProjectParams params) throws BacklogException {
         return factory.createProject(post(buildEndpoint("projects"), params));
     }
 
     @Override
-    public Project getProject(Object projectIdOrKey) throws BacklogException {
+    public ProjectWithVCS getProject(Object projectIdOrKey) throws BacklogException {
         return factory.createProject(get(buildEndpoint("projects/" + projectIdOrKey)));
     }
 
     @Override
-    public Project updateProject(UpdateProjectParams params) throws BacklogException {
+    public ProjectWithVCS updateProject(UpdateProjectParams params) throws BacklogException {
         return factory.createProject(patch(buildEndpoint("projects/" + params.getProjectIdOrKeyString()), params));
     }
 

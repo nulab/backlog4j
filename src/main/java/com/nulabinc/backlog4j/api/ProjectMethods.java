@@ -26,7 +26,7 @@ public interface ProjectMethods {
      * @return the created project
      * @throws BacklogException
      */
-    Project createProject(CreateProjectParams params) throws BacklogException;
+    ProjectWithVCS createProject(CreateProjectParams params) throws BacklogException;
 
     /**
      * Returns the project.
@@ -35,7 +35,7 @@ public interface ProjectMethods {
      * @return the Project
      * @throws BacklogException
      */
-    Project getProject(Object projectIdOrKey) throws BacklogException;
+    ProjectWithVCS getProject(Object projectIdOrKey) throws BacklogException;
 
     /**
      * Updates the existing project.
@@ -44,7 +44,7 @@ public interface ProjectMethods {
      * @return the updated Project
      * @throws BacklogException
      */
-    Project updateProject(UpdateProjectParams params) throws BacklogException;
+    ProjectWithVCS updateProject(UpdateProjectParams params) throws BacklogException;
 
     /**
      * Deletes the existing project.
