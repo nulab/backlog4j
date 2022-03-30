@@ -68,7 +68,7 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
-    public UpdateProjectParams originalImageSizeAtWikiEnabled(Project.TextFormattingRule originalImageSizeAtWikiEnabled) {
+    public UpdateProjectParams originalImageSizeAtWikiEnabled(boolean originalImageSizeAtWikiEnabled) {
         parameters.add(new NameValuePair("useOriginalImageSizeAtWiki", String.valueOf(originalImageSizeAtWikiEnabled)));
         return this;
     }
@@ -78,7 +78,7 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
-    public UpdateProjectParams devAttributesEnabled(Project.TextFormattingRule devAttributesEnabled) {
+    public UpdateProjectParams devAttributesEnabled(boolean devAttributesEnabled) {
         parameters.add(new NameValuePair("useDevAttributes", String.valueOf(devAttributesEnabled)));
         return this;
     }

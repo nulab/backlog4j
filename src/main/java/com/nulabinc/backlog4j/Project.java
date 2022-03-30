@@ -117,4 +117,10 @@ public interface Project {
     boolean getUseFileSharing();
 
     boolean getUseDevAttributes();
+
+    boolean getUseResolvedForChart();
+
+    boolean getUseWikiTreeView();
+
+    boolean getUseOriginalImageSizeAtWiki();
 }

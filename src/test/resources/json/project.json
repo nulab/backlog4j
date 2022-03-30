@@ -14,5 +14,7 @@
     "useSubversion": true,
     "useGit": true,
     "displayOrder": 2147483646,
-    "useDevAttributes": true
+    "useDevAttributes": true,
+    "useResolvedForChart": true,
+    "useOriginalImageSizeAtWiki": true
 }
