@@ -186,6 +186,15 @@ public class BacklogClientImplTest {
 
         @Override
         public boolean getUseDevAttributes() { return true; }
+
+        @Override
+        public boolean getUseResolvedForChart(){ return true; }
+
+        @Override
+        public boolean getUseWikiTreeView(){ return true; }
+
+        @Override
+        public boolean getUseOriginalImageSizeAtWiki(){ return true; }
     }
 
     private class DummyWiki implements Wiki {

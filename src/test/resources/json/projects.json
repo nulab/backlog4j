@@ -11,7 +11,10 @@
         "archived": false,
         "useWiki": true,
         "useFileSharing": true,
-        "useDevAttributes": true
+        "useDevAttributes": true,
+        "useWikiTreeView": true,
+        "useResolvedForChart": true,
+        "useOriginalImageSizeAtWiki": true
     },
     {
         "id": 1073835220,
@@ -25,6 +28,9 @@
         "archived": false,
         "useWiki": false,
         "useFileSharing": false,
-        "useDevAttributes": false
+        "useDevAttributes": false,
+        "useWikiTreeView": false,
+        "useResolvedForChart": false,
+        "useOriginalImageSizeAtWiki": false
     }
 ]

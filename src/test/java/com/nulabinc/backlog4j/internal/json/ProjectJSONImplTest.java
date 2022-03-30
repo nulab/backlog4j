@@ -31,6 +31,9 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.getUseWiki());
         assertEquals(true, project.getUseFileSharing());
         assertEquals(true, project.getUseDevAttributes());
+        assertEquals(true, project.getUseResolvedForChart());
+        assertEquals(true, project.getUseWikiTreeView());
+        assertEquals(true, project.getUseOriginalImageSizeAtWiki());
 
         project = projects.get(1);
         assertEquals(1073835220, project.getId());
@@ -43,6 +46,9 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(false, project.getUseFileSharing());
         assertEquals(false, project.isArchived());
         assertEquals(false, project.getUseDevAttributes());
+        assertEquals(false, project.getUseResolvedForChart());
+        assertEquals(false, project.getUseWikiTreeView());
+        assertEquals(false, project.getUseOriginalImageSizeAtWiki());
 
     }
 
@@ -61,6 +67,9 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(true, project.getUseWiki());
         assertEquals(true, project.getUseFileSharing());
         assertEquals(true, project.getUseDevAttributes());
+        assertEquals(true, project.getUseResolvedForChart());
+        assertEquals(true, project.getUseWikiTreeView());
+        assertEquals(true, project.getUseOriginalImageSizeAtWiki());
     }
 
     @Test

@@ -23,6 +23,9 @@ public class ProjectJSONImpl implements Project {
     private boolean useWiki;
     private boolean useFileSharing;
     private boolean useDevAttributes;
+    private boolean useResolvedForChart;
+    private boolean useWikiTreeView;
+    private boolean useOriginalImageSizeAtWiki;
 
     @Override
     public long getId() {
@@ -77,6 +80,15 @@ public class ProjectJSONImpl implements Project {
 
     @Override
     public boolean getUseDevAttributes() { return useDevAttributes; }
+
+    @Override
+    public boolean getUseResolvedForChart() { return useDevAttributes; }
+
+    @Override
+    public boolean getUseWikiTreeView() { return useDevAttributes; }
+
+    @Override
+    public boolean getUseOriginalImageSizeAtWiki() { return useDevAttributes; }
 
     @Override
     public boolean equals(Object obj) {
