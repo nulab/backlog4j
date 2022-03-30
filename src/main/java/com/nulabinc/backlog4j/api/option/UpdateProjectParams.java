@@ -34,13 +34,52 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
+    public UpdateProjectParams resolvedForChartEnabled(boolean resolvedForChartEnabled) {
+        parameters.add(new NameValuePair("useResolvedForChart", String.valueOf(resolvedForChartEnabled)));
+        return this;
+    }
+
     public UpdateProjectParams subtaskingEnabled(boolean subtaskingEnabled) {
         parameters.add(new NameValuePair("subtaskingEnabled", String.valueOf(subtaskingEnabled)));
         return this;
     }
 
+    public UpdateProjectParams wikiEnabled(boolean wikiEnabled) {
+        parameters.add(new NameValuePair("useWiki", String.valueOf(wikiEnabled)));
+        return this;
+    }
+
+    public UpdateProjectParams fileSharingEnabled(boolean fileSharingEnabled) {
+        parameters.add(new NameValuePair("useFileSharing", String.valueOf(fileSharingEnabled)));
+        return this;
+    }
+
+    public UpdateProjectParams wikiTreeViewEnabled(boolean wikiTreeViewEnabled) {
+        parameters.add(new NameValuePair("useWikiTreeView", String.valueOf(wikiTreeViewEnabled)));
+        return this;
+    }
+
+    public UpdateProjectParams subversionEnabled(boolean subversionEnabled) {
+        parameters.add(new NameValuePair("useSubversion", String.valueOf(subversionEnabled)));
+        return this;
+    }
+    public UpdateProjectParams gitEnabled(boolean gitEnabled) {
+        parameters.add(new NameValuePair("useGit", String.valueOf(gitEnabled)));
+        return this;
+    }
+
+    public UpdateProjectParams originalImageSizeAtWikiEnabled(Project.TextFormattingRule originalImageSizeAtWikiEnabled) {
+        parameters.add(new NameValuePair("useOriginalImageSizeAtWiki", String.valueOf(originalImageSizeAtWikiEnabled)));
+        return this;
+    }
+
     public UpdateProjectParams textFormattingRule(Project.TextFormattingRule textFormattingRule) {
         parameters.add(new NameValuePair("textFormattingRule", textFormattingRule.getStrValue()));
+        return this;
+    }
+
+    public UpdateProjectParams devAttributesEnabled(Project.TextFormattingRule devAttributesEnabled) {
+        parameters.add(new NameValuePair("useDevAttributes", String.valueOf(devAttributesEnabled)));
         return this;
     }
 
