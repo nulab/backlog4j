@@ -82,13 +82,13 @@ public class ProjectJSONImpl implements Project {
     public boolean getUseDevAttributes() { return useDevAttributes; }
 
     @Override
-    public boolean getUseResolvedForChart() { return useDevAttributes; }
+    public boolean getUseResolvedForChart() { return useResolvedForChart; }
 
     @Override
-    public boolean getUseWikiTreeView() { return useDevAttributes; }
+    public boolean getUseWikiTreeView() { return useWikiTreeView; }
 
     @Override
-    public boolean getUseOriginalImageSizeAtWiki() { return useDevAttributes; }
+    public boolean getUseOriginalImageSizeAtWiki() { return useOriginalImageSizeAtWiki; }
 
     @Override
     public boolean equals(Object obj) {
