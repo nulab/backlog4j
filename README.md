@@ -16,7 +16,7 @@ Backlog4j is a Backlog binding library for Java.
 
 
 ## Updates
-* 2022/03/29 2.5.0 released
+* 2022/04/27 2.5.0 released
 * 2021/06/10 2.4.4 released
 * 2021/04/23 2.4.3 released
 * 2021/03/03 2.4.2 released
