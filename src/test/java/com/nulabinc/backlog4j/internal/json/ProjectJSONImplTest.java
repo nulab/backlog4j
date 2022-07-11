@@ -1,18 +1,19 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.Project;
-import com.nulabinc.backlog4j.ProjectWithVCS;
 import com.nulabinc.backlog4j.ResponseList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author nulab-inc
  */
-public class ProjectJSONImplTest extends AbstractJSONImplTest{
+public class ProjectJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createProjectListTest() throws IOException {
         String fileContentStr = getJsonString("json/projects.json");
@@ -24,31 +25,31 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073835211, project.getId());
         assertEquals("TST_PRJ", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(true, project.isChartEnabled());
-        assertEquals(true, project.isSubtaskingEnabled());
+        assertTrue(project.isChartEnabled());
+        assertTrue(project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
-        assertEquals(false, project.isArchived());
-        assertEquals(true, project.getUseWiki());
-        assertEquals(true, project.getUseFileSharing());
-        assertEquals(true, project.getUseDevAttributes());
-        assertEquals(true, project.getUseResolvedForChart());
-        assertEquals(true, project.getUseWikiTreeView());
-        assertEquals(true, project.getUseOriginalImageSizeAtWiki());
+        assertFalse(project.isArchived());
+        assertTrue(project.getUseWiki());
+        assertTrue(project.getUseFileSharing());
+        assertTrue(project.getUseDevAttributes());
+        assertTrue(project.getUseResolvedForChart());
+        assertTrue(project.getUseWikiTreeView());
+        assertTrue(project.getUseOriginalImageSizeAtWiki());
 
         project = projects.get(1);
         assertEquals(1073835220, project.getId());
         assertEquals("TEST_PRJ_2", project.getProjectKey());
         assertEquals("API v2 から作成したテストプロジェクト", project.getName());
-        assertEquals(false, project.isChartEnabled());
-        assertEquals(true, project.isSubtaskingEnabled());
+        assertFalse(project.isChartEnabled());
+        assertTrue(project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Markdown, project.getTextFormattingRule());
-        assertEquals(false, project.getUseWiki());
-        assertEquals(false, project.getUseFileSharing());
-        assertEquals(false, project.isArchived());
-        assertEquals(false, project.getUseDevAttributes());
-        assertEquals(false, project.getUseResolvedForChart());
-        assertEquals(false, project.getUseWikiTreeView());
-        assertEquals(false, project.getUseOriginalImageSizeAtWiki());
+        assertFalse(project.getUseWiki());
+        assertFalse(project.getUseFileSharing());
+        assertFalse(project.isArchived());
+        assertFalse(project.getUseDevAttributes());
+        assertFalse(project.getUseResolvedForChart());
+        assertFalse(project.getUseWikiTreeView());
+        assertFalse(project.getUseOriginalImageSizeAtWiki());
 
     }
 
@@ -60,16 +61,16 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073835211, project.getId());
         assertEquals("TST_PRJ", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(false, project.isChartEnabled());
-        assertEquals(true, project.isSubtaskingEnabled());
+        assertFalse(project.isChartEnabled());
+        assertTrue(project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
-        assertEquals(false, project.isArchived());
-        assertEquals(true, project.getUseWiki());
-        assertEquals(true, project.getUseFileSharing());
-        assertEquals(true, project.getUseDevAttributes());
-        assertEquals(true, project.getUseResolvedForChart());
-        assertEquals(true, project.getUseWikiTreeView());
-        assertEquals(true, project.getUseOriginalImageSizeAtWiki());
+        assertFalse(project.isArchived());
+        assertTrue(project.getUseWiki());
+        assertTrue(project.getUseFileSharing());
+        assertTrue(project.getUseDevAttributes());
+        assertTrue(project.getUseResolvedForChart());
+        assertTrue(project.getUseWikiTreeView());
+        assertTrue(project.getUseOriginalImageSizeAtWiki());
     }
 
     @Test

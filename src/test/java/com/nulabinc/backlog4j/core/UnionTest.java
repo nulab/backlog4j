@@ -1,10 +1,11 @@
 package com.nulabinc.backlog4j.core;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.security.InvalidParameterException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author nulab-inc
@@ -21,18 +22,18 @@ public class UnionTest {
     @Test
     public void recursiveUnion() {
         Union<String, Union<String, Long>> nestedUnion =
-                Union.right(Union.<String, Long>right((long)5));
+                Union.right(Union.right((long) 5));
 
         assertEquals("5", nestedUnion.toString());
     }
 
-    @Test(expected = InvalidParameterException.class)
+    @Test
     public void leftShouldThrowInvalidParameterException() {
-        Union<String, Long> invalid = Union.left(null);
+        assertThrows(InvalidParameterException.class, () -> Union.left(null));
     }
 
-    @Test(expected = InvalidParameterException.class)
+    @Test
     public void rightShouldThrowInvalidParameterException() {
-        Union<String, Long> invalid = Union.right(null);
+        assertThrows(InvalidParameterException.class, () -> Union.right(null));
     }
 }

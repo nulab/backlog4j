@@ -1,19 +1,19 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Issue;
+import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.ResponseList;
-import com.nulabinc.backlog4j.IssueType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
+public class IssueTypeJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createIssueTypeListTest() throws IOException {
         String fileContentStr = getJsonString("json/issue_types.json");
@@ -34,8 +34,8 @@ public class IssueTypeJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073836557, issueType.getProjectId());
         assertEquals("タスク", issueType.getName());
         assertEquals(Project.IssueTypeColor.Color7, issueType.getColor());
-        assertEquals(null, issueType.getTemplateSummary());
-        assertEquals(null, issueType.getTemplateDescription());
+        assertNull(issueType.getTemplateSummary());
+        assertNull(issueType.getTemplateDescription());
 
         issueType = issueTypes.get(2);
         assertEquals(1074178334, issueType.getId());

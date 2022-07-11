@@ -3,19 +3,20 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Repository;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.User;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class RepositoryJSONImplTest extends AbstractJSONImplTest{
+public class RepositoryJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createRepositoryListTest() throws IOException {
         String fileContentStr = getJsonString("json/git_repositories.json");
@@ -32,7 +33,7 @@ public class RepositoryJSONImplTest extends AbstractJSONImplTest{
         assertEquals("https://nulab.backlog.jp/git/HALLOWEEN/sample.git", repository.getHttpUrl());
         assertEquals("nulab@nulab.git.backlog.jp:/HALLOWEEN/sample.git", repository.getSshUrl());
         assertEquals(2147483646, repository.getDisplayOrder());
-        assertEquals(null, repository.getPushedAt());
+        assertNull(repository.getPushedAt());
 
         User user = repository.getCreatedUser();
         assertEquals(1073751781, user.getId());
@@ -45,7 +46,7 @@ public class RepositoryJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073751782, updateUser.getId());
 
         calendar = Calendar.getInstance();
-        calendar.set(2014,Calendar.AUGUST, 9, 0, 0, 0);
+        calendar.set(2014, Calendar.AUGUST, 9, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(repository.getUpdated()));
 
     }

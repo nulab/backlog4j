@@ -1,17 +1,43 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.*;
-import com.nulabinc.backlog4j.internal.json.activities.*;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import com.nulabinc.backlog4j.Activity;
+import com.nulabinc.backlog4j.Attachment;
+import com.nulabinc.backlog4j.Change;
+import com.nulabinc.backlog4j.Comment;
+import com.nulabinc.backlog4j.GroupProjectActivity;
+import com.nulabinc.backlog4j.Project;
+import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.User;
+import com.nulabinc.backlog4j.internal.json.activities.IssueCommentedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.IssueCommentedContent;
+import com.nulabinc.backlog4j.internal.json.activities.IssueCreatedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.IssueCreatedContent;
+import com.nulabinc.backlog4j.internal.json.activities.IssueUpdatedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.IssueUpdatedContent;
+import com.nulabinc.backlog4j.internal.json.activities.ProjectUserAddedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.ProjectUserAddedContent;
+import com.nulabinc.backlog4j.internal.json.activities.ProjectUserRemovedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.ProjectUserRemovedContent;
+import com.nulabinc.backlog4j.internal.json.activities.PullRequestAddedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.PullRequestCommentedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.PullRequestContent;
+import com.nulabinc.backlog4j.internal.json.activities.PullRequestUpdatedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.WikiCreatedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.WikiCreatedContent;
+import com.nulabinc.backlog4j.internal.json.activities.WikiUpdatedActivity;
+import com.nulabinc.backlog4j.internal.json.activities.WikiUpdatedContent;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by yuh kim on 2014/07/23.
@@ -24,7 +50,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         Activity activity = factory.createActivity(fileContentStr);
         System.out.println(activity.toString());
 
-        assertEquals(Activity.Type.IssueCreated ,activity.getType());
+        assertEquals(Activity.Type.IssueCreated, activity.getType());
 
         IssueCreatedActivity issueCreated = (IssueCreatedActivity) activity;
 
@@ -34,10 +60,10 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(1073761031, project.getId());
         assertEquals("TEST_PRJ1407208757143", project.getProjectKey());
         assertEquals("テストプロジェクト", project.getName());
-        assertEquals(false, project.isChartEnabled());
-        assertEquals(true, project.isSubtaskingEnabled());
+        assertFalse(project.isChartEnabled());
+        assertTrue(project.isSubtaskingEnabled());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
-        assertEquals(false, project.isArchived());
+        assertFalse(project.isArchived());
 
         IssueCreatedContent content = issueCreated.getContent();
         assertEquals(1073803919, content.getId());
@@ -50,7 +76,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals("test_admin", user.getUserId());
         assertEquals("あどみにさん", user.getName());
         assertEquals(User.RoleType.Admin, user.getRoleType());
-        assertEquals(null, user.getLang());
+        assertNull(user.getLang());
         assertEquals("test@test.test", user.getMailAddress());
 
         Calendar calendar = Calendar.getInstance();
@@ -64,7 +90,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         Activity activity = factory.createActivity(fileContentStr);
         System.out.println(activity.toString());
 
-        assertEquals(Activity.Type.IssueUpdated ,activity.getType());
+        assertEquals(Activity.Type.IssueUpdated, activity.getType());
 
         IssueUpdatedActivity issueUpdated = (IssueUpdatedActivity) activity;
 
@@ -79,7 +105,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
 
         Comment comment = content.getComment();
         assertEquals(1102443987, comment.getId());
-        assertEquals( "コメント時ファイル添付テスト", comment.getContent());
+        assertEquals("コメント時ファイル添付テスト", comment.getContent());
 
         List<Attachment> attachments = content.getAttachments();
         assert attachments.size() > 0;
@@ -225,7 +251,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals("アイコンとトグルのデザイン最適化", content.getSummary());
         assertEquals("マージおねがいします！", content.getDescription());
 
-        assertEquals(null, content.getComment());
+        assertNull(content.getComment());
         assertTrue(content.getChanges().isEmpty());
         assertEquals(77777777, content.getIssue().getId());
     }
@@ -298,6 +324,7 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals(activity1, activity2);
 
     }
+
     @Test
     public void hashCodeTest() throws IOException {
         String fileContentStr = getJsonString("json/activity_issue_created.json");

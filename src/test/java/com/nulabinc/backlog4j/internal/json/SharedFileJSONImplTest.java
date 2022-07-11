@@ -1,22 +1,22 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Project;
-import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.SharedFile;
 import com.nulabinc.backlog4j.User;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class SharedFileJSONImplTest extends AbstractJSONImplTest{
+public class SharedFileJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createSharedFileListTest() throws IOException {
         String fileContentStr = getJsonString("json/shared_files.json");
@@ -36,7 +36,7 @@ public class SharedFileJSONImplTest extends AbstractJSONImplTest{
         assertEquals("test_admin", createdUser.getUserId());
         assertEquals("あどみにさん", createdUser.getName());
         assertEquals(User.RoleType.Admin, createdUser.getRoleType());
-        assertEquals(null, createdUser.getLang());
+        assertNull(createdUser.getLang());
         assertEquals("test@test.test", createdUser.getMailAddress());
 
         Calendar calendar = Calendar.getInstance();
@@ -61,7 +61,7 @@ public class SharedFileJSONImplTest extends AbstractJSONImplTest{
         assertEquals("test_admin", createdUser.getUserId());
         assertEquals("あどみにさん", createdUser.getName());
         assertEquals(User.RoleType.Admin, createdUser.getRoleType());
-        assertEquals(null, createdUser.getLang());
+        assertNull(createdUser.getLang());
         assertEquals("test@test.test", createdUser.getMailAddress());
 
         Calendar calendar = Calendar.getInstance();

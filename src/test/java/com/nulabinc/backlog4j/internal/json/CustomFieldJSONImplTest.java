@@ -1,19 +1,18 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.ResponseList;
-import com.nulabinc.backlog4j.internal.json.customFields.*;
-import org.junit.Test;
+import com.nulabinc.backlog4j.internal.json.customFields.TextCustomFieldSetting;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class CustomFieldJSONImplTest extends AbstractJSONImplTest{
+public class CustomFieldJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createCustomFieldListTest() throws IOException {
         String fileContentStr = getJsonString("json/custom_fields.json");

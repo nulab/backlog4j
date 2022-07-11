@@ -10,14 +10,13 @@ import java.util.List;
 public abstract class AbstractParamsTest {
 
     protected boolean existsOneKeyValue(List<NameValuePair> parameters,
-                                   String key, String value){
+                                        String key, String value) {
         int count = 0;
-        for(NameValuePair pair :parameters){
-            if(pair.getName().equals(key)
-                && pair.getValue().equals(value))
-                count ++ ;
+        for (NameValuePair pair : parameters) {
+            if (pair.getName().equals(key)
+                    && pair.getValue().equals(value))
+                count++;
         }
-        if(count != 1) return false;
-        return true;
+        return count == 1;
     }
 }

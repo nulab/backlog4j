@@ -1,18 +1,17 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Activity;
 import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.ResponseList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class CategoryJSONImplTest extends AbstractJSONImplTest{
+public class CategoryJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createCategoryListTest() throws IOException {
         String fileContentStr = getJsonString("json/categories.json");

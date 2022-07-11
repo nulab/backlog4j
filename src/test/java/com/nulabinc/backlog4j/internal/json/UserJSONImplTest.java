@@ -1,18 +1,18 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.ResponseList;
-import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class UserJSONImplTest extends AbstractJSONImplTest{
+public class UserJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createUserListTest() throws IOException {
         String fileContentStr = getJsonString("json/users.json");
@@ -24,7 +24,7 @@ public class UserJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073910170, user.getId());
         assertEquals("test1", user.getName());
         assertEquals(User.RoleType.Admin, user.getRoleType());
-        assertEquals(null, user.getLang());
+        assertNull(user.getLang());
         assertEquals("test1@xxxxxxxx.xx", user.getMailAddress());
 
         user = users.get(1);
@@ -43,7 +43,7 @@ public class UserJSONImplTest extends AbstractJSONImplTest{
         assertEquals(1073936936, user.getId());
         assertEquals("test", user.getName());
         assertEquals(User.RoleType.Admin, user.getRoleType());
-        assertEquals(null, user.getLang());
+        assertNull(user.getLang());
         assertEquals("test@xxxxxxxx.xx", user.getMailAddress());
     }
 

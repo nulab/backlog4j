@@ -1,19 +1,20 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.Issue;
+import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.Status;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class StatusJSONImplTest extends AbstractJSONImplTest{
+public class StatusJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createStatusListTest() throws IOException {
         String fileContentStr = getJsonString("json/statuses.json");
@@ -26,7 +27,7 @@ public class StatusJSONImplTest extends AbstractJSONImplTest{
         assertEquals("未対応", status.getName());
         assertEquals(Issue.StatusType.Open, status.getStatusType());
 
-        assertEquals(null, status.getColor());
+        assertNull(status.getColor());
         assertEquals(0, status.getProjectId());
         assertEquals("0", status.getProjectIdAsString());
         assertEquals(0, status.getDisplayOrder());
