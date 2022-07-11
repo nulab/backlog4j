@@ -74,7 +74,7 @@ MIT License
 * http://www.opensource.org/licenses/mit-license.php
 
 ## Requires
-* Java 1.7
+* Java 1.8
 
 
 # Backlog4j とは
