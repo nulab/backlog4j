@@ -57,8 +57,7 @@ javadoc {
 jar {
     manifest {
         attributes('Implementation-Title': archivesBaseName,
-                   'Implementation-Version': archiveVersion,
-                   'Automatic-Module-Name': archiveBaseName)
+                   'Implementation-Version': archiveVersion)
     }
 }
 
