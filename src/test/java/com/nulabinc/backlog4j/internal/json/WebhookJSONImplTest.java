@@ -5,22 +5,20 @@ import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.Webhook;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author nulab-inc
  */
-public class WebhookJSONImplTest extends AbstractJSONImplTest{
+public class WebhookJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createWebhookListTest() throws IOException {
         String fileContentStr = getJsonString("json/webhooks.json");
@@ -33,7 +31,7 @@ public class WebhookJSONImplTest extends AbstractJSONImplTest{
         assertEquals("webhook", webhook.getName());
         assertEquals("", webhook.getDescription());
         assertEquals("http://nulab.test/", webhook.getHookUrl());
-        assertEquals(false, webhook.isAllEvent());
+        assertFalse(webhook.isAllEvent());
         assertNotNull(webhook.getActivityTypeIds());
         assertEquals(5, webhook.getActivityTypeIds().size());
         List<Activity.Type> activityTypeIds = webhook.getActivityTypeIds();
@@ -66,7 +64,7 @@ public class WebhookJSONImplTest extends AbstractJSONImplTest{
         assertEquals("webhook2", webhook.getName());
         assertEquals("this is description", webhook.getDescription());
         assertEquals("http://nulab.test/", webhook.getHookUrl());
-        assertEquals(true, webhook.isAllEvent());
+        assertTrue(webhook.isAllEvent());
         assertNotNull(webhook.getActivityTypeIds());
         assertEquals(0, webhook.getActivityTypeIds().size());
     }
@@ -80,7 +78,7 @@ public class WebhookJSONImplTest extends AbstractJSONImplTest{
         assertEquals("webhook", webhook.getName());
         assertEquals("", webhook.getDescription());
         assertEquals("http://nulab.test/", webhook.getHookUrl());
-        assertEquals(false, webhook.isAllEvent());
+        assertFalse(webhook.isAllEvent());
         assertNotNull(webhook.getActivityTypeIds());
         assertEquals(5, webhook.getActivityTypeIds().size());
         List<Activity.Type> activityTypeIds = webhook.getActivityTypeIds();

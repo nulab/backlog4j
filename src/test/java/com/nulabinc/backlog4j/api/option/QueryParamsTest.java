@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.http.BacklogHttpClientImpl;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author nulab-inc
@@ -9,7 +9,7 @@ import org.junit.Test;
 public class QueryParamsTest {
 
     @Test
-    public void minIdTest(){
+    public void minIdTest() {
         // when
         QueryParams params = new QueryParams();
         params.minId(123);
@@ -20,7 +20,7 @@ public class QueryParamsTest {
     }
 
     @Test
-    public void maxIdTest(){
+    public void maxIdTest() {
         // when
         QueryParams params = new QueryParams();
         params.maxId(999);
@@ -31,7 +31,7 @@ public class QueryParamsTest {
     }
 
     @Test
-    public void orderTest(){
+    public void orderTest() {
         // when
         QueryParams params = new QueryParams();
         params.order(QueryParams.Order.Desc);
@@ -51,7 +51,7 @@ public class QueryParamsTest {
     }
 
     @Test
-    public void countTest(){
+    public void countTest() {
         // when
         QueryParams params = new QueryParams();
         params.count(222);

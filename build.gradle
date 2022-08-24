@@ -24,8 +24,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'uk.co.modular-it:hamcrest-date:0.9.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'org.exparity:hamcrest-date:2.0.8'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
 
     implementation 'org.apache.commons:commons-lang3:3.3.2'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.3'
@@ -39,6 +41,10 @@ java {
     compileTestJava.options.encoding = 'UTF-8'
     withSourcesJar()
     withJavadocJar()
+}
+
+test {
+    useJUnitPlatform()
 }
 
 javadoc {

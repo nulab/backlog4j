@@ -1,20 +1,27 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.*;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import com.nulabinc.backlog4j.Attachment;
+import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.SharedFile;
+import com.nulabinc.backlog4j.Star;
+import com.nulabinc.backlog4j.User;
+import com.nulabinc.backlog4j.Wiki;
+import com.nulabinc.backlog4j.WikiTag;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author nulab-inc
  */
-public class WikiJSONImplTest extends AbstractJSONImplTest{
+public class WikiJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createWikiListTest() throws IOException {
         String fileContentStr = getJsonString("json/wikis.json");
@@ -53,7 +60,7 @@ public class WikiJSONImplTest extends AbstractJSONImplTest{
         assertEquals("test_admin", user.getUserId());
         assertEquals("あどみにさん", user.getName());
         assertEquals(User.RoleType.Admin, user.getRoleType());
-        assertEquals(null, user.getLang());
+        assertNull(user.getLang());
         assertEquals("test@test.test", user.getMailAddress());
 
         Calendar calendar = Calendar.getInstance();
@@ -65,11 +72,11 @@ public class WikiJSONImplTest extends AbstractJSONImplTest{
         assertEquals("test_admin2", updateUser.getUserId());
         assertEquals("あどみにさん2", updateUser.getName());
         assertEquals(User.RoleType.Admin, updateUser.getRoleType());
-        assertEquals(null, updateUser.getLang());
+        assertNull(updateUser.getLang());
         assertEquals("test@test.test", updateUser.getMailAddress());
 
         calendar = Calendar.getInstance();
-        calendar.set(2014,Calendar.AUGUST, 5, 1, 0, 11);
+        calendar.set(2014, Calendar.AUGUST, 5, 1, 0, 11);
         assertThat(calendar.getTime(), DateMatchers.sameDay(wiki.getUpdated()));
 
     }

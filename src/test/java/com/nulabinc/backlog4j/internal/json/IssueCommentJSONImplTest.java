@@ -4,17 +4,17 @@ import com.nulabinc.backlog4j.AttachmentInfo;
 import com.nulabinc.backlog4j.ChangeLog;
 import com.nulabinc.backlog4j.IssueComment;
 import com.nulabinc.backlog4j.ResponseList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class IssueCommentJSONImplTest extends AbstractJSONImplTest{
+public class IssueCommentJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createIssueCommentListTest() throws IOException {
         String fileContentStr = getJsonString("json/issue_comments.json");

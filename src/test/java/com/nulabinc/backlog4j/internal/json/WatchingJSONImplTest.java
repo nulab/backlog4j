@@ -1,18 +1,16 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Issue;
-import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.Watch;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class WatchingJSONImplTest extends AbstractJSONImplTest{
+public class WatchingJSONImplTest extends AbstractJSONImplTest {
 
     @Test
     public void createWatchTest() throws IOException {
@@ -40,5 +38,5 @@ public class WatchingJSONImplTest extends AbstractJSONImplTest{
         assertEquals(watch1.hashCode(), watch2.hashCode());
 
     }
-    
+
 }

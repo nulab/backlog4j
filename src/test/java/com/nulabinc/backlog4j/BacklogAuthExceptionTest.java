@@ -1,16 +1,16 @@
 package com.nulabinc.backlog4j;
 
 import com.nulabinc.backlog4j.internal.json.AbstractJSONImplTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class BacklogAuthExceptionTest extends AbstractJSONImplTest{
+public class BacklogAuthExceptionTest extends AbstractJSONImplTest {
 
     @Test
     public void parseMessageTest() throws IOException {

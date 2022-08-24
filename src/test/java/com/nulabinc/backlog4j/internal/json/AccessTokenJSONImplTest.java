@@ -1,16 +1,16 @@
 package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.auth.AccessToken;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class AccessTokenJSONImplTest extends AbstractJSONImplTest{
+public class AccessTokenJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createAccessTokenTest() throws IOException {
         String fileContentStr = getJsonString("json/access_token.json");

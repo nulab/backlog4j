@@ -3,9 +3,7 @@ package com.nulabinc.backlog4j;
 import com.nulabinc.backlog4j.api.option.GetWikisParams;
 import com.nulabinc.backlog4j.conf.BacklogJpConfigure;
 import com.nulabinc.backlog4j.internal.json.ResponseListImpl;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.text.ParseException;
@@ -13,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
@@ -22,7 +22,7 @@ public class BacklogClientImplTest {
     @Test
     public void wikiSortTest() {
 
-        ResponseList<Wiki> result = new ResponseListImpl<Wiki>();
+        ResponseList<Wiki> result = new ResponseListImpl<>();
         Wiki wiki1 = new DummyWiki() {
             @Override
             public String getName() {
@@ -128,7 +128,7 @@ public class BacklogClientImplTest {
 
     }
 
-    private class DummyProject implements Project {
+    private static class DummyProject implements Project {
         @Override
         public long getId() {
             return 0;
@@ -185,19 +185,27 @@ public class BacklogClientImplTest {
         }
 
         @Override
-        public boolean getUseDevAttributes() { return true; }
+        public boolean getUseDevAttributes() {
+            return true;
+        }
 
         @Override
-        public boolean getUseResolvedForChart(){ return true; }
+        public boolean getUseResolvedForChart() {
+            return true;
+        }
 
         @Override
-        public boolean getUseWikiTreeView(){ return true; }
+        public boolean getUseWikiTreeView() {
+            return true;
+        }
 
         @Override
-        public boolean getUseOriginalImageSizeAtWiki(){ return true; }
+        public boolean getUseOriginalImageSizeAtWiki() {
+            return true;
+        }
     }
 
-    private class DummyWiki implements Wiki {
+    private static class DummyWiki implements Wiki {
         @Override
         public long getId() {
             return 0;
@@ -268,10 +276,9 @@ public class BacklogClientImplTest {
             return null;
         }
 
-        private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         protected Date parseDate(String dataStr) {
             try {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 return format.parse(dataStr);
             } catch (ParseException e) {
                 e.printStackTrace();

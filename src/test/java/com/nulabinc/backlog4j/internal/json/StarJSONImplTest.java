@@ -1,21 +1,20 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.Space;
 import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.User;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class StarJSONImplTest extends AbstractJSONImplTest{
+public class StarJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createSpaceTest() throws IOException {
         String fileContentStr = getJsonString("json/star.json");
@@ -34,7 +33,7 @@ public class StarJSONImplTest extends AbstractJSONImplTest{
         assertEquals("test@xxxxxxxx.xx", user.getMailAddress());
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2014, 6, 17, 0, 54, 2);
+        calendar.set(2014, Calendar.JULY, 17, 0, 54, 2);
         assertThat(calendar.getTime(), DateMatchers.sameDay(star.getCreated()));
 
     }

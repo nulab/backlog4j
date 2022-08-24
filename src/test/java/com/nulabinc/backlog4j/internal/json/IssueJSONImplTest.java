@@ -1,18 +1,17 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.ResponseList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class IssueJSONImplTest extends AbstractJSONImplTest{
+public class IssueJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createIssueListTest() throws IOException {
         String fileContentStr = getJsonString("json/issues.json");
@@ -55,6 +54,7 @@ public class IssueJSONImplTest extends AbstractJSONImplTest{
         assertEquals(issue1, issue2);
 
     }
+
     @Test
     public void equalsTest2() throws IOException {
         String fileContentStr = getJsonString("json/custom_field_issue.json");

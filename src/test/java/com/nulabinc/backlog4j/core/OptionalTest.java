@@ -1,17 +1,16 @@
 package com.nulabinc.backlog4j.core;
 
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OptionalTest {
     @Test
     public void withValue() {
-        Optional<Long> val = Optional.of((long)5);
+        Optional<Long> val = Optional.of((long) 5);
 
-        assertTrue("should be non empty", val.nonEmpty());
+        assertTrue(val.nonEmpty(), "should be non empty");
         assertEquals(Long.valueOf(5), val.get());
     }
 
@@ -19,6 +18,6 @@ public class OptionalTest {
     public void withoutValue() {
         Optional<Long> val = Optional.empty();
 
-        assertTrue("should be empty", val.isEmpty());
+        assertTrue(val.isEmpty(), "should be empty");
     }
 }

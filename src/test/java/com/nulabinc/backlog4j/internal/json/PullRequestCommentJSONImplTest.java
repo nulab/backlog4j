@@ -1,20 +1,26 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.*;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import com.nulabinc.backlog4j.AttachmentInfo;
+import com.nulabinc.backlog4j.ChangeLog;
+import com.nulabinc.backlog4j.Notification;
+import com.nulabinc.backlog4j.PullRequestComment;
+import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.Star;
+import com.nulabinc.backlog4j.User;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class PullRequestCommentJSONImplTest extends AbstractJSONImplTest{
+public class PullRequestCommentJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createPullRequestCommentListTest() throws IOException {
         String fileContentStr = getJsonString("json/pull_request_comments.json");

@@ -1,7 +1,8 @@
 package com.nulabinc.backlog4j.conf;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
@@ -13,11 +14,11 @@ public class BacklogJpConfigureTest {
 
         // when
         String testSpace = "test";
-       BacklogConfigure configure = new BacklogJpConfigure(testSpace);
+        BacklogConfigure configure = new BacklogJpConfigure(testSpace);
 
         // then
         String expected = "https://" + testSpace + ".backlog.jp/api/v2";
-        assertEquals(expected , configure.getRestBaseURL());
+        assertEquals(expected, configure.getRestBaseURL());
 
     }
 }

@@ -3,16 +3,16 @@ package com.nulabinc.backlog4j.internal.json;
 import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.Resolution;
 import com.nulabinc.backlog4j.ResponseList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
  */
-public class ResolutionJSONImplTest extends AbstractJSONImplTest{
+public class ResolutionJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createResolutionListTest() throws IOException {
         String fileContentStr = getJsonString("json/resolutions.json");

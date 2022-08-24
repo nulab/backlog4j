@@ -1,19 +1,26 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.nulabinc.backlog4j.*;
-import org.junit.Test;
-import uk.co.it.modular.hamcrest.date.DateMatchers;
+import com.nulabinc.backlog4j.Issue;
+import com.nulabinc.backlog4j.IssueComment;
+import com.nulabinc.backlog4j.Notification;
+import com.nulabinc.backlog4j.Project;
+import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.User;
+import org.exparity.hamcrest.date.DateMatchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author nulab-inc
  */
-public class NotificationJSONImplTest extends AbstractJSONImplTest{
+public class NotificationJSONImplTest extends AbstractJSONImplTest {
     @Test
     public void createNotificationListTest() throws IOException {
         String fileContentStr = getJsonString("json/notifications.json");
@@ -23,9 +30,9 @@ public class NotificationJSONImplTest extends AbstractJSONImplTest{
 
         Notification notification = notifications.get(0);
         assertEquals(808, notification.getId());
-        assertEquals(false, notification.isAlreadyRead());
+        assertFalse(notification.isAlreadyRead());
         assertEquals(Notification.Reason.IssueCreated, notification.getReason());
-        assertEquals(true, notification.isResourceAlreadyRead());
+        assertTrue(notification.isResourceAlreadyRead());
 
         Project project = notification.getProject();
         assertEquals(1073761346, project.getId());
@@ -42,6 +49,5 @@ public class NotificationJSONImplTest extends AbstractJSONImplTest{
         Calendar calendar = Calendar.getInstance();
         calendar.set(2014, Calendar.AUGUST, 8, 0, 0, 0);
         assertThat(calendar.getTime(), DateMatchers.sameDay(notification.getCreated()));
-
     }
 }

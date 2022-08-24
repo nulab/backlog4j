@@ -1,13 +1,13 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.internal.json.customFields.DateCustomFieldSetting;
 import com.nulabinc.backlog4j.http.NameValuePair;
-import org.junit.Test;
+import com.nulabinc.backlog4j.internal.json.customFields.DateCustomFieldSetting;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
@@ -81,7 +81,7 @@ public class AddCustomFieldParamsTest {
         // when
         AddNumericCustomFieldParams params = new AddNumericCustomFieldParams(
                 "PRJ", "NumericCustomField");
-        params.description("TextCustomFieldです").required(true).min(10).max(121212l).initialValue(21);
+        params.description("TextCustomFieldです").required(true).min(10).max(121212L).initialValue(21);
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -162,7 +162,7 @@ public class AddCustomFieldParamsTest {
         params.description("SingleListCustomFieldです").required(true)
                 .allowInput(false)
                 .allowAddItem(true)
-                .items(Arrays.asList("卵","牛乳","みかん"));
+                .items(Arrays.asList("卵", "牛乳", "みかん"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -214,7 +214,7 @@ public class AddCustomFieldParamsTest {
         params.description("MultipleListCustomFieldです").required(true)
                 .allowInput(false)
                 .allowAddItem(true)
-                .items(Arrays.asList("卵","牛乳","みかん"));
+                .items(Arrays.asList("卵", "牛乳", "みかん"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -266,7 +266,7 @@ public class AddCustomFieldParamsTest {
         params.description("CheckBoxCustomFieldです").required(true)
                 .allowInput(false)
                 .allowAddItem(true)
-                .items(Arrays.asList("卵","牛乳","みかん"));
+                .items(Arrays.asList("卵", "牛乳", "みかん"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -318,7 +318,7 @@ public class AddCustomFieldParamsTest {
         params.description("RadioCustomFieldです").required(true)
                 .allowInput(false)
                 .allowAddItem(true)
-                .items(Arrays.asList("卵","牛乳","みかん"));
+                .items(Arrays.asList("卵", "牛乳", "みかん"));
 
         // then
         List<NameValuePair> parameters = params.getParamList();
