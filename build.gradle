@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     testImplementation 'org.exparity:hamcrest-date:2.0.8'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
