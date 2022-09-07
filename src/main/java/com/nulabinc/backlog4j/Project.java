@@ -106,6 +106,8 @@ public interface Project {
 
     boolean isSubtaskingEnabled();
 
+    boolean isProjectLeaderCanEditProjectLeader();
+
     TextFormattingRule getTextFormattingRule();
 
     boolean isArchived();

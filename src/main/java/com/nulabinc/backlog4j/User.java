@@ -1,5 +1,7 @@
 package com.nulabinc.backlog4j;
 
+import java.util.Date;
+
 /**
  * The interface for Backlog user data.
  *
@@ -42,4 +44,6 @@ public interface User {
     String getLang();
 
     String getMailAddress();
+
+    Date getLastLoginTime();
 }

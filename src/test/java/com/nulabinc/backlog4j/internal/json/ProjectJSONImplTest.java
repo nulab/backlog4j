@@ -27,6 +27,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest {
         assertEquals("テストプロジェクト", project.getName());
         assertTrue(project.isChartEnabled());
         assertTrue(project.isSubtaskingEnabled());
+        assertFalse(project.isProjectLeaderCanEditProjectLeader());
         assertEquals(Project.TextFormattingRule.Backlog, project.getTextFormattingRule());
         assertFalse(project.isArchived());
         assertTrue(project.getUseWiki());

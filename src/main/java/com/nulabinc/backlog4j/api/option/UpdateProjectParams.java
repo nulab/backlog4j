@@ -44,6 +44,11 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
+    public UpdateProjectParams projectLeaderCanEditProjectLeader(boolean projectLeaderCanEditProjectLeader) {
+        parameters.add(new NameValuePair("projectLeaderCanEditProjectLeader", String.valueOf(projectLeaderCanEditProjectLeader)));
+        return this;
+    }
+
     public UpdateProjectParams wikiEnabled(boolean wikiEnabled) {
         parameters.add(new NameValuePair("useWiki", String.valueOf(wikiEnabled)));
         return this;
