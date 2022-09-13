@@ -17,7 +17,7 @@ public class CustomFiledItem {
         this.customFieldItemId = customFieldItemId;
     }
 
-    public CustomFiledItem(long customFieldId, String customFieldItemName){
+    public CustomFiledItem(long customFieldId, String customFieldItemId){
         this.customFieldId = customFieldId;
         this.customFieldItemId = customFieldItemId;
     }
