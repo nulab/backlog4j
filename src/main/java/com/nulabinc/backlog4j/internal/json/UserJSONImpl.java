@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.Date;
+
 /**
  * @author nulab-inc
  */
@@ -18,6 +20,7 @@ public class UserJSONImpl implements User {
     private int roleType;
     private String lang;
     private String mailAddress;
+    private Date lastLoginTime;
 
     @Override
     public long getId() {
@@ -50,6 +53,11 @@ public class UserJSONImpl implements User {
     }
 
     @Override
+    public Date getLastLoginTime() {
+        return this.lastLoginTime;
+    }
+
+    @Override
     public String getUserId() {
         return userId;
     }
@@ -73,6 +81,7 @@ public class UserJSONImpl implements User {
                 .append(this.roleType, rhs.roleType)
                 .append(this.lang, rhs.lang)
                 .append(this.mailAddress, rhs.mailAddress)
+                .append(this.lastLoginTime, rhs.lastLoginTime)
                 .isEquals();
     }
 
@@ -85,6 +94,7 @@ public class UserJSONImpl implements User {
                 .append(roleType)
                 .append(lang)
                 .append(mailAddress)
+                .append(lastLoginTime)
                 .toHashCode();
     }
 
@@ -97,6 +107,7 @@ public class UserJSONImpl implements User {
                 .append("roleType", roleType)
                 .append("lang", lang)
                 .append("mailAddress", mailAddress)
+                .append("lastLoginTime", lastLoginTime)
                 .toString();
     }
 }

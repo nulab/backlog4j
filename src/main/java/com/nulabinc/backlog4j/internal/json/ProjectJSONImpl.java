@@ -17,6 +17,7 @@ public class ProjectJSONImpl implements Project {
     private String name;
     private boolean chartEnabled;
     private boolean subtaskingEnabled;
+    private boolean projectLeaderCanEditProjectLeader;
     private String textFormattingRule;
     private boolean archived;
     private long displayOrder;
@@ -55,6 +56,11 @@ public class ProjectJSONImpl implements Project {
     @Override
     public boolean isSubtaskingEnabled() {
         return subtaskingEnabled;
+    }
+
+    @Override
+    public boolean isProjectLeaderCanEditProjectLeader(){
+        return projectLeaderCanEditProjectLeader;
     }
 
     @Override
@@ -115,6 +121,10 @@ public class ProjectJSONImpl implements Project {
                 .append(this.archived, rhs.archived)
                 .append(this.useFileSharing, rhs.useFileSharing)
                 .append(this.useWiki, rhs.useWiki)
+                .append(this.useResolvedForChart, rhs.useResolvedForChart)
+                .append(this.useWikiTreeView, rhs.useWikiTreeView)
+                .append(this.useOriginalImageSizeAtWiki, rhs.useOriginalImageSizeAtWiki)
+                .append(this.projectLeaderCanEditProjectLeader, rhs.projectLeaderCanEditProjectLeader)
                 .append(this.useDevAttributes, rhs.useDevAttributes);
     }
 
@@ -134,6 +144,10 @@ public class ProjectJSONImpl implements Project {
                 .append(archived)
                 .append(useFileSharing)
                 .append(useWiki)
+                .append(useResolvedForChart)
+                .append(useWikiTreeView)
+                .append(useOriginalImageSizeAtWiki)
+                .append(projectLeaderCanEditProjectLeader)
                 .append(useDevAttributes);
     }
 
@@ -153,6 +167,10 @@ public class ProjectJSONImpl implements Project {
                 .append("archived", archived)
                 .append("useFileSharing", useFileSharing)
                 .append("useWiki", useWiki)
+                .append("useResolvedForChart",useResolvedForChart)
+                .append("useWikiTreeView",useWikiTreeView)
+                .append("useOriginalImageSizeAtWiki",useOriginalImageSizeAtWiki)
+                .append("projectLeaderCanEditProjectLeader",projectLeaderCanEditProjectLeader)
                 .append("useDevAttributes", useDevAttributes);
     }
 }

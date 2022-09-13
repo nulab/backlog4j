@@ -160,6 +160,11 @@ public class BacklogClientImplTest {
         }
 
         @Override
+        public boolean isProjectLeaderCanEditProjectLeader() {
+            return false;
+        }
+
+        @Override
         public TextFormattingRule getTextFormattingRule() {
             return null;
         }

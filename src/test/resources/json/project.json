@@ -6,6 +6,7 @@
     "useBurndown": true,
     "chartEnabled": false,
     "subtaskingEnabled": true,
+    "projectLeaderCanEditProjectLeader": false,
     "textFormattingRule": "backlog",
     "archived": false,
     "useWiki": true,
