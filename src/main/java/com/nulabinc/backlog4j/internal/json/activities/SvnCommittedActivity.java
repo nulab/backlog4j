@@ -14,7 +14,7 @@ public class SvnCommittedActivity extends ActivityJSONImpl {
 
     private int type = 11;
 
-    @JsonDeserialize(as=SvnCommittedContent.class)
+    @JsonDeserialize(as = SvnCommittedContent.class)
     private SvnCommittedContent content;
 
     @Override

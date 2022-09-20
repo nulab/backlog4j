@@ -14,7 +14,7 @@ public abstract class UpdateCustomFieldParams extends PatchParams {
     private Object projectIdOrKey;
     private Object customFiledId;
 
-    public UpdateCustomFieldParams(Object projectIdOrKey, Object customFiledId){
+    public UpdateCustomFieldParams(Object projectIdOrKey, Object customFiledId) {
         this.projectIdOrKey = projectIdOrKey;
         this.customFiledId = customFiledId;
     }
@@ -33,7 +33,7 @@ public abstract class UpdateCustomFieldParams extends PatchParams {
     }
 
     public UpdateCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        for (Long applicableIssueType :applicableIssueTypes) {
+        for (Long applicableIssueType : applicableIssueTypes) {
             parameters.add(new NameValuePair("applicableIssueTypes[]", String.valueOf(applicableIssueType)));
         }
         return this;

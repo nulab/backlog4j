@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.internal.json;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.*;
@@ -20,17 +19,17 @@ public class IssueCommentJSONImpl implements IssueComment {
 
     private long id;
     private String content;
-    @JsonDeserialize(as= ChangeLogJSONImpl[].class)
+    @JsonDeserialize(as = ChangeLogJSONImpl[].class)
     private ChangeLog[] changeLog;
-    @JsonDeserialize(as= UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;
-    @JsonDeserialize(as= StarJSONImpl[].class)
+    @JsonDeserialize(as = StarJSONImpl[].class)
     private Star[] stars;
-    @JsonDeserialize(as=NotificationJSONImpl[].class)
+    @JsonDeserialize(as = NotificationJSONImpl[].class)
     private Notification[] notifications;
 
     @Override

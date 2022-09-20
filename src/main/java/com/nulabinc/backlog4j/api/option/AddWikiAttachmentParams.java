@@ -13,7 +13,7 @@ public class AddWikiAttachmentParams extends PostParams {
 
     private Object wikiId;
 
-    public AddWikiAttachmentParams(Object wikiId, List attachmentIds){
+    public AddWikiAttachmentParams(Object wikiId, List attachmentIds) {
         this.wikiId = wikiId;
         for (Object attachmentId : attachmentIds) {
             parameters.add(new NameValuePair("attachmentId[]", String.valueOf(attachmentId)));

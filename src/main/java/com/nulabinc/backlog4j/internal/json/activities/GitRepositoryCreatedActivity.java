@@ -14,7 +14,7 @@ public class GitRepositoryCreatedActivity extends ActivityJSONImpl {
 
     private int type = 13;
 
-    @JsonDeserialize(as=GitRepositoryCreatedContent.class)
+    @JsonDeserialize(as = GitRepositoryCreatedContent.class)
     private GitRepositoryCreatedContent content;
 
     @Override

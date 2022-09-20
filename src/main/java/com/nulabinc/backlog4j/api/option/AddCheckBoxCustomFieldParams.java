@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
@@ -37,16 +36,16 @@ public class AddCheckBoxCustomFieldParams extends AddCustomFieldParams {
 
     @Override
     public AddCheckBoxCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (AddCheckBoxCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (AddCheckBoxCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public AddCheckBoxCustomFieldParams description(String description) {
-        return (AddCheckBoxCustomFieldParams)super.description(description);
+        return (AddCheckBoxCustomFieldParams) super.description(description);
     }
 
     @Override
     public AddCheckBoxCustomFieldParams required(boolean required) {
-        return (AddCheckBoxCustomFieldParams)super.required(required);
+        return (AddCheckBoxCustomFieldParams) super.required(required);
     }
 }

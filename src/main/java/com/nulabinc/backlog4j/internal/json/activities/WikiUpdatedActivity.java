@@ -14,7 +14,7 @@ public class WikiUpdatedActivity extends ActivityJSONImpl {
 
     private int type = 6;
 
-    @JsonDeserialize(as=WikiUpdatedContent.class)
+    @JsonDeserialize(as = WikiUpdatedContent.class)
     private WikiUpdatedContent content;
 
     @Override

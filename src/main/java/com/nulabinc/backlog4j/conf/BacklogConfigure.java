@@ -1,8 +1,6 @@
 package com.nulabinc.backlog4j.conf;
 
 import com.nulabinc.backlog4j.auth.AccessToken;
-import com.nulabinc.backlog4j.auth.OAuthSupport;
-import com.nulabinc.backlog4j.auth.OnAccessTokenRefreshListener;
 
 /**
  * @author nulab-inc

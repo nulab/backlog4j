@@ -7,7 +7,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  *
  * @author nulab-inc
  */
-public class OffsetParams extends GetParams{
+public class OffsetParams extends GetParams {
     public enum Order {
         Asc("asc"),
         Desc("desc");

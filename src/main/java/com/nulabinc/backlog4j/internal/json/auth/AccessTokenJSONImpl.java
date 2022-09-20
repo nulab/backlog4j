@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.json.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nulabinc.backlog4j.Attachment;
 import com.nulabinc.backlog4j.auth.AccessToken;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -24,7 +23,7 @@ public class AccessTokenJSONImpl extends AccessToken {
     @JsonProperty("refresh_token")
     private String refresh;
 
-    public AccessTokenJSONImpl(){
+    public AccessTokenJSONImpl() {
         super(null, null, null);
     }
 

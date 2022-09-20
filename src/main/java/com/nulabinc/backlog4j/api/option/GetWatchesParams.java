@@ -18,5 +18,5 @@ public class GetWatchesParams extends GetParams {
         parameters.add(new NameValuePair("resourceAlreadyRead", String.valueOf(resourceAlreadyRead)));
         return this;
     }
-    
+
 }

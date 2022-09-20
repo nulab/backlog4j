@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -69,7 +70,7 @@ public class UpdateIssueParams extends PatchParams {
         if (startDate == null) {
             parameters.add(new NameValuePair("startDate", ""));
         } else {
-            parameters.add(new NameValuePair("startDate", String.valueOf(startDate)));
+            parameters.add(new NameValuePair("startDate", startDate));
         }
         return this;
     }
@@ -78,7 +79,7 @@ public class UpdateIssueParams extends PatchParams {
         if (dueDate == null) {
             parameters.add(new NameValuePair("dueDate", ""));
         } else {
-            parameters.add(new NameValuePair("dueDate", String.valueOf(dueDate)));
+            parameters.add(new NameValuePair("dueDate", dueDate));
         }
         return this;
     }
@@ -97,7 +98,7 @@ public class UpdateIssueParams extends PatchParams {
         if (estimatedHours == null) {
             parameters.add(new NameValuePair("estimatedHours", ""));
         } else {
-            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -116,7 +117,7 @@ public class UpdateIssueParams extends PatchParams {
         if (actualHours == null) {
             parameters.add(new NameValuePair("actualHours", ""));
         } else {
-            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -167,10 +168,10 @@ public class UpdateIssueParams extends PatchParams {
     public UpdateIssueParams assigneeId(Integer assigneeId) {
         return assigneeId(new Long(assigneeId));
     }
-    
+
     public UpdateIssueParams assigneeId(Long assigneeId) {
         String assigneeIdStr = "";
-        if(assigneeId <= 0) {
+        if (assigneeId <= 0) {
             assigneeIdStr = "";
         } else {
             assigneeIdStr = assigneeId.toString();
@@ -295,7 +296,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams textCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -309,7 +310,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams textAreaCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -323,18 +324,18 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 Float.toString(customFieldValue)));
         return this;
     }
 
     public UpdateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
-        if(customFieldValue == null){
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        if (customFieldValue == null) {
+            parameters.add(new NameValuePair("customField_" + customFieldId,
                     ""));
-        }else {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        } else {
+            parameters.add(new NameValuePair("customField_" + customFieldId,
+                    customFieldValue.setScale(4, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -349,9 +350,9 @@ public class UpdateIssueParams extends PatchParams {
 
     public UpdateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
         if (customFieldValue == null) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId), ""));
+            parameters.add(new NameValuePair("customField_" + customFieldId, ""));
         } else {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+            parameters.add(new NameValuePair("customField_" + customFieldId,
                     customFieldValue));
         }
         return this;
@@ -363,7 +364,7 @@ public class UpdateIssueParams extends PatchParams {
             String customFieldValue = customFieldMap.get(key);
             if (customFieldValue == null) {
                 parameters.add(new NameValuePair("customField_" + key.toString(), ""));
-            }else {
+            } else {
                 parameters.add(new NameValuePair("customField_" + key.toString(), customFieldValue));
             }
         }
@@ -371,7 +372,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldItemId)));
         return this;
     }
@@ -398,7 +399,7 @@ public class UpdateIssueParams extends PatchParams {
 
     public UpdateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
         for (Long customFieldItemId : customFieldItemIds) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+            parameters.add(new NameValuePair("customField_" + customFieldId,
                     String.valueOf(customFieldItemId)));
         }
         return this;
@@ -439,7 +440,7 @@ public class UpdateIssueParams extends PatchParams {
     }
 
     public UpdateIssueParams customFieldOtherValue(long customFieldId, String otherValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
+        parameters.add(new NameValuePair("customField_" + customFieldId + "_otherValue",
                 otherValue));
         return this;
     }

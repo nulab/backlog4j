@@ -14,8 +14,8 @@ public class AddCategoryParams extends PostParams {
     /**
      * Constructor
      *
-     * @param projectIdOrKey    the project identifier
-     * @param name              the category name
+     * @param projectIdOrKey the project identifier
+     * @param name           the category name
      */
     public AddCategoryParams(Object projectIdOrKey, String name) {
         this.projectIdOrKey = projectIdOrKey;

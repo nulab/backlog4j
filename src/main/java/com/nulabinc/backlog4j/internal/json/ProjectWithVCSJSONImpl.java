@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.ProjectWithVCS;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProjectWithVCSJSONImpl extends ProjectJSONImpl implements ProjectWithVCS {
@@ -10,10 +9,14 @@ public class ProjectWithVCSJSONImpl extends ProjectJSONImpl implements ProjectWi
     private boolean useGit;
 
     @Override
-    public boolean getUseSubversion() { return useSubversion; }
+    public boolean getUseSubversion() {
+        return useSubversion;
+    }
 
     @Override
-    public boolean getUseGit() { return useGit; }
+    public boolean getUseGit() {
+        return useGit;
+    }
 
     @Override
     public boolean equals(Object obj) {

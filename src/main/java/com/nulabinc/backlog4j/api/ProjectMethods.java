@@ -77,7 +77,7 @@ public interface ProjectMethods {
      * Returns the activities on the project.
      *
      * @param projectIdOrKey the project identifier
-     * @param query the query parameters
+     * @param query          the query parameters
      * @return the activities in a list
      * @throws BacklogException
      */
@@ -88,7 +88,7 @@ public interface ProjectMethods {
      * Adds the user to the project.
      *
      * @param projectIdOrKey the project identifier
-     * @param userId     the user identifier
+     * @param userId         the user identifier
      * @return the added User
      * @throws BacklogException
      */
@@ -107,7 +107,7 @@ public interface ProjectMethods {
      * Removes the user from the project.
      *
      * @param projectIdOrKey the project identifier
-     * @param userId     the user identifier
+     * @param userId         the user identifier
      * @return the removed User
      * @throws BacklogException
      */
@@ -117,7 +117,7 @@ public interface ProjectMethods {
      * Adds the project administrators.
      *
      * @param projectIdOrKey the project identifier
-     * @param userId    the user identifier
+     * @param userId         the user identifier
      * @return the removed User
      * @throws BacklogException
      */
@@ -126,8 +126,8 @@ public interface ProjectMethods {
     /**
      * Returns the project administrators.
      *
-     * @param projectIdOrKey    the project identifier
-     * @return              the project administrators
+     * @param projectIdOrKey the project identifier
+     * @return the project administrators
      * @throws BacklogException
      */
     ResponseList<User> getProjectAdministrators(Object projectIdOrKey) throws BacklogException;
@@ -135,8 +135,8 @@ public interface ProjectMethods {
     /**
      * Deletes the project administrators.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param userId    the user identifier
+     * @param projectIdOrKey the project identifier
+     * @param userId         the user identifier
      * @return the removed User
      * @throws BacklogException
      */
@@ -222,7 +222,7 @@ public interface ProjectMethods {
      * Removes the category from the project
      *
      * @param projectIdOrKey the project identifier
-     * @param categoryId the category identifier
+     * @param categoryId     the category identifier
      * @return the removed category
      * @throws BacklogException
      */
@@ -259,7 +259,7 @@ public interface ProjectMethods {
      * Removes the version from the project.
      *
      * @param projectIdOrKey the project identifier
-     * @param versionId  the version identifier
+     * @param versionId      the version identifier
      * @return the removed version
      * @throws BacklogException
      */
@@ -296,7 +296,7 @@ public interface ProjectMethods {
      * Removes the Milestone from the project.
      *
      * @param projectIdOrKey the project identifier
-     * @param MilestoneId  the Milestone identifier
+     * @param MilestoneId    the Milestone identifier
      * @return the removed Milestone
      * @throws BacklogException
      */
@@ -458,8 +458,8 @@ public interface ProjectMethods {
     /**
      * Removes the custom filed from the project.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param customFieldId the custom field identifier
+     * @param projectIdOrKey the project identifier
+     * @param customFieldId  the custom field identifier
      * @return the removed custom filed
      * @throws BacklogException
      */
@@ -468,9 +468,9 @@ public interface ProjectMethods {
     /**
      * Adds a item to the list type custom field.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param customFieldId the custom field identifier
-     * @param name          name of the adding item
+     * @param projectIdOrKey the project identifier
+     * @param customFieldId  the custom field identifier
+     * @param name           name of the adding item
      * @return the added custom filed item
      * @throws BacklogException
      */
@@ -479,10 +479,10 @@ public interface ProjectMethods {
     /**
      * Updates the existing item of list type custom field.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param customFieldId     the custom field identifier
-     * @param itemId            the item identifier
-     * @param name              name of the updating item
+     * @param projectIdOrKey the project identifier
+     * @param customFieldId  the custom field identifier
+     * @param itemId         the item identifier
+     * @param name           name of the updating item
      * @return the updated CustomFieldSetting
      * @throws BacklogException
      */
@@ -491,9 +491,9 @@ public interface ProjectMethods {
     /**
      * Removes the item of list type custom field.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param customFieldId     the custom field identifier
-     * @param itemId            the item identifier
+     * @param projectIdOrKey the project identifier
+     * @param customFieldId  the custom field identifier
+     * @param itemId         the item identifier
      * @return the removed CustomFieldSetting
      * @throws BacklogException
      */
@@ -503,18 +503,19 @@ public interface ProjectMethods {
     /**
      * Returns the shared files in the project.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param path              path of the shared file directory
+     * @param projectIdOrKey the project identifier
+     * @param path           path of the shared file directory
      * @return the shared files in a list
      * @throws BacklogException
-     */ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path) throws BacklogException;
+     */
+    ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path) throws BacklogException;
 
     /**
      * Returns the shared files in the project.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param path              path of the shared file directory
-     * @param queryParams the query parameters
+     * @param projectIdOrKey the project identifier
+     * @param path           path of the shared file directory
+     * @param queryParams    the query parameters
      * @return the shared files in a list
      * @throws BacklogException
      */
@@ -523,8 +524,8 @@ public interface ProjectMethods {
     /**
      * Returns the shared file data in the project.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param sharedFileId      the shared file identifier
+     * @param projectIdOrKey the project identifier
+     * @param sharedFileId   the shared file identifier
      * @return the SharedFileData
      * @throws BacklogException
      */
@@ -538,7 +539,6 @@ public interface ProjectMethods {
      * @throws BacklogException
      */
     DiskUsageDetail getProjectDiskUsage(Object projectIdOrKey) throws BacklogException;
-
 
 
 }

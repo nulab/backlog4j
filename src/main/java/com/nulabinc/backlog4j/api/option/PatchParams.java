@@ -12,7 +12,7 @@ import java.util.List;
  */
 public abstract class PatchParams {
 
-    protected List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+    protected List<NameValuePair> parameters = new ArrayList<>();
 
     public List<NameValuePair> getParamList() {
         return parameters;

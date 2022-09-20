@@ -14,7 +14,7 @@ public interface PullRequestMethods {
      * Returns the pull requests of the repository.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
+     * @param repoIdOrName   the repository name
      * @return the git pull requests in a list.
      * @throws BacklogException
      */
@@ -24,8 +24,8 @@ public interface PullRequestMethods {
      * Returns the pull requests of the repository.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param params the finding pull request parameters.
+     * @param repoIdOrName   the repository name
+     * @param params         the finding pull request parameters.
      * @return the git pull requests in a list.
      * @throws BacklogException
      */
@@ -35,7 +35,7 @@ public interface PullRequestMethods {
      * Returns the count of the pull requests.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
+     * @param repoIdOrName   the repository name
      * @return the git pull request.
      * @throws BacklogException
      */
@@ -45,8 +45,8 @@ public interface PullRequestMethods {
      * Returns the count of the pull requests.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param params the finding pull request parameters.
+     * @param repoIdOrName   the repository name
+     * @param params         the finding pull request parameters.
      * @return the git pull request.
      * @throws BacklogException
      */
@@ -74,8 +74,8 @@ public interface PullRequestMethods {
      * Returns the pull request.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
      * @return the git pull requests in a list.
      * @throws BacklogException
      */
@@ -85,9 +85,9 @@ public interface PullRequestMethods {
      * Returns the comments of pull requests.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param params the finding pull request comments parameters.
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param params         the finding pull request comments parameters.
      * @return the git pull requests in a list.
      * @throws BacklogException
      */
@@ -107,8 +107,8 @@ public interface PullRequestMethods {
      * Returns the pull request comment count.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
      * @return the pull request comment count
      * @throws BacklogException
      */
@@ -117,7 +117,7 @@ public interface PullRequestMethods {
     /**
      * Updates the pull request comment.
      *
-     * @param params  the pull request comment updating parameters
+     * @param params the pull request comment updating parameters
      * @return the pull request comment.
      * @throws BacklogException
      */
@@ -127,8 +127,8 @@ public interface PullRequestMethods {
      * Returns the pull request attachment list.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
      * @return the pull request attachment list
      * @throws BacklogException
      */
@@ -138,9 +138,9 @@ public interface PullRequestMethods {
      * Returns the attachment file data on the pull request.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param attachmentId the pull request attachment identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param attachmentId   the pull request attachment identifier
      * @return the attachment file data
      * @throws BacklogException
      */
@@ -150,9 +150,9 @@ public interface PullRequestMethods {
      * Deletes the attachment file on the pull request.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param attachmentId the pull request attachment identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param attachmentId   the pull request attachment identifier
      * @return the Attachment
      * @throws BacklogException
      */

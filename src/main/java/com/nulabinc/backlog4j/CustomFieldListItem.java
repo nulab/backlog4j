@@ -4,10 +4,10 @@ package com.nulabinc.backlog4j;
  * @author nulab-inc
  */
 public interface CustomFieldListItem {
-    
-    public long getId();
 
-    public String getName();
+    long getId();
 
-    public int getDisplayOrder();
+    String getName();
+
+    int getDisplayOrder();
 }

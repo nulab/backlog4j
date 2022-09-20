@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class CreateGroupParams extends PostParams {
 
-    public CreateGroupParams(String name){
+    public CreateGroupParams(String name) {
         parameters.add(new NameValuePair("name", name));
     }
 

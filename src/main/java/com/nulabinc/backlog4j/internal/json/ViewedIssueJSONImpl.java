@@ -3,7 +3,6 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.nulabinc.backlog4j.Issue;
-import com.nulabinc.backlog4j.Version;
 import com.nulabinc.backlog4j.ViewedIssue;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

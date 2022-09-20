@@ -23,7 +23,7 @@ import java.util.Map;
  *
  * @author nulab-inc
  */
-public abstract class BacklogClientBase{
+public abstract class BacklogClientBase {
 
     private final Logger logger = LoggerFactory.getLogger(BacklogClientBase.class);
 
@@ -89,11 +89,11 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse post(String endpoint) throws BacklogException {
-        return this.post(endpoint, new ArrayList<NameValuePair>(), new ArrayList<NameValuePair>());
+        return this.post(endpoint, new ArrayList<>(), new ArrayList<>());
     }
 
     protected BacklogHttpResponse post(String endpoint, PostParams postParams) throws BacklogException {
-        return this.post(endpoint, postParams.getParamList(), new ArrayList<NameValuePair>());
+        return this.post(endpoint, postParams.getParamList(), new ArrayList<>());
     }
 
     protected BacklogHttpResponse post(String endpoint, List<NameValuePair> parameters, List<NameValuePair> headers) throws BacklogException {
@@ -108,7 +108,7 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse patch(String endpoint, PatchParams postParams) throws BacklogException {
-        return this.patch(endpoint, postParams.getParamList(), new ArrayList<NameValuePair>());
+        return this.patch(endpoint, postParams.getParamList(), new ArrayList<>());
     }
 
     protected BacklogHttpResponse patch(String endpoint, List<NameValuePair> parameters, List<NameValuePair> headers) throws BacklogException {
@@ -134,7 +134,7 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse delete(String endpoint) throws BacklogException {
-        return this.delete(endpoint, new ArrayList<NameValuePair>());
+        return this.delete(endpoint, new ArrayList<>());
     }
 
     protected BacklogHttpResponse delete(String endpoint, DeleteParams deleteParams) throws BacklogException {
@@ -142,7 +142,7 @@ public abstract class BacklogClientBase{
     }
 
     protected BacklogHttpResponse delete(String endpoint, NameValuePair param) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         if (param != null) {
             params.add(param);
         }
@@ -184,10 +184,7 @@ public abstract class BacklogClientBase{
     }
 
     protected String buildEndpoint(String connection) {
-        StringBuilder url = new StringBuilder()
-                .append(configure.getRestBaseURL())
-                .append(connection == null ? "" : "/" + connection);
-        return url.toString();
+        return configure.getRestBaseURL() + (connection == null ? "" : "/" + connection);
     }
 
 

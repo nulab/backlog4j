@@ -34,7 +34,7 @@ public class Union<T1, T2> {
         if (t1 == null) {
             throw new InvalidParameterException("value can't be null");
         } else {
-            return new Union<T, U>(t1, null);
+            return new Union<>(t1, null);
         }
     }
 
@@ -42,7 +42,7 @@ public class Union<T1, T2> {
         if (t2 == null) {
             throw new InvalidParameterException("value can't be null");
         } else {
-            return new Union<T, U>(null, t2);
+            return new Union<>(null, t2);
         }
     }
 }

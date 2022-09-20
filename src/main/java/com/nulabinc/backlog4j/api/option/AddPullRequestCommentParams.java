@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -20,9 +19,9 @@ public class AddPullRequestCommentParams extends PostParams {
      * Constructor
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param content the comment content
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param content        the comment content
      */
     public AddPullRequestCommentParams(Object projectIdOrKey, Object repoIdOrName, Object number, String content) {
         this.projectIdOrKey = projectIdOrKey;

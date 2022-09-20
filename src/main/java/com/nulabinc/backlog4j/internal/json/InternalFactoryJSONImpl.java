@@ -10,6 +10,8 @@ import com.nulabinc.backlog4j.internal.json.activities.ActivityJSONImpl;
 import com.nulabinc.backlog4j.internal.json.auth.AccessTokenJSONImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.CustomFieldSettingJSONImpl;
 
+import java.util.Collections;
+
 
 /**
  * @author nulab-inc
@@ -129,6 +131,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<ViewedWiki> createViewedWikiList(BacklogHttpResponse res) throws BacklogException {
         return createViewedWikiList(res.asString());
     }
+
     public ResponseList<ViewedWiki> createViewedWikiList(String resStr) throws BacklogException {
         return createObjectList(resStr, ViewedWiki.class, ViewedWikiJSONImpl[].class);
     }
@@ -137,6 +140,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Issue createIssue(BacklogHttpResponse res) throws BacklogException {
         return createIssue(res.asString());
     }
+
     public Issue createIssue(String resStr) throws BacklogException {
         return createObject(resStr, Issue.class, IssueJSONImpl.class);
     }
@@ -154,6 +158,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public IssueComment createIssueComment(BacklogHttpResponse res) throws BacklogException {
         return createIssueComment(res.asString());
     }
+
     public IssueComment createIssueComment(String resStr) throws BacklogException {
         return createObject(resStr, IssueComment.class, IssueCommentJSONImpl.class);
     }
@@ -162,6 +167,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<IssueComment> createIssueCommentList(BacklogHttpResponse res) throws BacklogException {
         return createIssueCommentList(res.asString());
     }
+
     public ResponseList<IssueComment> createIssueCommentList(String resStr) throws BacklogException {
         return createObjectList(resStr, IssueComment.class, IssueCommentJSONImpl[].class);
     }
@@ -170,6 +176,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public User createUser(BacklogHttpResponse res) throws BacklogException {
         return createUser(res.asString());
     }
+
     public User createUser(String resStr) throws BacklogException {
         return createObject(resStr, User.class, UserJSONImpl.class);
     }
@@ -178,6 +185,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<User> createUserList(BacklogHttpResponse res) throws BacklogException {
         return createUserList(res.asString());
     }
+
     public ResponseList<User> createUserList(String resStr) throws BacklogException {
         return createObjectList(resStr, User.class, UserJSONImpl[].class);
     }
@@ -186,6 +194,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public IssueType createIssueType(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), IssueType.class, IssueTypeJSONImpl.class);
     }
+
     public IssueType createIssueType(String resStr) throws BacklogException {
         return createObject(resStr, IssueType.class, IssueTypeJSONImpl.class);
     }
@@ -194,6 +203,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<IssueType> createIssueTypeList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), IssueType.class, IssueTypeJSONImpl[].class);
     }
+
     public ResponseList<IssueType> createIssueTypeList(String resStr) throws BacklogException {
         return createObjectList(resStr, IssueType.class, IssueTypeJSONImpl[].class);
     }
@@ -202,6 +212,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Category createCategory(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Category.class, CategoryJSONImpl.class);
     }
+
     public Category createCategory(String resStr) throws BacklogException {
         return createObject(resStr, Category.class, CategoryJSONImpl.class);
     }
@@ -210,6 +221,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Category> createCategoryList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Category.class, CategoryJSONImpl[].class);
     }
+
     public ResponseList<Category> createCategoryList(String resStr) throws BacklogException {
         return createObjectList(resStr, Category.class, CategoryJSONImpl[].class);
     }
@@ -218,6 +230,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public CustomFieldSetting createCustomField(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), CustomFieldSetting.class, CustomFieldSettingJSONImpl.class);
     }
+
     public CustomFieldSetting createCustomField(String resStr) throws BacklogException {
         return createObject(resStr, CustomFieldSetting.class, CustomFieldSettingJSONImpl.class);
     }
@@ -226,6 +239,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<CustomFieldSetting> createCustomFieldList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), CustomFieldSetting.class, CustomFieldSettingJSONImpl[].class);
     }
+
     public ResponseList<CustomFieldSetting> createCustomFieldList(String resStr) throws BacklogException {
         return createObjectList(resStr, CustomFieldSetting.class, CustomFieldSettingJSONImpl[].class);
     }
@@ -234,6 +248,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Priority> createPriorityList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Priority.class, PriorityJSONImpl[].class);
     }
+
     public ResponseList<Priority> createPriorityList(String resStr) throws BacklogException {
         return createObjectList(resStr, Priority.class, PriorityJSONImpl[].class);
     }
@@ -242,6 +257,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Resolution> createResolutionList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Resolution.class, ResolutionJSONImpl[].class);
     }
+
     public ResponseList<Resolution> createResolutionList(String resStr) throws BacklogException {
         return createObjectList(resStr, Resolution.class, ResolutionJSONImpl[].class);
     }
@@ -264,6 +280,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Star createStar(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Star.class, StarJSONImpl.class);
     }
+
     public Star createStar(String resStr) throws BacklogException {
         return createObject(resStr, Star.class, StarJSONImpl.class);
     }
@@ -272,6 +289,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Star> createStarList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Star.class, StarJSONImpl[].class);
     }
+
     public ResponseList<Star> createStarList(String resStr) throws BacklogException {
         return createObjectList(resStr, Star.class, StarJSONImpl[].class);
     }
@@ -280,6 +298,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Count createCount(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Count.class, CountJSONImpl.class);
     }
+
     public Count createCount(String resStr) throws BacklogException {
         return createObject(resStr, Count.class, CountJSONImpl.class);
     }
@@ -288,6 +307,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Version createVersion(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Version.class, VersionJSONImpl.class);
     }
+
     public Version createVersion(String resStr) throws BacklogException {
         return createObject(resStr, Version.class, VersionJSONImpl.class);
     }
@@ -296,6 +316,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Version> createVersionList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Version.class, VersionJSONImpl[].class);
     }
+
     public ResponseList<Version> createVersionList(String resStr) throws BacklogException {
         return createObjectList(resStr, Version.class, VersionJSONImpl[].class);
     }
@@ -304,6 +325,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Milestone createMilestone(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Milestone.class, MilestoneJSONImpl.class);
     }
+
     public Milestone createMilestone(String resStr) throws BacklogException {
         return createObject(resStr, Milestone.class, MilestoneJSONImpl.class);
     }
@@ -312,6 +334,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Milestone> createMilestoneList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Milestone.class, MilestoneJSONImpl[].class);
     }
+
     public ResponseList<Milestone> createMilestoneList(String resStr) throws BacklogException {
         return createObjectList(resStr, Milestone.class, MilestoneJSONImpl[].class);
     }
@@ -320,6 +343,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Wiki createWiki(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
     }
+
     public Wiki createWiki(String resStr) throws BacklogException {
         return createObject(resStr, Wiki.class, WikiJSONImpl.class);
     }
@@ -328,6 +352,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Wiki importWiki(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Wiki.class, WikiJSONImpl.class);
     }
+
     public Wiki importWiki(String resStr) throws BacklogException {
         return createObject(resStr, Wiki.class, WikiJSONImpl.class);
     }
@@ -336,6 +361,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Wiki> createWikiList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Wiki.class, WikiJSONImpl[].class);
     }
+
     public ResponseList<Wiki> createWikiList(String resStr) throws BacklogException {
         return createObjectList(resStr, Wiki.class, WikiJSONImpl[].class);
     }
@@ -344,6 +370,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public WikiTag createWikiTag(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), WikiTag.class, WikiTagJSONImpl.class);
     }
+
     public WikiTag createWikiTag(String resStr) throws BacklogException {
         return createObject(resStr, WikiTag.class, WikiTagJSONImpl.class);
     }
@@ -352,6 +379,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<WikiTag> createWikiTagList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), WikiTag.class, WikiTagJSONImpl[].class);
     }
+
     public ResponseList<WikiTag> createWikiTagList(String resStr) throws BacklogException {
         return createObjectList(resStr, WikiTag.class, WikiTagJSONImpl[].class);
     }
@@ -360,6 +388,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public WikiHistory createWikiHistory(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), WikiHistory.class, WikiHistoryJSONImpl.class);
     }
+
     public WikiHistory createWikiHistory(String resStr) throws BacklogException {
         return createObject(resStr, WikiHistory.class, WikiHistoryJSONImpl.class);
     }
@@ -368,6 +397,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<WikiHistory> createWikiHistoryList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), WikiHistory.class, WikiHistoryJSONImpl[].class);
     }
+
     public ResponseList<WikiHistory> createWikiHistoryList(String resStr) throws BacklogException {
         return createObjectList(resStr, WikiHistory.class, WikiHistoryJSONImpl[].class);
     }
@@ -412,6 +442,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<PullRequest> createPullRequestList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), PullRequest.class, PullRequestJSONImpl[].class);
     }
+
     public ResponseList<PullRequest> createPullRequestList(String resStr) throws BacklogException {
         return createObjectList(resStr, PullRequest.class, PullRequestJSONImpl[].class);
     }
@@ -429,6 +460,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<PullRequestComment> createPullRequestCommentList(BacklogHttpResponse res) throws BacklogException {
         return createPullRequestCommentList(res.asString());
     }
+
     public ResponseList<PullRequestComment> createPullRequestCommentList(String resStr) throws BacklogException {
         return createObjectList(resStr, PullRequestComment.class, PullRequestCommentJSONImpl[].class);
     }
@@ -437,6 +469,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public SharedFile createSharedFile(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), SharedFile.class, SharedFileJSONImpl.class);
     }
+
     public SharedFile createSharedFile(String resStr) throws BacklogException {
         return createObject(resStr, SharedFile.class, SharedFileJSONImpl.class);
     }
@@ -445,6 +478,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<SharedFile> createSharedFileList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), SharedFile.class, SharedFileJSONImpl[].class);
     }
+
     public ResponseList<SharedFile> createSharedFileList(String resStr) throws BacklogException {
         return createObjectList(resStr, SharedFile.class, SharedFileJSONImpl[].class);
     }
@@ -480,6 +514,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Attachment> createAttachmentList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Attachment.class, AttachmentJSONImpl[].class);
     }
+
     public ResponseList<Attachment> createAttachmentList(String resStr) throws BacklogException {
         return createObjectList(resStr, Attachment.class, AttachmentJSONImpl[].class);
     }
@@ -488,6 +523,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public ResponseList<Webhook> createWebhookList(BacklogHttpResponse res) throws BacklogException {
         return createWebhookList(res.asString());
     }
+
     public ResponseList<Webhook> createWebhookList(String resStr) throws BacklogException {
         return createObjectList(resStr, Webhook.class, WebhookJSONImpl[].class);
     }
@@ -496,6 +532,7 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     public Webhook createWebhook(BacklogHttpResponse res) throws BacklogException {
         return createObject(res.asString(), Webhook.class, WebhookJSONImpl.class);
     }
+
     public Webhook createWebhook(String resStr) throws BacklogException {
         return createObject(resStr, Webhook.class, WebhookJSONImpl.class);
     }
@@ -514,17 +551,14 @@ public class InternalFactoryJSONImpl implements InternalFactory {
         return createObject(resStr, Watch.class, WatchJSONImpl.class);
     }
 
-    private <T1 , T2 extends T1> ResponseList<T1> createObjectList(String content, Class<T1> clazz1, Class<T2[]> clazz2) throws BacklogException {
+    private <T1, T2 extends T1> ResponseList<T1> createObjectList(String content, Class<T1> clazz1, Class<T2[]> clazz2) throws BacklogException {
         T1[] arrays = Jackson.fromJsonString(content, clazz2);
-        ResponseList<T1> list = new ResponseListImpl<T1>();
-        for (int i = 0; i < arrays.length; i++) {
-            list.add(arrays[i]);
-        }
+        ResponseList<T1> list = new ResponseListImpl<>();
+        Collections.addAll(list, arrays);
         return list;
     }
 
-    private <T1 , T2 extends T1> T1 createObject(String content, Class<T1> clazz1, Class<T2> clazz2) throws BacklogException {
-        T1 obj = Jackson.fromJsonString(content, clazz2);
-        return obj;
+    private <T1, T2 extends T1> T1 createObject(String content, Class<T1> clazz1, Class<T2> clazz2) throws BacklogException {
+        return Jackson.fromJsonString(content, clazz2);
     }
 }

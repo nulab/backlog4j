@@ -19,7 +19,7 @@ public class AttachmentJSONImpl implements Attachment {
     private long id;
     private String name;
     private long size;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;

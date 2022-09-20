@@ -75,7 +75,7 @@ public interface UserMethods {
      * Returns the user recently updates
      *
      * @param numericUserId the user identifier
-     * @param queryParams the query parameters
+     * @param queryParams   the query parameters
      * @return the updates in a list
      * @throws BacklogException
      */
@@ -94,7 +94,7 @@ public interface UserMethods {
      * Returns the received stars
      *
      * @param numericUserId the user identifier
-     * @param queryParams the query parameters
+     * @param queryParams   the query parameters
      * @return the stars in a list
      * @throws BacklogException
      */
@@ -104,7 +104,7 @@ public interface UserMethods {
      * Returns the received star count
      *
      * @param numericUserId the user identifier
-     * @param params star count parameters
+     * @param params        star count parameters
      * @return the count of received star
      * @throws BacklogException
      */
@@ -165,7 +165,7 @@ public interface UserMethods {
      * Returns the received watch count
      *
      * @param numericUserId the user identifier
-     * @param params watch count parameters
+     * @param params        watch count parameters
      * @return the count of received watch
      * @throws BacklogException
      */

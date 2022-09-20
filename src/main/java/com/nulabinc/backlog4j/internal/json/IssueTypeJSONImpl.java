@@ -7,7 +7,6 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.IssueType;
 import com.nulabinc.backlog4j.Project;
-import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -56,10 +55,14 @@ public class IssueTypeJSONImpl implements IssueType {
     }
 
     @Override
-    public String getTemplateSummary() { return this.templateSummary; }
+    public String getTemplateSummary() {
+        return this.templateSummary;
+    }
 
     @Override
-    public String getTemplateDescription() { return this.templateDescription; }
+    public String getTemplateDescription() {
+        return this.templateDescription;
+    }
 
     @Override
     public boolean equals(Object obj) {

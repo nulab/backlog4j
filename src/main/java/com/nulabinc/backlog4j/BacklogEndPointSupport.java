@@ -11,7 +11,7 @@ public class BacklogEndPointSupport {
 
     private BacklogConfigure configure;
 
-    public BacklogEndPointSupport(BacklogConfigure backlogConfigure){
+    public BacklogEndPointSupport(BacklogConfigure backlogConfigure) {
         this.configure = backlogConfigure;
     }
 
@@ -50,8 +50,8 @@ public class BacklogEndPointSupport {
     /**
      * Returns the endpoint of shared file.
      *
-     * @param projectIdOrKey    the project identifier
-     * @param sharedFileId      the shared file identifier
+     * @param projectIdOrKey the project identifier
+     * @param sharedFileId   the shared file identifier
      * @return the endpoint
      * @throws BacklogException
      */
@@ -62,7 +62,7 @@ public class BacklogEndPointSupport {
     /**
      * Returns the endpoint of attachment file.
      *
-     * @param issueIdOrKey     the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param attachmentId the attachment identifierr
      * @return the endpoint
      * @throws BacklogException
@@ -87,9 +87,9 @@ public class BacklogEndPointSupport {
      * Returns the endpoint of attachment file.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param attachmentId the pull request attachment identifier
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param attachmentId   the pull request attachment identifier
      * @return the endpoint
      */
     public String getPullRequestAttachmentEndpoint(Object projectIdOrKey, Object repoIdOrName, Object number, Object attachmentId) {

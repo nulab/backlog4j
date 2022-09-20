@@ -14,7 +14,7 @@ public class GitPushedActivity extends ActivityJSONImpl {
 
     private int type = 12;
 
-    @JsonDeserialize(as=GitPushedContent.class)
+    @JsonDeserialize(as = GitPushedContent.class)
     private GitPushedContent content;
 
     @Override

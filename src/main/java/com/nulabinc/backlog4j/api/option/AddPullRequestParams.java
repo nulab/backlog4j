@@ -17,9 +17,9 @@ public class AddPullRequestParams extends PostParams {
     /**
      * Constructor
      *
-     * @param projectIdOrKey    the project identifier
-     * @param repoIdOrName      the repository identifier
-     * @param summary       the pull request title
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName   the repository identifier
+     * @param summary        the pull request title
      */
     public AddPullRequestParams(Object projectIdOrKey, Object repoIdOrName, String summary, String description,
                                 String base, String branch) {

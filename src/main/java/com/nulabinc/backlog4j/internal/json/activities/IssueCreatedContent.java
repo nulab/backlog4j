@@ -24,9 +24,9 @@ public class IssueCreatedContent extends Content {
     private long keyId;
     private String summary;
     private String description;
-    @JsonDeserialize(as= AttachmentJSONImpl[].class)
+    @JsonDeserialize(as = AttachmentJSONImpl[].class)
     private Attachment[] attachments;
-    @JsonDeserialize(as= SharedFileJSONImpl[].class)
+    @JsonDeserialize(as = SharedFileJSONImpl[].class)
     @JsonProperty("shared_files")
     private SharedFile[] sharedFiles;
 

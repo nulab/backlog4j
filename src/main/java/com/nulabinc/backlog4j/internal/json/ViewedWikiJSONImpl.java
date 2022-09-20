@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.User;
 import com.nulabinc.backlog4j.ViewedWiki;
 import com.nulabinc.backlog4j.Wiki;
 import org.apache.commons.lang3.builder.EqualsBuilder;

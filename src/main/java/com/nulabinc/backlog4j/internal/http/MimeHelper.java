@@ -40,7 +40,7 @@ public final class MimeHelper {
      * @return the filename
      */
     public static String decodeContentDispositionFilename(String value) {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         decodeContentDisposition(value, params);
         return params.get(DISPOSITION_FILENAME);
     }
@@ -204,7 +204,7 @@ public final class MimeHelper {
                     // self-defining token type.
                 } else if (c < 32 || c >= 127 || delimiters.indexOf(c) != -1) {
                     pos++;
-                    return new Token((int) c, String.valueOf(c));
+                    return new Token(c, String.valueOf(c));
                 } else {
                     // start of an atom, parse it off.
                     return readAtomicToken();
@@ -334,7 +334,7 @@ public final class MimeHelper {
     /*
      * Tweaked from geronimo-javamail_1.4_spec-1.7.1. ParameterList
      */
-    protected static Map<String, String> getParameters(String list, Map<String, String> params) throws ParseException {
+    private static Map<String, String> getParameters(String list, Map<String, String> params) throws ParseException {
         HeaderTokenizer tokenizer = new HeaderTokenizer(list);
         while (true) {
             Token token = tokenizer.next();
@@ -393,7 +393,7 @@ public final class MimeHelper {
         }
     }
 
-    protected static String decodeRFC2231value(String value) {
+    private static String decodeRFC2231value(String value) {
         int q1 = value.indexOf('\'');
         if (q1 == -1) {
             // missing charset
@@ -414,7 +414,7 @@ public final class MimeHelper {
         }
     }
 
-    protected static byte[] fromHex(String data) {
+    private static byte[] fromHex(String data) {
         ByteArrayOutputStream out = new ByteArrayOutputStream(data.length());
         for (int i = 0; i < data.length(); ) {
             char c = data.charAt(i++);

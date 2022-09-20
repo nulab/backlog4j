@@ -26,13 +26,13 @@ public class IssueUpdatedContent extends Content {
     private long keyId;
     private String summary;
     private String description;
-    @JsonDeserialize(as= CommentJSONImpl.class)
+    @JsonDeserialize(as = CommentJSONImpl.class)
     private Comment comment;
-    @JsonDeserialize(as= ChangeJSONImpl[].class)
+    @JsonDeserialize(as = ChangeJSONImpl[].class)
     private Change[] changes;
-    @JsonDeserialize(as= AttachmentJSONImpl[].class)
+    @JsonDeserialize(as = AttachmentJSONImpl[].class)
     private Attachment[] attachments;
-    @JsonDeserialize(as= SharedFileJSONImpl[].class)
+    @JsonDeserialize(as = SharedFileJSONImpl[].class)
     @JsonProperty("shared_files")
     private SharedFile[] sharedFiles;
 

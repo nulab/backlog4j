@@ -30,7 +30,7 @@ public class Optional<T> {
         }
     }
 
-    public static  <T> Optional<T> ofNullable(T value) {
+    public static <T> Optional<T> ofNullable(T value) {
         if (value == null) {
             return empty();
         } else {
@@ -43,6 +43,6 @@ public class Optional<T> {
     }
 
     public static <T> Optional<T> of(T value) {
-        return new Optional<T>(value);
+        return new Optional<>(value);
     }
 }

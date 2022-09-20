@@ -37,16 +37,16 @@ public class UpdateNumericCustomFieldParams extends UpdateCustomFieldParams {
 
     @Override
     public UpdateNumericCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (UpdateNumericCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (UpdateNumericCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public UpdateNumericCustomFieldParams description(String description) {
-        return (UpdateNumericCustomFieldParams)super.description(description);
+        return (UpdateNumericCustomFieldParams) super.description(description);
     }
 
     @Override
     public UpdateNumericCustomFieldParams required(boolean required) {
-        return (UpdateNumericCustomFieldParams)super.required(required);
+        return (UpdateNumericCustomFieldParams) super.required(required);
     }
 }

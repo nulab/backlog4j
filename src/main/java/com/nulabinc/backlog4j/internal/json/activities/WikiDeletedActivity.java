@@ -14,7 +14,7 @@ public class WikiDeletedActivity extends ActivityJSONImpl {
 
     private int type = 7;
 
-    @JsonDeserialize(as=WikiDeletedContent.class)
+    @JsonDeserialize(as = WikiDeletedContent.class)
     private WikiDeletedContent content;
 
     @Override

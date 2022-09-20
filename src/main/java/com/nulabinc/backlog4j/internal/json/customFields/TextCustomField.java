@@ -28,7 +28,7 @@ public class TextCustomField extends CustomFieldJSONImpl {
         return value;
     }
 
-   @Override
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

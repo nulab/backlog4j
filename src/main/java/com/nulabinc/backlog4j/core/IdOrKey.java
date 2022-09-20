@@ -23,14 +23,14 @@ public class IdOrKey {
     }
 
     public static IdOrKey key(String key) {
-        return new IdOrKey(Union.<Long, String>right(key));
+        return new IdOrKey(Union.right(key));
     }
 
     public static IdOrKey id(Long id) {
-        return new IdOrKey(Union.<Long, String>left(id));
+        return new IdOrKey(Union.left(id));
     }
 
     public static IdOrKey id(Integer id) {
-        return new IdOrKey(Union.<Long, String>left(id.longValue()));
+        return new IdOrKey(Union.left(id.longValue()));
     }
 }

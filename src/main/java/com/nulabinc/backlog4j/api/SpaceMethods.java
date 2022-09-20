@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.api.option.ActivityQueryParams;
-import com.nulabinc.backlog4j.api.option.QueryParams;
 
 /**
  * Executes Backlog Space APIs.

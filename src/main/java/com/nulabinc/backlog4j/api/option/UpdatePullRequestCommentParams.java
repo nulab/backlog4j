@@ -20,10 +20,10 @@ public class UpdatePullRequestCommentParams extends PatchParams {
      * Constructor
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
-     * @param number the pull request identifier
-     * @param commentId the pull request comment identifier
-     * @param content the comment content
+     * @param repoIdOrName   the repository name
+     * @param number         the pull request identifier
+     * @param commentId      the pull request comment identifier
+     * @param content        the comment content
      */
     public UpdatePullRequestCommentParams(Object projectIdOrKey, Object repoIdOrName, Object number, Object commentId, String content) {
         this.projectIdOrKey = projectIdOrKey;

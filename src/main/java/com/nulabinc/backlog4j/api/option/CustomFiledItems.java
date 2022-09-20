@@ -10,10 +10,10 @@ public class CustomFiledItems {
     private Object customFieldId;
     private List<String> customFieldItemIds;
 
-    public CustomFiledItems(Object customFieldId, List ids){
+    public CustomFiledItems(Object customFieldId, List ids) {
         this.customFieldId = customFieldId;
-        this.customFieldItemIds = new ArrayList<String>();
-        for(Object id : ids){
+        this.customFieldItemIds = new ArrayList<>();
+        for (Object id : ids) {
             this.customFieldItemIds.add(id.toString());
         }
     }

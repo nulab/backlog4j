@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -18,9 +17,9 @@ public class AddIssueCommentNotificationParams extends PostParams {
     /**
      * Constructor
      *
-     * @param issueIdOrKey           the issue identifier
-     * @param commentId         the comment identifier
-     * @param notifiedUserIds   the user identifiers for notification
+     * @param issueIdOrKey    the issue identifier
+     * @param commentId       the comment identifier
+     * @param notifiedUserIds the user identifiers for notification
      */
     public AddIssueCommentNotificationParams(Object issueIdOrKey, Object commentId, List notifiedUserIds) {
         this.issueIdOrKey = issueIdOrKey;

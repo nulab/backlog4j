@@ -15,6 +15,7 @@ import java.util.List;
 public class TextAreaCustomFieldSetting extends CustomFieldSettingJSONImpl {
 
     private int typeId = 2;
+
     @Override
     public int getFieldTypeId() {
         return typeId;

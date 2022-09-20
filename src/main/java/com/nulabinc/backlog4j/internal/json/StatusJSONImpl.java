@@ -3,7 +3,6 @@ package com.nulabinc.backlog4j.internal.json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.Project;
 import com.nulabinc.backlog4j.Issue;
-import com.nulabinc.backlog4j.Star;
 import com.nulabinc.backlog4j.Status;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -52,10 +51,14 @@ public class StatusJSONImpl implements Status {
     }
 
     @Override
-    public Project.CustomStatusColor getColor() { return Project.CustomStatusColor.strValueOf(this.color); }
+    public Project.CustomStatusColor getColor() {
+        return Project.CustomStatusColor.strValueOf(this.color);
+    }
 
     @Override
-    public int getDisplayOrder() { return this.displayOrder; }
+    public int getDisplayOrder() {
+        return this.displayOrder;
+    }
 
     @Override
     public boolean equals(Object obj) {

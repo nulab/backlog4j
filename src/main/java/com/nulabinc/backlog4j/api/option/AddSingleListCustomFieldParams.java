@@ -35,16 +35,16 @@ public class AddSingleListCustomFieldParams extends AddCustomFieldParams {
 
     @Override
     public AddSingleListCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (AddSingleListCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (AddSingleListCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public AddSingleListCustomFieldParams description(String description) {
-        return (AddSingleListCustomFieldParams)super.description(description);
+        return (AddSingleListCustomFieldParams) super.description(description);
     }
 
     @Override
     public AddSingleListCustomFieldParams required(boolean required) {
-        return (AddSingleListCustomFieldParams)super.required(required);
+        return (AddSingleListCustomFieldParams) super.required(required);
     }
 }

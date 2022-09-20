@@ -21,11 +21,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProjectUserAddedContent extends Content {
 
-    @JsonDeserialize(as=UserJSONImpl[].class)
+    @JsonDeserialize(as = UserJSONImpl[].class)
     private User[] users;
     private String comment;
     @JsonProperty("group_project_activities")
-    @JsonDeserialize(as=GroupProjectActivityJSONImpl[].class)
+    @JsonDeserialize(as = GroupProjectActivityJSONImpl[].class)
     private GroupProjectActivity[] groupProjectActivities;
 
     public List<User> getUsers() {

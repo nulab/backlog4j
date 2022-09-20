@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nulabinc.backlog4j.Category;
 import com.nulabinc.backlog4j.Group;
 import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,15 +20,15 @@ public class GroupJSONImpl implements Group {
 
     private long id;
     private String name;
-    @JsonDeserialize(as=UserJSONImpl[].class)
+    @JsonDeserialize(as = UserJSONImpl[].class)
     private User[] members;
     private long displayOrder;
 
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User updatedUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;

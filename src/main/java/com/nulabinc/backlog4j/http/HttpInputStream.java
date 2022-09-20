@@ -25,7 +25,7 @@ public class HttpInputStream extends InputStream {
     }
 
     @Override
-    public int read(byte b[], int off, int len) throws IOException {
+    public int read(byte[] b, int off, int len) throws IOException {
         return inputStream.read(b, off, len);
     }
 

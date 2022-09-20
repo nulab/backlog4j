@@ -1,6 +1,5 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class AddIssueCommentParams extends PostParams {
      * Constructor
      *
      * @param issueIdOrKey the issue identifier
-     * @param content the comment content
+     * @param content      the comment content
      */
     public AddIssueCommentParams(Object issueIdOrKey, String content) {
         this.issueIdOrKey = issueIdOrKey;

@@ -18,9 +18,9 @@ public class UpdatePullRequestParams extends PatchParams {
     /**
      * Constructor
      *
-     * @param projectIdOrKey    the project identifier
-     * @param repoIdOrName      the repository identifier
-     * @param number        the pull request title
+     * @param projectIdOrKey the project identifier
+     * @param repoIdOrName   the repository identifier
+     * @param number         the pull request title
      */
     public UpdatePullRequestParams(Object projectIdOrKey, Object repoIdOrName, Object number) {
         this.projectIdOrKey = projectIdOrKey;

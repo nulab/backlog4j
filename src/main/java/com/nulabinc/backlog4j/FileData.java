@@ -9,5 +9,6 @@ import java.io.InputStream;
  */
 public interface FileData {
     String getFilename();
+
     InputStream getContent();
 }

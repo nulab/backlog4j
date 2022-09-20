@@ -21,11 +21,11 @@ public class WikiHistoryJSONImpl implements WikiHistory {
     private String name;
     private String content;
 
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User updatedUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;
