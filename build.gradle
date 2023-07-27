@@ -87,9 +87,9 @@ publishing {
                 }
                 developers {
                     developer {
-                        id = 'kimzo'
-                        name = 'Yuh Kim'
-                        email = 'kim@nulab.com'
+                        id = 'uchida'
+                        name = 'Yuichi Uchida'
+                        email = 'uchida@nulab.com'
                     }
                 }
             }
