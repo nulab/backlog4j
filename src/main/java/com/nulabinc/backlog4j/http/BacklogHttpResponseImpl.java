@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 /**
@@ -33,7 +34,7 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
             try {
                 rateLimitLimit = Integer.parseInt(urlConnection.getHeaderField("X-RateLimit-Limit"));
                 rateLimitRemaining = Integer.parseInt(urlConnection.getHeaderField("X-RateLimit-Remaining"));
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             rateLimitReset = urlConnection.getHeaderField("X-RateLimit-Reset");
             setRateLimitResetDate(rateLimitReset);
@@ -59,8 +60,8 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
             return;
         }
         try {
-            rateLimitResetDate = new Date(Long.parseLong(rateLimitReset)*1000);
-        } catch (Exception e) {
+            rateLimitResetDate = new Date(Long.parseLong(rateLimitReset) * 1000);
+        } catch (Exception ignored) {
         }
     }
 
@@ -84,46 +85,34 @@ public class BacklogHttpResponseImpl implements BacklogHttpResponse {
     }
 
     private String convertStreamToString() {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            StringBuilder sb = new StringBuilder();
 
-        BufferedReader reader = null;
-        StringBuilder sb = null;
-        String line = null;
-        try {
-            reader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
-            sb = new StringBuilder();
-
+            String line;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
 
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
+            return sb.toString();
         } catch (IOException e) {
             throw new BacklogAPIException(e);
         } finally {
             try {
                 inputStream.close();
-                reader.close();
-            } catch (IOException e) {
-                throw new BacklogAPIException(e);
+            } catch (IOException ignored) {
             }
         }
-        return sb.toString();
     }
 
     public String getFileNameFromContentDisposition() {
         String disposition = this.urlConnection.getHeaderField("Content-Disposition");
         if (disposition != null) {
-            String encode = disposition.substring(disposition.indexOf("=")+1,disposition.indexOf("''"));
-            String fileName = disposition.substring(disposition.indexOf("''")+2);
-            if(encode != null){
-                try {
-                    return URLDecoder.decode(fileName, encode);
-                } catch (UnsupportedEncodingException e) {
-                    throw new BacklogAPIException(e);
-                }
-            }else{
-                return fileName;
+            String encode = disposition.substring(disposition.indexOf("=") + 1, disposition.indexOf("''"));
+            String fileName = disposition.substring(disposition.indexOf("''") + 2);
+            try {
+                return URLDecoder.decode(fileName, encode);
+            } catch (UnsupportedEncodingException e) {
+                throw new BacklogAPIException(e);
             }
         }
 

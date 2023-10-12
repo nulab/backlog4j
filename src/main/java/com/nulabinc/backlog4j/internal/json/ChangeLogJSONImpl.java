@@ -6,7 +6,6 @@ import com.nulabinc.backlog4j.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.w3c.dom.Attr;
 
 /**
  * @author nulab-inc
@@ -17,11 +16,11 @@ public class ChangeLogJSONImpl implements ChangeLog {
     private String field;
     private String newValue;
     private String originalValue;
-    @JsonDeserialize(as=AttachmentInfoJSONImpl.class)
+    @JsonDeserialize(as = AttachmentInfoJSONImpl.class)
     private AttachmentInfo attachmentInfo;
-    @JsonDeserialize(as=AttributeInfoJSONImpl.class)
+    @JsonDeserialize(as = AttributeInfoJSONImpl.class)
     private AttributeInfo attributeInfo;
-    @JsonDeserialize(as=NotificationInfoJSONImpl.class)
+    @JsonDeserialize(as = NotificationInfoJSONImpl.class)
     private NotificationInfo notificationInfo;
 
     @Override

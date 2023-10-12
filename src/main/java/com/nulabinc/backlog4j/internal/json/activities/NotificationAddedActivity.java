@@ -14,7 +14,7 @@ public class NotificationAddedActivity extends ActivityJSONImpl {
 
     private int type = 17;
 
-    @JsonDeserialize(as=NotificationAddedContent.class)
+    @JsonDeserialize(as = NotificationAddedContent.class)
     private NotificationAddedContent content;
 
     @Override

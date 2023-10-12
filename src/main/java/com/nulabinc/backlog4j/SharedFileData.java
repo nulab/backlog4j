@@ -5,6 +5,6 @@ package com.nulabinc.backlog4j;
  *
  * @author nulab-inc
  */
-public interface SharedFileData extends FileData{
+public interface SharedFileData extends FileData {
 
 }

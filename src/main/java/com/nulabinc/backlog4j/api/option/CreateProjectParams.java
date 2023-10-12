@@ -23,7 +23,7 @@ public class CreateProjectParams extends PostParams {
                                boolean useGit,
                                boolean useOriginalImageSizeAtWiki,
                                Project.TextFormattingRule textFormattingRule,
-                               boolean useDevAttributes){
+                               boolean useDevAttributes) {
         parameters.add(new NameValuePair("name", name));
         parameters.add(new NameValuePair("key", projectKey));
         parameters.add(new NameValuePair("chartEnabled", String.valueOf(chartEnabled)));

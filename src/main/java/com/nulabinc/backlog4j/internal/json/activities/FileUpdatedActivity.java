@@ -14,7 +14,7 @@ public class FileUpdatedActivity extends ActivityJSONImpl {
 
     private int type = 9;
 
-    @JsonDeserialize(as=FileUpdatedContent.class)
+    @JsonDeserialize(as = FileUpdatedContent.class)
     private FileUpdatedContent content;
 
     @Override

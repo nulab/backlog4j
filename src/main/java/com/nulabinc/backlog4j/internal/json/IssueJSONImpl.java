@@ -138,7 +138,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Category> getCategory() {
-        if(category == null || category.length == 0){
+        if (category == null || category.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(category);
@@ -146,7 +146,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Version> getVersions() {
-        if(versions == null || versions.length == 0){
+        if (versions == null || versions.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(versions);
@@ -154,7 +154,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Milestone> getMilestone() {
-        if(milestone == null || milestone.length == 0){
+        if (milestone == null || milestone.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(milestone);
@@ -207,7 +207,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<CustomField> getCustomFields() {
-        if(customFields == null || customFields.length == 0){
+        if (customFields == null || customFields.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(customFields);
@@ -215,7 +215,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Attachment> getAttachments() {
-        if(attachments == null || attachments.length == 0){
+        if (attachments == null || attachments.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(attachments);
@@ -223,7 +223,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<SharedFile> getSharedFiles() {
-        if(sharedFiles == null || sharedFiles.length == 0){
+        if (sharedFiles == null || sharedFiles.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(sharedFiles);
@@ -231,7 +231,7 @@ public class IssueJSONImpl implements Issue {
 
     @Override
     public List<Star> getStars() {
-        if(stars == null || stars.length == 0){
+        if (stars == null || stars.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(stars);

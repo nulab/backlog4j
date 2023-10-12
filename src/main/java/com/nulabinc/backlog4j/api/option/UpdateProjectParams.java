@@ -11,7 +11,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 public class UpdateProjectParams extends PatchParams {
     private Object projectIdOrKey;
 
-    public UpdateProjectParams(Object projectIdOrKey){
+    public UpdateProjectParams(Object projectIdOrKey) {
         this.projectIdOrKey = projectIdOrKey;
     }
 
@@ -68,6 +68,7 @@ public class UpdateProjectParams extends PatchParams {
         parameters.add(new NameValuePair("useSubversion", String.valueOf(subversionEnabled)));
         return this;
     }
+
     public UpdateProjectParams gitEnabled(boolean gitEnabled) {
         parameters.add(new NameValuePair("useGit", String.valueOf(gitEnabled)));
         return this;

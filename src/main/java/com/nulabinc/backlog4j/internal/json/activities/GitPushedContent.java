@@ -26,9 +26,9 @@ public class GitPushedContent extends Content {
     private String ref;
     @JsonProperty("revision_type")
     private String revisionType;
-    @JsonDeserialize(as=RepositoryJSONImpl.class)
+    @JsonDeserialize(as = RepositoryJSONImpl.class)
     private Repository repository;
-    @JsonDeserialize(as=RevisionJSONImpl[].class)
+    @JsonDeserialize(as = RevisionJSONImpl[].class)
     private Revision[] revisions;
     @JsonProperty("revision_count")
     private long revisionCount;

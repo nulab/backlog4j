@@ -7,7 +7,7 @@ public class CustomFiledValue {
     private Object customFieldId;
     private Object customFieldValue;
 
-    public CustomFiledValue(Object customFieldId, Object customFieldValue){
+    public CustomFiledValue(Object customFieldId, Object customFieldValue) {
         this.customFieldId = customFieldId;
         this.customFieldValue = customFieldValue;
     }

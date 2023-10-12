@@ -16,11 +16,11 @@ public class UpdateMultipleListCustomFieldParams extends UpdateCustomFieldParams
     }
 
     public UpdateMultipleListCustomFieldParams items(List<String> items) {
-        if(items != null && items.size() > 0) {
+        if (items != null && items.size() > 0) {
             for (String item : items) {
                 parameters.add(new NameValuePair("items[]", item));
             }
-        }else{
+        } else {
             parameters.add(new NameValuePair("items[]", ""));
         }
         return this;
@@ -38,16 +38,16 @@ public class UpdateMultipleListCustomFieldParams extends UpdateCustomFieldParams
 
     @Override
     public UpdateMultipleListCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (UpdateMultipleListCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (UpdateMultipleListCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public UpdateMultipleListCustomFieldParams description(String description) {
-        return (UpdateMultipleListCustomFieldParams)super.description(description);
+        return (UpdateMultipleListCustomFieldParams) super.description(description);
     }
 
     @Override
     public UpdateMultipleListCustomFieldParams required(boolean required) {
-        return (UpdateMultipleListCustomFieldParams)super.required(required);
+        return (UpdateMultipleListCustomFieldParams) super.required(required);
     }
 }

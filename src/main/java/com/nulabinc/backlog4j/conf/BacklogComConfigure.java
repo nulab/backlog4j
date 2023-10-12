@@ -1,7 +1,5 @@
 package com.nulabinc.backlog4j.conf;
 
-import java.net.MalformedURLException;
-
 /**
  * @author nulab-inc
  */
@@ -9,7 +7,7 @@ public final class BacklogComConfigure extends BacklogConfigure {
 
     private final String spaceKey;
 
-    public BacklogComConfigure(String spaceKey) throws MalformedURLException {
+    public BacklogComConfigure(String spaceKey) {
         if (spaceKey == null) {
             throw new IllegalArgumentException("spaceKey must not be null");
         }

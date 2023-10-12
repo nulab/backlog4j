@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author nulab-inc
  */
-public interface IssueComment extends Comment{
+public interface IssueComment extends Comment {
 
     List<ChangeLog> getChangeLog();
 

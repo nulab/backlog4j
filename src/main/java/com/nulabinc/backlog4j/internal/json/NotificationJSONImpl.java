@@ -19,19 +19,19 @@ public class NotificationJSONImpl implements Notification {
     private boolean alreadyRead;
     private int reason;
     private boolean resourceAlreadyRead;
-    @JsonDeserialize(as=ProjectJSONImpl.class)
+    @JsonDeserialize(as = ProjectJSONImpl.class)
     private Project project;
-    @JsonDeserialize(as=IssueJSONImpl.class)
+    @JsonDeserialize(as = IssueJSONImpl.class)
     private Issue issue;
-    @JsonDeserialize(as=IssueCommentJSONImpl.class)
+    @JsonDeserialize(as = IssueCommentJSONImpl.class)
     private IssueComment comment;
-    @JsonDeserialize(as=PullRequestJSONImpl.class)
+    @JsonDeserialize(as = PullRequestJSONImpl.class)
     private PullRequest pullRequest;
-    @JsonDeserialize(as=PullRequestCommentJSONImpl.class)
+    @JsonDeserialize(as = PullRequestCommentJSONImpl.class)
     private PullRequestComment pullRequestComment;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User sender;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User user;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;

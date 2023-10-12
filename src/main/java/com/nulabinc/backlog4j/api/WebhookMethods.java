@@ -35,7 +35,7 @@ public interface WebhookMethods {
      * Returns the webhook.
      *
      * @param projectIdOrKey the project identifier
-     * @param webhookId the webhook identifier
+     * @param webhookId      the webhook identifier
      * @return the Webhook
      * @throws com.nulabinc.backlog4j.BacklogException
      */
@@ -54,7 +54,7 @@ public interface WebhookMethods {
      * Deletes the existing webhook.
      *
      * @param projectIdOrKey the project key
-     * @param webhookId the webhook identifier
+     * @param webhookId      the webhook identifier
      * @return the deleted webhook
      * @throws com.nulabinc.backlog4j.BacklogException
      */

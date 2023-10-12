@@ -4,6 +4,7 @@ import com.nulabinc.backlog4j.Issue;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -96,7 +97,7 @@ public class CreateIssueParams extends PostParams {
         if (estimatedHours == null) {
             parameters.add(new NameValuePair("estimatedHours", ""));
         } else {
-            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+            parameters.add(new NameValuePair("estimatedHours", estimatedHours.setScale(2, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -122,7 +123,7 @@ public class CreateIssueParams extends PostParams {
         if (actualHours == null) {
             parameters.add(new NameValuePair("actualHours", ""));
         } else {
-            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()));
+            parameters.add(new NameValuePair("actualHours", actualHours.setScale(2, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -401,16 +402,11 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams customFieldOtherValues(List<CustomFiledValue> customFieldValueList) {
-        for(CustomFiledValue customFiledValue : customFieldValueList){
+        for (CustomFiledValue customFiledValue : customFieldValueList) {
             customFieldOtherValue(customFiledValue);
         }
         return this;
     }
-
-
-
-
-
 
 
     /**
@@ -421,7 +417,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams textCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -448,7 +444,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams textAreaCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -475,7 +471,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams numericCustomField(long customFieldId, float customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 Float.toString(customFieldValue)));
         return this;
     }
@@ -488,12 +484,12 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams numericCustomField(long customFieldId, BigDecimal customFieldValue) {
-        if(customFieldValue == null){
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        if (customFieldValue == null) {
+            parameters.add(new NameValuePair("customField_" + customFieldId,
                     ""));
-        }else {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
-                    customFieldValue.setScale(4, BigDecimal.ROUND_HALF_UP).toPlainString()));
+        } else {
+            parameters.add(new NameValuePair("customField_" + customFieldId,
+                    customFieldValue.setScale(4, RoundingMode.HALF_UP).toPlainString()));
         }
         return this;
     }
@@ -520,7 +516,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams dateCustomField(long customFieldId, String customFieldValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldValue)));
         return this;
     }
@@ -547,7 +543,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams singleListCustomField(long customFieldId, long customFieldItemId) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+        parameters.add(new NameValuePair("customField_" + customFieldId,
                 String.valueOf(customFieldItemId)));
         return this;
     }
@@ -600,7 +596,7 @@ public class CreateIssueParams extends PostParams {
      */
     public CreateIssueParams multipleListCustomField(long customFieldId, List<Long> customFieldItemIds) {
         for (Long customFieldItemId : customFieldItemIds) {
-            parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId),
+            parameters.add(new NameValuePair("customField_" + customFieldId,
                     String.valueOf(customFieldItemId)));
         }
         return this;
@@ -657,7 +653,7 @@ public class CreateIssueParams extends PostParams {
      * @return CreateIssueParams instance
      */
     public CreateIssueParams customFieldOtherValue(long customFieldId, String otherValue) {
-        parameters.add(new NameValuePair("customField_" + String.valueOf(customFieldId) + "_otherValue",
+        parameters.add(new NameValuePair("customField_" + customFieldId + "_otherValue",
                 otherValue));
         return this;
     }

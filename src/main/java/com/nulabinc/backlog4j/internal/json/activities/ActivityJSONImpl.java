@@ -50,9 +50,9 @@ import java.util.Date;
 public abstract class ActivityJSONImpl implements Activity {
 
     private int id;
-    @JsonDeserialize(as=ProjectJSONImpl.class)
+    @JsonDeserialize(as = ProjectJSONImpl.class)
     private Project project;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;

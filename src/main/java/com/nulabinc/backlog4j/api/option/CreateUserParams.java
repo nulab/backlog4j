@@ -11,8 +11,8 @@ import com.nulabinc.backlog4j.http.NameValuePair;
 public class CreateUserParams extends PostParams {
 
     public CreateUserParams(String userId, String password,
-                                 String name, String mailAddress,
-                                 User.RoleType roleType){
+                            String name, String mailAddress,
+                            User.RoleType roleType) {
         parameters.add(new NameValuePair("userId", userId));
         parameters.add(new NameValuePair("password", password));
         parameters.add(new NameValuePair("name", name));

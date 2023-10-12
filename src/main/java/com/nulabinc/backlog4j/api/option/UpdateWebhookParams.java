@@ -29,19 +29,19 @@ public class UpdateWebhookParams extends PatchParams {
     }
 
     public UpdateWebhookParams name(String name) {
-        String value = (name==null) ? "" : name;
+        String value = (name == null) ? "" : name;
         parameters.add(new NameValuePair("name", value));
         return this;
     }
 
     public UpdateWebhookParams description(String description) {
-        String value = (description==null) ? "" : description;
+        String value = (description == null) ? "" : description;
         parameters.add(new NameValuePair("description", value));
         return this;
     }
 
     public UpdateWebhookParams hookUrl(String hookUrl) {
-        String value = (hookUrl==null) ? "" : hookUrl;
+        String value = (hookUrl == null) ? "" : hookUrl;
         parameters.add(new NameValuePair("hookUrl", value));
         return this;
     }

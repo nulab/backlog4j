@@ -24,13 +24,13 @@ public class PullRequestContent extends Content {
     private long number;
     private String summary;
     private String description;
-    @JsonDeserialize(as=CommentJSONImpl.class)
+    @JsonDeserialize(as = CommentJSONImpl.class)
     private Comment comment;
-    @JsonDeserialize(as= ChangeJSONImpl[].class)
+    @JsonDeserialize(as = ChangeJSONImpl[].class)
     private Change[] changes;
-    @JsonDeserialize(as=RepositoryJSONImpl.class)
+    @JsonDeserialize(as = RepositoryJSONImpl.class)
     private Repository repository;
-    @JsonDeserialize(as=IssueJSONImpl.class)
+    @JsonDeserialize(as = IssueJSONImpl.class)
     private Issue issue;
 
     public long getId() {
@@ -61,8 +61,10 @@ public class PullRequestContent extends Content {
         return repository;
     }
 
-    public Issue getIssue() { return issue; }
- 
+    public Issue getIssue() {
+        return issue;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

@@ -21,20 +21,20 @@ public class WikiJSONImpl implements Wiki {
     private long projectId;
     private String name;
     private String content;
-    @JsonDeserialize(as=WikiTagJSONImpl[].class)
+    @JsonDeserialize(as = WikiTagJSONImpl[].class)
     private WikiTag[] tags;
-    @JsonDeserialize(as=AttachmentJSONImpl[].class)
+    @JsonDeserialize(as = AttachmentJSONImpl[].class)
     private Attachment[] attachments;
-    @JsonDeserialize(as=SharedFileJSONImpl[].class)
+    @JsonDeserialize(as = SharedFileJSONImpl[].class)
     private SharedFile[] sharedFiles;
-    @JsonDeserialize(as=StarJSONImpl[].class)
+    @JsonDeserialize(as = StarJSONImpl[].class)
     private Star[] stars;
 
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User updatedUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;

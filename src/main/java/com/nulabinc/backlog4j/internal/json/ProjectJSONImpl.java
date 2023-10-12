@@ -59,7 +59,7 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
-    public boolean isProjectLeaderCanEditProjectLeader(){
+    public boolean isProjectLeaderCanEditProjectLeader() {
         return projectLeaderCanEditProjectLeader;
     }
 
@@ -79,22 +79,34 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
-    public boolean getUseFileSharing() { return useFileSharing; }
+    public boolean getUseFileSharing() {
+        return useFileSharing;
+    }
 
     @Override
-    public boolean getUseWiki() { return useWiki; }
+    public boolean getUseWiki() {
+        return useWiki;
+    }
 
     @Override
-    public boolean getUseDevAttributes() { return useDevAttributes; }
+    public boolean getUseDevAttributes() {
+        return useDevAttributes;
+    }
 
     @Override
-    public boolean getUseResolvedForChart() { return useResolvedForChart; }
+    public boolean getUseResolvedForChart() {
+        return useResolvedForChart;
+    }
 
     @Override
-    public boolean getUseWikiTreeView() { return useWikiTreeView; }
+    public boolean getUseWikiTreeView() {
+        return useWikiTreeView;
+    }
 
     @Override
-    public boolean getUseOriginalImageSizeAtWiki() { return useOriginalImageSizeAtWiki; }
+    public boolean getUseOriginalImageSizeAtWiki() {
+        return useOriginalImageSizeAtWiki;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -167,10 +179,10 @@ public class ProjectJSONImpl implements Project {
                 .append("archived", archived)
                 .append("useFileSharing", useFileSharing)
                 .append("useWiki", useWiki)
-                .append("useResolvedForChart",useResolvedForChart)
-                .append("useWikiTreeView",useWikiTreeView)
-                .append("useOriginalImageSizeAtWiki",useOriginalImageSizeAtWiki)
-                .append("projectLeaderCanEditProjectLeader",projectLeaderCanEditProjectLeader)
+                .append("useResolvedForChart", useResolvedForChart)
+                .append("useWikiTreeView", useWikiTreeView)
+                .append("useOriginalImageSizeAtWiki", useOriginalImageSizeAtWiki)
+                .append("projectLeaderCanEditProjectLeader", projectLeaderCanEditProjectLeader)
                 .append("useDevAttributes", useDevAttributes);
     }
 }

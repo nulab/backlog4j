@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class Jackson {
     private static final ObjectMapper objectMapper = new ObjectMapper();
+
     static {
         objectMapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
     }
@@ -21,19 +22,19 @@ public class Jackson {
         try {
             return objectMapper.readValue(json, clazz);
         } catch (Exception e) {
-            throw new BacklogAPIException("parse json is failed.",e);
+            throw new BacklogAPIException("parse json is failed.", e);
         }
     }
 
     public static <T> List<T> listFromJsonString(String json, Class<T> clazz) {
 
         try {
-            return objectMapper.readValue(json, new TypeReference<List<T>>(){});
+            return objectMapper.readValue(json, new TypeReference<List<T>>() {
+            });
         } catch (Exception e) {
-            throw new BacklogAPIException("parse json is failed.",e);
+            throw new BacklogAPIException("parse json is failed.", e);
         }
     }
-
 
 
 }

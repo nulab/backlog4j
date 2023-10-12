@@ -10,11 +10,11 @@ public interface Watch {
     long getId();
 
     String getIdAsString();
-    
+
     boolean getAlreadyRead();
-    
+
     String getAlreadyReadAsString();
-    
+
     String getNote();
 
     String getType();

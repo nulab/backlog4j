@@ -16,7 +16,6 @@ public class UpdateMilestoneParams extends PatchParams {
         this.projectIdOrKey = projectIdOrKey;
         this.versionId = versionId;
         parameters.add(new NameValuePair("name", name));
-        ;
     }
 
     public String getProjectIdOrKeyString() {

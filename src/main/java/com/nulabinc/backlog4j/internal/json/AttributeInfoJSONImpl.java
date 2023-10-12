@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nulabinc.backlog4j.AttributeInfo;
-import com.nulabinc.backlog4j.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -14,7 +13,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class AttributeInfoJSONImpl implements AttributeInfo {
 
     private long id;
-    private String typeId;;
+    private String typeId;
 
     @Override
     public long getId() {

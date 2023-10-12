@@ -71,12 +71,12 @@ public class BacklogAPIException extends BacklogException {
     public String getMessage() {
         StringBuilder value = new StringBuilder();
         value.append(super.getMessage());
-        if(statusCode > 0){
+        if (statusCode > 0) {
             value.append("\n");
             value.append("status code - ").append(statusCode);
         }
         if (backlogAPIError != null) {
-            for (BacklogAPIErrorMessage errorMessage: backlogAPIError.getErrors()) {
+            for (BacklogAPIErrorMessage errorMessage : backlogAPIError.getErrors()) {
 
                 value.append("\n");
                 value.append("message - ").append(errorMessage.getMessage()).append("\n");
@@ -109,9 +109,9 @@ public class BacklogAPIException extends BacklogException {
         }
     }
 
-    public ErrorType getErrorType(){
+    public ErrorType getErrorType() {
         if (backlogAPIError != null) {
-            for (BacklogAPIErrorMessage errorMessage: backlogAPIError.getErrors()) {
+            for (BacklogAPIErrorMessage errorMessage : backlogAPIError.getErrors()) {
                 return ErrorType.valueOf(errorMessage.getCode());
             }
         }

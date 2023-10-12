@@ -11,7 +11,7 @@ import java.util.List;
  * @author nulab-inc
  */
 public abstract class GetParams {
-    protected List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+    protected List<NameValuePair> parameters = new ArrayList<>();
 
     public List<NameValuePair> getParamList() {
         return parameters;

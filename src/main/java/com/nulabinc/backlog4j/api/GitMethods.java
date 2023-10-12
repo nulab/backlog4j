@@ -24,7 +24,7 @@ public interface GitMethods {
      * Returns the git repository.
      *
      * @param projectIdOrKey the project identifier
-     * @param repoIdOrName the repository name
+     * @param repoIdOrName   the repository name
      * @return the git repository.
      * @throws BacklogException
      */

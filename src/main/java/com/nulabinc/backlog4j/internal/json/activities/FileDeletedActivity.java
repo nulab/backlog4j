@@ -14,7 +14,7 @@ public class FileDeletedActivity extends ActivityJSONImpl {
 
     private int type = 10;
 
-    @JsonDeserialize(as=FileDeletedContent.class)
+    @JsonDeserialize(as = FileDeletedContent.class)
     private FileDeletedContent content;
 
     @Override

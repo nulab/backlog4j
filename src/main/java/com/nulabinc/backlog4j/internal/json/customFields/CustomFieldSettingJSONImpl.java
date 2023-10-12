@@ -3,7 +3,6 @@ package com.nulabinc.backlog4j.internal.json.customFields;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.nulabinc.backlog4j.CustomField;
 import com.nulabinc.backlog4j.CustomFieldSetting;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -25,7 +24,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
         @JsonSubTypes.Type(value = SingleListCustomFieldSetting.class, name = "5"),
         @JsonSubTypes.Type(value = MultipleListCustomFieldSetting.class, name = "6"),
         @JsonSubTypes.Type(value = CheckBoxCustomFieldSetting.class, name = "7"),
-        @JsonSubTypes.Type(value = RadioCustomFieldSetting.class, name = "8") })
+        @JsonSubTypes.Type(value = RadioCustomFieldSetting.class, name = "8")})
 public abstract class CustomFieldSettingJSONImpl implements CustomFieldSetting {
 
     private long id;
@@ -64,7 +63,6 @@ public abstract class CustomFieldSettingJSONImpl implements CustomFieldSetting {
     public boolean isRequired() {
         return required;
     }
-
 
 
     @Override

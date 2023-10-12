@@ -13,7 +13,7 @@ public class UpdateGroupParams extends PatchParams {
 
     private String groupId;
 
-    public UpdateGroupParams(Object groupId){
+    public UpdateGroupParams(Object groupId) {
         this.groupId = groupId.toString();
     }
 

@@ -14,7 +14,7 @@ public class ProjectUserAddedActivity extends ActivityJSONImpl {
 
     private int type = 15;
 
-    @JsonDeserialize(as=ProjectUserAddedContent.class)
+    @JsonDeserialize(as = ProjectUserAddedContent.class)
     private ProjectUserAddedContent content;
 
     @Override

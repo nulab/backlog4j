@@ -22,11 +22,11 @@ public class IssueMultiUpdatedContent extends Content {
 
     @JsonProperty("tx_id")
     private int txId;
-    @JsonDeserialize(as=CommentJSONImpl.class)
+    @JsonDeserialize(as = CommentJSONImpl.class)
     private Comment comment;
-    @JsonDeserialize(as=LinkJSONImpl[].class)
+    @JsonDeserialize(as = LinkJSONImpl[].class)
     private Link[] link;
-    @JsonDeserialize(as=ChangeJSONImpl[].class)
+    @JsonDeserialize(as = ChangeJSONImpl[].class)
     private Change[] changes;
 
     public long getTxId() {

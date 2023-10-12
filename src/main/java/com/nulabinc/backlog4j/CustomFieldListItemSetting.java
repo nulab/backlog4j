@@ -5,5 +5,5 @@ package com.nulabinc.backlog4j;
  */
 public interface CustomFieldListItemSetting extends CustomFieldListItem {
 
-    public int getDisplayOrder();
+    int getDisplayOrder();
 }

@@ -16,11 +16,11 @@ public class UpdateCheckBoxCustomFieldParams extends UpdateCustomFieldParams {
     }
 
     public UpdateCheckBoxCustomFieldParams items(List<String> items) {
-        if(items != null && items.size() > 0) {
+        if (items != null && items.size() > 0) {
             for (String item : items) {
                 parameters.add(new NameValuePair("items[]", item));
             }
-        }else{
+        } else {
             parameters.add(new NameValuePair("items[]", ""));
         }
         return this;
@@ -38,16 +38,16 @@ public class UpdateCheckBoxCustomFieldParams extends UpdateCustomFieldParams {
 
     @Override
     public UpdateCheckBoxCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (UpdateCheckBoxCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (UpdateCheckBoxCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public UpdateCheckBoxCustomFieldParams description(String description) {
-        return (UpdateCheckBoxCustomFieldParams)super.description(description);
+        return (UpdateCheckBoxCustomFieldParams) super.description(description);
     }
 
     @Override
     public UpdateCheckBoxCustomFieldParams required(boolean required) {
-        return (UpdateCheckBoxCustomFieldParams)super.required(required);
+        return (UpdateCheckBoxCustomFieldParams) super.required(required);
     }
 }

@@ -7,7 +7,7 @@ import com.nulabinc.backlog4j.http.NameValuePair;
  *
  * @author nulab-inc
  */
-public class QueryParams extends GetParams{
+public class QueryParams extends GetParams {
 
     public enum Order {
         Asc("asc"),

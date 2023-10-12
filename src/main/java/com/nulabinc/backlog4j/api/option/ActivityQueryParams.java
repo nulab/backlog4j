@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author nulab-inc
  */
-public class ActivityQueryParams extends QueryParams{
+public class ActivityQueryParams extends QueryParams {
 
     public ActivityQueryParams activityType(List<Activity.Type> activityTypes) {
         for (Activity.Type type : activityTypes) {
@@ -21,21 +21,21 @@ public class ActivityQueryParams extends QueryParams{
 
     @Override
     public ActivityQueryParams minId(Object minId) {
-        return (ActivityQueryParams)super.minId(minId);
+        return (ActivityQueryParams) super.minId(minId);
     }
 
     @Override
     public ActivityQueryParams maxId(Object maxId) {
-        return (ActivityQueryParams)super.maxId(maxId);
+        return (ActivityQueryParams) super.maxId(maxId);
     }
 
     @Override
     public ActivityQueryParams count(int count) {
-        return (ActivityQueryParams)super.count(count);
+        return (ActivityQueryParams) super.count(count);
     }
 
     @Override
     public ActivityQueryParams order(Order order) {
-        return (ActivityQueryParams)super.order(order);
+        return (ActivityQueryParams) super.order(order);
     }
 }

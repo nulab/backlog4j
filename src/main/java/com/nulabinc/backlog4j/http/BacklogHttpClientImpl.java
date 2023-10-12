@@ -9,7 +9,7 @@ import com.nulabinc.backlog4j.api.option.QueryParams;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.net.*;
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -70,20 +70,24 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     @Override
-    public void setUserAgent(String userAgent) { this.userAgent = userAgent; }
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
 
     @Override
-    public String getUserAgent() { return this.userAgent; }
+    public String getUserAgent() {
+        return this.userAgent;
+    }
 
     @Override
     public BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
         String url = getUrl(endpoint);
         boolean paramExists = (apiKey != null);
-        if(getParams != null && getParams.getParamList().size() > 0){
+        if (getParams != null && getParams.getParamList().size() > 0) {
             url += getParamsString(paramExists, getParams);
             paramExists = true;
         }
-        if(queryParams != null && queryParams.getParamList().size() > 0){
+        if (queryParams != null && queryParams.getParamList().size() > 0) {
             url += getParamsString(paramExists, queryParams);
         }
 
@@ -92,7 +96,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     public String getParamsString(boolean paramExists, GetParams getParams) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (!paramExists) {
             sb.append("?");
         } else {
@@ -210,7 +214,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
 
         try {
             OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-            PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(out, "UTF-8")));
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8)));
             for (Map.Entry<String, Object> entry : params.entrySet()) {
                 String name = entry.getKey();
                 Object value = entry.getValue();
@@ -237,7 +241,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
 
                     InputStream inputStream = attachmentData.getContent();
                     byte[] buffer = new byte[4096];
-                    int bytesRead = -1;
+                    int bytesRead;
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         out.write(buffer, 0, bytesRead);
                     }
@@ -260,7 +264,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     private String getDataString(List<NameValuePair> pairs) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean first = true;
         for (NameValuePair pair : pairs) {
             if (first) {
@@ -287,18 +291,15 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
         } catch (final ProtocolException pe) {
             Class<?> connectionClass = httpURLConnection
                     .getClass();
-            Field delegateField = null;
             try {
-                delegateField = connectionClass.getDeclaredField("delegate");
+                Field delegateField = connectionClass.getDeclaredField("delegate");
                 delegateField.setAccessible(true);
                 HttpURLConnection delegateConnection = (HttpURLConnection) delegateField
                         .get(httpURLConnection);
                 setRequestMethodUsingWorkaroundForJREBug(delegateConnection, method);
             } catch (NoSuchFieldException e) {
                 // Ignore for now, keep going
-            } catch (IllegalArgumentException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
             try {
@@ -330,8 +331,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     private BacklogHttpResponse handleResponse(final HttpURLConnection connection) {
-        BacklogHttpResponse response = new BacklogHttpResponseImpl(connection);
 
-        return response;
+        return new BacklogHttpResponseImpl(connection);
     }
 }

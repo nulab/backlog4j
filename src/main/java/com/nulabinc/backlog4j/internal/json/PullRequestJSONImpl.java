@@ -168,7 +168,7 @@ public class PullRequestJSONImpl implements PullRequest {
 
     @Override
     public List<Attachment> getAttachments() {
-        if(attachments == null || attachments.length == 0){
+        if (attachments == null || attachments.length == 0) {
             return Collections.emptyList();
         }
         return Arrays.asList(attachments);

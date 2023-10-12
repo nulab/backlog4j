@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
 
     private int id;
     private String content;
-    @JsonDeserialize(as= ChangeLogJSONImpl[].class)
+    @JsonDeserialize(as = ChangeLogJSONImpl[].class)
     private ChangeLog[] changeLog;
     @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
@@ -28,9 +27,9 @@ public class PullRequestCommentJSONImpl implements PullRequestComment {
     private Date created;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;
-    @JsonDeserialize(as= StarJSONImpl[].class)
+    @JsonDeserialize(as = StarJSONImpl[].class)
     private Star[] stars;
-    @JsonDeserialize(as=NotificationJSONImpl[].class)
+    @JsonDeserialize(as = NotificationJSONImpl[].class)
     private Notification[] notifications;
 
     @Override

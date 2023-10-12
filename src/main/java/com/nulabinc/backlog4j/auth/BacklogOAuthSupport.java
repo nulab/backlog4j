@@ -52,6 +52,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+
     @Override
     public void setOAuthRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
@@ -89,7 +90,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
         }
         BacklogHttpResponse httpResponse = getRefreshTokenResponse();
         checkError(httpResponse);
-        AccessToken accessToken =  factory.createAccessToken(httpResponse);
+        AccessToken accessToken = factory.createAccessToken(httpResponse);
         configure.accessToken(accessToken);
         listener.onAccessTokenRefresh(accessToken);
         return accessToken;
@@ -101,25 +102,25 @@ public class BacklogOAuthSupport implements OAuthSupport {
     }
 
     private BacklogHttpResponse getAccessTokenResponse(String oauthCode) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("code", oauthCode));
         params.add(new NameValuePair("client_id", clientId));
         params.add(new NameValuePair("client_secret", clientSecret));
         params.add(new NameValuePair("redirect_uri", redirectUrl));
         params.add(new NameValuePair("grant_type", "authorization_code"));
-        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<NameValuePair>());
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<>());
         checkError(ires);
         return ires;
 
     }
 
     private BacklogHttpResponse getRefreshTokenResponse() throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("client_id", clientId));
         params.add(new NameValuePair("client_secret", clientSecret));
         params.add(new NameValuePair("refresh_token", configure.getAccessToken().getRefresh()));
         params.add(new NameValuePair("grant_type", "refresh_token"));
-        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<NameValuePair>());
+        BacklogHttpResponse ires = httpClient.post(configure.getOAuthAccessTokenURL(), params, new ArrayList<>());
         checkError(ires);
         return ires;
     }

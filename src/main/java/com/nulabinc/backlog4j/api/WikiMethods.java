@@ -103,6 +103,7 @@ public interface WikiMethods {
      * @return downloaded file data
      */
     AttachmentData downloadWikiAttachment(Object wikiId, Object attachmentId);
+
     /**
      * Deletes the Wiki page's attachment file
      *

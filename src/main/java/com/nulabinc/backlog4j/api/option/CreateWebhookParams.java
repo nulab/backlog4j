@@ -1,7 +1,6 @@
 package com.nulabinc.backlog4j.api.option;
 
 import com.nulabinc.backlog4j.Activity;
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.http.NameValuePair;
 
 import java.util.List;
@@ -15,10 +14,10 @@ public class CreateWebhookParams extends PostParams {
 
     private Object projectIdOrKey;
 
-    public CreateWebhookParams(Object projectIdOrKey, String name, String hookUrl){
+    public CreateWebhookParams(Object projectIdOrKey, String name, String hookUrl) {
         this.projectIdOrKey = projectIdOrKey;
-        String nameValue = (name==null) ? "" : name;
-        String hookUrlValue = (hookUrl==null) ? "" : hookUrl;
+        String nameValue = (name == null) ? "" : name;
+        String hookUrlValue = (hookUrl == null) ? "" : hookUrl;
         parameters.add(new NameValuePair("name", nameValue));
         parameters.add(new NameValuePair("hookUrl", hookUrlValue));
     }
@@ -34,7 +33,7 @@ public class CreateWebhookParams extends PostParams {
      * @return CreateWebhookParams instance
      */
     public CreateWebhookParams description(String description) {
-        String value = (description==null) ? "" : description;
+        String value = (description == null) ? "" : description;
         parameters.add(new NameValuePair("description", value));
         return this;
     }

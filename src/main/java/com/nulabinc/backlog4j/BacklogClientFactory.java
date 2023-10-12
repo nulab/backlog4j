@@ -15,15 +15,16 @@ public class BacklogClientFactory {
     public BacklogClientFactory(BacklogConfigure configure) {
         this.configure = configure;
     }
+
     public BacklogClientFactory(BacklogConfigure configure, BacklogHttpClient httpClient) {
         this.configure = configure;
         this.httpClient = httpClient;
     }
 
     public BacklogClient newClient() {
-        if(httpClient == null){
+        if (httpClient == null) {
             return new BacklogClientImpl(configure);
-        }else{
+        } else {
             return new BacklogClientImpl(configure, httpClient);
         }
     }

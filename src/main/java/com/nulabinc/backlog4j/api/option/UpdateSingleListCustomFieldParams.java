@@ -16,11 +16,11 @@ public class UpdateSingleListCustomFieldParams extends UpdateCustomFieldParams {
     }
 
     public UpdateSingleListCustomFieldParams items(List<String> items) {
-        if(items != null && items.size() > 0) {
+        if (items != null && items.size() > 0) {
             for (String item : items) {
                 parameters.add(new NameValuePair("items[]", item));
             }
-        }else{
+        } else {
             parameters.add(new NameValuePair("items[]", ""));
         }
         return this;
@@ -38,16 +38,16 @@ public class UpdateSingleListCustomFieldParams extends UpdateCustomFieldParams {
 
     @Override
     public UpdateSingleListCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (UpdateSingleListCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (UpdateSingleListCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public UpdateSingleListCustomFieldParams description(String description) {
-        return (UpdateSingleListCustomFieldParams)super.description(description);
+        return (UpdateSingleListCustomFieldParams) super.description(description);
     }
 
     @Override
     public UpdateSingleListCustomFieldParams required(boolean required) {
-        return (UpdateSingleListCustomFieldParams)super.required(required);
+        return (UpdateSingleListCustomFieldParams) super.required(required);
     }
 }

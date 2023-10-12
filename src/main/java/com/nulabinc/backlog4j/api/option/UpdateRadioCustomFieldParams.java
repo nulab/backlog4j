@@ -16,11 +16,11 @@ public class UpdateRadioCustomFieldParams extends UpdateCustomFieldParams {
     }
 
     public UpdateRadioCustomFieldParams items(List<String> items) {
-        if(items != null && items.size() > 0) {
+        if (items != null && items.size() > 0) {
             for (String item : items) {
                 parameters.add(new NameValuePair("items[]", item));
             }
-        }else{
+        } else {
             parameters.add(new NameValuePair("items[]", ""));
         }
         return this;
@@ -38,16 +38,16 @@ public class UpdateRadioCustomFieldParams extends UpdateCustomFieldParams {
 
     @Override
     public UpdateRadioCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (UpdateRadioCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (UpdateRadioCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public UpdateRadioCustomFieldParams description(String description) {
-        return (UpdateRadioCustomFieldParams)super.description(description);
+        return (UpdateRadioCustomFieldParams) super.description(description);
     }
 
     @Override
     public UpdateRadioCustomFieldParams required(boolean required) {
-        return (UpdateRadioCustomFieldParams)super.required(required);
+        return (UpdateRadioCustomFieldParams) super.required(required);
     }
 }

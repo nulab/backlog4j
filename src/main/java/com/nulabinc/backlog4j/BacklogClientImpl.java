@@ -61,7 +61,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public SpaceNotification updateSpaceNotification(String content) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("content", content));
         return factory.createSpaceNotification(put(buildEndpoint("space/notification"), params));
     }
@@ -73,7 +73,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Attachment postAttachment(AttachmentData attachmentData) {
-        Map<String, Object> parameters = new HashMap<String, Object>();
+        Map<String, Object> parameters = new HashMap<>();
         parameters.put("file", attachmentData);
         BacklogHttpResponse backlogHttpResponse = postMultiPart(buildEndpoint("space/attachment"), parameters);
         return factory.createAttachment(backlogHttpResponse);
@@ -129,9 +129,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public User addProjectUser(Object projectIdOrKey, Object userId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/users"), params, new ArrayList<NameValuePair>()));
+        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/users"), params, new ArrayList<>()));
     }
 
     @Override
@@ -142,9 +142,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public User addProjectAdministrator(Object projectIdOrKey, Object userId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("userId", String.valueOf(userId)));
-        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/administrators"), params, new ArrayList<NameValuePair>()));
+        return factory.createUser(post(buildEndpoint("projects/" + projectIdOrKey + "/administrators"), params, new ArrayList<>()));
     }
 
     @Override
@@ -234,7 +234,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<Milestone> getMilestones(Object projectIdOrKey) throws BacklogException {
-        ResponseList<Milestone> list = new ResponseListImpl<Milestone>();
+        ResponseList<Milestone> list = new ResponseListImpl<>();
         for (Milestone milestone : factory.createMilestoneList(get(buildEndpoint("projects/" + projectIdOrKey + "/versions")))) {
             if (!milestone.getArchived()) {
                 list.add(milestone);
@@ -361,17 +361,17 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public CustomFieldSetting addListCustomFieldItem(Object projectIdOrKey, Object customFieldId, String name) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("name", name));
-        return factory.createCustomField(post(buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items"), params, new ArrayList<NameValuePair>()));
+        return factory.createCustomField(post(buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items"), params, new ArrayList<>()));
     }
 
     @Override
     public CustomFieldSetting updateListCustomFieldItem(Object projectIdOrKey, Object customFieldId, Object itemId, String name) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("name", name));
         return factory.createCustomField(patch(
-                buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId), params, new ArrayList<NameValuePair>()));
+                buildEndpoint("projects/" + projectIdOrKey + "/customFields/" + customFieldId + "/items/" + itemId), params, new ArrayList<>()));
     }
 
     @Override
@@ -510,11 +510,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<SharedFile> linkIssueSharedFile(Object issueIdOrKey, List fileIds) {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         for (Object fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
-        return factory.createSharedFileList(post(buildEndpoint("issues/" + issueIdOrKey + "/sharedFiles"), params, new ArrayList<NameValuePair>()));
+        return factory.createSharedFileList(post(buildEndpoint("issues/" + issueIdOrKey + "/sharedFiles"), params, new ArrayList<>()));
     }
 
     @Override
@@ -540,28 +540,25 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
                                  final GetWikisParams.SortKey sort,
                                  final GetWikisParams.Order order) {
         if (sort != null && order != null) {
-            Collections.sort(wikis, new Comparator<Wiki>() {
-                @Override
-                public int compare(Wiki wiki1, Wiki wiki2) {
-                    switch (sort) {
-                        case Name:
-                            String name1 = wiki1.getName();
-                            String name2 = wiki2.getName();
-                            return order.equals(GetWikisParams.Order.Asc) ?
-                                    name1.compareTo(name2) : name2.compareTo(name1);
-                        case Created:
-                            Date created1 = wiki1.getCreated();
-                            Date created2 = wiki2.getCreated();
-                            return order.equals(GetWikisParams.Order.Asc) ?
-                                    created1.compareTo(created2) : created2.compareTo(created1);
-                        case Updated:
-                            Date updated1 = wiki1.getUpdated();
-                            Date updated2 = wiki2.getUpdated();
-                            return order.equals(GetWikisParams.Order.Asc) ?
-                                    updated1.compareTo(updated2) : updated2.compareTo(updated1);
-                    }
-                    return 0;
+            wikis.sort((wiki1, wiki2) -> {
+                switch (sort) {
+                    case Name:
+                        String name1 = wiki1.getName();
+                        String name2 = wiki2.getName();
+                        return order.equals(GetWikisParams.Order.Asc) ?
+                                name1.compareTo(name2) : name2.compareTo(name1);
+                    case Created:
+                        Date created1 = wiki1.getCreated();
+                        Date created2 = wiki2.getCreated();
+                        return order.equals(GetWikisParams.Order.Asc) ?
+                                created1.compareTo(created2) : created2.compareTo(created1);
+                    case Updated:
+                        Date updated1 = wiki1.getUpdated();
+                        Date updated2 = wiki2.getUpdated();
+                        return order.equals(GetWikisParams.Order.Asc) ?
+                                updated1.compareTo(updated2) : updated2.compareTo(updated1);
                 }
+                return 0;
             });
         }
     }
@@ -632,11 +629,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<SharedFile> linkWikiSharedFile(Object wikiId, List fileIds) {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         for (Object fileId : fileIds) {
             params.add(new NameValuePair("fileId[]", fileId.toString()));
         }
-        return factory.createSharedFileList(post(buildEndpoint("wikis/" + wikiId + "/sharedFiles"), params, new ArrayList<NameValuePair>()));
+        return factory.createSharedFileList(post(buildEndpoint("wikis/" + wikiId + "/sharedFiles"), params, new ArrayList<>()));
     }
 
     @Override
@@ -796,37 +793,37 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public void addStarToIssue(Object issueId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("issueId", String.valueOf(issueId)));
-        post(buildEndpoint("stars"), params, new ArrayList<NameValuePair>());
+        post(buildEndpoint("stars"), params, new ArrayList<>());
     }
 
     @Override
     public void addStarToComment(Object commentId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("commentId", String.valueOf(commentId)));
-        post(buildEndpoint("stars"), params, new ArrayList<NameValuePair>());
+        post(buildEndpoint("stars"), params, new ArrayList<>());
     }
 
     @Override
     public void addStarToWiki(Object wikiId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("wikiId", String.valueOf(wikiId)));
-        post(buildEndpoint("stars"), params, new ArrayList<NameValuePair>());
+        post(buildEndpoint("stars"), params, new ArrayList<>());
     }
 
     @Override
     public void addStarToPullRequest(Object pullRequestId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("pullRequestId", String.valueOf(pullRequestId)));
-        post(buildEndpoint("stars"), params, new ArrayList<NameValuePair>());
+        post(buildEndpoint("stars"), params, new ArrayList<>());
     }
 
     @Override
     public void addStarToPullRequestComment(Object pullRequestCommentId) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("pullRequestCommentId", String.valueOf(pullRequestCommentId)));
-        post(buildEndpoint("stars"), params, new ArrayList<NameValuePair>());
+        post(buildEndpoint("stars"), params, new ArrayList<>());
     }
 
     @Override
@@ -1094,12 +1091,12 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public Watch addWatchToIssue(Object issueIdOrKey, String note) throws BacklogException {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<>();
         params.add(new NameValuePair("issueIdOrKey", String.valueOf(issueIdOrKey)));
         if (note != null) {
             params.add(new NameValuePair("note", note));
         }
-        return factory.createWatch(post(buildEndpoint("watchings"), params, new ArrayList<NameValuePair>()));
+        return factory.createWatch(post(buildEndpoint("watchings"), params, new ArrayList<>()));
     }
 
     @Override

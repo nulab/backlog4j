@@ -10,7 +10,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -26,11 +25,11 @@ public class WebhookJSONImpl implements Webhook {
     private String hookUrl;
     private boolean allEvent;
     private int[] activityTypeIds;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User createdUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date created;
-    @JsonDeserialize(as=UserJSONImpl.class)
+    @JsonDeserialize(as = UserJSONImpl.class)
     private User updatedUser;
     @JsonDeserialize(using = JacksonCustomDateDeserializer.class)
     private Date updated;
@@ -67,12 +66,12 @@ public class WebhookJSONImpl implements Webhook {
 
     @Override
     public List<Activity.Type> getActivityTypeIds() {
-        if(activityTypeIds==null){
+        if (activityTypeIds == null) {
             return null;
         }
 
-        List<Activity.Type> typeIds = new ArrayList<Activity.Type>();
-        for(int activityTypeId : activityTypeIds){
+        List<Activity.Type> typeIds = new ArrayList<>();
+        for (int activityTypeId : activityTypeIds) {
             typeIds.add(Activity.Type.valueOf(activityTypeId));
         }
         return typeIds;

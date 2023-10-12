@@ -14,7 +14,7 @@ public class PullRequestCommentedActivity extends ActivityJSONImpl {
 
     private int type = 20;
 
-    @JsonDeserialize(as=PullRequestContent.class)
+    @JsonDeserialize(as = PullRequestContent.class)
     private PullRequestContent content;
 
     @Override

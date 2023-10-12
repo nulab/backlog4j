@@ -35,16 +35,16 @@ public class AddMultipleListCustomFieldParams extends AddCustomFieldParams {
 
     @Override
     public AddMultipleListCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (AddMultipleListCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (AddMultipleListCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public AddMultipleListCustomFieldParams description(String description) {
-        return (AddMultipleListCustomFieldParams)super.description(description);
+        return (AddMultipleListCustomFieldParams) super.description(description);
     }
 
     @Override
     public AddMultipleListCustomFieldParams required(boolean required) {
-        return (AddMultipleListCustomFieldParams)super.required(required);
+        return (AddMultipleListCustomFieldParams) super.required(required);
     }
 }

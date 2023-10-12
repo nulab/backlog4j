@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class GitRepositoryCreatedContent extends Content {
 
 
-    @JsonDeserialize(as=RepositoryJSONImpl.class)
+    @JsonDeserialize(as = RepositoryJSONImpl.class)
     private Repository repository;
 
     public Repository getRepository() {

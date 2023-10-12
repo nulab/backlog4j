@@ -2,7 +2,6 @@ package com.nulabinc.backlog4j.internal.file;
 
 import com.nulabinc.backlog4j.Icon;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**

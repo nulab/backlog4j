@@ -59,7 +59,7 @@ public interface IssueMethods {
      */
     Issue updateIssue(UpdateIssueParams params) throws BacklogException;
 
-   /**
+    /**
      * Deletes the issue.
      *
      * @param issueIdOrKey the issue identifier
@@ -68,7 +68,7 @@ public interface IssueMethods {
      */
     Issue deleteIssue(Object issueIdOrKey) throws BacklogException;
 
-   /**
+    /**
      * Returns the issue comments.
      *
      * @param issueIdOrKey the issue identifier
@@ -80,8 +80,8 @@ public interface IssueMethods {
     /**
      * Returns the issue comments.
      *
-     * @param issueIdOrKey    the issue identifier
-     * @param queryParams the query parameters
+     * @param issueIdOrKey the issue identifier
+     * @param queryParams  the query parameters
      * @return the issue's comments in a list.
      * @throws BacklogException
      */
@@ -108,8 +108,8 @@ public interface IssueMethods {
     /**
      * Returns the issue comment.
      *
-     * @param issueIdOrKey  the issue identifier
-     * @param commentId the comment identifier
+     * @param issueIdOrKey the issue identifier
+     * @param commentId    the comment identifier
      * @return the issue comment
      * @throws BacklogException
      */
@@ -128,7 +128,7 @@ public interface IssueMethods {
      * Returns the issue comment notifications.
      *
      * @param issueIdOrKey the issue identifier
-     * @param commentId the comment identifier
+     * @param commentId    the comment identifier
      * @return the issue comment notifications
      * @throws BacklogException
      */
@@ -154,7 +154,7 @@ public interface IssueMethods {
     /**
      * Returns the attachment file data on the issue.
      *
-     * @param issueIdOrKey     the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param attachmentId the attachment identifier
      * @return the AttachmentData
      */
@@ -163,7 +163,7 @@ public interface IssueMethods {
     /**
      * Deletes the attachment file on the issue.
      *
-     * @param issueIdOrKey     the issue identifier
+     * @param issueIdOrKey the issue identifier
      * @param attachmentId the attachment identifier
      * @return the Attachment
      */
@@ -181,7 +181,7 @@ public interface IssueMethods {
      * links the shared files to the issue.
      *
      * @param issueIdOrKey the issue identifier
-     * @param fileIds  the file identifiers in a list
+     * @param fileIds      the file identifiers in a list
      * @return the linked shared files in a list.
      */
     ResponseList<SharedFile> linkIssueSharedFile(Object issueIdOrKey, List fileIds);
@@ -190,7 +190,7 @@ public interface IssueMethods {
      * Deletes link of the shared file from the issue.
      *
      * @param issueIdOrKey the issue identifier
-     * @param fileId   the file identifiers
+     * @param fileId       the file identifiers
      * @return the unlinked SharedFile
      */
     SharedFile unlinkIssueSharedFile(Object issueIdOrKey, Object fileId);

@@ -14,7 +14,7 @@ public class IssueMultiUpdatedActivity extends ActivityJSONImpl {
 
     private int type = 14;
 
-    @JsonDeserialize(as=IssueMultiUpdatedContent.class)
+    @JsonDeserialize(as = IssueMultiUpdatedContent.class)
     private IssueMultiUpdatedContent content;
 
     @Override

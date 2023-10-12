@@ -24,7 +24,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
         @JsonSubTypes.Type(value = SingleListCustomField.class, name = "5"),
         @JsonSubTypes.Type(value = MultipleListCustomField.class, name = "6"),
         @JsonSubTypes.Type(value = CheckBoxCustomField.class, name = "7"),
-        @JsonSubTypes.Type(value = RadioCustomField.class, name = "8") })
+        @JsonSubTypes.Type(value = RadioCustomField.class, name = "8")})
 public abstract class CustomFieldJSONImpl implements CustomField {
 
     private int id;

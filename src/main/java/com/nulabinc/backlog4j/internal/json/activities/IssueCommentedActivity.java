@@ -14,7 +14,7 @@ public class IssueCommentedActivity extends ActivityJSONImpl {
 
     private int type = 3;
 
-    @JsonDeserialize(as=IssueCommentedContent.class)
+    @JsonDeserialize(as = IssueCommentedContent.class)
     private IssueCommentedContent content;
 
     @Override

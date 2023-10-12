@@ -38,16 +38,16 @@ public class AddNumericCustomFieldParams extends AddCustomFieldParams {
 
     @Override
     public AddNumericCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (AddNumericCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (AddNumericCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public AddNumericCustomFieldParams description(String description) {
-        return (AddNumericCustomFieldParams)super.description(description);
+        return (AddNumericCustomFieldParams) super.description(description);
     }
 
     @Override
     public AddNumericCustomFieldParams required(boolean required) {
-        return (AddNumericCustomFieldParams)super.required(required);
+        return (AddNumericCustomFieldParams) super.required(required);
     }
 }

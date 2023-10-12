@@ -7,17 +7,17 @@ public class CustomFiledItem {
     private Object customFieldId;
     private Object customFieldItemId;
 
-    public CustomFiledItem(Object customFieldId, Object customFieldItemId){
+    public CustomFiledItem(Object customFieldId, Object customFieldItemId) {
         this.customFieldId = customFieldId;
         this.customFieldItemId = customFieldItemId;
     }
 
-    public CustomFiledItem(long customFieldId, long customFieldItemId){
+    public CustomFiledItem(long customFieldId, long customFieldItemId) {
         this.customFieldId = customFieldId;
         this.customFieldItemId = customFieldItemId;
     }
 
-    public CustomFiledItem(long customFieldId, String customFieldItemId){
+    public CustomFiledItem(long customFieldId, String customFieldItemId) {
         this.customFieldId = customFieldId;
         this.customFieldItemId = customFieldItemId;
     }

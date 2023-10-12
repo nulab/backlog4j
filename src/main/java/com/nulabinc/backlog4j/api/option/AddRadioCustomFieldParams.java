@@ -35,16 +35,16 @@ public class AddRadioCustomFieldParams extends AddCustomFieldParams {
 
     @Override
     public AddRadioCustomFieldParams applicableIssueTypes(List<Long> applicableIssueTypes) {
-        return (AddRadioCustomFieldParams)super.applicableIssueTypes(applicableIssueTypes);
+        return (AddRadioCustomFieldParams) super.applicableIssueTypes(applicableIssueTypes);
     }
 
     @Override
     public AddRadioCustomFieldParams description(String description) {
-        return (AddRadioCustomFieldParams)super.description(description);
+        return (AddRadioCustomFieldParams) super.description(description);
     }
 
     @Override
     public AddRadioCustomFieldParams required(boolean required) {
-        return (AddRadioCustomFieldParams)super.required(required);
+        return (AddRadioCustomFieldParams) super.required(required);
     }
 }
