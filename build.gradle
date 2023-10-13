@@ -10,8 +10,8 @@ plugins {
     id 'signing'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
@@ -30,9 +30,9 @@ dependencies {
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
     implementation 'org.slf4j:slf4j-api:1.7.36'
 }
 
@@ -82,7 +82,7 @@ publishing {
                 licenses {
                     license {
                         name = 'MIT License'
-                        url = 'http://www.opensource.org/licenses/mit-license.php'
+                        url = 'https://opensource.org/license/mit/'
                     }
                 }
                 developers {
