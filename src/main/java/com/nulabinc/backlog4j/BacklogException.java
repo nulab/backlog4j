@@ -1,7 +1,7 @@
 package com.nulabinc.backlog4j;
 
 /**
- * Exception thrown when a api response contains error.
+ * Exception thrown when an api response contains error.
  *
  * @author nulab-inc
  */

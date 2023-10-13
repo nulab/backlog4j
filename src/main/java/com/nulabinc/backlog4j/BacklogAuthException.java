@@ -4,7 +4,7 @@ import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.Jackson;
 
 /**
- * Exception thrown when a auth api response contains error.
+ * Exception thrown when an auth api response contains error.
  *
  * @author nulab-inc
  */

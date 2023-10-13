@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * The error class for Backlog exception.
- * Contains the error massages.
+ * Contains the error messages.
  *
  * @author nulab-inc
  */

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BacklogPackageConfigureTest {
 
     @Test
-    public void getOAuthAuthorizationURLTest() throws Exception {
+    public void getOAuthAuthorizationURLTest() {
 
         // when
         String testUrl = "https://test.com";

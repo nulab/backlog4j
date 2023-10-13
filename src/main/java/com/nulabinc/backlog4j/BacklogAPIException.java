@@ -4,7 +4,7 @@ import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.internal.json.Jackson;
 
 /**
- * Exception thrown when a api response contains error.
+ * Exception thrown when an api response contains error.
  *
  * @author nulab-inc
  */
@@ -82,11 +82,11 @@ public class BacklogAPIException extends BacklogException {
                 value.append("message - ").append(errorMessage.getMessage()).append("\n");
                 value.append("code - ").append(errorMessage.getCode()).append("\n");
                 String info = errorMessage.getErrorInfo();
-                if (info != null && info.length() > 0) {
+                if (info != null && !info.isEmpty()) {
                     value.append("errorInfo - ").append(info).append("\n");
                 }
                 String moreInfo = errorMessage.getMoreInfo();
-                if (moreInfo != null && moreInfo.length() > 0) {
+                if (moreInfo != null && !moreInfo.isEmpty()) {
                     value.append("moreInfo - ").append(moreInfo).append("\n");
                 }
             }

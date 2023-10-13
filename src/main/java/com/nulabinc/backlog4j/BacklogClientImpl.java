@@ -12,8 +12,8 @@ import com.nulabinc.backlog4j.internal.json.ResponseListImpl;
 import com.nulabinc.backlog4j.internal.json.customFields.*;
 
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -386,12 +386,8 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public ResponseList<SharedFile> getSharedFiles(Object projectIdOrKey, String path, QueryParams queryParams) throws BacklogException {
-        try {
-            String encodedPath = URLEncoder.encode(path, "utf-8");
-            return factory.createSharedFileList(get(buildEndpoint("projects/" + projectIdOrKey + "/files/metadata/" + encodedPath), queryParams));
-        } catch (UnsupportedEncodingException e) {
-            throw new BacklogAPIException(e);
-        }
+        String encodedPath = URLEncoder.encode(path, StandardCharsets.UTF_8);
+        return factory.createSharedFileList(get(buildEndpoint("projects/" + projectIdOrKey + "/files/metadata/" + encodedPath), queryParams));
     }
 
     @Override
@@ -1066,12 +1062,7 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
 
     @Override
     public String getWikiUrl(Project project, Wiki wiki) {
-        try {
-            return configure.getWebAppBaseURL() + "/wiki/" + project.getProjectKey() + "/" + URLEncoder.encode(wiki.getName(), "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return configure.getWebAppBaseURL() + "/wiki/" + project.getProjectKey() + "/" + URLEncoder.encode(wiki.getName(), StandardCharsets.UTF_8);
     }
 
     @Override

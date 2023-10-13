@@ -2,15 +2,12 @@ package com.nulabinc.backlog4j.internal.json;
 
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.User;
-import org.exparity.hamcrest.date.DateMatchers;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 

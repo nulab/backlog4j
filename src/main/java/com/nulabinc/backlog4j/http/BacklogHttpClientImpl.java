@@ -83,11 +83,11 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     public BacklogHttpResponse get(String endpoint, GetParams getParams, QueryParams queryParams) throws BacklogException {
         String url = getUrl(endpoint);
         boolean paramExists = (apiKey != null);
-        if (getParams != null && getParams.getParamList().size() > 0) {
+        if (getParams != null && !getParams.getParamList().isEmpty()) {
             url += getParamsString(paramExists, getParams);
             paramExists = true;
         }
-        if (queryParams != null && queryParams.getParamList().size() > 0) {
+        if (queryParams != null && !queryParams.getParamList().isEmpty()) {
             url += getParamsString(paramExists, queryParams);
         }
 
@@ -197,7 +197,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     private void writeParams(HttpURLConnection urlConnection, List<NameValuePair> params) {
-        if (params == null || params.size() == 0) return;
+        if (params == null || params.isEmpty()) return;
 
         String query = getDataString(params);
         try {
@@ -210,7 +210,7 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
     }
 
     private void writeMultiPartParams(HttpURLConnection urlConnection, Map<String, Object> params, String boundary) {
-        if (params == null || params.size() == 0) return;
+        if (params == null || params.isEmpty()) return;
 
         try {
             OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
@@ -272,13 +272,9 @@ public class BacklogHttpClientImpl implements BacklogHttpClient {
             } else {
                 sb.append("&");
             }
-            try {
-                sb.append(URLEncoder.encode(pair.getName(), "utf-8"));
-                sb.append("=");
-                sb.append(URLEncoder.encode(pair.getValue(), "utf-8"));
-            } catch (UnsupportedEncodingException e) {
-                throw new BacklogAPIException(e);
-            }
+            sb.append(URLEncoder.encode(pair.getName(), StandardCharsets.UTF_8));
+            sb.append("=");
+            sb.append(URLEncoder.encode(pair.getValue(), StandardCharsets.UTF_8));
         }
         return sb.toString();
     }
