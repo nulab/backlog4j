@@ -1,7 +1,11 @@
 package com.nulabinc.backlog4j.api.option;
 
-import com.nulabinc.backlog4j.http.BacklogHttpClientImpl;
+import com.nulabinc.backlog4j.http.NameValuePair;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author nulab-inc
@@ -15,8 +19,11 @@ public class QueryParamsTest {
         params.minId(123);
 
         // then
-        String query = new BacklogHttpClientImpl().getParamsString(true, params);
-        assert query.contains("&minId=123");
+        List<NameValuePair> paramList = params.getParamList();
+        assertEquals(1, paramList.size());
+        NameValuePair param = paramList.get(0);
+        assertEquals("minId", param.getName());
+        assertEquals("123", param.getValue());
     }
 
     @Test
@@ -26,28 +33,39 @@ public class QueryParamsTest {
         params.maxId(999);
 
         // then
-        String query = new BacklogHttpClientImpl().getParamsString(true, params);
-        assert query.contains("&maxId=999");
+        List<NameValuePair> paramList = params.getParamList();
+        assertEquals(1, paramList.size());
+        NameValuePair param = paramList.get(0);
+        assertEquals("maxId", param.getName());
+        assertEquals("999", param.getValue());
     }
 
     @Test
-    public void orderTest() {
+    public void orderDescTest() {
         // when
         QueryParams params = new QueryParams();
         params.order(QueryParams.Order.Desc);
 
         // then
-        String query = new BacklogHttpClientImpl().getParamsString(true, params);
-        assert query.contains("&order=desc");
+        List<NameValuePair> paramList = params.getParamList();
+        assertEquals(1, paramList.size());
+        NameValuePair param = paramList.get(0);
+        assertEquals("order", param.getName());
+        assertEquals("desc", param.getValue());
+    }
 
+    @Test
+    public void orderAscTest() {
         // when
-        params = new QueryParams();
+        QueryParams params = new QueryParams();
         params.order(QueryParams.Order.Asc);
 
         // then
-        query = new BacklogHttpClientImpl().getParamsString(false, params);
-        assert query.contains("?order=asc");
-
+        List<NameValuePair> paramList = params.getParamList();
+        assertEquals(1, paramList.size());
+        NameValuePair param = paramList.get(0);
+        assertEquals("order", param.getName());
+        assertEquals("asc", param.getValue());
     }
 
     @Test
@@ -57,7 +75,10 @@ public class QueryParamsTest {
         params.count(222);
 
         // then
-        String query = new BacklogHttpClientImpl().getParamsString(false, params);
-        assert query.contains("?count=222");
+        List<NameValuePair> paramList = params.getParamList();
+        assertEquals(1, paramList.size());
+        NameValuePair param = paramList.get(0);
+        assertEquals("count", param.getName());
+        assertEquals("222", param.getValue());
     }
 }
