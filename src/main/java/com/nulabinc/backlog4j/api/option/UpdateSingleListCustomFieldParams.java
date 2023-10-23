@@ -16,7 +16,7 @@ public class UpdateSingleListCustomFieldParams extends UpdateCustomFieldParams {
     }
 
     public UpdateSingleListCustomFieldParams items(List<String> items) {
-        if (items != null && items.size() > 0) {
+        if (items != null && !items.isEmpty()) {
             for (String item : items) {
                 parameters.add(new NameValuePair("items[]", item));
             }

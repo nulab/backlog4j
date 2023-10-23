@@ -1,19 +1,18 @@
 package com.nulabinc.backlog4j.auth;
 
 
-import com.nulabinc.backlog4j.BacklogAPIException;
 import com.nulabinc.backlog4j.BacklogAuthException;
 import com.nulabinc.backlog4j.BacklogException;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
-import com.nulabinc.backlog4j.http.BacklogHttpClientImpl;
 import com.nulabinc.backlog4j.http.BacklogHttpResponse;
 import com.nulabinc.backlog4j.http.NameValuePair;
+import com.nulabinc.backlog4j.http.httpclient.HttpClientBacklogHttpClient;
 import com.nulabinc.backlog4j.internal.InternalFactory;
 import com.nulabinc.backlog4j.internal.json.InternalFactoryJSONImpl;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
 
     public BacklogOAuthSupport(BacklogConfigure configure) {
         this.configure = configure;
-        this.httpClient = new BacklogHttpClientImpl();
+        this.httpClient = new HttpClientBacklogHttpClient();
         init();
     }
 
@@ -64,11 +63,7 @@ public class BacklogOAuthSupport implements OAuthSupport {
                 "?client_id=" + this.clientId +
                 "&response_type=" + "code";
         if (redirectUrl != null) {
-            try {
-                url += "&redirect_uri=" + URLEncoder.encode(this.redirectUrl, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                throw new BacklogAPIException(e);
-            }
+            url += "&redirect_uri=" + URLEncoder.encode(this.redirectUrl, StandardCharsets.UTF_8);
         }
         return url;
     }

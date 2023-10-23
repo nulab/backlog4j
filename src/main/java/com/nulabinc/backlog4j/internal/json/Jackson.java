@@ -29,7 +29,7 @@ public class Jackson {
     public static <T> List<T> listFromJsonString(String json, Class<T> clazz) {
 
         try {
-            return objectMapper.readValue(json, new TypeReference<List<T>>() {
+            return objectMapper.readValue(json, new TypeReference<>() {
             });
         } catch (Exception e) {
             throw new BacklogAPIException("parse json is failed.", e);

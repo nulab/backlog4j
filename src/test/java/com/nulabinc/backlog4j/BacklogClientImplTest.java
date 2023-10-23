@@ -5,7 +5,6 @@ import com.nulabinc.backlog4j.conf.BacklogJpConfigure;
 import com.nulabinc.backlog4j.internal.json.ResponseListImpl;
 import org.junit.jupiter.api.Test;
 
-import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -99,7 +98,7 @@ public class BacklogClientImplTest {
     }
 
     @Test
-    public void getWikiUrlTest() throws MalformedURLException {
+    public void getWikiUrlTest() {
         BacklogClientImpl client = new BacklogClientImpl(new BacklogJpConfigure("test").apiKey("hogehoge"));
         Project project = new DummyProject() {
             @Override
@@ -286,8 +285,7 @@ public class BacklogClientImplTest {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 return format.parse(dataStr);
             } catch (ParseException e) {
-                e.printStackTrace();
-                return null;
+                throw new RuntimeException(e);
             }
         }
     }

@@ -31,7 +31,7 @@ public interface IssueMethods {
     int getIssuesCount(GetIssuesCountParams params) throws BacklogException;
 
     /**
-     * Creates a issue.
+     * Creates an issue.
      *
      * @param params the issue creating parameters
      * @return the created Issue

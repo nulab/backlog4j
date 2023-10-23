@@ -152,7 +152,7 @@ public interface ProjectMethods {
     ResponseList<IssueType> getIssueTypes(Object projectIdOrKey) throws BacklogException;
 
     /**
-     * Adds a issue type to the project.
+     * Adds an issue type to the project.
      *
      * @param params the creating issue type parameters
      * @return the added IssueType
@@ -466,7 +466,7 @@ public interface ProjectMethods {
     CustomFieldSetting removeCustomField(Object projectIdOrKey, Object customFieldId) throws BacklogException;
 
     /**
-     * Adds a item to the list type custom field.
+     * Adds an item to the list type custom field.
      *
      * @param projectIdOrKey the project identifier
      * @param customFieldId  the custom field identifier

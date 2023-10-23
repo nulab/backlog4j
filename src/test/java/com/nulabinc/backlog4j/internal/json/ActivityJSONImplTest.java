@@ -108,14 +108,14 @@ public class ActivityJSONImplTest extends AbstractJSONImplTest {
         assertEquals("コメント時ファイル添付テスト", comment.getContent());
 
         List<Attachment> attachments = content.getAttachments();
-        assert attachments.size() > 0;
+        assert !attachments.isEmpty();
         Attachment attachment = attachments.get(0);
         assertEquals(1076499483, attachment.getId());
         assertEquals(attachment.getName(), "twoshot.JPG");
         assertEquals(86513, attachment.getSize());
 
         List<Change> changes = content.getChanges();
-        assert changes.size() > 0;
+        assert !changes.isEmpty();
         Change change = changes.get(0);
         assertEquals("attachment", change.getField());
         assertEquals("twoshot.JPG", change.getNewValue());
