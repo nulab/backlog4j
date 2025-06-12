@@ -30,6 +30,10 @@ release:
 signing:
   active: ALWAYS
   armored: true
+  mode: COMMAND
+  command:
+    keyName: ${JRELEASER_GPG_KEYNAME}
+    passphrase: ${JRELEASER_GPG_PASSPHRASE}
 
 deploy:
   maven:
