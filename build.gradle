@@ -1,48 +1,40 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'org.jreleaser' version '1.17.0'
 }
-
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
 version = '2.6.1-SNAPSHOT'
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
 
 repositories {
-    maven {
-        url 'https://repo1.maven.org/maven2/'
-    }
+    mavenCentral()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     testImplementation 'org.exparity:hamcrest-date:2.0.8'
-    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.18'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
-    implementation 'org.slf4j:slf4j-api:1.7.36'
-}
-
-java {
-    compileJava.options.encoding = 'UTF-8'
-    compileTestJava.options.encoding = 'UTF-8'
-    withSourcesJar()
-    withJavadocJar()
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.19.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
 }
 
 test {
@@ -53,66 +45,30 @@ javadoc {
     options.locale = 'en_US'
     options.encoding = 'UTF-8'
     options.addStringOption('Xdoclint:none', '-quiet')
-    title = 'Backlog4j ' + version + ' API'
+    title = "Backlog4j ${version} API"
 }
 
 jar {
     manifest {
-        attributes('Implementation-Title': archivesBaseName,
-                   'Implementation-Version': archiveVersion,
-                   'Automatic-Module-Name': archiveBaseName)
+        attributes(
+                'Implementation-Title': archivesBaseName,
+                'Implementation-Version': archiveVersion,
+                'Automatic-Module-Name': archiveBaseName
+        )
     }
-}
-
-configurations {
-    deployerJars
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            pom {
-                name = 'Backlog4j'
-                description = 'Backlog4j is a Backlog binding library for Java.'
-                url = 'https://github.com/nulab/backlog4j'
-                scm {
-                    connection = 'https://github.com/nulab/backlog4j.git'
-                    developerConnection = 'https://github.com/nulab/backlog4j.git'
-                    url = 'https://github.com/nulab/backlog4j.git'
-                }
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/license/mit/'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'uchida'
-                        name = 'Yuichi Uchida'
-                        email = 'uchida@nulab.com'
-                    }
-                }
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            credentials {
-                username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
-                password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
-            }
-            if (project.version.endsWith("-SNAPSHOT")) {
-                url = "https://oss.sonatype.org/content/repositories/snapshots"
-            } else {
-                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            }
         }
     }
 }
 
-signing {
-    sign publishing.publications.mavenJava
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        mode   = 'COMMAND'
+    }
 }

@@ -1,0 +1,48 @@
+project:
+  name: backlog4j
+  version: 2.6.1-SNAPSHOT
+  description: Backlog4j is a Backlog binding library for Java.
+  longDescription: file:README.md
+  website: https://github.com/nulab/backlog4j
+  authors:
+    - Yuichi Uchida
+  license: MIT
+  java:
+    groupId: com.nulab-inc
+    version: 11
+    artifactId: backlog4j
+    multiProject: false
+  inceptionYear: 2024
+  tags:
+    - backlog
+    - api
+    - java
+
+release:
+  github:
+    owner: nulab
+    name: backlog4j
+    tagName: '{{projectVersion}}'
+    releaseName: 'Release {{projectVersion}}'
+    draft: false
+    prerelease: '{{projectVersion}}'.endsWith('SNAPSHOT')
+
+signing:
+  active: ALWAYS
+  armored: false
+  mode: COMMAND
+
+deploy:
+  maven:
+    nexus2:
+      maven-central:
+        active: ALWAYS
+        url: https://oss.sonatype.org/service/local
+        snapshotUrl: https://oss.sonatype.org/content/repositories/snapshots
+        stagingRepository:
+          release: true
+        credentials:
+          username: env.OSSRH_USERNAME
+          password: env.OSSRH_PASSWORD
+        gpg:
+          passphrase: env.GPG_PASSPHRASE
