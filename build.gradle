@@ -69,5 +69,6 @@ publishing {
 jreleaser {
     signing {
         active = 'ALWAYS'
+        mode   = 'COMMAND'
     }
 }
