@@ -28,8 +28,8 @@ jobs:
 
       - name: Set up GPG key
         run: |
-          echo "${{ secrets.OSSRH_GPG_SECRET_KEY }}" | gpg --batch --import
-          echo "${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}" > ~/.gpg-passphrase
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+          echo "${{ secrets.GPG_PASSPHRASE }}" > ~/.gpg-passphrase
         env:
           GPG_TTY: /dev/tty
 
