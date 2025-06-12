@@ -34,9 +34,10 @@ jobs:
 
       - name: Run JReleaser
         run: |
-          ./gradlew jreleaserFullRelease \
+          ./gradlew \
             -Djreleaser.signing.active=ALWAYS \
-            -Djreleaser.signing.mode=COMMAND
+            -Djreleaser.signing.mode=COMMAND \
+            jreleaserFullRelease
         env:
           JRELEASER_SIGNING_MODE: COMMAND
           JRELEASER_GPG_KEYNAME: ${{ secrets.SIGNING_KEY_ID }}
