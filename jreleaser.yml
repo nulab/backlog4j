@@ -29,7 +29,7 @@ release:
 
 signing:
   active: ALWAYS
-  armored: true
+  armored: false
   mode: COMMAND
 
 deploy:
