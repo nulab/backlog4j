@@ -43,4 +43,3 @@ jobs:
           JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.OSSRH_USER_NAME }}
           JRELEASER_MAVENCENTRAL_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JRELEASER_PROJECT_VERSION: ${{ github.ref_name }}
