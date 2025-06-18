@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.6.1-SNAPSHOT'
+version = project.property('version')
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11

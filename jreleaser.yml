@@ -1,6 +1,5 @@
 project:
   name: backlog4j
-  version: 2.6.1-SNAPSHOT
   description: Backlog4j is a Backlog binding library for Java.
   longDescription: file:README.md
   website: https://github.com/nulab/backlog4j
@@ -34,15 +33,10 @@ signing:
 
 deploy:
   maven:
-    nexus2:
-      maven-central:
-        active: ALWAYS
-        url: https://oss.sonatype.org/service/local
-        snapshotUrl: https://oss.sonatype.org/content/repositories/snapshots
-        stagingRepository:
-          release: true
-        credentials:
-          username: env.OSSRH_USERNAME
-          password: env.OSSRH_PASSWORD
-        gpg:
-          passphrase: env.GPG_PASSPHRASE
+    mavenCentral:
+      active: ALWAYS
+      credentials:
+        username: env.OSSRH_USERNAME
+        password: env.OSSRH_PASSWORD
+      snapshotRepository:
+        url: https://s01.oss.sonatype.org/content/repositories/snapshots
