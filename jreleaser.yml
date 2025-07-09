@@ -47,7 +47,6 @@ deploy:
     mavenCentral:
       sonatype:
         active: RELEASE
-        snapshotSupported: true
         url: https://central.sonatype.com/api/v1/publisher
         stagingRepositories:
           - build/staging-deploy

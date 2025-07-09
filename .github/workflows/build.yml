@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   push:
-    branches: [ ci/jreleaser-release-for-test ]
+    branches: [ master ]
     tags: [ 'v*' ]
   workflow_dispatch:
 
