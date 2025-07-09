@@ -2,41 +2,63 @@ project:
   name: backlog4j
   description: Backlog4j is a Backlog binding library for Java.
   longDescription: file:README.md
-  website: https://github.com/nulab/backlog4j
+  links:
+    homepage: https://github.com/nulab/backlog4j
   authors:
     - Yuichi Uchida
   license: MIT
-  java:
-    groupId: com.nulab-inc
-    version: 11
-    artifactId: backlog4j
-    multiProject: false
+  languages:
+    java:
+      groupId: com.nulab-inc
+      version: 11
+      artifactId: backlog4j
+      multiProject: false
   inceptionYear: 2024
   tags:
     - backlog
     - api
     - java
 
-release:
-  github:
-    owner: nulab
-    name: backlog4j
-    tagName: '{{projectVersion}}'
-    releaseName: 'Release {{projectVersion}}'
-    draft: false
-    prerelease: '{{projectVersion}}'.endsWith('SNAPSHOT')
+checksum:
+  individual: false
+  artifacts: false
+  files: false
+
+catalog:
+  enabled: true
+
+distributions:
+  backlog4j:
+    type: JAVA_BINARY
+    artifacts:
+      - path: build/libs/{{projectName}}-{{projectVersion}}.jar
+      - path: build/libs/{{projectName}}-{{projectVersion}}-sources.jar
+        platform: sources
+      - path: build/libs/{{projectName}}-{{projectVersion}}-javadoc.jar
+        platform: javadoc
 
 signing:
   active: ALWAYS
-  armored: false
-  mode: COMMAND
+  armored: true
 
 deploy:
+  active: ALWAYS
   maven:
     mavenCentral:
-      active: ALWAYS
-      credentials:
-        username: env.OSSRH_USERNAME
-        password: env.OSSRH_PASSWORD
-      snapshotRepository:
-        url: https://s01.oss.sonatype.org/content/repositories/snapshots
+      sonatype:
+        active: RELEASE
+        snapshotSupported: true
+        url: https://central.sonatype.com/api/v1/publisher
+        stagingRepositories:
+          - build/staging-deploy
+    nexus2:
+      snapshot:
+        active: SNAPSHOT
+        url: https://central.sonatype.com/repository/maven-snapshots
+        snapshotUrl: https://central.sonatype.com/repository/maven-snapshots
+        applyMavenCentralRules: true
+        snapshotSupported: true
+        closeRepository: true
+        releaseRepository: true
+        stagingRepositories:
+          - build/staging-deploy

@@ -10,13 +10,10 @@ archivesBaseName = 'backlog4j'
 version = project.property('version')
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
     withSourcesJar()
     withJavadocJar()
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-    }
 }
 
 repositories {
@@ -45,30 +42,55 @@ javadoc {
     options.locale = 'en_US'
     options.encoding = 'UTF-8'
     options.addStringOption('Xdoclint:none', '-quiet')
-    title = "Backlog4j ${version} API"
+    title = 'Backlog4j ' + version + ' API'
 }
 
 jar {
     manifest {
-        attributes(
-                'Implementation-Title': archivesBaseName,
+        attributes('Implementation-Title': archivesBaseName,
                 'Implementation-Version': archiveVersion,
-                'Automatic-Module-Name': archiveBaseName
-        )
+                'Automatic-Module-Name': archiveBaseName)
     }
+}
+
+configurations {
+    deployerJars
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            pom {
+                name = 'Backlog4j'
+                description = 'Backlog4j is a Backlog binding library for Java.'
+                url = 'https://github.com/nulab/backlog4j'
+                scm {
+                    connection = 'https://github.com/nulab/backlog4j.git'
+                    developerConnection = 'https://github.com/nulab/backlog4j.git'
+                    url = 'https://github.com/nulab/backlog4j.git'
+                }
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/license/mit/'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'uchida'
+                        name = 'Yuichi Uchida'
+                        email = 'uchida@nulab.com'
+                    }
+                }
+            }
         }
     }
-}
 
-jreleaser {
-    signing {
-        active = 'ALWAYS'
-        mode   = 'COMMAND'
+    repositories {
+        maven {
+            name = "Staging"
+            url = uri("$buildDir/staging-deploy")
+        }
     }
 }
