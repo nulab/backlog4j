@@ -9,7 +9,7 @@ import com.nulabinc.backlog4j.auth.OAuthSupport;
  * @author nulab-inc
  */
 public interface BacklogClient extends ProjectMethods, IssueMethods, SpaceMethods,
-        WikiMethods, ResolutionMethods, StatusMethods, PriorityMethods, UserMethods,
+        WikiMethods, DocumentMethods, ResolutionMethods, StatusMethods, PriorityMethods, UserMethods,
         StarMethods, NotificationMethods, GitMethods, PullRequestMethods, GroupMethods, WebhookMethods, WatchingMethods,
         BacklogUrlSupport {
 

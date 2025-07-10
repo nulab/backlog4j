@@ -102,4 +102,16 @@ public class BacklogEndPointSupport {
     protected String buildEndpoint(String connection) {
         return configure.getRestBaseURL() + "/" + connection;
     }
+
+    /**
+     * Returns the endpoint of Document page's attachment file.
+     *
+     * @param documentId       the Document page identifier
+     * @param attachmentId the attachment identifier
+     * @return the endpoint
+     * @throws BacklogException
+     */
+    public String getDocumentAttachmentEndpoint(String documentId, long attachmentId) throws BacklogException {
+        return buildEndpoint("documents/" + documentId + "/attachments/" + attachmentId);
+    }
 }
