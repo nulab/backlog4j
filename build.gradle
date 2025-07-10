@@ -1,48 +1,37 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'org.jreleaser' version '1.17.0'
 }
-
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
 
 group = 'com.nulab-inc'
 archivesBaseName = 'backlog4j'
-version = '2.6.1-SNAPSHOT'
-
-
-repositories {
-    maven {
-        url 'https://repo1.maven.org/maven2/'
-    }
-}
-
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
-    testImplementation 'org.hamcrest:hamcrest-library:2.2'
-    testImplementation 'org.exparity:hamcrest-date:2.0.8'
-    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.0'
-
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
-    implementation 'org.slf4j:slf4j-api:1.7.36'
-}
+version = project.property('version')
 
 java {
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
     withSourcesJar()
     withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'org.exparity:hamcrest-date:2.0.8'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.18'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.19.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
 }
 
 test {
@@ -59,8 +48,8 @@ javadoc {
 jar {
     manifest {
         attributes('Implementation-Title': archivesBaseName,
-                   'Implementation-Version': archiveVersion,
-                   'Automatic-Module-Name': archiveBaseName)
+                'Implementation-Version': archiveVersion,
+                'Automatic-Module-Name': archiveBaseName)
     }
 }
 
@@ -100,19 +89,8 @@ publishing {
 
     repositories {
         maven {
-            credentials {
-                username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
-                password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
-            }
-            if (project.version.endsWith("-SNAPSHOT")) {
-                url = "https://oss.sonatype.org/content/repositories/snapshots"
-            } else {
-                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            }
+            name = "Staging"
+            url = uri("$buildDir/staging-deploy")
         }
     }
-}
-
-signing {
-    sign publishing.publications.mavenJava
 }
