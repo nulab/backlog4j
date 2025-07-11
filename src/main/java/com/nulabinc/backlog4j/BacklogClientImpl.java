@@ -1105,4 +1105,22 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         post(buildEndpoint("users/" + numericUserId + "/watchings/markAsChecked"));
     }
 
+    @Override
+    public ResponseList<Document> getDocuments(GetDocumentsParams params) {
+        ResponseList<Document> documents = factory.createDocumentList(get(buildEndpoint("documents"), params));
+        return documents;
+    }
+
+    @Override
+    public Document getDocument(String documentId) {
+        return factory.createDocument(get(buildEndpoint("documents/" + documentId)));
+    }
+
+    @Override
+    public AttachmentData downloadDocumentAttachment(String documentId, long attachmentId) {
+        BacklogHttpResponse backlogHttpResponse = get(backlogEndPointSupport.getDocumentAttachmentEndpoint(documentId, attachmentId));
+        String filename = backlogHttpResponse.getFileNameFromContentDisposition();
+        InputStream inputStream = backlogHttpResponse.asInputStream();
+        return new AttachmentDataImpl(filename, inputStream);
+    }
 }

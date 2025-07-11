@@ -130,4 +130,8 @@ public interface InternalFactory {
 
     ResponseList<Watch> createWatchList(BacklogHttpResponse res) throws BacklogException;
 
+    ResponseList<Document> createDocumentList(BacklogHttpResponse res) throws BacklogException;
+
+    Document createDocument(BacklogHttpResponse res) throws BacklogException;
+
 }
