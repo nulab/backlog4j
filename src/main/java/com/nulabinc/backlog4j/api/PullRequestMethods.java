@@ -88,7 +88,7 @@ public interface PullRequestMethods {
      * @param repoIdOrName   the repository name
      * @param number         the pull request identifier
      * @param params         the finding pull request comments parameters.
-     * @return the git pull requests in a list.
+     * @return the git pull request comments in a list.
      * @throws BacklogException
      */
     ResponseList<PullRequestComment> getPullRequestComments(Object projectIdOrKey, Object repoIdOrName, Object number, QueryParams params) throws BacklogException;
