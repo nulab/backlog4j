@@ -16,6 +16,7 @@ Backlog4j is a Backlog binding library for Java.
 
 
 ## Updates
+* 2025/07/14 2.7.0 released
 * 2023/11/20 2.6.0 released
 * 2023/07/27 2.5.3 released
 * 2022/09/15 2.5.2 released
@@ -29,14 +30,14 @@ https://github.com/nulab/backlog4j/releases
 
 ### gradle
 
-    'com.nulab-inc:backlog4j:2.6.0'
+    'com.nulab-inc:backlog4j:2.7.0'
 
 ### maven
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.6.0</version>
+      <version>2.7.0</version>
     </dependency>
 
 ## How to use
@@ -84,14 +85,14 @@ Backlog4j は Backlog API (https://developer.nulab.com/ja/docs/backlog/#) に簡
 
 ### gradle を利用する場合
 
-    'com.nulab-inc:backlog4j:2.6.0'
+    'com.nulab-inc:backlog4j:2.7.0'
 
 ### maven を利用する場合
 
     <dependency>
       <groupId>com.nulab-inc</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>2.6.0</version>
+      <version>2.7.0</version>
     </dependency>
 
 ## 使い方
