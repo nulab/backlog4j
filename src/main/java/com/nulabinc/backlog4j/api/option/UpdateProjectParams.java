@@ -44,6 +44,11 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
+    public UpdateProjectParams grandchildIssueEnabled(boolean grandchildIssueEnabled) {
+        parameters.add(new NameValuePair("grandchildIssueEnabled", String.valueOf(grandchildIssueEnabled)));
+        return this;
+    }
+
     public UpdateProjectParams projectLeaderCanEditProjectLeader(boolean projectLeaderCanEditProjectLeader) {
         parameters.add(new NameValuePair("projectLeaderCanEditProjectLeader", String.valueOf(projectLeaderCanEditProjectLeader)));
         return this;

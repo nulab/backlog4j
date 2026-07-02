@@ -51,6 +51,16 @@ public interface IssueMethods {
     Issue getIssue(Object issueIdOrKey) throws BacklogException;
 
     /**
+     * Returns the issue.
+     *
+     * @param issueIdOrKey the issue identifier
+     * @param params       the issue getting parameters
+     * @return the Issue
+     * @throws BacklogException
+     */
+    Issue getIssue(Object issueIdOrKey, GetIssueParams params) throws BacklogException;
+
+    /**
      * Updates an existing issue.
      *
      * @param params the issue updating parameters

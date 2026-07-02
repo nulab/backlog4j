@@ -39,4 +39,9 @@ public class CreateProjectParams extends PostParams {
         parameters.add(new NameValuePair("textFormattingRule", textFormattingRule.getStrValue()));
         parameters.add(new NameValuePair("useDevAttributes", String.valueOf(useDevAttributes)));
     }
+
+    public CreateProjectParams grandchildIssueEnabled(boolean grandchildIssueEnabled) {
+        parameters.add(new NameValuePair("grandchildIssueEnabled", String.valueOf(grandchildIssueEnabled)));
+        return this;
+    }
 }

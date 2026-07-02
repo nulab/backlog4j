@@ -64,6 +64,8 @@ public class IssueJSONImpl implements Issue {
     private SharedFile[] sharedFiles;
     @JsonDeserialize(as = StarJSONImpl[].class)
     private Star[] stars;
+    @JsonDeserialize(as = ChildIssueSummaryJSONImpl.class)
+    private ChildIssueSummary childIssueSummary;
 
     @Override
     public long getId() {
@@ -238,6 +240,11 @@ public class IssueJSONImpl implements Issue {
     }
 
     @Override
+    public ChildIssueSummary getChildIssueSummary() {
+        return childIssueSummary;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -277,6 +284,7 @@ public class IssueJSONImpl implements Issue {
                 .append(this.attachments, rhs.attachments)
                 .append(this.sharedFiles, rhs.sharedFiles)
                 .append(this.stars, rhs.stars)
+                .append(this.childIssueSummary, rhs.childIssueSummary)
                 .isEquals();
     }
 
@@ -310,6 +318,7 @@ public class IssueJSONImpl implements Issue {
                 .append(attachments)
                 .append(sharedFiles)
                 .append(stars)
+                .append(childIssueSummary)
                 .toHashCode();
     }
 
@@ -343,6 +352,7 @@ public class IssueJSONImpl implements Issue {
                 .append("attachments", attachments)
                 .append("sharedFiles", sharedFiles)
                 .append("stars", stars)
+                .append("childIssueSummary", childIssueSummary)
                 .toString();
     }
 }

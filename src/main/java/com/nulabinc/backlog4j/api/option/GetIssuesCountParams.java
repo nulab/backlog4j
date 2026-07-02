@@ -14,7 +14,9 @@ import java.util.List;
 public class GetIssuesCountParams extends GetParams {
 
     public enum ParentChildType {
-        All(0), NotChild(1), Child(2), NotChildNotParent(3), Parent(4);
+        All(0), NotChild(1), Child(2), NotChildNotParent(3), Parent(4),
+        GrandchildIssue(5), ChildIssue(6), ParentIssue(7),
+        ExcludeGrandchild(8), ExcludeGrandparent(9), LeafIssue(10);
 
         ParentChildType(int intValue) {
             this.intValue = intValue;

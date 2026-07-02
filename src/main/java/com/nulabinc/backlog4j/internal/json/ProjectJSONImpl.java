@@ -17,6 +17,7 @@ public class ProjectJSONImpl implements Project {
     private String name;
     private boolean chartEnabled;
     private boolean subtaskingEnabled;
+    private boolean grandchildIssueEnabled;
     private boolean projectLeaderCanEditProjectLeader;
     private String textFormattingRule;
     private boolean archived;
@@ -56,6 +57,11 @@ public class ProjectJSONImpl implements Project {
     @Override
     public boolean isSubtaskingEnabled() {
         return subtaskingEnabled;
+    }
+
+    @Override
+    public boolean isGrandchildIssueEnabled() {
+        return grandchildIssueEnabled;
     }
 
     @Override
@@ -129,6 +135,7 @@ public class ProjectJSONImpl implements Project {
                 .append(this.name, rhs.name)
                 .append(this.chartEnabled, rhs.chartEnabled)
                 .append(this.subtaskingEnabled, rhs.subtaskingEnabled)
+                .append(this.grandchildIssueEnabled, rhs.grandchildIssueEnabled)
                 .append(this.textFormattingRule, rhs.textFormattingRule)
                 .append(this.archived, rhs.archived)
                 .append(this.useFileSharing, rhs.useFileSharing)
@@ -152,6 +159,7 @@ public class ProjectJSONImpl implements Project {
                 .append(name)
                 .append(chartEnabled)
                 .append(subtaskingEnabled)
+                .append(grandchildIssueEnabled)
                 .append(textFormattingRule)
                 .append(archived)
                 .append(useFileSharing)
@@ -175,6 +183,7 @@ public class ProjectJSONImpl implements Project {
                 .append("name", name)
                 .append("chartEnabled", chartEnabled)
                 .append("subtaskingEnabled", subtaskingEnabled)
+                .append("grandchildIssueEnabled", grandchildIssueEnabled)
                 .append("textFormattingRule", textFormattingRule)
                 .append("archived", archived)
                 .append("useFileSharing", useFileSharing)

@@ -102,6 +102,22 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
     }
 
     @Test
+    public void createParamWithExpandAndGrandchildTest() {
+
+        // when
+        GetIssuesParams params = new GetIssuesParams(Arrays.asList(1000000001L));
+        params.parentChildType(GetIssuesParams.ParentChildType.GrandchildIssue)
+                .expand(Arrays.asList(Issue.Expand.ChildIssueSummary));
+
+        // then
+        List<NameValuePair> parameters = params.getParamList();
+        assertEquals(3, parameters.size());
+        assertTrue(existsOneKeyValue(parameters, "projectId[]", "1000000001"));
+        assertTrue(existsOneKeyValue(parameters, "parentChild", "5"));
+        assertTrue(existsOneKeyValue(parameters, "expand[]", "childIssueSummary"));
+    }
+
+    @Test
     public void createParamWithCustomStatusTest() {
 
         // when

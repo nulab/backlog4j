@@ -36,6 +36,8 @@ public class IssueJSONImplTest extends AbstractJSONImplTest {
 
         assertEquals(1079313630, issue.getId());
         assertEquals(1073836557, issue.getProjectId());
+        assertEquals(3, issue.getChildIssueSummary().getTotal());
+        assertEquals(1, issue.getChildIssueSummary().getClosed());
     }
 
     @Test
