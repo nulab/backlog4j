@@ -57,6 +57,29 @@ public interface Issue {
     }
 
 
+    enum Expand {
+        ChildIssueSummary("childIssueSummary");
+
+        Expand(String value) {
+            this.value = value;
+        }
+
+        public String getStrValue() {
+            return value;
+        }
+
+        public static Expand strValueOf(final String anValue) {
+            for (Expand d : values()) {
+                if (d.getStrValue().equals(anValue)) {
+                    return d;
+                }
+            }
+            return null;
+        }
+
+        private String value;
+    }
+
     enum PriorityType {
         High(2), Normal(3), Low(4);
 
@@ -139,4 +162,6 @@ public interface Issue {
     List<SharedFile> getSharedFiles();
 
     List<Star> getStars();
+
+    ChildIssueSummary getChildIssueSummary();
 }

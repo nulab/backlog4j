@@ -434,6 +434,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Issue getIssue(Object issueIdOrKey, GetIssueParams params) throws BacklogException {
+        return factory.createIssue(get(buildEndpoint("issues/" + issueIdOrKey), params));
+    }
+
+    @Override
     public ResponseList<IssueComment> getIssueComments(Object issueIdOrKey) throws BacklogException {
         return factory.createIssueCommentList(get(buildEndpoint("issues/" + issueIdOrKey + "/comments")));
     }

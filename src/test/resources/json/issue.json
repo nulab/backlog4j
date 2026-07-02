@@ -49,6 +49,10 @@
     "customFields": [],
     "attachments": [],
     "sharedFiles": [],
-    "stars": []
+    "stars": [],
+    "childIssueSummary": {
+        "total": 3,
+        "closed": 1
+    }
 }
 

@@ -159,6 +159,11 @@ public class BacklogClientImplTest {
         }
 
         @Override
+        public boolean isGrandchildIssueEnabled() {
+            return false;
+        }
+
+        @Override
         public boolean isProjectLeaderCanEditProjectLeader() {
             return false;
         }
