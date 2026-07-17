@@ -19,7 +19,10 @@ public class GetIssuesCountParams extends GetParams {
         @Deprecated
         Child(2),
         ChildOrGrandchild(2),
+        /** @deprecated Use {@link #Standalone}. */
+        @Deprecated
         NotChildNotParent(3),
+        Standalone(3),
         /** @deprecated Use {@link #HasChildren}. */
         @Deprecated
         Parent(4),

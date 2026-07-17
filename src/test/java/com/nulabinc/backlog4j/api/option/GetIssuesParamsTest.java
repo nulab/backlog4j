@@ -34,7 +34,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
                 .milestoneIds(Arrays.asList(7000000001L, 7000000002L))
                 .offset(100)
                 .order(GetIssuesParams.Order.Desc)
-                .parentChildType(GetIssuesParams.ParentChildType.NotChildNotParent)
+                .parentChildType(GetIssuesParams.ParentChildType.Standalone)
                 .parentIssueIds(Arrays.asList(8000000001L, 8000000002L))
                 .priorities(Arrays.asList(Issue.PriorityType.High, Issue.PriorityType.Low))
                 .resolutions(Arrays.asList(Issue.ResolutionType.Fixed, Issue.ResolutionType.Invalid))
@@ -126,6 +126,9 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertEquals(4, GetIssuesParams.ParentChildType.HasChildren.getIntValue());
         assertEquals(GetIssuesParams.ParentChildType.Parent.getIntValue(),
                 GetIssuesParams.ParentChildType.HasChildren.getIntValue());
+        assertEquals(3, GetIssuesParams.ParentChildType.Standalone.getIntValue());
+        assertEquals(GetIssuesParams.ParentChildType.NotChildNotParent.getIntValue(),
+                GetIssuesParams.ParentChildType.Standalone.getIntValue());
     }
 
     @Test
