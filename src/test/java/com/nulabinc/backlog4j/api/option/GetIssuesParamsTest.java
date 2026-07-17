@@ -106,7 +106,7 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
 
         // when
         GetIssuesParams params = new GetIssuesParams(Arrays.asList(1000000001L));
-        params.parentChildType(GetIssuesParams.ParentChildType.GrandchildIssue)
+        params.parentChildType(GetIssuesParams.ParentChildType.GrandchildOnly)
                 .expand(Arrays.asList(Issue.Expand.ChildIssueSummary));
 
         // then
@@ -115,6 +115,17 @@ public class GetIssuesParamsTest extends AbstractParamsTest {
         assertTrue(existsOneKeyValue(parameters, "projectId[]", "1000000001"));
         assertTrue(existsOneKeyValue(parameters, "parentChild", "5"));
         assertTrue(existsOneKeyValue(parameters, "expand[]", "childIssueSummary"));
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void parentChildTypeAliasesTest() {
+        assertEquals(2, GetIssuesParams.ParentChildType.ChildOrGrandchild.getIntValue());
+        assertEquals(GetIssuesParams.ParentChildType.Child.getIntValue(),
+                GetIssuesParams.ParentChildType.ChildOrGrandchild.getIntValue());
+        assertEquals(4, GetIssuesParams.ParentChildType.HasChildren.getIntValue());
+        assertEquals(GetIssuesParams.ParentChildType.Parent.getIntValue(),
+                GetIssuesParams.ParentChildType.HasChildren.getIntValue());
     }
 
     @Test
