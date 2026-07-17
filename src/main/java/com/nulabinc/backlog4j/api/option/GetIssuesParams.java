@@ -60,9 +60,21 @@ public class GetIssuesParams extends GetParams {
     }
 
     public enum ParentChildType {
-        All(0), NotChild(1), Child(2), NotChildNotParent(3), Parent(4),
-        GrandchildIssue(5), ChildIssue(6), ParentIssue(7),
-        ExcludeGrandchild(8), ExcludeGrandparent(9), LeafIssue(10);
+        All(0), NotChild(1),
+        /** @deprecated Use {@link #ChildOrGrandchild}. */
+        @Deprecated
+        Child(2),
+        ChildOrGrandchild(2),
+        /** @deprecated Use {@link #Standalone}. */
+        @Deprecated
+        NotChildNotParent(3),
+        Standalone(3),
+        /** @deprecated Use {@link #HasChildren}. */
+        @Deprecated
+        Parent(4),
+        HasChildren(4),
+        GrandchildOnly(5), ChildOnly(6), TopLevelOnly(7),
+        ExcludeGrandchild(8), ExcludeTopLevel(9), LeafOnly(10);
 
         ParentChildType(int intValue) {
             this.intValue = intValue;
