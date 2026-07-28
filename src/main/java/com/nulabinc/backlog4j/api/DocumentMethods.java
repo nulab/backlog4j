@@ -2,6 +2,7 @@ package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.AttachmentData;
 import com.nulabinc.backlog4j.Document;
+import com.nulabinc.backlog4j.DocumentAttachment;
 import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
@@ -46,5 +47,14 @@ public interface DocumentMethods {
      * @return the document page's comments in a list
      */
     ResponseList<DocumentComment> getDocumentComments(String documentId);
+
+    /**
+     * Adds an attachment file to the Document page.
+     *
+     * @param documentId     the Document page identifier
+     * @param attachmentData the file to upload
+     * @return the added Document page's attachment
+     */
+    DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData);
 
 }

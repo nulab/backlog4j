@@ -1133,4 +1133,12 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     public ResponseList<DocumentComment> getDocumentComments(String documentId) {
         return factory.createDocumentCommentList(get(buildEndpoint("documents/" + documentId + "/comments")));
     }
+
+    @Override
+    public DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("file", attachmentData);
+        BacklogHttpResponse backlogHttpResponse = postMultiPart(buildEndpoint("documents/" + documentId + "/attachments"), parameters);
+        return factory.createDocumentAttachment(backlogHttpResponse);
+    }
 }
