@@ -1141,4 +1141,14 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         BacklogHttpResponse backlogHttpResponse = postMultiPart(buildEndpoint("documents/" + documentId + "/attachments"), parameters);
         return factory.createDocumentAttachment(backlogHttpResponse);
     }
+
+    @Override
+    public ResponseList<DocumentTag> addDocumentTags(String documentId, AddDocumentTagsParams params) {
+        return factory.createDocumentTagList(post(buildEndpoint("documents/" + documentId + "/tags"), params));
+    }
+
+    @Override
+    public void removeDocumentTags(String documentId, RemoveDocumentTagsParams params) {
+        delete(buildEndpoint("documents/" + documentId + "/tags"), params);
+    }
 }

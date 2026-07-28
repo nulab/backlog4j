@@ -4,8 +4,11 @@ import com.nulabinc.backlog4j.AttachmentData;
 import com.nulabinc.backlog4j.Document;
 import com.nulabinc.backlog4j.DocumentAttachment;
 import com.nulabinc.backlog4j.DocumentComment;
+import com.nulabinc.backlog4j.DocumentTag;
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
+import com.nulabinc.backlog4j.api.option.RemoveDocumentTagsParams;
 
 /**
  * Executes Backlog Document APIs.
@@ -56,5 +59,22 @@ public interface DocumentMethods {
      * @return the added Document page's attachment
      */
     DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData);
+
+    /**
+     * Adds tags to the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @param params     the add document tags parameters
+     * @return the document page's tags in a list
+     */
+    ResponseList<DocumentTag> addDocumentTags(String documentId, AddDocumentTagsParams params);
+
+    /**
+     * Removes tags from the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @param params     the remove document tags parameters
+     */
+    void removeDocumentTags(String documentId, RemoveDocumentTagsParams params);
 
 }
