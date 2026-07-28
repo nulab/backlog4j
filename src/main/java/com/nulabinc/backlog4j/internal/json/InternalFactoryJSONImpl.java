@@ -557,6 +557,11 @@ public class InternalFactoryJSONImpl implements InternalFactory {
         return createObject(res.asString(), Document.class, DocumentJSONImpl.class);
     }
 
+    @Override
+    public ResponseList<DocumentComment> createDocumentCommentList(BacklogHttpResponse res) throws BacklogException {
+        return createObjectList(res.asString(), DocumentComment.class, DocumentCommentJSONImpl[].class);
+    }
+
     public Watch createWatch(String resStr) throws BacklogException {
         return createObject(resStr, Watch.class, WatchJSONImpl.class);
     }

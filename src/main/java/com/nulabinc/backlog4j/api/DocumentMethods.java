@@ -2,6 +2,7 @@ package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.AttachmentData;
 import com.nulabinc.backlog4j.Document;
+import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
 
@@ -37,5 +38,13 @@ public interface DocumentMethods {
      * @return downloaded file data
      */
     AttachmentData downloadDocumentAttachment(String documentId, long attachmentId);
+
+    /**
+     * Returns the comments of the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @return the document page's comments in a list
+     */
+    ResponseList<DocumentComment> getDocumentComments(String documentId);
 
 }

@@ -134,4 +134,6 @@ public interface InternalFactory {
 
     Document createDocument(BacklogHttpResponse res) throws BacklogException;
 
+    ResponseList<DocumentComment> createDocumentCommentList(BacklogHttpResponse res) throws BacklogException;
+
 }

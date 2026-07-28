@@ -1128,4 +1128,9 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
     }
+
+    @Override
+    public ResponseList<DocumentComment> getDocumentComments(String documentId) {
+        return factory.createDocumentCommentList(get(buildEndpoint("documents/" + documentId + "/comments")));
+    }
 }
