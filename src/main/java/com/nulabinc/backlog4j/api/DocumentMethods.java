@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.DocumentTag;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
+import com.nulabinc.backlog4j.api.option.GetDocumentsCountParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
 import com.nulabinc.backlog4j.api.option.RemoveDocumentTagsParams;
 
@@ -25,6 +26,13 @@ public interface DocumentMethods {
      */
     ResponseList<Document> getDocuments(GetDocumentsParams params);
 
+    /**
+     * Returns the number of Document pages in the project.
+     *
+     * @param params the count document parameters
+     * @return the document pages count
+     */
+    int getDocumentsCount(GetDocumentsCountParams params);
 
     /**
      * Returns the Document page.
