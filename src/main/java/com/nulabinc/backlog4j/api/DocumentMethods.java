@@ -2,8 +2,14 @@ package com.nulabinc.backlog4j.api;
 
 import com.nulabinc.backlog4j.AttachmentData;
 import com.nulabinc.backlog4j.Document;
+import com.nulabinc.backlog4j.DocumentAttachment;
+import com.nulabinc.backlog4j.DocumentComment;
+import com.nulabinc.backlog4j.DocumentTag;
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
+import com.nulabinc.backlog4j.api.option.GetDocumentsCountParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
+import com.nulabinc.backlog4j.api.option.RemoveDocumentTagsParams;
 
 /**
  * Executes Backlog Document APIs.
@@ -20,6 +26,13 @@ public interface DocumentMethods {
      */
     ResponseList<Document> getDocuments(GetDocumentsParams params);
 
+    /**
+     * Returns the number of Document pages in the project.
+     *
+     * @param params the count document parameters
+     * @return the document pages count
+     */
+    int getDocumentsCount(GetDocumentsCountParams params);
 
     /**
      * Returns the Document page.
@@ -37,5 +50,39 @@ public interface DocumentMethods {
      * @return downloaded file data
      */
     AttachmentData downloadDocumentAttachment(String documentId, long attachmentId);
+
+    /**
+     * Returns the comments of the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @return the document page's comments in a list
+     */
+    ResponseList<DocumentComment> getDocumentComments(String documentId);
+
+    /**
+     * Adds an attachment file to the Document page.
+     *
+     * @param documentId     the Document page identifier
+     * @param attachmentData the file to upload
+     * @return the added Document page's attachment
+     */
+    DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData);
+
+    /**
+     * Adds tags to the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @param params     the add document tags parameters
+     * @return the document page's tags in a list
+     */
+    ResponseList<DocumentTag> addDocumentTags(String documentId, AddDocumentTagsParams params);
+
+    /**
+     * Removes tags from the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @param params     the remove document tags parameters
+     */
+    void removeDocumentTags(String documentId, RemoveDocumentTagsParams params);
 
 }

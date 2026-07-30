@@ -1117,6 +1117,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public int getDocumentsCount(GetDocumentsCountParams params) {
+        return factory.createCount(get(buildEndpoint("documents/count"), params)).getCount();
+    }
+
+    @Override
     public Document getDocument(String documentId) {
         return factory.createDocument(get(buildEndpoint("documents/" + documentId)));
     }
@@ -1127,5 +1132,28 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
         String filename = backlogHttpResponse.getFileNameFromContentDisposition();
         InputStream inputStream = backlogHttpResponse.asInputStream();
         return new AttachmentDataImpl(filename, inputStream);
+    }
+
+    @Override
+    public ResponseList<DocumentComment> getDocumentComments(String documentId) {
+        return factory.createDocumentCommentList(get(buildEndpoint("documents/" + documentId + "/comments")));
+    }
+
+    @Override
+    public DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("file", attachmentData);
+        BacklogHttpResponse backlogHttpResponse = postMultiPart(buildEndpoint("documents/" + documentId + "/attachments"), parameters);
+        return factory.createDocumentAttachment(backlogHttpResponse);
+    }
+
+    @Override
+    public ResponseList<DocumentTag> addDocumentTags(String documentId, AddDocumentTagsParams params) {
+        return factory.createDocumentTagList(post(buildEndpoint("documents/" + documentId + "/tags"), params));
+    }
+
+    @Override
+    public void removeDocumentTags(String documentId, RemoveDocumentTagsParams params) {
+        delete(buildEndpoint("documents/" + documentId + "/tags"), params);
     }
 }
