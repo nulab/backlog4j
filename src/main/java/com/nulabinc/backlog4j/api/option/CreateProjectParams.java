@@ -23,8 +23,7 @@ public class CreateProjectParams extends PostParams {
                                boolean useGit,
                                boolean useOriginalImageSizeAtWiki,
                                Project.TextFormattingRule textFormattingRule,
-                               boolean useDevAttributes,
-                               boolean useDocument) {
+                               boolean useDevAttributes) {
         parameters.add(new NameValuePair("name", name));
         parameters.add(new NameValuePair("key", projectKey));
         parameters.add(new NameValuePair("chartEnabled", String.valueOf(chartEnabled)));
@@ -39,11 +38,15 @@ public class CreateProjectParams extends PostParams {
         parameters.add(new NameValuePair("useOriginalImageSizeAtWiki", String.valueOf(useOriginalImageSizeAtWiki)));
         parameters.add(new NameValuePair("textFormattingRule", textFormattingRule.getStrValue()));
         parameters.add(new NameValuePair("useDevAttributes", String.valueOf(useDevAttributes)));
-        parameters.add(new NameValuePair("useDocument", String.valueOf(useDocument)));
     }
 
     public CreateProjectParams grandchildIssueEnabled(boolean grandchildIssueEnabled) {
         parameters.add(new NameValuePair("grandchildIssueEnabled", String.valueOf(grandchildIssueEnabled)));
+        return this;
+    }
+
+    public CreateProjectParams useDocument(boolean useDocument) {
+        parameters.add(new NameValuePair("useDocument", String.valueOf(useDocument)));
         return this;
     }
 }
