@@ -127,4 +127,6 @@ public interface Project {
     boolean getUseWikiTreeView();
 
     boolean getUseOriginalImageSizeAtWiki();
+
+    boolean getUseDocument();
 }

@@ -28,6 +28,7 @@ public class ProjectJSONImpl implements Project {
     private boolean useResolvedForChart;
     private boolean useWikiTreeView;
     private boolean useOriginalImageSizeAtWiki;
+    private boolean useDocument;
 
     @Override
     public long getId() {
@@ -115,6 +116,11 @@ public class ProjectJSONImpl implements Project {
     }
 
     @Override
+    public boolean getUseDocument() {
+        return useDocument;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -144,7 +150,8 @@ public class ProjectJSONImpl implements Project {
                 .append(this.useWikiTreeView, rhs.useWikiTreeView)
                 .append(this.useOriginalImageSizeAtWiki, rhs.useOriginalImageSizeAtWiki)
                 .append(this.projectLeaderCanEditProjectLeader, rhs.projectLeaderCanEditProjectLeader)
-                .append(this.useDevAttributes, rhs.useDevAttributes);
+                .append(this.useDevAttributes, rhs.useDevAttributes)
+                .append(this.useDocument, rhs.useDocument);
     }
 
     @Override
@@ -168,7 +175,8 @@ public class ProjectJSONImpl implements Project {
                 .append(useWikiTreeView)
                 .append(useOriginalImageSizeAtWiki)
                 .append(projectLeaderCanEditProjectLeader)
-                .append(useDevAttributes);
+                .append(useDevAttributes)
+                .append(useDocument);
     }
 
     @Override
@@ -192,6 +200,7 @@ public class ProjectJSONImpl implements Project {
                 .append("useWikiTreeView", useWikiTreeView)
                 .append("useOriginalImageSizeAtWiki", useOriginalImageSizeAtWiki)
                 .append("projectLeaderCanEditProjectLeader", projectLeaderCanEditProjectLeader)
-                .append("useDevAttributes", useDevAttributes);
+                .append("useDevAttributes", useDevAttributes)
+                .append("useDocument", useDocument);
     }
 }

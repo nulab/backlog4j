@@ -18,5 +18,6 @@
     "displayOrder": 2147483646,
     "useDevAttributes": true,
     "useResolvedForChart": true,
-    "useOriginalImageSizeAtWiki": true
+    "useOriginalImageSizeAtWiki": true,
+    "useDocument": true
 }

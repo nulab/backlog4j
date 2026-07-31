@@ -20,7 +20,7 @@ public class CreateProjectParamsTest extends AbstractParamsTest {
                 "test", "TEST",
                 false, false, true, false,
                 true, true, true, false, true, false,
-                Project.TextFormattingRule.Markdown, false);
+                Project.TextFormattingRule.Markdown, false, false);
         params.grandchildIssueEnabled(true);
 
         // then

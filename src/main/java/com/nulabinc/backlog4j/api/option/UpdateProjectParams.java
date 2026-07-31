@@ -94,6 +94,11 @@ public class UpdateProjectParams extends PatchParams {
         return this;
     }
 
+    public UpdateProjectParams documentEnabled(boolean documentEnabled) {
+        parameters.add(new NameValuePair("useDocument", String.valueOf(documentEnabled)));
+        return this;
+    }
+
     public UpdateProjectParams setArchived(boolean archived) {
         parameters.add(new NameValuePair("archived", String.valueOf(archived)));
         return this;
