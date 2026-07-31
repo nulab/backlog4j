@@ -7,6 +7,7 @@ import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.DocumentTag;
 import com.nulabinc.backlog4j.DocumentTree;
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.api.option.AddDocumentParams;
 import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentTreeParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsCountParams;
@@ -27,6 +28,14 @@ public interface DocumentMethods {
      * @return the document pages in a list
      */
     ResponseList<Document> getDocuments(GetDocumentsParams params);
+
+    /**
+     * Adds a Document page to the project.
+     *
+     * @param params the add document parameters
+     * @return the added Document page
+     */
+    Document addDocument(AddDocumentParams params);
 
     /**
      * Returns the number of Document pages in the project.
@@ -51,6 +60,14 @@ public interface DocumentMethods {
      * @return the Document page
      */
     Document getDocument(String documentId);
+
+    /**
+     * Deletes the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @return the deleted Document page
+     */
+    Document deleteDocument(String documentId);
 
     /**
      * Downloads the Document page's attachment file.

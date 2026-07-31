@@ -1117,6 +1117,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public Document addDocument(AddDocumentParams params) {
+        return factory.createDocument(post(buildEndpoint("documents"), params));
+    }
+
+    @Override
     public int getDocumentsCount(GetDocumentsCountParams params) {
         return factory.createCount(get(buildEndpoint("documents/count"), params)).getCount();
     }
@@ -1129,6 +1134,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     @Override
     public Document getDocument(String documentId) {
         return factory.createDocument(get(buildEndpoint("documents/" + documentId)));
+    }
+
+    @Override
+    public Document deleteDocument(String documentId) {
+        return factory.createDocument(delete(buildEndpoint("documents/" + documentId)));
     }
 
     @Override
