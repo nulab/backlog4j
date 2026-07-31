@@ -1,0 +1,24 @@
+{
+    "projectId": 1073835211,
+    "activeTree": {
+        "id": "Active",
+        "children": [
+            {
+                "id": "1234567890abcdef",
+                "name": "Getting Started",
+                "emoji": "🚀",
+                "children": [
+                    {
+                        "id": "abcdef1234567890",
+                        "name": "Setup",
+                        "emoji": null
+                    }
+                ]
+            }
+        ]
+    },
+    "trashTree": {
+        "id": "Trash",
+        "children": []
+    }
+}

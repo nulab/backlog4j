@@ -1122,6 +1122,11 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public DocumentTree getDocumentTree(GetDocumentTreeParams params) {
+        return factory.createDocumentTree(get(buildEndpoint("documents/tree"), params));
+    }
+
+    @Override
     public Document getDocument(String documentId) {
         return factory.createDocument(get(buildEndpoint("documents/" + documentId)));
     }

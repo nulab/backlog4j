@@ -5,8 +5,10 @@ import com.nulabinc.backlog4j.Document;
 import com.nulabinc.backlog4j.DocumentAttachment;
 import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.DocumentTag;
+import com.nulabinc.backlog4j.DocumentTree;
 import com.nulabinc.backlog4j.ResponseList;
 import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
+import com.nulabinc.backlog4j.api.option.GetDocumentTreeParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsCountParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
 import com.nulabinc.backlog4j.api.option.RemoveDocumentTagsParams;
@@ -33,6 +35,14 @@ public interface DocumentMethods {
      * @return the document pages count
      */
     int getDocumentsCount(GetDocumentsCountParams params);
+
+    /**
+     * Returns the Document tree in the project.
+     *
+     * @param params the document tree parameters
+     * @return the document tree
+     */
+    DocumentTree getDocumentTree(GetDocumentTreeParams params);
 
     /**
      * Returns the Document page.
