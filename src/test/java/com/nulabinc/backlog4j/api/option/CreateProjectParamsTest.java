@@ -22,7 +22,7 @@ public class CreateProjectParamsTest extends AbstractParamsTest {
                 true, true, true, false, true, false,
                 Project.TextFormattingRule.Markdown, false);
         params.grandchildIssueEnabled(true);
-        params.useDocument(true);
+        params.documentEnabled(true);
 
         // then
         List<NameValuePair> parameters = params.getParamList();

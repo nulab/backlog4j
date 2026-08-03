@@ -45,8 +45,8 @@ public class CreateProjectParams extends PostParams {
         return this;
     }
 
-    public CreateProjectParams useDocument(boolean useDocument) {
-        parameters.add(new NameValuePair("useDocument", String.valueOf(useDocument)));
+    public CreateProjectParams documentEnabled(boolean documentEnabled) {
+        parameters.add(new NameValuePair("useDocument", String.valueOf(documentEnabled)));
         return this;
     }
 }
