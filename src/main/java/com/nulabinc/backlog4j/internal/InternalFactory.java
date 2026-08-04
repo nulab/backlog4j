@@ -140,4 +140,6 @@ public interface InternalFactory {
 
     ResponseList<DocumentTag> createDocumentTagList(BacklogHttpResponse res) throws BacklogException;
 
+    DocumentTree createDocumentTree(BacklogHttpResponse res) throws BacklogException;
+
 }

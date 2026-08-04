@@ -15,7 +15,8 @@
         "useDevAttributes": true,
         "useWikiTreeView": true,
         "useResolvedForChart": true,
-        "useOriginalImageSizeAtWiki": true
+        "useOriginalImageSizeAtWiki": true,
+        "useDocument": true
     },
     {
         "id": 1073835220,
@@ -33,6 +34,7 @@
         "useDevAttributes": false,
         "useWikiTreeView": false,
         "useResolvedForChart": false,
-        "useOriginalImageSizeAtWiki": false
+        "useOriginalImageSizeAtWiki": false,
+        "useDocument": false
     }
 ]

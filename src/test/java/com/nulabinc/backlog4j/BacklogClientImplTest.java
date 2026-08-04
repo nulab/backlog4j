@@ -212,6 +212,11 @@ public class BacklogClientImplTest {
         public boolean getUseOriginalImageSizeAtWiki() {
             return true;
         }
+
+        @Override
+        public boolean getUseDocument() {
+            return true;
+        }
     }
 
     private static class DummyWiki implements Wiki {

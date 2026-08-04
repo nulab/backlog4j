@@ -44,4 +44,9 @@ public class CreateProjectParams extends PostParams {
         parameters.add(new NameValuePair("grandchildIssueEnabled", String.valueOf(grandchildIssueEnabled)));
         return this;
     }
+
+    public CreateProjectParams documentEnabled(boolean documentEnabled) {
+        parameters.add(new NameValuePair("useDocument", String.valueOf(documentEnabled)));
+        return this;
+    }
 }

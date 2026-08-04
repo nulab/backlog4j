@@ -22,6 +22,7 @@ public class CreateProjectParamsTest extends AbstractParamsTest {
                 true, true, true, false, true, false,
                 Project.TextFormattingRule.Markdown, false);
         params.grandchildIssueEnabled(true);
+        params.documentEnabled(true);
 
         // then
         List<NameValuePair> parameters = params.getParamList();
@@ -29,5 +30,6 @@ public class CreateProjectParamsTest extends AbstractParamsTest {
         assertTrue(existsOneKeyValue(parameters, "key", "TEST"));
         assertTrue(existsOneKeyValue(parameters, "subtaskingEnabled", "true"));
         assertTrue(existsOneKeyValue(parameters, "grandchildIssueEnabled", "true"));
+        assertTrue(existsOneKeyValue(parameters, "useDocument", "true"));
     }
 }

@@ -572,6 +572,15 @@ public class InternalFactoryJSONImpl implements InternalFactory {
         return createObjectList(res.asString(), DocumentTag.class, DocumentTagJSONImpl[].class);
     }
 
+    @Override
+    public DocumentTree createDocumentTree(BacklogHttpResponse res) throws BacklogException {
+        return createDocumentTree(res.asString());
+    }
+
+    public DocumentTree createDocumentTree(String resStr) throws BacklogException {
+        return createObject(resStr, DocumentTree.class, DocumentTreeJSONImpl.class);
+    }
+
     public Watch createWatch(String resStr) throws BacklogException {
         return createObject(resStr, Watch.class, WatchJSONImpl.class);
     }

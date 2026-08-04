@@ -5,8 +5,11 @@ import com.nulabinc.backlog4j.Document;
 import com.nulabinc.backlog4j.DocumentAttachment;
 import com.nulabinc.backlog4j.DocumentComment;
 import com.nulabinc.backlog4j.DocumentTag;
+import com.nulabinc.backlog4j.DocumentTree;
 import com.nulabinc.backlog4j.ResponseList;
+import com.nulabinc.backlog4j.api.option.AddDocumentParams;
 import com.nulabinc.backlog4j.api.option.AddDocumentTagsParams;
+import com.nulabinc.backlog4j.api.option.GetDocumentTreeParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsCountParams;
 import com.nulabinc.backlog4j.api.option.GetDocumentsParams;
 import com.nulabinc.backlog4j.api.option.RemoveDocumentTagsParams;
@@ -27,6 +30,14 @@ public interface DocumentMethods {
     ResponseList<Document> getDocuments(GetDocumentsParams params);
 
     /**
+     * Adds a Document page to the project.
+     *
+     * @param params the add document parameters
+     * @return the added Document page
+     */
+    Document addDocument(AddDocumentParams params);
+
+    /**
      * Returns the number of Document pages in the project.
      *
      * @param params the count document parameters
@@ -35,12 +46,28 @@ public interface DocumentMethods {
     int getDocumentsCount(GetDocumentsCountParams params);
 
     /**
+     * Returns the Document tree in the project.
+     *
+     * @param params the document tree parameters
+     * @return the document tree
+     */
+    DocumentTree getDocumentTree(GetDocumentTreeParams params);
+
+    /**
      * Returns the Document page.
      *
      * @param documentId the Document page identifier
      * @return the Document page
      */
     Document getDocument(String documentId);
+
+    /**
+     * Deletes the Document page.
+     *
+     * @param documentId the Document page identifier
+     * @return the deleted Document page
+     */
+    Document deleteDocument(String documentId);
 
     /**
      * Downloads the Document page's attachment file.

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -72,12 +73,12 @@ public class DocumentJSONImpl implements Document {
 
     @Override
     public List<DocumentTag> getTags() {
-        return Arrays.asList(this.tags);
+        return this.tags == null ? Collections.emptyList() : Arrays.asList(this.tags);
     }
 
     @Override
     public List<Attachment> getAttachments() {
-        return Arrays.asList(this.attachments);
+        return this.attachments == null ? Collections.emptyList() : Arrays.asList(this.attachments);
     }
 
     @Override

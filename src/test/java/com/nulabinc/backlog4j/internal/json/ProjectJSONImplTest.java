@@ -36,6 +36,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest {
         assertTrue(project.getUseResolvedForChart());
         assertTrue(project.getUseWikiTreeView());
         assertTrue(project.getUseOriginalImageSizeAtWiki());
+        assertTrue(project.getUseDocument());
 
         project = projects.get(1);
         assertEquals(1073835220, project.getId());
@@ -51,6 +52,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest {
         assertFalse(project.getUseResolvedForChart());
         assertFalse(project.getUseWikiTreeView());
         assertFalse(project.getUseOriginalImageSizeAtWiki());
+        assertFalse(project.getUseDocument());
 
     }
 
@@ -73,6 +75,7 @@ public class ProjectJSONImplTest extends AbstractJSONImplTest {
         assertTrue(project.getUseResolvedForChart());
         assertTrue(project.getUseWikiTreeView());
         assertTrue(project.getUseOriginalImageSizeAtWiki());
+        assertTrue(project.getUseDocument());
     }
 
     @Test
