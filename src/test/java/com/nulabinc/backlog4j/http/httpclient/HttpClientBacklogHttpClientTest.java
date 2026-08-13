@@ -89,8 +89,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("GET", recordedRequest.getMethod());
-        assertEquals("/api/v2/users/myself?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/users/myself", recordedRequest.getPath());
         assertEquals(0, recordedRequest.getBody().size());
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
     }
@@ -145,8 +146,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("POST", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -177,8 +179,9 @@ class HttpClientBacklogHttpClientTest {
             final RecordedRequest recordedRequest = mockWebServer.takeRequest();
             logger.info("Request: {}", recordedRequest);
             assertEquals("POST", recordedRequest.getMethod());
-            assertEquals("/api/v2/space/attachment?apiKey=********", recordedRequest.getPath());
+            assertEquals("/api/v2/space/attachment", recordedRequest.getPath());
             assertTrue(recordedRequest.getBody().size() > 0);
+            assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
             assertEquals("multipart/form-data; boundary=*******", recordedRequest.getHeader("Content-Type"));
             assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
             assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -238,8 +241,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("PATCH", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis/1?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis/1", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -294,8 +298,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("DELETE", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis/1?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis/1", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -322,8 +327,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("PUT", recordedRequest.getMethod());
-        assertEquals("/api/v2/space/notification?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/space/notification", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));

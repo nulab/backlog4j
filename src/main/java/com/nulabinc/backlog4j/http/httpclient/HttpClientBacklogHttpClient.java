@@ -84,8 +84,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse get(final String endpoint, final GetParams getParams, final QueryParams queryParams) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             if (getParams != null) {
                 getParams.getParamList().forEach(param -> uriBuilder.addParameter(param.getName(), param.getValue()));
             }
@@ -109,8 +108,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse post(final String endpoint, final List<NameValuePair> postParams, final List<NameValuePair> headers) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             final HttpRequest request = newHttpRequestBuilder(headers)
                     .uri(uriBuilder.build())
                     .POST(buildForm(postParams))
@@ -129,8 +127,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse patch(final String endpoint, final List<NameValuePair> patchParams, final List<NameValuePair> headers) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             final HttpRequest request = newHttpRequestBuilder(headers)
                     .uri(uriBuilder.build())
                     .method("PATCH", buildForm(patchParams))
@@ -149,8 +146,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse put(final String endpoint, final List<NameValuePair> putParams) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             final HttpRequest request = newHttpRequestBuilder()
                     .uri(uriBuilder.build())
                     .PUT(buildForm(putParams))
@@ -169,8 +165,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse delete(final String endpoint, final List<NameValuePair> deleteParams) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             final HttpRequest request = newHttpRequestBuilder()
                     .uri(uriBuilder.build())
                     .method("DELETE", buildForm(deleteParams))
@@ -189,8 +184,7 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
     public BacklogHttpResponse postMultiPart(final String endpoint, final Map<String, Object> postParams) throws BacklogException {
         try {
             final HttpClient httpClient = getHttpClient();
-            final URIBuilder uriBuilder = new URIBuilder(endpoint)
-                    .addParameter("apiKey", this.apiKey);
+            final URIBuilder uriBuilder = new URIBuilder(endpoint);
             final String boundary = "*******";
             final byte[] data = toByteArray(postParams, boundary);
             final HttpRequest request = newHttpRequestBuilder()
@@ -274,7 +268,9 @@ public class HttpClientBacklogHttpClient implements BacklogHttpClient {
                 .timeout(Duration.ofMillis(this.readTimeout))
                 .header("Cache-Control", "no-cache")
                 .header("User-Agent", this.userAgent);
-        if (this.apiKey == null && this.bearerToken != null) {
+        if (this.apiKey != null) {
+            requestBuilder.header("Backlog-API-Key", this.apiKey);
+        } else if (this.bearerToken != null) {
             requestBuilder.header("Authorization", "Bearer " + bearerToken);
         }
         if (headers != null) {
