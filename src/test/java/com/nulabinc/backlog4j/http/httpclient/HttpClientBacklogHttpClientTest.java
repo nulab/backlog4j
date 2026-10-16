@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.nulabinc.backlog4j.*;
 import com.nulabinc.backlog4j.api.option.CreateWikiParams;
 import com.nulabinc.backlog4j.api.option.UpdateWikiParams;
+import com.nulabinc.backlog4j.auth.AccessToken;
 import com.nulabinc.backlog4j.conf.BacklogConfigure;
 import com.nulabinc.backlog4j.http.BacklogHttpClient;
 import com.nulabinc.backlog4j.internal.file.AttachmentDataImpl;
@@ -30,6 +31,8 @@ class HttpClientBacklogHttpClientTest {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     private static final String API_KEY = "********";
+
+    private static final String ACCESS_TOKEN = "access-token";
 
     private final ObjectMapper objectMapper;
 
@@ -89,8 +92,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("GET", recordedRequest.getMethod());
-        assertEquals("/api/v2/users/myself?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/users/myself", recordedRequest.getPath());
         assertEquals(0, recordedRequest.getBody().size());
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
     }
@@ -145,8 +149,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("POST", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -177,8 +182,9 @@ class HttpClientBacklogHttpClientTest {
             final RecordedRequest recordedRequest = mockWebServer.takeRequest();
             logger.info("Request: {}", recordedRequest);
             assertEquals("POST", recordedRequest.getMethod());
-            assertEquals("/api/v2/space/attachment?apiKey=********", recordedRequest.getPath());
+            assertEquals("/api/v2/space/attachment", recordedRequest.getPath());
             assertTrue(recordedRequest.getBody().size() > 0);
+            assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
             assertEquals("multipart/form-data; boundary=*******", recordedRequest.getHeader("Content-Type"));
             assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
             assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -238,8 +244,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("PATCH", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis/1?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis/1", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -294,8 +301,9 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("DELETE", recordedRequest.getMethod());
-        assertEquals("/api/v2/wikis/1?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/wikis/1", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
@@ -322,10 +330,58 @@ class HttpClientBacklogHttpClientTest {
         final RecordedRequest recordedRequest = mockWebServer.takeRequest();
         logger.info("Request: {}", recordedRequest);
         assertEquals("PUT", recordedRequest.getMethod());
-        assertEquals("/api/v2/space/notification?apiKey=********", recordedRequest.getPath());
+        assertEquals("/api/v2/space/notification", recordedRequest.getPath());
         assertTrue(recordedRequest.getBody().size() > 0);
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
         assertEquals("application/x-www-form-urlencoded; charset=UTF-8", recordedRequest.getHeader("Content-Type"));
         assertEquals("no-cache", recordedRequest.getHeader("Cache-Control"));
         assertTrue(Objects.requireNonNull(recordedRequest.getHeader("User-Agent")).startsWith("backlog4j/"));
+    }
+
+    @Test
+    public void testGet_getMyself_withAccessToken() throws Exception {
+        final BacklogConfigure configure = new MockWebServerBacklogConfigure(this.mockWebServer)
+                .accessToken(new AccessToken(ACCESS_TOKEN, 3600L, "refresh-token"));
+        final BacklogClient client = new BacklogClientFactory(configure, new HttpClientBacklogHttpClient(HttpClient.newBuilder())).newClient();
+        enqueueMyselfResponse();
+
+        final User myself = client.getMyself();
+        assertEquals("admin", myself.getUserId());
+
+        final RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        logger.info("Request: {}", recordedRequest);
+        assertEquals("GET", recordedRequest.getMethod());
+        assertEquals("/api/v2/users/myself", recordedRequest.getPath());
+        assertEquals("Bearer " + ACCESS_TOKEN, recordedRequest.getHeader("Authorization"));
+        assertNull(recordedRequest.getHeader("Backlog-API-Key"));
+    }
+
+    @Test
+    public void testGet_getMyself_withApiKeyAndAccessToken() throws Exception {
+        final BacklogConfigure configure = new MockWebServerBacklogConfigure(this.mockWebServer)
+                .apiKey(API_KEY)
+                .accessToken(new AccessToken(ACCESS_TOKEN, 3600L, "refresh-token"));
+        final BacklogClient client = new BacklogClientFactory(configure, new HttpClientBacklogHttpClient(HttpClient.newBuilder())).newClient();
+        enqueueMyselfResponse();
+
+        client.getMyself();
+
+        final RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        logger.info("Request: {}", recordedRequest);
+        assertEquals("/api/v2/users/myself", recordedRequest.getPath());
+        assertEquals(API_KEY, recordedRequest.getHeader("Backlog-API-Key"));
+        assertNull(recordedRequest.getHeader("Authorization"));
+    }
+
+    private void enqueueMyselfResponse() throws Exception {
+        final Map<String, Object> userMap = new LinkedHashMap<>();
+        userMap.put("id", 1);
+        userMap.put("userId", "admin");
+        userMap.put("name", "Administrator");
+        userMap.put("roleType", 1);
+        final MockResponse mockResponse = new MockResponse();
+        mockResponse.setResponseCode(200);
+        mockResponse.setBody(objectMapper.writeValueAsString(userMap));
+        this.mockWebServer.enqueue(mockResponse);
     }
 }
