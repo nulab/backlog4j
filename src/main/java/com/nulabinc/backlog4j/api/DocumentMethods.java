@@ -88,10 +88,12 @@ public interface DocumentMethods {
 
     /**
      * Adds an attachment file to the Document page.
+     * The file is sent directly as {@code multipart/form-data}; no prior upload is needed.
      *
      * @param documentId     the Document page identifier
      * @param attachmentData the file to upload
-     * @return the added Document page's attachment
+     * @return the added Document page's attachment. It has the same fields as the attachments of
+     * {@link #getDocument(String)}, including {@link com.nulabinc.backlog4j.Attachment#getCreatedUser()}.
      */
     DocumentAttachment addDocumentAttachment(String documentId, AttachmentData attachmentData);
 
